@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# AdminIDN-backend
+
+> Codigo desarrollado para la empresa Impacto del Norte, con el fin de administración interna de los equipos y boletas
+
+## Autor:
+* **Franz Cortez Olmedo**
+
+### Contacto:
+* Email: franzco2000@gmail.com
