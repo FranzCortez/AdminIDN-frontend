@@ -1,10 +1,16 @@
-import logo from './logo.svg';
+import React, { Fragment } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Header from "./components/layout/Header";
 
 function App() {
     return (
-        <h1>
-          hola mundo
-        </h1>
+        <BrowserRouter>
+            <Fragment>
+            <Header/>
+
+            </Fragment>
+        </BrowserRouter>
     );
 }
 
