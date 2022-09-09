@@ -18,7 +18,7 @@
 
     /** negros **/
     --negro: #000;
-    --negroClaro: rgb(51, 51, 51);
+    --negroClaro: #333333;
 }
 body {
     background-color: var(--grisClaro);
@@ -108,6 +108,8 @@ h2 {
     justify-items: center;
     height: 80%;
     align-items: center;
+    row-gap: 2rem;
+    margin-top: 2rem;
 }
 .offcanvas-header{
     justify-content: center;
@@ -142,4 +144,6 @@ h2 {
     font-weight: 700;
     font-size: 4rem;
     color: var(--negroClaro);
+    width: 28rem;
+    margin-left: 1rem;
 }

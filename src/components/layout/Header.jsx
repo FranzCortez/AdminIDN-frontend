@@ -1,22 +1,60 @@
 import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
-import { RiContactsBook2Fill } from "react-icons/ri";
+import { FaBars, FaFileInvoiceDollar } from "react-icons/fa";
+import { RiContactsBook2Line } from "react-icons/ri";
+import { AiOutlineTool, AiOutlineDollarCircle } from "react-icons/ai";
+import { CgEnter } from "react-icons/cg";
+import { RiFileList2Line } from "react-icons/ri";
+import { MdOutlineRequestQuote } from "react-icons/md";
+import { ImQrcode } from "react-icons/im";
+import { FiUsers } from "react-icons/fi";
 
 import Sidebar from "./Sidebar";
 
 function Header() {
 
+    // TODO: ver permisos
+
     const rutas = [
         {
             ruta: '/clientes',
             texto: 'Clientes',
-            icono: <RiContactsBook2Fill size={50} />
+            icono: <RiContactsBook2Line size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/herramientas',
+            texto: 'Herramientas',
+            icono: <AiOutlineTool size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/ingresos',
+            texto: 'Ingresos',
+            icono: <CgEnter size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/cotizacion',
+            texto: 'Cotización',
+            icono: <MdOutlineRequestQuote size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/informe',
+            texto: 'Informe',
+            icono: <RiFileList2Line size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/facturas',
+            texto: 'Facturas',
+            icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/qr',
+            texto: 'QR',
+            icono: <ImQrcode size={50} color={"#333333"}/>
         },
         {
             ruta: '/usuarios',
             texto: 'Usuarios',
-            icono: <RiContactsBook2Fill size={50} />
+            icono: <FiUsers size={50} color={"#333333"}/>
         }
     ]
 
