@@ -187,6 +187,7 @@ h2 {
 .card-body-options{
     display: flex;
     justify-content: space-between;
+    margin: 2rem 0;
 
 }
 @media (min-width: 768px) {
