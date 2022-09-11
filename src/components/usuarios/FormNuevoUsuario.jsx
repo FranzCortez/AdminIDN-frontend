@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { IoPersonAddSharp } from "react-icons/io5";
+import { useNavigate, Link } from "react-router-dom";
+import { IoPersonAddSharp, IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
@@ -38,7 +38,7 @@ function FormNuevoUsuario() {
 
     const agregarCliente = async (e) => {
         e.preventDefault();
-        console.log("entre")
+        
         try {            
             const res = await clienteAxios.post('/cuentas/usuario', usuario);
 
@@ -79,6 +79,10 @@ function FormNuevoUsuario() {
                     <h1>Crear Nuevo Usuario</h1>
                 </div>
                 <div className="card-body">
+
+                    <div className='top-left'>
+                        <Link to={'/usuarios'} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                    </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 

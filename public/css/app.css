@@ -7,6 +7,7 @@
     --rojo : #A01C48;
     --naranja : #F58549;
     --amarillo: #ECA400;
+    --amarilloOscuro: #bd8401;
     --verde : rgb(20, 131, 20);
     --verdeOscuro : rgb(9, 109, 9);
     --naranjaClaro: #ff8533;
@@ -53,6 +54,13 @@ h2 {
     margin: 0 auto;
     width: 95%;
 }
+.top-left{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+/** BOTONES **/
 .btn-new{
     padding: 0.5rem;
     text-align: center;
@@ -93,6 +101,15 @@ h2 {
 }
 .btn-success-new:hover {
     background-color: var(--verdeOscuro);
+}
+
+.btn-return{
+    background-color: var(--amarillo);
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.btn-return:hover {
+    background-color: var(--amarilloOscuro);
 }
 
 /** HEADER **/
