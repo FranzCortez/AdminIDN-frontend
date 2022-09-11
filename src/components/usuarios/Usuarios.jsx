@@ -1,31 +1,39 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import {React, Fragment, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FiUsers } from "react-icons/fi";
 import { IoPersonAddSharp } from "react-icons/io5";
 
 import clienteAxios from '../../config/axios';
 import Usuario from './Usuario';
+import FormBuscarUsuario from './FormBuscarUsuario';
 
 function Usuarios() {
 
     // state usuarios
-    const [ usuarios, guardarUsuarios ] = useState([]);   
+    const [ usuarios, guardarUsuarios ] = useState([]); 
+    const [ cambio, guardarCambio ] = useState(true);
 
-    const consultarAPI = async () => {
-        try {
-            // TODO Redireccionar y validar permiso
-            const res = await clienteAxios.get('/cuentas/usuario');
-
-            guardarUsuarios(res.data);
-
-        } catch (error) {
-            console.log(error)
-        }
+    const escucharCambio = () => {
+        guardarCambio(!cambio);
     }
 
     useEffect(() => {
+        const consultarAPI = async () => {
+            
+            try {
+                // TODO Redireccionar y validar permiso
+                const res = await clienteAxios.get('/cuentas/usuario');
+                guardarUsuarios(res?.data);
+                
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
         consultarAPI();
-    },[usuarios]);
+        console.log("a")
+        
+    }, [cambio]);
 
     return (
         <Fragment>
@@ -37,7 +45,7 @@ function Usuarios() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        <input type="text" />
+                        <FormBuscarUsuario />
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <IoPersonAddSharp size={25}/>
@@ -60,8 +68,8 @@ function Usuarios() {
                             </thead>
                             <tbody>
                                 {
-                                    usuarios.map((datos, index) => (
-                                        <Usuario datos={datos} key={index} />
+                                    usuarios.map((datos) => (
+                                        <Usuario datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
                                     ))
                                 }
                             </tbody>

@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
 
-function Usuario({datos}) {
+function Usuario({datos, escucharCambio}) {
 
     let rut = datos.rut.split("");
     rut = rut[0] + rut[1] + "." + rut[2]+rut[3]+rut[4] + "." + rut[5]+rut[6]+rut[7] + "-" + rut[8];
@@ -29,11 +29,11 @@ function Usuario({datos}) {
             cancelButtonColor: "#d33",
             confirmButtonText : 'Si, Eliminar!',
             cancelButtonText: 'Cancelar'
-        }).then( async (result) => {
+        }).then( (result) => {
             if (result.value) {
-
-                await clienteAxios.delete(`/cuentas/usuario/${id}`).then(res => {
+                clienteAxios.delete(`/cuentas/usuario/${id}`).then(res => {
                     Swal.fire( 'Eliminado', res.data.mensaje, 'success');
+                    escucharCambio();
                 });
             }
         });
@@ -48,8 +48,8 @@ function Usuario({datos}) {
             <td>{tipo}</td>
             <td>
                 <div className='table__opciones'>
-                    <Link to={`editar/${datos.id}`} className="btn btn-warning"><FaUserEdit size={23} color="#ffff"/></Link>
-                    <button type='button' className="btn btn-danger" onClick={() => eliminarCliente(datos.id)}><RiDeleteBin2Line size={23}/></button>
+                    <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><FaUserEdit size={23} color="#ffff"/></button></Link>
+                    <button type='button' className="btn btn-danger" onClick={() => {eliminarCliente(datos.id);}}><RiDeleteBin2Line size={23}/></button>
                 </div>
             </td>
         </tr>

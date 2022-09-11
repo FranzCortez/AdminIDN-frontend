@@ -97,7 +97,7 @@ function FormEditarUsuario() {
 
     useEffect(() => {
         consultarAPI();
-    },[]);
+    });
 
     return (
         <Fragment>
