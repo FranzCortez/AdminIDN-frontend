@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import { FiUsers } from "react-icons/fi";
 import { IoPersonAddSharp } from "react-icons/io5";
 
@@ -38,10 +39,10 @@ function Usuarios() {
                     <div className='card-body-options'>
                         <input type="text" />
 
-                        <button type="button" className="btn-new btn-success-new">
+                        <Link to={"/usuarios/nuevo"} type="button" className="btn-new btn-success-new">
                             <IoPersonAddSharp size={25}/>
                             Nuevo Usuario
-                        </button>
+                        </Link>
                     </div>
 
 
