@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import Swal from 'sweetalert2';
+
+import clienteAxios from '../../config/axios';
 
 function Usuario({datos}) {
 
@@ -16,6 +19,27 @@ function Usuario({datos}) {
         tipo = 'Trabajador';
     }
 
+    const eliminarCliente = (id) => {
+        Swal.fire ({
+            title: '¿Estas seguro de eliminarlo?',
+            text: "Un usuario eliminado no se puede recuperar",
+            type: 'warning',
+            showCancelButton : true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: "#d33",
+            confirmButtonText : 'Si, Eliminar!',
+            cancelButtonText: 'Cancelar',
+            timer: 1500
+        }).then( async (result) => {
+            if (result.value) {
+
+                await clienteAxios.delete(`/cuentas/usuario/${id}`).then(res => {
+                    Swal.fire( 'Eliminado', res.data.mensaje, 'success ');
+                });
+            }
+        });
+    }
+
     return (
         <tr className='table__tr'>
             <td>{datos.nombre}</td>
@@ -26,7 +50,7 @@ function Usuario({datos}) {
             <td>
                 <div className='table__opciones'>
                     <Link to={`editar/${datos.id}`} className="btn btn-warning"><FaUserEdit size={23} color="#ffff"/></Link>
-                    <Link to={"#"} className="btn btn-danger"><RiDeleteBin2Line size={23}/></Link>
+                    <button type='button' className="btn btn-danger" onClick={() => eliminarCliente(datos.id)}><RiDeleteBin2Line size={23}/></button>
                 </div>
             </td>
         </tr>

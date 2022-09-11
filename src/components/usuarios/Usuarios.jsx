@@ -25,7 +25,7 @@ function Usuarios() {
 
     useEffect(() => {
         consultarAPI();
-    },[]);
+    },[usuarios]);
 
     return (
         <Fragment>
