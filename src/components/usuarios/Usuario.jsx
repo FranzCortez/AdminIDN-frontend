@@ -25,7 +25,7 @@ function Usuario({datos}) {
             <td>
                 <div className='table__opciones'>
                     <button type="button" className="btn btn-danger"><RiDeleteBin2Line size={23}/></button>
-                    <button type="button" className="btn btn-warning"><FaUserEdit size={23}/></button>
+                    <button type="button" className="btn btn-warning"><FaUserEdit size={23} color="#ffff"/></button>
                 </div>
             </td>
         </tr>
