@@ -3,7 +3,8 @@
     --fontHeading: 'Staatliches', cursive;
 
     /** Colores **/
-    --azul : #00487C;
+    --azul : #005ea1;
+    --azulOscuro: #00487C;
     --rojo : #A01C48;
     --naranja : #F58549;
     --amarillo: #ECA400;
@@ -282,7 +283,54 @@ form legend {
     padding: 2rem;
     margin-bottom: 2rem;
 }
-
+.form-buscar{
+    display: flex;
+    margin: 0px;
+    align-items: center;
+}
+form .campo-buscar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form .campo-buscar input{
+    border: 1px solid #e1e1e1;
+    padding: 1.5rem;
+}
+form .campo-buscar-enviar {
+    width: 100%;
+    background-color: var(--azul);
+    color: white;
+    font-weight: 700;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+form .campo-buscar-enviar:hover {
+    background-color: var(--azulOscuro);
+}
+form .campo-buscar-limpiar {
+    width: 100%;
+    background-color: var(--amarillo);
+    color: white;
+    font-weight: 700;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+form .campo-buscar-limpiar:hover {
+    background-color: var(--amarilloOscuro);
+}
+@media (min-width: 768px) {
+    form .campo-buscar{
+        flex-direction: row;
+    }
+    form .campo-buscar input:not([type="submit"]){
+        border: 1px solid #e1e1e1;
+        width: 30rem;
+    }
+    form .campo-buscar-enviar {
+        width: 30%;
+    }
+}
 form .campo {
     padding: .5rem 2rem;
     display: flex;
@@ -311,4 +359,10 @@ form .campo input[readonly] {
     padding: .5rem 2rem;
     display: flex;
     justify-content: flex-end;
+}
+.mensaje-vacio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
 }
