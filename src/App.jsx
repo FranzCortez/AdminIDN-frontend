@@ -6,6 +6,7 @@ import Header from "./components/layout/Header";
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
+import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
             <Routes>
                 <Route path="/usuarios" element={<Usuarios/>} /> 
                 <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
+                <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
             </Routes>
         </BrowserRouter>
     );

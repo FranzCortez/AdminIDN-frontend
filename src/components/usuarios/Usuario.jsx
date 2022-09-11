@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 
@@ -24,8 +25,8 @@ function Usuario({datos}) {
             <td>{tipo}</td>
             <td>
                 <div className='table__opciones'>
-                    <button type="button" className="btn btn-danger"><RiDeleteBin2Line size={23}/></button>
-                    <button type="button" className="btn btn-warning"><FaUserEdit size={23} color="#ffff"/></button>
+                    <Link to={`editar/${datos.id}`} className="btn btn-warning"><FaUserEdit size={23} color="#ffff"/></Link>
+                    <Link to={"#"} className="btn btn-danger"><RiDeleteBin2Line size={23}/></Link>
                 </div>
             </td>
         </tr>

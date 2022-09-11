@@ -39,7 +39,7 @@ function Usuarios() {
                     <div className='card-body-options'>
                         <input type="text" />
 
-                        <Link to={"/usuarios/nuevo"} type="button" className="btn-new btn-success-new">
+                        <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <IoPersonAddSharp size={25}/>
                             Nuevo Usuario
                         </Link>
