@@ -28,13 +28,12 @@ function Usuario({datos}) {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
             confirmButtonText : 'Si, Eliminar!',
-            cancelButtonText: 'Cancelar',
-            timer: 1500
+            cancelButtonText: 'Cancelar'
         }).then( async (result) => {
             if (result.value) {
 
                 await clienteAxios.delete(`/cuentas/usuario/${id}`).then(res => {
-                    Swal.fire( 'Eliminado', res.data.mensaje, 'success ');
+                    Swal.fire( 'Eliminado', res.data.mensaje, 'success');
                 });
             }
         });
