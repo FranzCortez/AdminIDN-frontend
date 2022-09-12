@@ -9,8 +9,6 @@ function ClientesContactos() {
 
     const { id: idEmpresa } = useParams();
 
-    console.log(idEmpresa)
-
     const [ contactos, guardarContactos ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
 
@@ -34,7 +32,6 @@ function ClientesContactos() {
 
     useEffect(() => {
         consultarAPI();
-        console.log(contactos)
     },[cambio]);
 
     return (

@@ -29,7 +29,7 @@ function ClienteContacto({datos, escucharCambio}) {
                         escucharCambio();
                     }
                 } catch (error) {
-                    console.log(error.response.data.msg)
+                    
                     Swal.fire({
                         type: 'error',
                         title: 'No se pudo eliminar',

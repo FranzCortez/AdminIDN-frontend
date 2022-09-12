@@ -5,7 +5,7 @@ import Header from "./components/layout/Header";
 
 /** CLIENTES */
 import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
-import ClientesContactos from "./components/clientes/clienteEmpresa/ClientesContactos";
+import ClientesContactos from "./components/clientes/clienteContacto/ClientesContactos";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
