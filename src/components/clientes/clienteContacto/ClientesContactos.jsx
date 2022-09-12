@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { MdContactPhone } from "react-icons/md";
-import { IoPersonAddSharp } from "react-icons/io5";
+import { IoPersonAddSharp, IoArrowBackCircleOutline } from "react-icons/io5";
 
 import clienteAxios from '../../../config/axios';
 import ClienteContacto from './ClienteContacto';
@@ -47,10 +47,13 @@ function ClientesContactos() {
 
                     <div className='card-body-options'>
                         
+                        <div className='top-left'>
+                            <Link to={`/clientes`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                        </div>
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <IoPersonAddSharp size={25}/>
-                            Nuevo Usuario
+                            Nuevo Contacto
                         </Link>
                     </div>
 

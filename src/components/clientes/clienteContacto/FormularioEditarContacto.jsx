@@ -67,7 +67,7 @@ function FormularioEditarContacto() {
                     type: 'error',
                     title: 'Hubo un error',
                     text: error.response.data.msg,
-                    timer: 2500
+                    timer: 1500
                 })
             }
         }
@@ -109,7 +109,7 @@ function FormularioEditarContacto() {
                 <div className="card-body">
 
                     <div className='top-left'>
-                        <Link to={'/usuarios'} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                        <Link to={`/clientes/contacto/${idEmpresa}`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                     </div>
 
                     <h2 className='card-body-subtitle'> Cambie los campos que correspondan:  </h2>

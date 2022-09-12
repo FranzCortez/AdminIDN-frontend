@@ -60,6 +60,14 @@ h2 {
     justify-content: start;
     align-items: center;
 }
+.top-right{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.right-flex{
+    justify-content: flex-end;
+}
 
 /** BOTONES **/
 .btn-new{
@@ -206,6 +214,11 @@ h2 {
 .card-body-options{
     display: flex;
     justify-content: space-between;
+    margin: 2rem 0;
+}
+.card-body-options-left{
+    display: flex;
+    justify-content: flex-end;
     margin: 2rem 0;
 }
 .card-body-subtitle{
