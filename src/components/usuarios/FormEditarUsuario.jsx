@@ -43,10 +43,10 @@ function FormEditarUsuario() {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.post(`/cuentas/usuario/${id}`, usuario);
+            const res = await clienteAxios.put(`/cuentas/usuario/${id}`, usuario);
 
             Swal.fire({
-                title: 'Se agrego correctamente al usuario',
+                title: 'Se actualizo correctamente al usuario',
                 text: res.data.msg,
                 type: 'success',
                 timer: 1500
@@ -77,8 +77,7 @@ function FormEditarUsuario() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`cuentas/usuario/${id}`);
-
+            const res = await clienteAxios.get(`cuentas/usuario/editar/${id}`);
             guardarUsuario(res.data);
         } catch (error) {
             if(error.request.status === 404 ) {
@@ -97,7 +96,7 @@ function FormEditarUsuario() {
 
     useEffect(() => {
         consultarAPI();
-    });
+    }, []);
 
     return (
         <Fragment>

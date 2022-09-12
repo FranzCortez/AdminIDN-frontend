@@ -46,9 +46,9 @@ function Usuarios() {
             });
         }else{
             const res = await clienteAxios.get(`/cuentas/usuarioBuscar/${busqueda}`);
-
+            
             if(res.status === 200){
-                guardarUsuarios(res.data.usuarios);
+                guardarUsuarios(res.data);
             }
         }
     }

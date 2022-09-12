@@ -36,7 +36,7 @@ function FormNuevoUsuario() {
         return true;
     }
 
-    const agregarCliente = async (e) => {
+    const agregarUsuario = async (e) => {
         e.preventDefault();
         
         try {            
@@ -86,7 +86,7 @@ function FormNuevoUsuario() {
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 
-                    <form onSubmit={agregarCliente}>
+                    <form onSubmit={agregarUsuario}>
 
                         <div className='campo'>
                             <label htmlFor="nombre">Nombre:</label>
