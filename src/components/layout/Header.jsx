@@ -63,8 +63,8 @@ function Header() {
         <Fragment>
             <div className="header">
 
-                <div className="sidebar">
-                    <FaBars size={25} color={"#f3f3f3"} data-bs-toggle="offcanvas" data-bs-target="#sidebarActivo" />
+                <div className="sidebar"  data-bs-toggle="offcanvas" data-bs-target="#sidebarActivo">
+                    <FaBars size={25} color={"#f3f3f3"} />
                 </div>
 
                 <Link to="#">
