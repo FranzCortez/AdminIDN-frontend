@@ -22,7 +22,6 @@ function ClienteContacto({datos, escucharCambio}) {
             if (result.value) {
 
                 try {
-                    
                     const res = await clienteAxios.delete(`contactos/contacto/${id}`, datos.id);
                 
                     if(res.status === 200) {
