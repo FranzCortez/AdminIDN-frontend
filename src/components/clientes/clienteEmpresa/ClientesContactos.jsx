@@ -1,21 +1,18 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { RiContactsBook2Line } from "react-icons/ri";
+import { useParams } from "react-router-dom";
+import { MdContactPhone } from "react-icons/md";
 
-import clienteAxios from '../../../config/axios.js';
-import ClienteEmpresa from './ClienteEmpresa.jsx';
+import clienteAxios from '../../../config/axios';
+import ClienteContacto from './ClienteContacto';
 
-function ClientesEmpresas() {
+function ClientesContactos() {
 
-    const [ empresas, guardarEmpresas ] = useState([]);
+    const { id: idEmpresa } = useParams();
+
+    console.log(idEmpresa)
+
+    const [ contactos, guardarContactos ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
-
-    // paginacion
-    const [ cantPaginas, guardarCantPaginas ] = useState(0);
-    const [ offset, guardarOffset ] = useState(0);
-    
-    const pagActual = (numero) => {
-        guardarOffset(numero)
-    } 
 
     const escucharCambio = () => {
         guardarCambio(!cambio);
@@ -27,10 +24,8 @@ function ClientesEmpresas() {
             
             // TODO Redireccionar y validar permiso
 
-            const res = await clienteAxios.get(`empresas/empresa/${offset}`);
-
-            guardarCantPaginas(res.data.cantPag);
-            guardarEmpresas(res?.data?.empresas);
+            const res = await clienteAxios.get(`contactos/contacto/${idEmpresa}`);
+            guardarContactos(res?.data);
         } catch (error) {
             console.log(error);
         }
@@ -39,14 +34,14 @@ function ClientesEmpresas() {
 
     useEffect(() => {
         consultarAPI();
+        console.log(contactos)
     },[cambio]);
-
 
     return (
         <Fragment>
             <div className="card contenedor">
                 <div className="card-header">
-                    <RiContactsBook2Line size={50} color={"#333333"}/>
+                    <MdContactPhone size={50} color={"#333333"}/>
                     <h1>Clientes Empresa</h1>
                 </div>
                 <div className="card-body">
@@ -66,18 +61,17 @@ function ClientesEmpresas() {
                             <thead>
                                 <tr className='table__head'>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Rut</th>
-                                    <th scope="col">Razón Social</th>
-                                    <th scope="col">Dirección</th>
-                                    <th scope="col">Contactos</th>
+                                    <th scope="col">Cargo</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Teléfono</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    empresas.length > 0 ? (
-                                        empresas.map((datos) => (
-                                            <ClienteEmpresa datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
+                                    contactos.length > 0 ? (
+                                        contactos.map((datos) => (
+                                            <ClienteContacto datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
                                         ))
                                     ) : <tr><td><p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p></td></tr>
                                 }
@@ -91,4 +85,4 @@ function ClientesEmpresas() {
     )
 }
 
-export default ClientesEmpresas
+export default ClientesContactos

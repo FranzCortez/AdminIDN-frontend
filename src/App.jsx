@@ -5,6 +5,7 @@ import Header from "./components/layout/Header";
 
 /** CLIENTES */
 import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
+import ClientesContactos from "./components/clientes/clienteEmpresa/ClientesContactos";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -17,6 +18,7 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/clientes" element={<ClientesEmpresas/>} />
+                <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
 
                 <Route path="/usuarios" element={<Usuarios/>} /> 
                 <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
