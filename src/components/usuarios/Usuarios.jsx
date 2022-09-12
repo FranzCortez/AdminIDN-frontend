@@ -5,6 +5,7 @@ import { IoPersonAddSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
+import Paginacion from '../layout/Paginacion';
 import Usuario from './Usuario';
 import FormBuscarUsuario from './FormBuscarUsuario';
 
@@ -14,6 +15,15 @@ function Usuarios() {
     const [ usuarios, guardarUsuarios ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+
+    // paginacion
+    const [ cantPaginas, guardarCantPaginas ] = useState(0);
+    const [ offset, guardarOffset ] = useState(0);
+    
+    const pagActual = (numero) => {
+        guardarOffset(numero)
+    } 
+
 
     const escucharCambio = () => {
         guardarCambio(!cambio);
@@ -51,8 +61,11 @@ function Usuarios() {
         
         try {
             // TODO Redireccionar y validar permiso
-            const res = await clienteAxios.get('/cuentas/usuario');
-            guardarUsuarios(res?.data);
+
+            const res = await clienteAxios.get(`/cuentas/usuario/${offset}`);
+            
+            guardarCantPaginas(res.data.cantPag);
+            guardarUsuarios(res?.data?.usuarios);
             
         } catch (error) {
             console.log(error)
@@ -61,7 +74,7 @@ function Usuarios() {
 
     useEffect(() => {        
         consultarAPI();        
-    }, [cambio]);
+    }, [cambio, offset]);
 
     return (
         <Fragment>
@@ -105,6 +118,7 @@ function Usuarios() {
                             </tbody>
                         </table>
                     </div>
+                    <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
                 </div>
             </div>
         </Fragment>
