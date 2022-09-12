@@ -1,0 +1,51 @@
+import React from 'react'
+import { Link } from "react-router-dom";
+import { FaUserEdit } from "react-icons/fa";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import Swal from 'sweetalert2';
+
+import clienteAxios from '../../../config/axios';
+
+function ClienteEmpresa({datos, escucharCambio}) {
+
+    let rut = datos.rut.split("");
+    rut = rut[0] + rut[1] + "." + rut[2]+rut[3]+rut[4] + "." + rut[5]+rut[6]+rut[7] + "-" + rut[8];
+
+    const eliminarEmpresa = (id) => {
+        Swal.fire ({
+            title: '¿Estas seguro de eliminarlo?',
+            text: "Un cliente eliminado no se puede recuperar",
+            type: 'warning',
+            showCancelButton : true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: "#d33",
+            confirmButtonText : 'Si, Eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then( (result) => {
+            if (result.value) {
+                clienteAxios.delete(`empresas/empresa/${id}`).then(res => {
+                    Swal.fire( 'Eliminado', res.data.mensaje, 'success');
+                    escucharCambio();
+                });
+            }
+        });
+    }
+
+    return (
+        <tr className='table__tr'>
+            <td>{datos.nombre}</td>
+            <td>{rut}</td>
+            <td>{datos.razonSocial}</td>
+            <td>{datos.direccion}</td>
+            <td>CONTACTO</td>
+            <td>
+                <div className='table__opciones'>
+                    <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><FaUserEdit size={23} color="#ffff"/></button></Link>
+                    <button type='button' className="btn btn-danger" onClick={() => {eliminarEmpresa(datos.id);}}><RiDeleteBin2Line size={23}/></button>
+                </div>
+            </td>
+        </tr>
+    )
+}
+
+export default ClienteEmpresa;

@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 
+/** CLIENTES */
+import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
+
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
@@ -13,6 +16,8 @@ function App() {
         <BrowserRouter>
             <Header/>
             <Routes>
+                <Route path="/clientes" element={<ClientesEmpresas/>} />
+
                 <Route path="/usuarios" element={<Usuarios/>} /> 
                 <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
                 <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
