@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { MdContactPhone } from "react-icons/md";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
@@ -37,7 +38,16 @@ function ClienteEmpresa({datos, escucharCambio}) {
             <td>{rut}</td>
             <td>{datos.razonSocial}</td>
             <td>{datos.direccion}</td>
-            <td>CONTACTO</td>
+            <td>
+                <div className='table__opciones'>
+
+                    <Link to={`contacto/${datos.id}`}>
+                        <button type='button' className="btn btn-primary" >
+                            <MdContactPhone size={23} color="#ffff"/>
+                        </button>
+                    </Link>
+                </div>
+            </td>
             <td>
                 <div className='table__opciones'>
                     <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><FaUserEdit size={23} color="#ffff"/></button></Link>
