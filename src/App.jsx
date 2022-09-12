@@ -1,11 +1,14 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 
 /** CLIENTES */
+// Empresa
 import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
+//Contacto
 import ClientesContactos from "./components/clientes/clienteContacto/ClientesContactos";
+import FormularioEditarContacto from "./components/clientes/clienteContacto/FormularioEditarContacto";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -19,6 +22,7 @@ function App() {
             <Routes>
                 <Route path="/clientes" element={<ClientesEmpresas/>} />
                 <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
+                <Route path="/clientes/contacto/:idEmpresa/editar/:id" element={<FormularioEditarContacto/>} />
 
                 <Route path="/usuarios" element={<Usuarios/>} /> 
                 <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />

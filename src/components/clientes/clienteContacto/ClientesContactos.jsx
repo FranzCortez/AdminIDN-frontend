@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { MdContactPhone } from "react-icons/md";
+import { IoPersonAddSharp } from "react-icons/io5";
 
 import clienteAxios from '../../../config/axios';
 import ClienteContacto from './ClienteContacto';
@@ -44,12 +46,12 @@ function ClientesContactos() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/>
+                        
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <IoPersonAddSharp size={25}/>
                             Nuevo Usuario
-                        </Link> */}
+                        </Link>
                     </div>
 
 
@@ -75,7 +77,6 @@ function ClientesContactos() {
                             </tbody>
                         </table>
                     </div>
-                    {/* <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/> */}
                 </div>
             </div>
         </Fragment>
