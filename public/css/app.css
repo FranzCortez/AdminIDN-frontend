@@ -369,3 +369,26 @@ form .campo input[readonly] {
     align-items: center;
     margin-top: 5rem;
 }
+
+/** PAGINACION **/
+.navigation-new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.page-link {
+    margin: 0;
+}
+.pagination-lg {
+    --bs-pagination-padding-x: 2rem;
+    --bs-pagination-padding-y: 0.75rem;
+    --bs-pagination-font-size: 2rem;
+}
+.active>.page-link{
+    background-color: var(--naranjaClaro);
+    border-color: var(--naranjaOscuro);
+}
+.page-link {
+    color: black;
+}
