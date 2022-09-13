@@ -78,7 +78,7 @@ function FormularioEditarEmpresa() {
 
         try {
             const res = await clienteAxios.get(`empresas/empresa/editar/${id}`);
-            console.log(res)
+            
             guardarEmpresa(res.data);
         } catch (error) {
             if(error.request.status === 404 ) {

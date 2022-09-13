@@ -2,14 +2,17 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { RiContactsBook2Line } from "react-icons/ri";
 import { FiPlusCircle } from "react-icons/fi";
+import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios.js';
 import ClienteEmpresa from './ClienteEmpresa.jsx';
+import FormularioBuscarEmpresa from './FormularioBuscarEmpresa.jsx';
 
 function ClientesEmpresas() {
 
     const [ empresas, guardarEmpresas ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
+    const [ busqueda, guardarBusqueda ] = useState('');
 
     // paginacion
     const [ cantPaginas, guardarCantPaginas ] = useState(0);
@@ -21,6 +24,34 @@ function ClientesEmpresas() {
 
     const escucharCambio = () => {
         guardarCambio(!cambio);
+    }
+
+    const leerBusqueda = (e) => {
+        guardarBusqueda(e.target.value);
+    }
+
+    const buscarEmpresa = async (e) => {
+        e.preventDefault();
+
+        if(e.nativeEvent.submitter.value === 'Limpiar Filtros'){
+            escucharCambio();
+            return;
+        }
+
+        if(busqueda.length < 3) {
+            Swal.fire({
+                type: 'error',
+                title: 'Hubo un error',
+                text: 'Debes tener mínimo 3 caracteres para buscar',
+                timer: 1500
+            });
+        }else{
+            const res = await clienteAxios.get(`/empresas/empresaBuscar/${busqueda}`);
+            
+            if(res.status === 200){
+                guardarEmpresas(res.data);
+            }
+        }
     }
 
     const consultarAPI = async () => {
@@ -41,6 +72,7 @@ function ClientesEmpresas() {
 
     useEffect(() => {
         consultarAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cambio]);
 
 
@@ -54,7 +86,7 @@ function ClientesEmpresas() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/> */}
+                        <FormularioBuscarEmpresa leerBusqueda={leerBusqueda} buscarEmpresa={buscarEmpresa} escucharCambio={escucharCambio}/>
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <FiPlusCircle size={25}/>
