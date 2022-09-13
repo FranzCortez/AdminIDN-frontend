@@ -8,7 +8,7 @@ import clienteAxios from '../../../config/axios';
 
 function ClienteContacto({datos, escucharCambio}) {
 
-    const eliminarContacto = (id) => {
+    const eliminarContacto = (idEmpresa) => {
         Swal.fire ({
             title: '¿Estas seguro de eliminarlo?',
             text: "Un cliente eliminado no se puede recuperar",
@@ -22,7 +22,7 @@ function ClienteContacto({datos, escucharCambio}) {
             if (result.value) {
 
                 try {
-                    const res = await clienteAxios.delete(`contactos/contacto/${id}`, datos.id);
+                    const res = await clienteAxios.delete(`contactos/contacto/${idEmpresa}/${datos.id}`);
                 
                     if(res.status === 200) {
                         Swal.fire( 'Eliminado', res.data.mensaje, 'success');
