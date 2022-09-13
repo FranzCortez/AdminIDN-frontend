@@ -116,7 +116,7 @@ function FormularioEditarContacto() {
                     <form onSubmit={actualizarContacto}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre:</label>
+                            <label htmlFor="nombre">Nombre del Contacto:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -128,7 +128,7 @@ function FormularioEditarContacto() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="cargo">Cargo:</label>
+                            <label htmlFor="cargo">Cargo del Contacto:</label>
                             <input 
                                 type="text" 
                                 id='cargo'
@@ -140,7 +140,7 @@ function FormularioEditarContacto() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="correo">Correo:</label>
+                            <label htmlFor="correo">Correo del Contacto:</label>
                             <input 
                                 type="email" 
                                 id='correo'
@@ -152,12 +152,12 @@ function FormularioEditarContacto() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="telefono">Teléfono:</label>
+                            <label htmlFor="telefono">Teléfono del Contacto:</label>
                             <input 
                                 type="tel" 
                                 id='telefono'
                                 name='telefono'
-                                placeholder='Teléfono del nuevo usuario'
+                                placeholder='Teléfono del contacto'
                                 onChange={actualizarState}
                                 value={contacto.telefono || ''}
                             />
