@@ -51,7 +51,7 @@ function ClientesContactos() {
                             <Link to={`/clientes`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                         </div>
 
-                        <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
+                        <Link to={`nuevo`} type="button" className="btn-new btn-success-new">
                             <IoPersonAddSharp size={25}/>
                             Nuevo Contacto
                         </Link>

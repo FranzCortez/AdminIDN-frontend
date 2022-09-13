@@ -1,14 +1,15 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { FaUserEdit } from "react-icons/fa";
+import { MdContactPhone } from "react-icons/md";
+import { FiPlusCircle } from "react-icons/fi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 
-function FormularioEditarContacto() {
+function FormularioCrearContacto() {
 
-    const { id, idEmpresa } = useParams();
+    const { idEmpresa } = useParams();
 
     const [ contacto, guardarContacto ] = useState({
         nombre: '',
@@ -38,14 +39,14 @@ function FormularioEditarContacto() {
         return true;
     }
 
-    const actualizarContacto = async (e) => {
+    const nuevoContacto = async (e) => {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.put(`/contactos/contacto/${idEmpresa}`, contacto);
+            const res = await clienteAxios.post(`/contactos/contacto/${idEmpresa}`, contacto);
 
             Swal.fire({
-                title: 'Se actualizo correctamente el contacto',
+                title: 'Se agrego correctamente el contacto',
                 text: res.data.msg,
                 type: 'success',
                 timer: 2500
@@ -55,6 +56,8 @@ function FormularioEditarContacto() {
             navigate(`/clientes/contacto/${idEmpresa}`, {replace: true});
         } catch (error) {
             
+            console.log(error)
+
             if(error.request.status === 501 ) {
                 Swal.fire({
                     type: 'error',
@@ -73,37 +76,13 @@ function FormularioEditarContacto() {
         }
     }
 
-    const consultarAPI = async () => {
-
-        try {
-            const res = await clienteAxios.get(`contactos/contacto/editar/${idEmpresa}/${id}`);
-
-            guardarContacto(res.data);
-        } catch (error) {
-            if(error.request.status === 404 ) {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Hubo un error',
-                    text: error.response.data.msg,
-                    timer: 1500
-                })
-            }
-            // redireccionar
-            navigate('/usuarios', {replace: true});
-        }
-
-    }
-
-    useEffect(() => {
-        consultarAPI();
-    },[]);
-
     return (
         <Fragment>
             <div className="card contenedor">
                 <div className="card-header">
-                    <FaUserEdit size={50} color={"#333333"}/>
-                    <h1>Editando Usuario</h1>
+                    <FiPlusCircle size={25} color={"#333333"}/>
+                    <MdContactPhone size={50} color={"#333333"}/>
+                    <h1>Crear Nuevo Contacto</h1>
                 </div>
                 <div className="card-body">
 
@@ -111,9 +90,9 @@ function FormularioEditarContacto() {
                         <Link to={`/clientes/contacto/${idEmpresa}`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                     </div>
 
-                    <h2 className='card-body-subtitle'> Cambie los campos que correspondan:  </h2>
+                    <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 
-                    <form onSubmit={actualizarContacto}>
+                    <form onSubmit={nuevoContacto}>
 
                         <div className='campo'>
                             <label htmlFor="nombre">Nombre:</label>
@@ -121,9 +100,8 @@ function FormularioEditarContacto() {
                                 type="text" 
                                 id='nombre'
                                 name='nombre'
-                                placeholder='Nombre del contacto'
+                                placeholder='Nombre del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.nombre}
                             />
                         </div>
                         
@@ -133,9 +111,8 @@ function FormularioEditarContacto() {
                                 type="text" 
                                 id='cargo'
                                 name='cargo'
-                                placeholder='Cargo del contacto'
+                                placeholder='Cargo del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.cargo}
                             />
                         </div>
 
@@ -145,9 +122,8 @@ function FormularioEditarContacto() {
                                 type="email" 
                                 id='correo'
                                 name='correo'
-                                placeholder='Correo del contacto'
+                                placeholder='Correo del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.correo}
                             />
                         </div>
 
@@ -157,9 +133,8 @@ function FormularioEditarContacto() {
                                 type="tel" 
                                 id='telefono'
                                 name='telefono'
-                                placeholder='Teléfono del nuevo usuario'
+                                placeholder='Teléfono del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.telefono || ''}
                             />
                         </div>
 
@@ -167,7 +142,7 @@ function FormularioEditarContacto() {
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Actualizar Contacto"
+                                value="Crear Nuevo Contacto"
                                 disabled={validarForm()}
                             />
                         </div>
@@ -179,4 +154,4 @@ function FormularioEditarContacto() {
     )
 }
 
-export default FormularioEditarContacto
+export default FormularioCrearContacto;

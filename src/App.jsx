@@ -9,6 +9,7 @@ import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpre
 //Contacto
 import ClientesContactos from "./components/clientes/clienteContacto/ClientesContactos";
 import FormularioEditarContacto from "./components/clientes/clienteContacto/FormularioEditarContacto";
+import FormularioCrearContacto from "./components/clientes/clienteContacto/FormularioNuevoContacto";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -22,6 +23,7 @@ function App() {
             <Routes>
                 <Route path="/clientes" element={<ClientesEmpresas/>} />
                 <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
+                <Route path="/clientes/contacto/:idEmpresa/nuevo" element={<FormularioCrearContacto/>} />
                 <Route path="/clientes/contacto/:idEmpresa/editar/:id" element={<FormularioEditarContacto/>} />
 
                 <Route path="/usuarios" element={<Usuarios/>} /> 
