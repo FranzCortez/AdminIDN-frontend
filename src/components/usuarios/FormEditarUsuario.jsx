@@ -39,7 +39,7 @@ function FormEditarUsuario() {
         return true;
     }
 
-    const agregarCliente = async (e) => {
+    const editarUsuario = async (e) => {
         e.preventDefault();
         
         try {            
@@ -113,7 +113,7 @@ function FormEditarUsuario() {
 
                     <h2 className='card-body-subtitle'> Cambie los campos que correspondan:  </h2>
 
-                    <form onSubmit={agregarCliente}>
+                    <form onSubmit={editarUsuario}>
 
                         <div className='campo'>
                             <label htmlFor="nombre">Nombre:</label>
@@ -121,7 +121,7 @@ function FormEditarUsuario() {
                                 type="text" 
                                 id='nombre'
                                 name='nombre'
-                                placeholder='Nombre del nuevo usuario'
+                                placeholder='Nombre del usuario'
                                 onChange={actualizarState}
                                 value={usuario.nombre}
                             />
@@ -145,7 +145,7 @@ function FormEditarUsuario() {
                                 type="email" 
                                 id='email'
                                 name='email'
-                                placeholder='Email del nuevo usuario'
+                                placeholder='Email del usuario'
                                 onChange={actualizarState}
                                 value={usuario.email}
                             />
@@ -157,7 +157,7 @@ function FormEditarUsuario() {
                                 type="tel" 
                                 id='telefono'
                                 name='telefono'
-                                placeholder='Teléfono del nuevo usuario'
+                                placeholder='Teléfono del usuario'
                                 onChange={actualizarState}
                                 value={usuario.telefono}
                             />
