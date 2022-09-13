@@ -5,6 +5,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios.js';
+import Paginacion from '../../layout/Paginacion.jsx';
 import ClienteEmpresa from './ClienteEmpresa.jsx';
 import FormularioBuscarEmpresa from './FormularioBuscarEmpresa.jsx';
 
@@ -73,7 +74,7 @@ function ClientesEmpresas() {
     useEffect(() => {
         consultarAPI();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[cambio]);
+    },[cambio,offset]);
 
 
     return (
@@ -119,7 +120,7 @@ function ClientesEmpresas() {
                             </tbody>
                         </table>
                     </div>
-                    {/* <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/> */}
+                    <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
                 </div>
             </div>
         </Fragment>
