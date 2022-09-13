@@ -7,6 +7,7 @@ import Header from "./components/layout/Header";
 // Empresa
 import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
 import FormularioNuevoEmpresa from "./components/clientes/clienteEmpresa/FormularioNuevoEmpresa";
+import FormularioEditarEmpresa from "./components/clientes/clienteEmpresa/FormularioEditarEmpresa";
 //Contacto
 import ClientesContactos from "./components/clientes/clienteContacto/ClientesContactos";
 import FormularioEditarContacto from "./components/clientes/clienteContacto/FormularioEditarContacto";
@@ -24,6 +25,7 @@ function App() {
             <Routes>
                 <Route path="/clientes" element={<ClientesEmpresas/>} />
                 <Route path="/clientes/nuevo" element={<FormularioNuevoEmpresa/>} />
+                <Route path="/clientes/editar/:id" element={<FormularioEditarEmpresa/>} />
                 <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
                 <Route path="/clientes/contacto/:idEmpresa/nuevo" element={<FormularioCrearContacto/>} />
                 <Route path="/clientes/contacto/:idEmpresa/editar/:id" element={<FormularioEditarContacto/>} />

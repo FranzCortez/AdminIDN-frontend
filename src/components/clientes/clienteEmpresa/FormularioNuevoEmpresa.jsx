@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { useNavigate, Link } from "react-router-dom";
-import { MdContactPhone } from "react-icons/md";
+import { RiContactsBook2Line } from "react-icons/ri";
 import { FiPlusCircle } from "react-icons/fi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
@@ -79,7 +79,7 @@ function FormularioNuevoEmpresa() {
             <div className="card contenedor">
                 <div className="card-header">
                     <FiPlusCircle size={25} color={"#333333"}/>
-                    <MdContactPhone size={50} color={"#333333"}/>
+                    <RiContactsBook2Line size={50} color={"#333333"}/>
                     <h1>Crear Nuevo Contacto</h1>
                 </div>
                 <div className="card-body">

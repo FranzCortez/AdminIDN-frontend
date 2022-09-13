@@ -1,58 +1,59 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { FaUserEdit } from "react-icons/fa";
+import { BsPencilSquare } from "react-icons/bs";
+import { RiContactsBook2Line } from "react-icons/ri";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 
-function FormularioEditarContacto() {
+function FormularioEditarEmpresa() {
 
-    const { id, idEmpresa } = useParams();
+    const { id } = useParams();
 
-    const [ contacto, guardarContacto ] = useState({
+    const [ empresa, guardarEmpresa ] = useState({
         nombre: '',
-        cargo: '',
-        correo: '',
-        telefono: ''
+        rut: '',
+        razonSocial: '',
+        direccion: ''
     });
 
     let navigate = useNavigate();
 
     const actualizarState = e => {
         
-        guardarContacto({
-            ...contacto,
+        guardarEmpresa({
+            ...empresa,
             [e.target.name] : e.target.value
         });
     }
 
     const validarForm = () => {
         
-        const { nombre, cargo, correo } = contacto;
+        const { nombre, rut, razonSocial, direccion } = empresa;
         
-        if( (nombre.length > 0 && cargo.length > 0 && correo.length > 0 ) ){
+        if( (nombre.length > 0 && rut.length > 0 && razonSocial.length > 0 && direccion.length > 0) ){
             return false;
         }
 
         return true;
     }
 
-    const actualizarContacto = async (e) => {
+    const actualizarEmpresa = async (e) => {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.put(`/contactos/contacto/${idEmpresa}`, contacto);
+            const res = await clienteAxios.put(`/empresas/empresa/${id}`, empresa);
 
             Swal.fire({
-                title: 'Se actualizo correctamente el contacto',
+                title: 'Se actualizo correctamente la empresa',
                 text: res.data.msg,
                 type: 'success',
                 timer: 2500
             });
                 
             // redireccionar
-            navigate(`/clientes/contacto/${idEmpresa}`, {replace: true});
+            navigate(`/clientes`, {replace: true});
         } catch (error) {
             
             if(error.request.status === 501 ) {
@@ -76,9 +77,9 @@ function FormularioEditarContacto() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`contactos/contacto/editar/${idEmpresa}/${id}`);
-
-            guardarContacto(res.data);
+            const res = await clienteAxios.get(`empresas/empresa/editar/${id}`);
+            console.log(res)
+            guardarEmpresa(res.data);
         } catch (error) {
             if(error.request.status === 404 ) {
                 Swal.fire({
@@ -103,64 +104,65 @@ function FormularioEditarContacto() {
         <Fragment>
             <div className="card contenedor">
                 <div className="card-header">
-                    <FaUserEdit size={50} color={"#333333"}/>
-                    <h1>Editando Usuario</h1>
+                    <BsPencilSquare size={25} color={"#333333"}/>
+                    <RiContactsBook2Line size={50} color={"#333333"}/>
+                    <h1>Crear Nuevo Contacto</h1>
                 </div>
                 <div className="card-body">
 
                     <div className='top-left'>
-                        <Link to={`/clientes/contacto/${idEmpresa}`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                        <Link to={`/clientes`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                     </div>
 
-                    <h2 className='card-body-subtitle'> Cambie los campos que correspondan:  </h2>
+                    <h2 className='card-body-subtitle'> Cambie los campos según corresponda: </h2>
 
-                    <form onSubmit={actualizarContacto}>
+                    <form onSubmit={actualizarEmpresa}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre del Contacto:</label>
+                            <label htmlFor="nombre">Nombre Empresa:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
                                 name='nombre'
-                                placeholder='Nombre del contacto'
+                                placeholder='Nombre del cliente empresa'
                                 onChange={actualizarState}
-                                value={contacto.nombre}
+                                value={empresa?.nombre}
                             />
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="cargo">Cargo del Contacto:</label>
+                            <label htmlFor="rut">Rut Empresa:</label>
                             <input 
                                 type="text" 
-                                id='cargo'
-                                name='cargo'
-                                placeholder='Cargo del contacto'
+                                id='rut'
+                                name='rut'
+                                placeholder='Rut del cliente empresa'
                                 onChange={actualizarState}
-                                value={contacto.cargo}
+                                value={empresa?.rut}
                             />
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="correo">Correo del Contacto:</label>
+                            <label htmlFor="razonSocial">Razón Social:</label>
                             <input 
-                                type="email" 
-                                id='correo'
-                                name='correo'
-                                placeholder='Correo del contacto'
+                                type="text" 
+                                id='razonSocial'
+                                name='razonSocial'
+                                placeholder='Razón Social del cliente empresa'
                                 onChange={actualizarState}
-                                value={contacto.correo}
+                                value={empresa?.razonSocial}
                             />
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="telefono">Teléfono del Contacto:</label>
+                            <label htmlFor="direccion">Dirección:</label>
                             <input 
-                                type="tel" 
-                                id='telefono'
-                                name='telefono'
-                                placeholder='Teléfono del contacto'
+                                type="text" 
+                                id='direccion'
+                                name='direccion'
+                                placeholder='Dirección del cliente empresa'
                                 onChange={actualizarState}
-                                value={contacto.telefono || ''}
+                                value={empresa?.direccion}
                             />
                         </div>
 
@@ -168,7 +170,7 @@ function FormularioEditarContacto() {
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Actualizar Contacto"
+                                value="Actualizar Cliente Empresa"
                                 disabled={validarForm()}
                             />
                         </div>
@@ -180,4 +182,4 @@ function FormularioEditarContacto() {
     )
 }
 
-export default FormularioEditarContacto
+export default FormularioEditarEmpresa
