@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { RiContactsBook2Line } from "react-icons/ri";
+import { FiPlusCircle } from "react-icons/fi";
 
 import clienteAxios from '../../../config/axios.js';
 import ClienteEmpresa from './ClienteEmpresa.jsx';
@@ -52,12 +54,13 @@ function ClientesEmpresas() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/>
+                        {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/> */}
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
-                            <IoPersonAddSharp size={25}/>
-                            Nuevo Usuario
-                        </Link> */}
+                            <FiPlusCircle size={25}/>
+                            <RiContactsBook2Line size={25}/>
+                            Nuevo Cliente Empresa
+                        </Link>
                     </div>
 
 
