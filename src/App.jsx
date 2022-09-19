@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/layout/Header";
@@ -18,22 +18,37 @@ import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
 import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
 
+/** LOGIN */
+import Login from "./components/login/Login";
+
+import { CRMContext, CRMPovider } from "./components/context/CRMContext";
+
 function App() {
+
+      // utilizar context en el componente
+    const [auth, guardarAuth] = useContext(CRMContext);
+
     return (
         <BrowserRouter>
-            <Header/>
-            <Routes>
-                <Route path="/clientes" element={<ClientesEmpresas/>} />
-                <Route path="/clientes/nuevo" element={<FormularioNuevoEmpresa/>} />
-                <Route path="/clientes/editar/:id" element={<FormularioEditarEmpresa/>} />
-                <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
-                <Route path="/clientes/contacto/:idEmpresa/nuevo" element={<FormularioCrearContacto/>} />
-                <Route path="/clientes/contacto/:idEmpresa/editar/:id" element={<FormularioEditarContacto/>} />
+            <Fragment>
+                <CRMPovider value={[auth, guardarAuth]}>
+                    <Header/>
+                    <Routes>
+                        <Route path="/clientes" element={<ClientesEmpresas/>} />
+                        <Route path="/clientes/nuevo" element={<FormularioNuevoEmpresa/>} />
+                        <Route path="/clientes/editar/:id" element={<FormularioEditarEmpresa/>} />
+                        <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
+                        <Route path="/clientes/contacto/:idEmpresa/nuevo" element={<FormularioCrearContacto/>} />
+                        <Route path="/clientes/contacto/:idEmpresa/editar/:id" element={<FormularioEditarContacto/>} />
 
-                <Route path="/usuarios" element={<Usuarios/>} /> 
-                <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
-                <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
-            </Routes>
+                        <Route path="/usuarios" element={<Usuarios/>} /> 
+                        <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
+                        <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
+
+                        <Route path="/login" element={<Login/>} />
+                    </Routes>
+                </CRMPovider>                
+            </Fragment>
         </BrowserRouter>
     );
 }
