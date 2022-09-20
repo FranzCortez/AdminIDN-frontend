@@ -83,7 +83,9 @@ function FormNuevoUsuario() {
     }
 
     useEffect(()=> {
-        if(!(auth.auth && (localStorage.getItem('token') === auth.token)) && auth.tipo !== 1){  
+        if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
+            navigate('/login', {replace: true});
+        } else if (auth.tipo !== 1) { 
             navigate('/login', {replace: true});
         }
     }, []);

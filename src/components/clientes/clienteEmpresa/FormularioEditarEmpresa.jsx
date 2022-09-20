@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useContext } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
 import { RiContactsBook2Line } from "react-icons/ri";
@@ -6,6 +6,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
+import { CRMContext } from '../../context/CRMContext';
 
 function FormularioEditarEmpresa() {
 
@@ -17,6 +18,9 @@ function FormularioEditarEmpresa() {
         razonSocial: '',
         direccion: ''
     });
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
@@ -43,7 +47,11 @@ function FormularioEditarEmpresa() {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.put(`/empresas/empresa/${id}`, empresa);
+            const res = await clienteAxios.put(`/empresas/empresa/${id}`, empresa,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             Swal.fire({
                 title: 'Se actualizo correctamente la empresa',
@@ -77,7 +85,11 @@ function FormularioEditarEmpresa() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`empresas/empresa/editar/${id}`);
+            const res = await clienteAxios.get(`empresas/empresa/editar/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
             
             guardarEmpresa(res.data);
         } catch (error) {
@@ -96,7 +108,11 @@ function FormularioEditarEmpresa() {
     }
 
     useEffect(() => {
-        consultarAPI();
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

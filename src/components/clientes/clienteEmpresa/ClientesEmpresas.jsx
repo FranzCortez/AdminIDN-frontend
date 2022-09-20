@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import React, { Fragment, useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { RiContactsBook2Line } from "react-icons/ri";
 import { FiPlusCircle } from "react-icons/fi";
 import Swal from 'sweetalert2';
@@ -8,12 +8,18 @@ import clienteAxios from '../../../config/axios.js';
 import Paginacion from '../../layout/Paginacion.jsx';
 import ClienteEmpresa from './ClienteEmpresa.jsx';
 import FormularioBuscarEmpresa from './FormularioBuscarEmpresa.jsx';
+import { CRMContext } from '../../context/CRMContext.jsx';
 
 function ClientesEmpresas() {
 
     const [ empresas, guardarEmpresas ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+
+    let navigate = useNavigate();
 
     // paginacion
     const [ cantPaginas, guardarCantPaginas ] = useState(0);
@@ -47,7 +53,11 @@ function ClientesEmpresas() {
                 timer: 1500
             });
         }else{
-            const res = await clienteAxios.get(`/empresas/empresaBuscar/${busqueda}`);
+            const res = await clienteAxios.get(`/empresas/empresaBuscar/${busqueda}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
             
             if(res.status === 200){
                 guardarEmpresas(res.data);
@@ -58,10 +68,12 @@ function ClientesEmpresas() {
     const consultarAPI = async () => {
 
         try {
-            
-            // TODO Redireccionar y validar permiso
 
-            const res = await clienteAxios.get(`empresas/empresa/${offset}`);
+            const res = await clienteAxios.get(`empresas/empresa/${offset}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             guardarCantPaginas(res.data.cantPag);
             guardarEmpresas(res?.data?.empresas);
@@ -72,7 +84,11 @@ function ClientesEmpresas() {
     }
 
     useEffect(() => {
-        consultarAPI();
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cambio,offset]);
 

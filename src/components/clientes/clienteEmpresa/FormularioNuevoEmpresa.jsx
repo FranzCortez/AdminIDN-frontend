@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { RiContactsBook2Line } from "react-icons/ri";
 import { FiPlusCircle } from "react-icons/fi";
@@ -6,6 +6,8 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
+
+import { CRMContext } from '../../context/CRMContext';
 
 function FormularioNuevoEmpresa() {
 
@@ -16,6 +18,9 @@ function FormularioNuevoEmpresa() {
         direccion: ''
     });
 
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+    
     let navigate = useNavigate();
 
     const actualizarState = e => {
@@ -41,7 +46,11 @@ function FormularioNuevoEmpresa() {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.post(`/empresas/empresa`, empresa);
+            const res = await clienteAxios.post(`/empresas/empresa`, empresa,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             Swal.fire({
                 title: 'Se agrego correctamente la empresa',
@@ -73,6 +82,14 @@ function FormularioNuevoEmpresa() {
             }
         }
     }
+
+    useEffect(()=> {
+        if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
+            navigate('/login', {replace: true});
+        } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
+            navigate('/login', {replace: true});
+        }
+    }, []);
 
     return (
         <Fragment>
