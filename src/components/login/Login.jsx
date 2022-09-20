@@ -34,7 +34,7 @@ function Login() {
                 tipo
             });
 
-            navigate('/usuarios', {replace: true});
+            navigate('/clientes', {replace: true});
 
         } catch (error) {
             console.log(error);
