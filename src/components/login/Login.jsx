@@ -23,9 +23,9 @@ function Login() {
         try {
             
             const res = await clienteAxios.post('/login', datos);
-            console.log("res")
-            console.log(res.data)
+            
             const { token } = res.data;
+            
             localStorage.setItem('token', token);
 
             guardarAuth({

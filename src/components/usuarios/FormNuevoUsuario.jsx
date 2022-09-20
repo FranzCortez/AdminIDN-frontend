@@ -1,9 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { IoPersonAddSharp, IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
+
+import { CRMContext } from '../context/CRMContext';
 
 function FormNuevoUsuario() {
 
@@ -14,6 +16,9 @@ function FormNuevoUsuario() {
         telefono: '',
         tipo: ''
     });
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
@@ -40,7 +45,11 @@ function FormNuevoUsuario() {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.post('/cuentas/usuario', usuario);
+            const res = await clienteAxios.post('/cuentas/usuario', usuario,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             Swal.fire({
                 title: 'Se agrego correctamente al usuario',

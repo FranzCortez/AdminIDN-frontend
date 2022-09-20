@@ -1,10 +1,11 @@
-import {React, Fragment, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import {React, Fragment, useEffect, useState, useContext} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUsers } from "react-icons/fi";
 import { IoPersonAddSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
+import { CRMContext } from '../context/CRMContext';
 import Paginacion from '../layout/Paginacion';
 import Usuario from './Usuario';
 import FormBuscarUsuario from './FormBuscarUsuario';
@@ -15,6 +16,11 @@ function Usuarios() {
     const [ usuarios, guardarUsuarios ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+
+    let navigate = useNavigate();
 
     // paginacion
     const [ cantPaginas, guardarCantPaginas ] = useState(0);
@@ -45,7 +51,11 @@ function Usuarios() {
                 timer: 1500
             });
         }else{
-            const res = await clienteAxios.get(`/cuentas/usuarioBuscar/${busqueda}`);
+            const res = await clienteAxios.get(`/cuentas/usuarioBuscar/${busqueda}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
             
             if(res.status === 200){
                 guardarUsuarios(res.data);
@@ -62,7 +72,11 @@ function Usuarios() {
         try {
             // TODO Redireccionar y validar permiso
 
-            const res = await clienteAxios.get(`/cuentas/usuario/${offset}`);
+            const res = await clienteAxios.get(`/cuentas/usuario/${offset}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
             
             guardarCantPaginas(res.data.cantPag);
             guardarUsuarios(res?.data?.usuarios);
@@ -73,7 +87,11 @@ function Usuarios() {
     }
 
     useEffect(() => {        
-        consultarAPI();        
+        if(auth.token !== '') {
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        }      
     }, [cambio, offset]);
 
     return (

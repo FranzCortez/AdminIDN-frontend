@@ -1,10 +1,12 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { FaUserEdit } from "react-icons/fa";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
+
+import { CRMContext } from '../context/CRMContext';
 
 function FormEditarUsuario() {
 
@@ -17,6 +19,9 @@ function FormEditarUsuario() {
         telefono: '',
         tipo: ''
     });
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
@@ -41,9 +46,13 @@ function FormEditarUsuario() {
 
     const editarUsuario = async (e) => {
         e.preventDefault();
-        
+        console.log(auth)
         try {            
-            const res = await clienteAxios.put(`/cuentas/usuario/${id}`, usuario);
+            const res = await clienteAxios.put(`/cuentas/usuario/${id}`,usuario, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             Swal.fire({
                 title: 'Se actualizo correctamente al usuario',
@@ -77,7 +86,13 @@ function FormEditarUsuario() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`cuentas/usuario/editar/${id}`);
+            const res = await clienteAxios.get(`cuentas/usuario/editar/${id}`, {
+                usuario,
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
             guardarUsuario(res.data);
         } catch (error) {
             if(error.request.status === 404 ) {
@@ -95,7 +110,11 @@ function FormEditarUsuario() {
     }
 
     useEffect(() => {
-        consultarAPI();
+        if(auth.token !== '') {
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        }  
     }, []);
 
     return (

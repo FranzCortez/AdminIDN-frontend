@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaFileInvoiceDollar } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { RiContactsBook2Line } from "react-icons/ri";
 import { AiOutlineTool, AiOutlineDollarCircle } from "react-icons/ai";
 import { CgEnter } from "react-icons/cg";
@@ -11,7 +11,13 @@ import { FiUsers } from "react-icons/fi";
 
 import Sidebar from "./Sidebar";
 
+import { CRMContext } from "../context/CRMContext";
+
 function Header() {
+
+    const [auth, guardarAuth] = useContext(CRMContext);
+    
+    if(!auth.auth) return null;
 
     // TODO: ver permisos
 
