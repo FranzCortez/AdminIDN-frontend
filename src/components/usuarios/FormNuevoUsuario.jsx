@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { IoPersonAddSharp, IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
@@ -20,6 +20,7 @@ function FormNuevoUsuario() {
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
+    
     let navigate = useNavigate();
 
     const actualizarState = e => {
@@ -78,7 +79,14 @@ function FormNuevoUsuario() {
                 })
             }
         }
+        
     }
+
+    useEffect(()=> {
+        if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
+            navigate('/login', {replace: true});
+        }
+    }, []);
 
     return (
         <Fragment>
