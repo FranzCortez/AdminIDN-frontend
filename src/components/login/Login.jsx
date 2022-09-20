@@ -24,13 +24,14 @@ function Login() {
             
             const res = await clienteAxios.post('/login', datos);
             
-            const { token } = res.data;
+            const { token, tipo } = res.data;
             
             localStorage.setItem('token', token);
 
             guardarAuth({
                 token,
-                auth: true
+                auth: true,
+                tipo
             });
 
             navigate('/usuarios', {replace: true});

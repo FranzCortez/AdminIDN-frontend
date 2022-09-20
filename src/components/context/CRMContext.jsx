@@ -6,7 +6,8 @@ const CRMPovider = props => {
     // definir el state
     const [auth, guardarAuth] = useState({
         token: '',
-        auth: false
+        auth: false,
+        tipo: 0
     });
 
     return (

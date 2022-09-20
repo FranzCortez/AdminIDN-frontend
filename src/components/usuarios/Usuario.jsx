@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../config/axios';
+import { CRMContext } from '../context/CRMContext';
 
 function Usuario({datos, escucharCambio}) {
+
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     let rut = datos.rut.split("");
     rut = rut[0] + rut[1] + "." + rut[2]+rut[3]+rut[4] + "." + rut[5]+rut[6]+rut[7] + "-" + rut[8];
@@ -31,7 +34,11 @@ function Usuario({datos, escucharCambio}) {
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
             if (result.value) {
-                clienteAxios.delete(`/cuentas/usuario/${id}`).then(res => {
+                clienteAxios.delete(`/cuentas/usuario/${id}`,{
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`
+                    }
+                }).then(res => {
                     Swal.fire( 'Eliminado', res.data.mensaje, 'success');
                     escucharCambio();
                 });

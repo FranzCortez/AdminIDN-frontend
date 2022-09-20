@@ -110,7 +110,7 @@ function FormEditarUsuario() {
     }
 
     useEffect(() => {
-        if(auth.token !== '') {
+        if(auth.token !== '' && auth.tipo === 1) {
             consultarAPI();
         } else {
             navigate('/login', {replace: true});
