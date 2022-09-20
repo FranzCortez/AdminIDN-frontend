@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
@@ -6,7 +6,11 @@ import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 
+import { CRMContext } from '../../context/CRMContext';
+
 function ClienteContacto({datos, escucharCambio}) {
+
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     const eliminarContacto = (idEmpresa) => {
         Swal.fire ({
@@ -22,7 +26,11 @@ function ClienteContacto({datos, escucharCambio}) {
             if (result.value) {
 
                 try {
-                    const res = await clienteAxios.delete(`contactos/contacto/${idEmpresa}/${datos.id}`);
+                    const res = await clienteAxios.delete(`contactos/contacto/${idEmpresa}/${datos.id}`,{
+                        headers: {
+                            Authorization: `Bearer ${auth.token}`
+                        }
+                    });
                 
                     if(res.status === 200) {
                         Swal.fire( 'Eliminado', res.data.mensaje, 'success');

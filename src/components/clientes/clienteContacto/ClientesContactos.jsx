@@ -1,11 +1,12 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import React, { Fragment, useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { MdContactPhone } from "react-icons/md";
 import { IoPersonAddSharp, IoArrowBackCircleOutline } from "react-icons/io5";
 
 import clienteAxios from '../../../config/axios';
 import ClienteContacto from './ClienteContacto';
+import { CRMContext } from '../../context/CRMContext.jsx';
 
 function ClientesContactos() {
 
@@ -14,6 +15,11 @@ function ClientesContactos() {
     const [ contactos, guardarContactos ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
 
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+
+    let navigate = useNavigate();
+    
     const escucharCambio = () => {
         guardarCambio(!cambio);
     }
@@ -24,7 +30,11 @@ function ClientesContactos() {
             
             // TODO Redireccionar y validar permiso
 
-            const res = await clienteAxios.get(`contactos/contacto/${idEmpresa}`);
+            const res = await clienteAxios.get(`contactos/contacto/${idEmpresa}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });;
             guardarContactos(res?.data);
         } catch (error) {
             console.log(error);
@@ -33,7 +43,11 @@ function ClientesContactos() {
     }
 
     useEffect(() => {
-        consultarAPI();
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        } 
     },[cambio]);
 
     return (

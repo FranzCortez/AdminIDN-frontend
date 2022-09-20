@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useContext } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
+import { CRMContext } from '../../context/CRMContext';
 
 function FormularioEditarContacto() {
 
@@ -16,6 +17,9 @@ function FormularioEditarContacto() {
         correo: '',
         telefono: ''
     });
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
@@ -42,7 +46,11 @@ function FormularioEditarContacto() {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.put(`/contactos/contacto/${idEmpresa}`, contacto);
+            const res = await clienteAxios.put(`/contactos/contacto/${idEmpresa}`, contacto,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             Swal.fire({
                 title: 'Se actualizo correctamente el contacto',
@@ -76,7 +84,11 @@ function FormularioEditarContacto() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`contactos/contacto/editar/${idEmpresa}/${id}`);
+            const res = await clienteAxios.get(`contactos/contacto/editar/${idEmpresa}/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             guardarContacto(res.data);
         } catch (error) {
@@ -95,7 +107,11 @@ function FormularioEditarContacto() {
     }
 
     useEffect(() => {
-        consultarAPI();
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

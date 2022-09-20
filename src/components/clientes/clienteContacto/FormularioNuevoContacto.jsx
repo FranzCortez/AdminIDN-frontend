@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { MdContactPhone } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
@@ -6,6 +6,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
+import { CRMContext } from '../../context/CRMContext';
 
 function FormularioCrearContacto() {
 
@@ -17,6 +18,9 @@ function FormularioCrearContacto() {
         correo: '',
         telefono: ''
     });
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
@@ -43,7 +47,11 @@ function FormularioCrearContacto() {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.post(`/contactos/contacto/${idEmpresa}`, contacto);
+            const res = await clienteAxios.post(`/contactos/contacto/${idEmpresa}`, contacto,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
 
             Swal.fire({
                 title: 'Se agrego correctamente el contacto',
@@ -75,6 +83,14 @@ function FormularioCrearContacto() {
             }
         }
     }
+
+    useEffect(()=> {
+        if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
+            navigate('/login', {replace: true});
+        } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
+            navigate('/login', {replace: true});
+        }
+    }, []);
 
     return (
         <Fragment>
