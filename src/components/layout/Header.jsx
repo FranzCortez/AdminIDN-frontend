@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { RiContactsBook2Line } from "react-icons/ri";
-import { AiOutlineTool, AiOutlineDollarCircle } from "react-icons/ai";
+import { AiOutlineDollarCircle } from "react-icons/ai";
 import { CgEnter } from "react-icons/cg";
 import { RiFileList2Line } from "react-icons/ri";
 import { MdOutlineRequestQuote } from "react-icons/md";
@@ -24,11 +24,6 @@ function Header() {
             ruta: '/clientes',
             texto: 'Clientes',
             icono: <RiContactsBook2Line size={50} color={"#333333"}/>
-        },
-        {
-            ruta: '/herramientas',
-            texto: 'Herramientas',
-            icono: <AiOutlineTool size={50} color={"#333333"}/>
         },
         {
             ruta: '/ingresos',

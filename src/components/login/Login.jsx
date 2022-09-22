@@ -41,7 +41,7 @@ function Login() {
             Swal.fire({
                 type: 'error',
                 title: 'Hubo un error',
-                text: error.response.data.mensaje
+                text: error.response.data.mensaje || error.message
             })
         }
     }
