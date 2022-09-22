@@ -1,8 +1,8 @@
 import React, { useContext, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { RiContactsBook2Line } from "react-icons/ri";
-import { AiOutlineDollarCircle } from "react-icons/ai";
+import { AiOutlineDollarCircle, AiOutlinePoweroff } from "react-icons/ai";
 import { CgEnter } from "react-icons/cg";
 import { RiFileList2Line } from "react-icons/ri";
 import { MdOutlineRequestQuote } from "react-icons/md";
@@ -16,8 +16,21 @@ import { CRMContext } from "../context/CRMContext";
 function Header() {
 
     const [auth, guardarAuth] = useContext(CRMContext);
+
+    let navigate = useNavigate();
     
     if(!auth.auth) return null;
+
+    const cerrarSesion = () => {
+        guardarAuth({
+            token: '',
+            auth: false
+        });
+
+        localStorage.setItem('token', '');
+
+        navigate('/login', {replace: true});
+    }
 
     let rutas = [
         {
@@ -73,7 +86,6 @@ function Header() {
         ];
     }
 
-
     return (
         <Fragment>
             <div className="header">
@@ -103,6 +115,10 @@ function Header() {
                                 <Sidebar ruta={ruta} key={index} />
                             ))
                        }
+                       <div className="sidebar__ruta" data-bs-dismiss="offcanvas" onClick={cerrarSesion}>
+                            <AiOutlinePoweroff size={50} color={"#333333"}/>
+                            <h2 className="sidebar__text">Cerrar Sesión</h2>
+                        </div>
                     </div>
                 </div>
             </div>
