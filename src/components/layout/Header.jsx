@@ -2,8 +2,7 @@ import React, { useContext, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { RiContactsBook2Line } from "react-icons/ri";
-import { AiOutlineDollarCircle, AiOutlinePoweroff } from "react-icons/ai";
-import { CgEnter } from "react-icons/cg";
+import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool } from "react-icons/ai";
 import { RiFileList2Line } from "react-icons/ri";
 import { MdOutlineRequestQuote } from "react-icons/md";
 import { ImQrcode } from "react-icons/im";
@@ -41,7 +40,7 @@ function Header() {
         {
             ruta: '/ingresos',
             texto: 'Ingresos',
-            icono: <CgEnter size={50} color={"#333333"}/>
+            icono: <AiOutlineTool size={50} color={"#333333"}/>
         },
         {
             ruta: '/cotizacion',

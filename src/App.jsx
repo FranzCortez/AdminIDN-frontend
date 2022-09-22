@@ -13,6 +13,9 @@ import ClientesContactos from "./components/clientes/clienteContacto/ClientesCon
 import FormularioEditarContacto from "./components/clientes/clienteContacto/FormularioEditarContacto";
 import FormularioCrearContacto from "./components/clientes/clienteContacto/FormularioNuevoContacto";
 
+/** INGRESOS */
+import Ingresos from "./components/ingreso/Ingresos";
+
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
@@ -41,6 +44,8 @@ function App() {
                         <Route path="/clientes/contacto/:id" element={<ClientesContactos/>} />
                         <Route path="/clientes/contacto/:idEmpresa/nuevo" element={<FormularioCrearContacto/>} />
                         <Route path="/clientes/contacto/:idEmpresa/editar/:id" element={<FormularioEditarContacto/>} />
+
+                        <Route path="/ingresos" element={<Ingresos/>} />
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
