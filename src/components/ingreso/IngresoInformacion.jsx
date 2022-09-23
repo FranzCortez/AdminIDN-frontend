@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineClose } from "react-icons/ai";
+import { TbFileInfo } from "react-icons/tb";
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -20,7 +21,7 @@ function IngresoInformacion(props) {
     
     return (
         <div>
-            <button onClick={openModal}>Más Info</button>
+            <button className='btn-new btn-login' onClick={openModal}><TbFileInfo size={20}/></button>
 
             <Modal
                 isOpen={modalIsOpen}
