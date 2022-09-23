@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineTool } from "react-icons/ai";
+import { MdAddCircle } from "react-icons/md";
 
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
@@ -56,10 +57,11 @@ function Ingresos() {
                     <div className='card-body-options'>
                         {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/> */}
 
-                        {/* <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
-                            <IoPersonAddSharp size={25}/>
-                            Nuevo Usuario
-                        </Link> */}
+                        <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
+                            <MdAddCircle size={25}/>
+                            <AiOutlineTool size={25}/>
+                            Nuevo Ingreso
+                        </Link>
                     </div>
 
 
@@ -73,9 +75,11 @@ function Ingresos() {
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Marca</th>
                                     <th scope="col">Modelo</th>
-                                    <th scope="col">Número Interno</th>
-                                    <th scope="col">Número Serie</th>
+                                    <th scope="col">N° Interno</th>
+                                    <th scope="col">N° Serie</th>
                                     <th scope="col">Más Info</th>
+                                    <th scope="col">Foto Galería</th>
+                                    <th scope="col">Salida Equipo</th>
                                 </tr>
                             </thead>
                             <tbody>
