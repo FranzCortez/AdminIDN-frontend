@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../../config/axios';
 
-function EmpresaContacto() {
+function EmpresaContacto(props) {
 
     const [ empresas, guardarEmpresas ] = useState([]);
     const [ contactos, guardarContactos ] = useState([]);
@@ -67,7 +67,11 @@ function EmpresaContacto() {
     }
 
     useEffect(() => {
-        consultarEmpresas()
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+            consultarEmpresas();
+        } else {
+            navigate('/login', {replace: true});
+        }        
     },[]);
 
     return (
@@ -87,7 +91,7 @@ function EmpresaContacto() {
 
             <div className='campo'>
                 <label htmlFor="nombre">Seleccione Contacto Empresa:</label>
-                <select name="clienteContactoId" id="clienteContactoId"  defaultValue={0}>
+                <select name="clienteContactoId" id="clienteContactoId"  defaultValue={0} onChange={props.contactoListo}>
                     <option value={0} disabled> -- Seleccione -- </option>    
                     {
                         contactos.map(contacto => (
