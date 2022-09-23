@@ -27,7 +27,7 @@ function Ingresos() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            console.log(res.data)
+            
             guardarIngresos(res.data);
             
         } catch (error) {
@@ -37,7 +37,7 @@ function Ingresos() {
 
     useEffect(() => {        
         
-        if(auth.token !== '' && auth.tipo === 1) {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
             consultarAPI();
         } else {
             navigate('/login', {replace: true});
@@ -75,7 +75,7 @@ function Ingresos() {
                                     <th scope="col">Modelo</th>
                                     <th scope="col">Número Interno</th>
                                     <th scope="col">Número Serie</th>
-                                    <th scope="col">Opciones</th>
+                                    <th scope="col">Más Info</th>
                                 </tr>
                             </thead>
                             <tbody>
