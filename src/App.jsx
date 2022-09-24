@@ -16,6 +16,7 @@ import FormularioCrearContacto from "./components/clientes/clienteContacto/Formu
 /** INGRESOS */
 import Ingresos from "./components/ingreso/Ingresos";
 import FormNuevoIngreso from "./components/ingreso/FormNuevoIngreso";
+import FormEditarIngreso from "./components/ingreso/FormEditarIngreso";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -48,6 +49,7 @@ function App() {
 
                         <Route path="/ingresos" element={<Ingresos/>} />
                         <Route path="/ingresos/nuevo" element={<FormNuevoIngreso/>} />
+                        <Route path="/ingresos/editar/:id" element={<FormEditarIngreso/>} />
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />

@@ -15,11 +15,11 @@ import TipoHerramienta from './componentesNuevoIngreso/TipoHerramienta';
 
 function FormNuevoIngreso() {
     
-        const today = new Date();
-        const dd = today.getDate();
-        const mm = (today.getMonth()+1) < 10 ? `0${(today.getMonth()+1)}` : (today.getMonth()+1); //January is 0!
-        const yyyy = today.getFullYear();
-        const fechaActual = `${yyyy}-${mm}-${dd}`
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = (today.getMonth()+1) < 10 ? `0${(today.getMonth()+1)}` : (today.getMonth()+1); //January is 0!
+    const yyyy = today.getFullYear();
+    const fechaActual = `${yyyy}-${mm}-${dd}`
     
     const [ ingreso, guardarIngreso ] = useState({
         nombre: '',

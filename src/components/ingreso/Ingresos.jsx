@@ -57,6 +57,9 @@ function Ingresos() {
                     <div className='card-body-options'>
                         {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/> */}
 
+                        <button>filtro</button>
+                        <button>nuevo</button>
+
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <MdAddCircle size={25}/>
                             <AiOutlineTool size={25}/>

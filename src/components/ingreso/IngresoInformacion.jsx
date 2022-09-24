@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineClose } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 import { TbFileInfo } from "react-icons/tb";
 import Modal from 'react-modal';
 
@@ -68,14 +70,21 @@ function IngresoInformacion(props) {
                     </div>
 
                     <div>
-                    <div className='modal__herramienta'>
-                        <h2>Comentarios sobre la Herramienta:</h2>
+                        <div className='modal__herramienta'>
+                            <h2>Comentarios sobre la Herramienta:</h2>
 
-                        { ingreso.comentario ? ConvertStringToHTML(ingreso.comentario) : null}
-                        <div id='comentario'>
+                            { ingreso.comentario ? ConvertStringToHTML(ingreso.comentario) : null}
+                            <div id='comentario'>
+                            </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+
+                <div className='modal__grid'>
+                    <Link to={`editar/${ingreso.id}`} className="btn-new btn-return">
+                        <FiEdit size={25}/> Editar Ingreso
+                    </Link>
+                    <button>generar cotizacion</button>
                 </div>
                 
             </Modal>
