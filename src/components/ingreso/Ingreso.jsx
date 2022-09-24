@@ -50,6 +50,16 @@ function Ingreso({datos}) {
                     <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}/>
                 </div>                
             </td>
+            <td>
+                <div className='table__opciones' onClick={consultarAPI}>
+                    FOTO
+                </div>                
+            </td>
+            <td>
+                <div className='table__opciones' onClick={consultarAPI}>
+                    SALIDA
+                </div>                
+            </td>
         </tr>
     )
 }

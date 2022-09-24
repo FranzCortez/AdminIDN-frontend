@@ -18,6 +18,15 @@ function IngresoInformacion(props) {
     function closeModal() {
         setIsOpen(false);
     }
+
+    const ConvertStringToHTML = (str) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(str, 'text/html');
+        const comen = document.querySelector('#comentario');
+        if(comen){
+            comen.innerHTML= doc.body.firstElementChild.innerHTML;
+        }
+    };
     
     return (
         <div>
@@ -62,7 +71,9 @@ function IngresoInformacion(props) {
                     <div className='modal__herramienta'>
                         <h2>Comentarios sobre la Herramienta:</h2>
 
-                        <p>{ingreso?.comentario}</p>
+                        { ingreso.comentario ? ConvertStringToHTML(ingreso.comentario) : null}
+                        <div id='comentario'>
+                        </div>
                     </div>
                     </div>
                 </div>
