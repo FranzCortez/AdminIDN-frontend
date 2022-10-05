@@ -23,18 +23,19 @@ function Login() {
         try {
             
             const res = await clienteAxios.post('/login', datos);
-            
-            const { token, tipo } = res.data;
+            console.log(res.data)
+            const { token, tipo, nombre } = res.data;
             
             localStorage.setItem('token', token);
 
             guardarAuth({
                 token,
                 auth: true,
-                tipo
+                tipo,
+                nombre
             });
 
-            navigate('/clientes', {replace: true});
+            navigate('/home', {replace: true});
 
         } catch (error) {
             console.log(error);
