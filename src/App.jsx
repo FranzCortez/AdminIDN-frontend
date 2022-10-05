@@ -23,6 +23,9 @@ import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
 import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
 
+/** HOME */
+import Home from "./components/home/Home";
+
 /** LOGIN */
 import Login from "./components/login/Login";
 import Error404 from "./components/layout/Error404";
@@ -55,6 +58,8 @@ function App() {
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
                         <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
 
+                        <Route path="/home" element={<Home/>} />
+                
                         <Route path="/login" element={<Login/>} />
                         <Route path="/not_found" element={<Error404/>} />
                         <Route path="*" element={<Navigate to='/not_found'/>} />

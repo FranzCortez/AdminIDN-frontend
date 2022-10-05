@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { RiContactsBook2Line } from "react-icons/ri";
-import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool } from "react-icons/ai";
+import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool, AiFillHome } from "react-icons/ai";
 import { RiFileList2Line } from "react-icons/ri";
 import { MdOutlineRequestQuote } from "react-icons/md";
 import { ImQrcode } from "react-icons/im";
@@ -32,6 +32,11 @@ function Header() {
     }
 
     let rutas = [
+        {
+            ruta: '/home',
+            texto: 'Inicio',
+            icono: <AiFillHome size={50} color={"#333333"}/>
+        },
         {
             ruta: '/clientes',
             texto: 'Clientes',
