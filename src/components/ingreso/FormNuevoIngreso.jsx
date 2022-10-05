@@ -33,6 +33,7 @@ function FormNuevoIngreso() {
         clienteContactoId: '',
         tipoHerramientaId: ''
     });
+    const [ fecha, guardarFecha ] = useState(fechaActual);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -45,6 +46,9 @@ function FormNuevoIngreso() {
             ...ingreso,
             [e.target.name] : e.target.value
         });
+        if(e.target.name === 'fecha'){
+            guardarFecha(e.target.value)
+        }
     }
 
     const agregarIngreso = async (e) => {
@@ -103,10 +107,10 @@ function FormNuevoIngreso() {
         });
     }
 
-    const handleChange = (html, text) => {
+    const handleChange = (e) => {
         guardarIngreso({
             ...ingreso,
-            "comentario" : html
+            "comentario" : e.target.value
         });
     }
 
@@ -146,7 +150,7 @@ function FormNuevoIngreso() {
                                 type="date" 
                                 id='fecha'
                                 name='fecha'
-                                value={fechaActual}
+                                value={fecha}
                                 placeholder='Fecha Ingreso de la Herramienta'
                                 onChange={actualizarState}
                             />
@@ -220,14 +224,15 @@ function FormNuevoIngreso() {
 
                         <div className='campo'>
                             <label htmlFor="comentario">Comentario:</label>
+
+                            <textarea name="comentario" id="comentario" cols="50" rows="10" defaultValue={ingreso.comentario}onChange={handleChange} ></textarea>
                         </div>
-                        <TrixEditor onChange={handleChange} name='comentario'/>
 
                         <div className="enviar">
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Crear Nuevo Usuario"
+                                value="Crear Nuevo Ingreso"
                                 disabled={validarForm()}
                             />
                         </div>
