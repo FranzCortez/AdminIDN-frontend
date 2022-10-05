@@ -491,6 +491,11 @@ form select {
 form .campo input[readonly] {
     background-color: #e1e1e1;
 }
+form .campo textarea{
+    padding: 1.5rem;
+    flex: 1;
+    border: 1px solid #e1e1e1;
+}
 .enviar {
     padding: .5rem 2rem;
     display: flex;
