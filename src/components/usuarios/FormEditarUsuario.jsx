@@ -46,7 +46,7 @@ function FormEditarUsuario() {
 
     const editarUsuario = async (e) => {
         e.preventDefault();
-        console.log(auth)
+        
         try {            
             const res = await clienteAxios.put(`/cuentas/usuario/${id}`,usuario, {
                 headers: {

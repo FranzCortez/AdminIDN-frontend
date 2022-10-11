@@ -23,7 +23,7 @@ function Login() {
         try {
             
             const res = await clienteAxios.post('/login', datos);
-            console.log(res.data)
+            
             const { token, tipo, nombre } = res.data;
             
             localStorage.setItem('token', token);

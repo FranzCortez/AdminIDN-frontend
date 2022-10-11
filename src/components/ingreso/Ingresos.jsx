@@ -22,7 +22,7 @@ function Ingresos() {
     const consultarAPI = async () => {
         
         try {
-
+            
             const res = await clienteAxios.post(`ih/ingreso/obtener`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
@@ -39,6 +39,7 @@ function Ingresos() {
     useEffect(() => {        
         
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+            console.log("entre")
             consultarAPI();
         } else {
             navigate('/login', {replace: true});
