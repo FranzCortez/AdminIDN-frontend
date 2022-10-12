@@ -379,6 +379,10 @@ h2 {
     padding-top: 1rem;
     vertical-align: middle;
 }
+.descripcion {
+    width: 100%;
+    height: 100%;
+}
 
 /** AJUSTES SWEETALERT**/
 .swal2-popup  .swal2-title {

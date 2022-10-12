@@ -21,7 +21,14 @@ function TipoHerramientaTabla({datos}) {
     return (
         <tr className='table__tr'>
             <td>{datos.nombre}</td>
-            <td>{datos.descripcion ? datos.descripcion : 'Aun no hay descripción asociada'}</td>
+            <td>
+                {
+                    datos.descripcion ? 
+                    <textarea name="" id="" className='descripcion' value={datos.descripcion} disabled></textarea>
+                    : 
+                    'Aun no hay descripción asociada'
+                }
+            </td>
             <td>
                 <div className='table__opciones'>
                     <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><BsPencilSquare size={23} color="#ffff"/></button></Link>
