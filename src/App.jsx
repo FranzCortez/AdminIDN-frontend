@@ -8,7 +8,7 @@ import Header from "./components/layout/Header";
 import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
 import FormularioNuevoEmpresa from "./components/clientes/clienteEmpresa/FormularioNuevoEmpresa";
 import FormularioEditarEmpresa from "./components/clientes/clienteEmpresa/FormularioEditarEmpresa";
-//Contacto
+// Contacto
 import ClientesContactos from "./components/clientes/clienteContacto/ClientesContactos";
 import FormularioEditarContacto from "./components/clientes/clienteContacto/FormularioEditarContacto";
 import FormularioCrearContacto from "./components/clientes/clienteContacto/FormularioNuevoContacto";
@@ -17,6 +17,8 @@ import FormularioCrearContacto from "./components/clientes/clienteContacto/Formu
 import Ingresos from "./components/ingreso/Ingresos";
 import FormNuevoIngreso from "./components/ingreso/FormNuevoIngreso";
 import FormEditarIngreso from "./components/ingreso/FormEditarIngreso";
+// Tipo Herramienta
+import TiposHerramientas from "./components/ingreso/tipoHerramienta/TiposHerramientas";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -53,6 +55,7 @@ function App() {
                         <Route path="/ingresos" element={<Ingresos/>} />
                         <Route path="/ingresos/nuevo" element={<FormNuevoIngreso/>} />
                         <Route path="/ingresos/editar/:id" element={<FormEditarIngreso/>} />
+                        <Route path="/ingresos/tipoherramienta" element={<TiposHerramientas/>} />
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
