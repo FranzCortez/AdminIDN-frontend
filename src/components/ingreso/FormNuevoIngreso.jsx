@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { AiOutlineTool } from "react-icons/ai";
 import { MdAddCircle } from "react-icons/md";
-import { TrixEditor } from "react-trix";
 import Swal from 'sweetalert2';
 
 import { CRMContext } from '../context/CRMContext';

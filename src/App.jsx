@@ -19,6 +19,7 @@ import FormNuevoIngreso from "./components/ingreso/FormNuevoIngreso";
 import FormEditarIngreso from "./components/ingreso/FormEditarIngreso";
 // Tipo Herramienta
 import TiposHerramientas from "./components/ingreso/tipoHerramienta/TiposHerramientas";
+import FormNuevoTipoHerramienta from "./components/ingreso/tipoHerramienta/FormNuevoTipoHerramienta";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -56,6 +57,7 @@ function App() {
                         <Route path="/ingresos/nuevo" element={<FormNuevoIngreso/>} />
                         <Route path="/ingresos/editar/:id" element={<FormEditarIngreso/>} />
                         <Route path="/ingresos/tipoherramienta" element={<TiposHerramientas/>} />
+                        <Route path="/ingresos/tipoherramienta/nuevo" element={<FormNuevoTipoHerramienta/>} />
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
