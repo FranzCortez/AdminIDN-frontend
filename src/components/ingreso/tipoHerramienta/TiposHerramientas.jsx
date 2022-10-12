@@ -2,9 +2,11 @@ import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { VscTools } from 'react-icons/vsc';
 import { MdAddCircle } from 'react-icons/md';
+import Swal from 'sweetalert2';
 
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../../config/axios';
+import TipoHerramientaTabla from './TipoHerramientaTabla';
 
 function TiposHerramientas() {
 
@@ -26,12 +28,20 @@ function TiposHerramientas() {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
-            });
+            });            
 
             guardarHerramientas(res.data);
             
         } catch (error) {
             console.log(error)
+            if(error.response.status === 404) {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Error!',
+                    text: error.response.data.msg,
+                    timer: 3500
+                });
+            }
         }
     }
 
@@ -72,17 +82,17 @@ function TiposHerramientas() {
                                 <tr className='table__head'>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripción Falla Común</th>
-                                    <th scope="col">Opciones</th>
+                                    <th scope="col">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {
-                                    ingresos.length > 0 ? (
-                                        ingresos.map((datos) => (
-                                            <Ingreso datos={datos} key={datos.id}/>
+                                {
+                                    herramientas.length > 0 ? (
+                                        herramientas.map((datos) => (
+                                            <TipoHerramientaTabla datos={datos} key={datos.id}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay ingresos registrados o nadie coincide con la búsqueda </p></td></tr>
-                                } */}
+                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay tipos de herramienta registrados o nadie coincide con la búsqueda </p></td></tr>
+                                }
                             </tbody>
                         </table>
                     </div>
