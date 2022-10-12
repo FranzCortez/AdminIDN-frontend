@@ -1,6 +1,7 @@
 import React, { useContext, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+import { VscTools } from 'react-icons/vsc';
 import { RiContactsBook2Line } from "react-icons/ri";
 import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool, AiFillHome } from "react-icons/ai";
 import { RiFileList2Line } from "react-icons/ri";
@@ -46,6 +47,11 @@ function Header() {
             ruta: '/ingresos',
             texto: 'Ingresos',
             icono: <AiOutlineTool size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/ingresos/tipoherramienta',
+            texto: 'Tipo Herramienta',
+            icono: <VscTools size={50} color={"#333333"}/>
         },
         {
             ruta: '/cotizacion',
