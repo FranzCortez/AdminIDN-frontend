@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../../config/axios';
 import TipoHerramientaTabla from './TipoHerramientaTabla';
+import FormBuscarTipoHerramienta from './FormBuscarTipoHerramienta';
 
 function TiposHerramientas() {
 
@@ -19,6 +20,43 @@ function TiposHerramientas() {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
+
+    const leerBusqueda = (e) => {
+        guardarBusqueda(e.target.value);
+    }
+
+    const buscarHerramienta = async (e) => {
+        e.preventDefault();
+
+        if(e.nativeEvent.submitter.value === 'Limpiar Filtros'){
+            escucharCambio();
+            return;
+        }
+
+        if(busqueda.length < 3) {
+            Swal.fire({
+                type: 'error',
+                title: 'Hubo un error',
+                text: 'Debes tener mínimo 3 caracteres para buscar',
+                timer: 1500
+            });
+        }else{
+            const res = await clienteAxios.get(`tipo/categoria/${busqueda}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            if(res.status === 200){
+                guardarHerramientas(res.data);
+            }
+        }
+    }
+
+    const escucharCambio = (e) => {
+        document.querySelector('#buscar').value = "";
+        guardarCambio(!cambio);
+    }
 
     const consultarAPI = async () => {
         
@@ -52,7 +90,7 @@ function TiposHerramientas() {
         } else {
             navigate('/login', {replace: true});
         }      
-    }, []);
+    }, [cambio]);
 
     return (
         <Fragment>
@@ -64,9 +102,8 @@ function TiposHerramientas() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/> */}
 
-                        <button>filtro</button>
+                        <FormBuscarTipoHerramienta leerBusqueda={leerBusqueda} buscarHerramienta={buscarHerramienta} escucharCambio={escucharCambio}/>
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <MdAddCircle size={25}/>

@@ -32,6 +32,7 @@ function Usuarios() {
 
 
     const escucharCambio = () => {
+        document.querySelector('#buscar').value = "";
         guardarCambio(!cambio);
     }
 
@@ -70,7 +71,6 @@ function Usuarios() {
     const consultarAPI = async () => {
         
         try {
-            // TODO Redireccionar y validar permiso
 
             const res = await clienteAxios.get(`/cuentas/usuario/${offset}`,{
                 headers: {
