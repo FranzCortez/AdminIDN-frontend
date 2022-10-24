@@ -126,6 +126,7 @@ h2 {
 }
 .modal__titulo{
     font-size: 4.8rem;
+    text-align: center;
 }
 .modal__grid{
     margin-top: 2rem;

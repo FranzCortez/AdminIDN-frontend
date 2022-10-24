@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 
@@ -32,6 +32,7 @@ import Home from "./components/home/Home";
 
 /** LOGIN */
 import Login from "./components/login/Login";
+import Inicio from "./components/main/inicio";
 import Error404 from "./components/layout/Error404";
 
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
@@ -42,7 +43,7 @@ function App() {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Fragment>
                 <CRMPovider value={[auth, guardarAuth]}>
                     <Header/>
@@ -68,12 +69,13 @@ function App() {
                         <Route path="/home" element={<Home/>} />
                 
                         <Route path="/login" element={<Login/>} />
+                        <Route path="/" element={<Inicio/>} />
                         <Route path="/not_found" element={<Error404/>} />
                         <Route path="*" element={<Navigate to='/not_found'/>} />
                     </Routes>
                 </CRMPovider>                
             </Fragment>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
