@@ -7,6 +7,7 @@ import { VscTools } from 'react-icons/vsc';
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
 import Ingreso from './Ingreso';
+import FormFiltroIngreso from './FormFiltroIngreso';
 
 function Ingresos() {
 
@@ -15,16 +16,27 @@ function Ingresos() {
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
 
+    const [ filtros, guardarFiltros ] = useState({});
+
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
+    const escucharCambio = (e) => {
+        guardarCambio(!cambio);
+    }
+
+    const guardarFiltro = (data) => {
+        guardarFiltros(data);
+        console.log("cargado")
+    }
+
     const consultarAPI = async () => {
         
         try {
-            
-            const res = await clienteAxios.post(`ih/ingreso/obtener`,{
+            console.log("filtro:",filtros)
+            const res = await clienteAxios.post(`ih/ingreso/obtener`, filtros, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -45,7 +57,7 @@ function Ingresos() {
         } else {
             navigate('/login', {replace: true});
         }      
-    }, []);
+    }, [cambio]);
 
     return (
         <Fragment>
@@ -57,9 +69,9 @@ function Ingresos() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        {/* <FormBuscarUsuario leerBusqueda={leerBusqueda} buscarUsuario={buscarUsuario} escucharCambio={escucharCambio}/> */}
 
-                        <button>filtro</button>
+                        <FormFiltroIngreso guardarFiltro={guardarFiltro} escucharCambio={escucharCambio}/>
+
                         <Link to={"tipoherramienta"} type="button" className="btn-new btn-login">
                             <VscTools size={25}/>
                             Tipos de Herramientas

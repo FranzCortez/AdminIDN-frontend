@@ -100,6 +100,9 @@ h2 {
         height: 30rem;
     }
 }
+.wifu{
+    width: 100%;
+}
 
 /** MODAL **/
 .Overlay {
@@ -505,6 +508,10 @@ form .campo textarea{
     padding: .5rem 2rem;
     display: flex;
     justify-content: flex-end;
+}
+.filtro{
+    display: flex;
+    justify-content: space-around;
 }
 .mensaje-vacio{
     display: flex;

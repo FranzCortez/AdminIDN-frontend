@@ -32,7 +32,7 @@ import Home from "./components/home/Home";
 
 /** LOGIN */
 import Login from "./components/login/Login";
-import Inicio from "./components/main/inicio";
+import Inicio from "./components/main/Inicio";
 import Error404 from "./components/layout/Error404";
 
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
