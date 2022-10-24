@@ -234,7 +234,7 @@ function FormEditarIngreso() {
 
                     <form onSubmit={editarIngreso}>
                         <div className='campo'>
-                            <label htmlFor="nombre">Seleccione Empresa:</label>
+                            <label htmlFor="nombre">Seleccione Empresa<span className='campo__obligatorio'>*</span>:</label>
                             <select name="empresa" id="empresa"  value={empresa} onChange={consultarContactos}>
                                 <option value={0} disabled> -- Seleccione -- </option>    
                                 {
@@ -247,7 +247,7 @@ function FormEditarIngreso() {
                         </div>                                   
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Seleccione Contacto Empresa:</label>
+                            <label htmlFor="nombre">Seleccione Contacto Empresa<span className='campo__obligatorio'>*</span>:</label>
                             <select name="clienteContactoId" id="clienteContactoId"  value={contacto} onChange={contactoListo}>
                                 <option value={0} disabled> -- Seleccione -- </option>    
                                 {
@@ -260,7 +260,7 @@ function FormEditarIngreso() {
                         </div>                     
  
                         <div className='campo'>
-                            <label htmlFor="nombre">Seleccione Tipo Herramienta:</label>
+                            <label htmlFor="nombre">Seleccione Tipo Herramienta<span className='campo__obligatorio'>*</span>:</label>
                             <select name="empresa" id="empresa"  value={tipo} onChange={tipoListo}>
                                 <option value={0} disabled> -- Seleccione -- </option>    
                                 {
@@ -273,7 +273,7 @@ function FormEditarIngreso() {
                         </div>                
 
                         <div className='campo'>
-                            <label htmlFor="fecha">Fecha Ingreso:</label>
+                            <label htmlFor="fecha">Fecha Ingreso<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="date" 
                                 id='fecha'
@@ -285,7 +285,7 @@ function FormEditarIngreso() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre:</label>
+                            <label htmlFor="nombre">Nombre<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -297,7 +297,7 @@ function FormEditarIngreso() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="marca">Marca:</label>
+                            <label htmlFor="marca">Marca<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='marca'
@@ -309,7 +309,7 @@ function FormEditarIngreso() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="modelo">Modelo:</label>
+                            <label htmlFor="modelo">Modelo<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='modelo'
@@ -357,7 +357,7 @@ function FormEditarIngreso() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="comentario">Comentario:</label>
+                            <label htmlFor="comentario">Comentario<span className='campo__obligatorio'>*</span>:</label>
 
                             <textarea name="comentario" id="comentario" cols="50" rows="10" defaultValue={ingreso.comentario} onChange={actualizarState} ></textarea>
                         </div>

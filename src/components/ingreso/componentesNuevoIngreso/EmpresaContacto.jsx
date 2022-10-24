@@ -77,7 +77,7 @@ function EmpresaContacto(props) {
     return (
         <Fragment>
             <div className='campo'>
-                <label htmlFor="nombre">Seleccione Empresa:</label>
+                <label htmlFor="nombre">Seleccione Empresa<span className='campo__obligatorio'>*</span>:</label>
                 <select name="empresa" id="empresa"  defaultValue={0} onChange={consultarContactos}>
                     <option value={0} disabled> -- Seleccione -- </option>    
                     {
@@ -90,7 +90,7 @@ function EmpresaContacto(props) {
             </div>                                   
 
             <div className='campo'>
-                <label htmlFor="nombre">Seleccione Contacto Empresa:</label>
+                <label htmlFor="nombre">Seleccione Contacto Empresa<span className='campo__obligatorio'>*</span>:</label>
                 <select name="clienteContactoId" id="clienteContactoId"  defaultValue={0} onChange={props.contactoListo}>
                     <option value={0} disabled> -- Seleccione -- </option>    
                     {

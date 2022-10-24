@@ -110,7 +110,7 @@ function FormularioNuevoEmpresa() {
                     <form onSubmit={nuevaEmpresa}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre Empresa:</label>
+                            <label htmlFor="nombre">Nombre Empresa<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -121,7 +121,7 @@ function FormularioNuevoEmpresa() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="rut">Rut Empresa:</label>
+                            <label htmlFor="rut">Rut Empresa<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='rut'
@@ -132,7 +132,7 @@ function FormularioNuevoEmpresa() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="razonSocial">Razón Social:</label>
+                            <label htmlFor="razonSocial">Razón Social<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='razonSocial'
@@ -143,7 +143,7 @@ function FormularioNuevoEmpresa() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="direccion">Dirección:</label>
+                            <label htmlFor="direccion">Dirección<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='direccion'

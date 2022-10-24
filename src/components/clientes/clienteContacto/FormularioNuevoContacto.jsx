@@ -111,7 +111,7 @@ function FormularioCrearContacto() {
                     <form onSubmit={nuevoContacto}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre del Contacto:</label>
+                            <label htmlFor="nombre">Nombre del Contacto<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -122,7 +122,7 @@ function FormularioCrearContacto() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="cargo">Cargo del Contacto:</label>
+                            <label htmlFor="cargo">Cargo del Contacto<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='cargo'
@@ -133,7 +133,7 @@ function FormularioCrearContacto() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="correo">Correo del Contacto:</label>
+                            <label htmlFor="correo">Correo del Contacto<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="email" 
                                 id='correo'

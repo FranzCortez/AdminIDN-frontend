@@ -48,7 +48,7 @@ function TipoHerramienta(props) {
     return (
         <Fragment>
             <div className='campo'>
-                <label htmlFor="nombre">Seleccione Tipo Herramienta:</label>
+                <label htmlFor="nombre">Seleccione Tipo Herramienta<span className='campo__obligatorio'>*</span>:</label>
                 <select name="empresa" id="empresa"  defaultValue={0} onChange={props.tipoListo}>
                     <option value={0} disabled> -- Seleccione -- </option>    
                     {

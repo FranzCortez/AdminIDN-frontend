@@ -144,7 +144,7 @@ function FormNuevoIngreso() {
                         <TipoHerramienta tipoListo={tipoListo}/>                    
 
                         <div className='campo'>
-                            <label htmlFor="fecha">Fecha Ingreso:</label>
+                            <label htmlFor="fecha">Fecha Ingreso<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="date" 
                                 id='fecha'
@@ -156,7 +156,7 @@ function FormNuevoIngreso() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre:</label>
+                            <label htmlFor="nombre">Nombre<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -167,7 +167,7 @@ function FormNuevoIngreso() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="marca">Marca:</label>
+                            <label htmlFor="marca">Marca<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='marca'
@@ -178,7 +178,7 @@ function FormNuevoIngreso() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="modelo">Modelo:</label>
+                            <label htmlFor="modelo">Modelo<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='modelo'
@@ -222,7 +222,7 @@ function FormNuevoIngreso() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="comentario">Comentario:</label>
+                            <label htmlFor="comentario">Comentario<span className='campo__obligatorio'>*</span>:</label>
 
                             <textarea name="comentario" id="comentario" cols="50" rows="10" defaultValue={ingreso.comentario}onChange={handleChange} ></textarea>
                         </div>

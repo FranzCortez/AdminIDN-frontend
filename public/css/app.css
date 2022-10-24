@@ -481,6 +481,11 @@ form .campo {
     align-items: center;
     margin-bottom: 2rem;
 }
+form .campo__obligatorio {
+    font-weight: 700;
+    font-size: 3rem;
+    color: #fc266d;
+}
 form .campo label {
     font-weight: bold;
     font-family: var(--fontTexto);

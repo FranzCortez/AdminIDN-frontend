@@ -108,7 +108,7 @@ function FormNuevoUsuario() {
                     <form onSubmit={agregarUsuario}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre:</label>
+                            <label htmlFor="nombre">Nombre<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -119,7 +119,7 @@ function FormNuevoUsuario() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="rut">Rut:</label>
+                            <label htmlFor="rut">Rut<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='rut'
@@ -130,7 +130,7 @@ function FormNuevoUsuario() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="email">Correo:</label>
+                            <label htmlFor="email">Correo<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="email" 
                                 id='email'
@@ -152,7 +152,7 @@ function FormNuevoUsuario() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="tipo">Tipo:</label>
+                            <label htmlFor="tipo">Tipo<span className='campo__obligatorio'>*</span>:</label>
                             <select name="tipo" id='tipo' defaultValue={'DEFAULT'} onChange={actualizarState}>
                                 <option value='DEFAULT' disabled>-- Seleccione un rol --</option>
                                 <option value="1">Administrador</option>

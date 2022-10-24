@@ -135,7 +135,7 @@ function FormEditarUsuario() {
                     <form onSubmit={editarUsuario}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre:</label>
+                            <label htmlFor="nombre">Nombre<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
@@ -147,7 +147,7 @@ function FormEditarUsuario() {
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="rut">Rut:</label>
+                            <label htmlFor="rut">Rut<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='rut'
@@ -159,7 +159,7 @@ function FormEditarUsuario() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="email">Correo:</label>
+                            <label htmlFor="email">Correo<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="email" 
                                 id='email'
@@ -183,7 +183,7 @@ function FormEditarUsuario() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="tipo">Tipo:</label>
+                            <label htmlFor="tipo">Tipo<span className='campo__obligatorio'>*</span>:</label>
                             <select name="tipo" id='tipo' value={`${usuario.tipo}`} onChange={actualizarState}>
                                 <option value='DEFAULT' disabled>-- Seleccione un rol --</option>
                                 <option value="1">Administrador</option>

@@ -127,7 +127,7 @@ function FromEditarTipoHerramienta() {
                     <form onSubmit={guardarTipoHerramienta}>
                         
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre Herramienta:</label>
+                            <label htmlFor="nombre">Nombre Herramienta<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
