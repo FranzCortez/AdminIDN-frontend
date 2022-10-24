@@ -30,8 +30,16 @@ function Home() {
                     <div className='card-body-options'>
                         
                         <div className='home'>
-                            <h1>BIENVENIDO A LA VERSION 1.0!!</h1>
+                            <h1>BIENVENIDO A LA VERSION 1.1</h1>
                             <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
+                            <div className='info'>
+                                <p>Información de la actualización 1.1:</p>
+                                <ul>
+                                    <li>Filtro funcionando en la sección de ingresos</li>
+                                    <li>Existencia de un * para marcar campos obligatorios</li>
+                                    <li>Corrección de errores gramaticales</li>
+                                </ul>
+                            </div>
                             <p>IMPORTANTE: AUN HAY COSAS EN DESARROLLO Y PUEDE QUE COSAS FALLEN, EN CASO DE ENCONTRAR ALGUN ERROR O PROBLEMA, COMUNICARLO A FRANZ POR CUALQUIER MEDIO, EXPLICANDO COMO FUE EL ERROR Y EN LO POSIBLE CON UNA IMAGEN DE REFERENCIA</p>
                             <p>Para iniciar oprima las barras lateral izquierda <FaBars/> y navegue por las secciones</p>
                             <h2>Espero que disfruten su prueba!</h2>
