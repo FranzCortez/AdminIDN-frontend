@@ -29,13 +29,11 @@ function Ingresos() {
 
     const guardarFiltro = (data) => {
         guardarFiltros(data);
-        console.log("cargado")
     }
 
     const consultarAPI = async () => {
         
         try {
-            console.log("filtro:",filtros)
             const res = await clienteAxios.post(`ih/ingreso/obtener`, filtros, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
