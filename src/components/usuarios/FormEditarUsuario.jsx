@@ -17,8 +17,10 @@ function FormEditarUsuario() {
         rut: '',
         email: '',
         telefono: '',
-        tipo: ''
+        tipo: '',
+        clienteEmpresaId: ''
     });
+    const [ empresas, guardarEmpresas ] = useState([]);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -31,11 +33,22 @@ function FormEditarUsuario() {
             ...usuario,
             [e.target.name] : e.target.value
         });
+
+        if( e.target.name == "tipo" && e.target.value == 3) {
+            document.querySelector("#usuarioEmpresa").style.display = "flex"
+        } else if ( e.target.name == "tipo" && e.target.value !== 3 ) {
+            document.querySelector("#usuarioEmpresa").style.display = "none"
+            
+        }
     }
 
     const validarForm = () => {
         
         const { nombre, rut, email, tipo } = usuario;
+        
+        if( tipo == 3 && usuario.clienteEmpresaId == null ){
+            return true;
+        }
         
         if( !(nombre.length > 0 && rut.length > 0 && email.length > 0 && tipo.length > 0) ){
             return false;
@@ -93,7 +106,19 @@ function FormEditarUsuario() {
                 }
             });
 
+            if(res.data.tipo == 3) {
+                document.querySelector("#usuarioEmpresa").style.display = "flex"
+            }
+
             guardarUsuario(res.data);
+
+            const resEmpresa = await clienteAxios.get(`empresas/empresaNombre`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            guardarEmpresas(resEmpresa.data);
         } catch (error) {
             if(error.request.status === 404 ) {
                 Swal.fire({
@@ -189,6 +214,18 @@ function FormEditarUsuario() {
                                 <option value="1">Administrador</option>
                                 <option value="2">Trabajador</option>
                                 <option value="3">Cliente Empresa</option>
+                            </select>
+                        </div>
+
+                        <div className='campo' id='usuarioEmpresa'>
+                            <label htmlFor="clienteEmpresaId">Empresa<span className='campo__obligatorio'>*</span>:</label>
+                            <select name="clienteEmpresaId" id='clienteEmpresaId' defaultValue={`${usuario.clienteEmpresaId}`} onChange={actualizarState}>
+                                <option value='DEFAULT' disabled>-- Seleccione una empresa --</option>
+                                {
+                                    empresas.map((empresa, index)  => (
+                                        <option value={empresa.id} key={index}>{empresa.nombre}</option>
+                                    ))
+                                }
                             </select>
                         </div>
 

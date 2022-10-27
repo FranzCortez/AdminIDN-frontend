@@ -71,6 +71,9 @@ h2 {
 .text-center{
     text-align: center;
 }
+#usuarioEmpresa {
+    display: none;
+}
 .center{
     display: flex;
     justify-content: center;
