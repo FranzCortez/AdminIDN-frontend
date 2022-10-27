@@ -219,7 +219,7 @@ function FormEditarUsuario() {
 
                         <div className='campo' id='usuarioEmpresa'>
                             <label htmlFor="clienteEmpresaId">Empresa<span className='campo__obligatorio'>*</span>:</label>
-                            <select name="clienteEmpresaId" id='clienteEmpresaId' defaultValue={`${usuario.clienteEmpresaId}`} onChange={actualizarState}>
+                            <select name="clienteEmpresaId" id='clienteEmpresaId' value={`${usuario.clienteEmpresaId}`} onChange={actualizarState}>
                                 <option value='DEFAULT' disabled>-- Seleccione una empresa --</option>
                                 {
                                     empresas.map((empresa, index)  => (
