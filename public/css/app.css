@@ -111,6 +111,9 @@ h2 {
 .wifu{
     width: 100%;
 }
+.fontbold {
+    font-weight: 700;
+}
 
 /** MODAL **/
 .Overlay {
@@ -564,4 +567,216 @@ form .campo textarea{
     flex-direction: column;
     gap: 2rem;
     text-align: center;
+}
+
+/** PDF **/
+.pdf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.pdf::after {
+    content: '';
+    height: 60rem;
+    z-index: -1;
+    width: 60rem;
+    position: absolute;
+    background-image: url(/img/LogoIDN.png);
+    background-size: 50rem;
+    background-repeat: no-repeat;
+    top: 35%;
+    transform: rotate(0deg);
+    left: 20%;
+    opacity: 0.15;
+}
+
+.pdf__titulo {
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    border-radius: 2rem;
+}
+.pdf__titulo h1{
+    background-color: var(--naranjaClaro);
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+/** data*/
+.pdf__titulo-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+.pdf__titulo-logo {
+    height: 5rem;
+}
+.pdf__titulo-dueño {
+    text-align: center;
+    font-size: 2rem;
+}
+.pdf__titulo-dueño h2{
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+.pdf__titulo-otin {
+    color: #000;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0;
+}
+/** info */
+.pdf__titulo-bloque-info {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-items: center;
+    margin: 0.5rem 0;
+}
+.pdf__titulo-campo p {
+    margin: 0;
+    font-size: 1.2rem;
+}
+.pdf__titulo-campo span {
+    font-weight: 700;
+}
+/* Herramienta */
+.pdf__herramienta {
+    width: 80%;
+    margin-top: 1rem;
+    border: 1px solid #e1e1e1;
+}
+.pdf__herramienta table{
+    margin: 0;
+}
+.pdf__herramienta th{
+    font-size: 1.5rem;
+}
+.pdf__herramienta td{
+    font-size: 1.3rem;
+}
+.pdf__componente {
+    margin-top: 1rem;
+    width: 90%;
+    border: 1px solid #e1e1e1;
+}
+.pdf__componente table{
+    margin: 0;
+}
+.pdf table th {
+    padding: 0.5rem 0;
+}
+.pdf table td {
+    padding: 0.5rem 0;
+}
+.pdf__componente th{
+    font-size: 1.5rem;
+}
+.pdf__componente td{
+    font-size: 1.3rem;
+}
+/** pie */
+.pdf__pie {
+    width: 90%;
+    border: 1px solid #e1e1e1;
+    border-radius: 2rem;
+    margin-top: 1rem;
+}
+.pdf__pie-valor {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+.pdf__pie-info {
+    grid-column: 1/3;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pdf__pie-info-certificado p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--naranjaClaro);
+    padding: 0.2rem;
+    border-radius: 1rem;
+}
+.pdf__pie-info-mantenimiento {
+    padding: 0.2rem;
+    border: 0.5px solid var(--naranjaClaro);
+    border-radius: 1rem;
+}
+.pdf__pie-info-mantenimiento p {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+.pdf__pie-info-mantenimiento span {
+    font-weight: normal;
+}
+.pdf__pie-final {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    border: 1px solid #e1e1e1;
+}
+.pdf__pie-final table {
+    margin-bottom: 0;
+}
+.pdf__componente table tr td{
+    border-right: 1px solid #e1e1e1;
+}
+.pdf__componente table tr td:last-child{
+    border-right: none;
+}
+.pdf__pie-final th {
+    background-color: var(--naranjaClaro);
+}
+.pdf__pie-final .table__tr:last-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.pdf__pie-compra {
+    text-align: center;
+    margin-top: 1rem;
+    background: var(--naranjaClaro);
+}
+.pdf__pie-compra h2{
+    color: #000;
+    font-weight: 900;
+    font-size: 2rem;
+    padding-top: 0.5rem;
+}
+.pdf__pie-compra-info {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
+.pdf__pie-compra-campos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.pdf__pie-compra-campos p {
+    font-size: 1.2rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+.pdf__pie-compra-campos span {
+    font-weight: 700;
+}
+.pdf__pie-img img{
+    height: 20rem;
+    width: 80rem;
+}
+.pdf__pie-img div {
+    background-color: var(--naranjaClaro);
+    height: 0.6rem;
+    width: 80.6rem;
 }
