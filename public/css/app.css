@@ -5,7 +5,8 @@
     /** Colores **/
     --azul : #005ea1;
     --azulOscuro: #00487C;
-    --rojo : #A01C48;
+    --rojo : #c52641;
+    --rojoOscuro : #A01C48;
     --naranja : #F58549;
     --amarillo: #ECA400;
     --amarilloOscuro: #bd8401;
@@ -224,6 +225,14 @@ h2 {
 }
 .btn-login:hover {
     background-color: var(--azulOscuro);
+}
+.btn-error{
+    background-color: var(--rojo);
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.btn-error:hover {
+    background-color: var(--rojoOscuro);
 }
 
 /** LOGIN **/

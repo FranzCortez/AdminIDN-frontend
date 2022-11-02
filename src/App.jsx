@@ -3,6 +3,9 @@ import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 
+/** HOME */
+import Home from "./components/home/Home";
+
 /** CLIENTES */
 // Empresa
 import ClientesEmpresas from "./components/clientes/clienteEmpresa/ClientesEmpresas";
@@ -22,13 +25,15 @@ import TiposHerramientas from "./components/ingreso/tipoHerramienta/TiposHerrami
 import FormNuevoTipoHerramienta from "./components/ingreso/tipoHerramienta/FormNuevoTipoHerramienta";
 import FromEditarTipoHerramienta from "./components/ingreso/tipoHerramienta/FromEditarTipoHerramienta";
 
+/** COTIZADOR */
+import Cotizar from "./components/cotizar/Cotizar";
+import FormGenerarCot from "./components/cotizar/FormGenerarCot";
+import PDF from "./components/cotizar/pdf/PDF.jsx";
+
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
 import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
-
-/** HOME */
-import Home from "./components/home/Home";
 
 /** LOGIN */
 import Login from "./components/login/Login";
@@ -61,6 +66,10 @@ function App() {
                         <Route path="/ingresos/tipoherramienta" element={<TiposHerramientas/>} />
                         <Route path="/ingresos/tipoherramienta/nuevo" element={<FormNuevoTipoHerramienta/>} />
                         <Route path="/ingresos/tipoherramienta/editar/:id" element={<FromEditarTipoHerramienta/>} />
+
+                        <Route path="/cotizacion" element={<Cotizar/>}/>
+                        <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
+                        <Route path="/cotizacion/pdf" element={<PDF/>}/>
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
