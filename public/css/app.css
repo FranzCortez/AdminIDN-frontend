@@ -111,6 +111,9 @@ h2 {
 .wifu{
     width: 100%;
 }
+.mbt-2 {
+    margin-bottom: 2rem;
+}
 .fontbold {
     font-weight: 700;
 }
@@ -520,6 +523,14 @@ form .campo textarea{
     flex: 1;
     border: 1px solid #e1e1e1;
 }
+.porcentaje {
+    background-color: var(--naranjaClaro);
+    height: 5.1rem;
+    text-align: center;
+    border: 1px solid #e1e1e1;
+    font-size: 3rem;
+    font-weight: 700;
+}
 .enviar {
     padding: .5rem 2rem;
     display: flex;
@@ -727,9 +738,11 @@ form .campo textarea{
 }
 .pdf__pie-final table {
     margin-bottom: 0;
+    text-align: center;
 }
 .pdf__componente table tr td{
     border-right: 1px solid #e1e1e1;
+    text-align: center;
 }
 .pdf__componente table tr td:last-child{
     border-right: none;
@@ -779,4 +792,10 @@ form .campo textarea{
     background-color: var(--naranjaClaro);
     height: 0.6rem;
     width: 80.6rem;
+}
+.font-2 {
+    font-size: 2rem;
+}
+.font-2 .table__tr:last-child{
+    font-size: 2rem;
 }
