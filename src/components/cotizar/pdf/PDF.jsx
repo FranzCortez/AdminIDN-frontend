@@ -1,14 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { useContext } from 'react';
+import { AiOutlineDownload } from "react-icons/ai";
+import { Link, useNavigate } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
+import Swal from 'sweetalert2';
 
-function Cotizar() {
-    
+import clienteAxios from '../../../config/axios';
+import { CRMContext } from '../../context/CRMContext';
+
+function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+
+    let navigate = useNavigate();
+
+    const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
     const pdfcrear = () => {
+
         html2pdf()
         .set({
             margin: 0,
-            filename: 'documento.pdf',
+            filename: `cotizacion ${herramienta.otin}.pdf`,
             image: {
                 type: 'jpeg',
                 quality: 0.98
@@ -25,11 +38,66 @@ function Cotizar() {
         })
         .from(document.querySelector("#pdf"))
         .save()
-        .catch(err => console.log(err));
+        .toPdf()
+        .output('blob')
+        .then( async function (pdf) {
+
+            const file = new File(
+                [pdf],
+                `cotizacion ${herramienta.otin}.pdf`,
+                {type: 'application/pdf'}
+            ); 
+
+            const formData = new FormData();        
+            formData.append("document", file);
+            formData.append("data", JSON.stringify(cotizacionBackend))
+    
+            try {
+
+                const res = await clienteAxios.post(`ih/ingreso/pdf`, formData,{
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`
+                    }
+                });       
+                
+                Swal.fire({
+                    title: 'Cotización Realizada con Exito',
+                    text: res.data.msg,
+                    timer: 1500
+                })
+    
+            } catch (error) {
+                console.log(error)
+                if(error.request.status === 404 ) {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Hubo un error',
+                        text: 'Error al guardar la cotización',
+                        timer: 1500
+                    })
+                }
+                // redireccionar
+                navigate('/ingresos', {replace: true});
+            }            
+        });
     }
 
     return (
-        <Fragment>
+        <div id="pdfCreador">
+
+            <Link 
+                to={"/ingresos"}
+            >
+                <div 
+                    id="btnCrearPdf" 
+                    className='btn-new btn-login' 
+                    onClick={pdfcrear}
+                >
+                    Descargar 
+                    <AiOutlineDownload size={25} />
+                </div>
+            </Link>
+
             <div id='pdf' className='pdf'>
 
                 <div className='pdf__titulo'>
@@ -45,21 +113,21 @@ function Cotizar() {
                             <h2>R.U.T 76.546.349-1</h2>
                         </div>
 
-                        <h2 className='pdf__titulo-otin'>OTIN 1235-2022</h2>
+                        <h2 className='pdf__titulo-otin'>OTIN {herramienta?.otin}</h2>
                     </div>
 
                     <div className='pdf__titulo-bloque-info'>
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
-                                <p><span>Empresa: </span>Importadora Tech LTDA</p>
+                                <p><span>Empresa: </span>{herramienta?.clienteContacto?.clienteEmpresa?.nombre}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>Sucursal: </span>Juan Gutenberg#410, Antofagasta</p>
+                                <p><span>Sucursal: </span>{herramienta?.clienteContacto?.clienteEmpresa?.direccion}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>Rut: </span>78.284.760-0</p>
+                                <p><span>Rut: </span>{herramienta?.clienteContacto?.clienteEmpresa?.rut}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
@@ -67,33 +135,33 @@ function Cotizar() {
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>Atencion: </span>Mauricio Olivares</p>
+                                <p><span>Atención: </span>{herramienta?.clienteContacto?.nombre}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>E-Mail: </span>molivares@techltda.cl.</p>
+                                <p><span>E-Mail: </span>{herramienta?.clienteContacto?.correo}</p>
                             </div>
                         </div>
 
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE INGRESO: </span>28-07-2021</p>
+                                <p><span>FECHA DE INGRESO: </span>{herramienta?.fecha}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>GUIA DE DESPACHO: </span></p>
+                                <p><span>GUIA DE DESPACHO: </span>{herramienta?.fechaGuiaDespacho ? herramienta?.fechaGuiaDespacho : ''}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE EVALUACION: </span>04-07-2021</p>
+                                <p><span>FECHA DE EVALUACION: </span>{cotizacion?.fechaEvaluacion}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE COTIZACION: </span>06-07-2021</p>
+                                <p><span>FECHA DE COTIZACION: </span>{cotizacion?.fechaCotizacion}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>TELEFONO: </span>569 9346 5906</p>
+                                <p><span>TELEFONO: </span>{herramienta?.clienteContacto?.telefono}</p>
                             </div>
                         </div>
                     </div>
@@ -112,11 +180,11 @@ function Cotizar() {
                         </thead>
                         <tbody>
                             <tr className='table__tr'>
-                                <td>Gata neumohidraulica 50-80 ton</td>
-                                <td>Jack</td>
-                                <td>PD80-2</td>
-                                <td></td>
-                                <td></td>
+                                <td>{herramienta?.nombre}</td>
+                                <td>{herramienta?.marca}</td>
+                                <td>{herramienta?.modelo}</td>
+                                <td>{herramienta?.numeroSerie ? herramienta?.numeroSerie : ''}</td>
+                                <td>{herramienta?.numeroInterno ? herramienta?.numeroInterno : ''}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -135,86 +203,18 @@ function Cotizar() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >1</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >2</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >3</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >4</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >5</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >6</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >7</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >8</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >9</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
-                            <tr className='table__tr'>
-                                <td className='fontbold' >10</td>
-                                <td>Fabricación de sello de poliuretano de alta presión </td>
-                                <td></td>   
-                                <td>1</td>
-                                <td className='fontbold' >$65000</td>
-                                <td className='fontbold' >$65000</td>
-                            </tr>
+                            {
+                                contenido.map( (data, index) => (
+                                    <tr className='table__tr' key={index+1 * 3}>
+                                        <td className='fontbold' >{data.nombre ? index+1 : ''}</td>
+                                        <td>{data.nombre ? data.nombre : ''}</td>
+                                        <td>{data.nombre ? data.descripcion : ''}</td>
+                                        <td>{data.nombre ? data.cantidad : ''}</td>
+                                        <td className='fontbold' >{data.nombre ? "$" + valorNumero(data.valor) : ''}</td>
+                                        <td className='fontbold' >{data.nombre ? "$" + valorNumero((data.valor * data.cantidad)) : ''}</td>
+                                    </tr>
+                                ))                    
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -224,9 +224,9 @@ function Cotizar() {
 
                         <div className='pdf__pie-info'>
                             <div className='pdf__pie-info-mantenimiento'>
-                                <p>CONDICIONES: <span>VALIDEZ DEL PRESUPUESTO ES DE 15 DÍAS.</span></p>
-                                <p>PLAZO DE ENTREGA: <span>Inmediata, recibida la o/c</span></p>
-                                <p>GARANTÍA DE 3 MESES, SÓLO DE COMPONENTES CAMBIADOS O REPARADOS.</p>
+                                <p>CONDICIONES: <span>{cotizacion?.condiciones}</span></p>
+                                <p>PLAZO DE ENTREGA: <span>{cotizacion?.plazoEntrega}</span></p>
+                                <p>{cotizacion?.garantia}</p>
                             </div>
                         </div>
 
@@ -235,23 +235,23 @@ function Cotizar() {
                                 <tbody>
                                     <tr className='table__tr'>
                                         <th scope="col">Sub-Total:</th>
-                                        <td>$202.000</td>
+                                        <td>${valorNumero(cotizacion?.subtotal)}</td>
                                     </tr>
                                     <tr className='table__tr'>
                                         <th scope="col">Descuento:</th>
-                                        <td>10%</td>
+                                        <td>{cotizacion?.descuento}%</td>
                                     </tr>
                                     <tr className='table__tr'>
                                         <th scope="col">Neto:</th>
-                                        <td>$181.000</td>
+                                        <td>${valorNumero(cotizacion?.neto)}</td>
                                     </tr>
                                     <tr className='table__tr'>
                                         <th scope="col">IVA (19%)</th>
-                                        <td>$34.542</td>
+                                        <td>${valorNumero(cotizacion?.iva)}</td>
                                     </tr>
                                     <tr className='table__tr'>
                                         <th scope="col">TOTAL:</th>
-                                        <td>$216.345</td>
+                                        <td>${valorNumero(cotizacion?.total)}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -275,14 +275,14 @@ function Cotizar() {
                 </div>
 
                 <div className='pdf__pie-img'>
-                    <img src="/img/Cotizacion/LogoEmpresa.png" alt="" />
+                    <img src="/img/Cotizacion/LogoEmpresa.jpeg" alt="" />
                     <div></div>
                 </div>
 
             </div>
-            <button id="btnCrearPdf" onClick={pdfcrear}>Click aquí</button>
-        </Fragment>
+            
+        </div>
     )
 }
 
-export default Cotizar;
+export default PDF;

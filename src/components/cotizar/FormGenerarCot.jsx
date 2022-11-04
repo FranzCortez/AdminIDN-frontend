@@ -8,16 +8,21 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
 import FormNuevoContenido from './FormNuevoContenido';
+import PDF from './pdf/PDF';
 
 function FormGenerarCot() {
 
     const { id } = useParams();
 
+    const [ cotizacionBackend, guardarCotizacionBackend ] = useState({});
     const [ herramienta, guardarHerramienta ] = useState({});
     const [ contenido, guardarContenido ] = useState([]);
     const [ cotizacion, guardarCotizacion ] = useState({
         fechaEvaluacion: '',
         fechaCotizacion: '',
+        condiciones: 'VALIDEZ DEL PRESUPUESTO ES DE 15 DÍAS.',
+        plazoEntrega: 'Inmediata, recibida la o/c',
+        garantia: 'GARANTÍA DE 3 MESES, SÓLO DE COMPONENTES CAMBIADOS O REPARADOS.',
         descuento: 0,
         subtotal: 0,
         neto: 0,
@@ -118,13 +123,38 @@ function FormGenerarCot() {
 
     const validarForm = () => {
         
-        const { fechaCotizacion, fechaEvaluacion, descuento } = cotizacion;
-                
-        if( (fechaCotizacion.length > 0 && fechaEvaluacion.length > 0 && descuento >= 0 && descuento.length > 0) ){
+        const { fechaCotizacion, fechaEvaluacion, descuento, condiciones, garantia, plazoEntrega } = cotizacion;
+        if( (fechaCotizacion.length > 0 && fechaEvaluacion.length > 0 && descuento >= 0 && descuento !== '' && condiciones.length > 0 && garantia.length > 0 && plazoEntrega.length > 0) ){
             return false;
         }
 
         return true;
+    }
+
+    const relleno = (data) => {
+        for (let i = 0; i < (10 - contenido.length); i++) {
+            data.push({});
+        }
+        return data;
+    }
+
+    const crearPDF = async () => {
+
+        guardarCotizacionBackend({
+            contenido: contenido,
+            ...cotizacion,
+            otin: herramienta.otin,
+            clienteContactoId: herramienta.clienteContactoId
+        });
+
+        if(contenido.length < 10) {
+            let guardar = [...contenido];
+            guardar = await relleno(guardar)
+            guardarContenido(guardar);
+        } 
+
+        document.querySelector(".card").style.display = "none";
+        document.querySelector("#pdfCreador").style.display = "block";
     }
 
     const consultarAPI = async () => {
@@ -135,7 +165,7 @@ function FormGenerarCot() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-    
+
             guardarHerramienta(res.data);
 
         } catch (error) {
@@ -178,7 +208,7 @@ function FormGenerarCot() {
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 
-                    <form>
+                    <form onSubmit={e => e.preventDefault()}>
 
                         <div className='campo'>
                             <label htmlFor="fechaEvaluacion">Fecha Evaluación<span className='campo__obligatorio'>*</span>:</label>
@@ -198,6 +228,43 @@ function FormGenerarCot() {
                                 id='fechaCotizacion'
                                 name='fechaCotizacion'
                                 placeholder='Fecha Cotización de la Herramienta'
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="condiciones">Condiciones<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='condiciones'
+                                name='condiciones'
+                                defaultValue={cotizacion.condiciones}
+                                placeholder='Condiciones'
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+
+                        <div className='campo'>
+                            <label htmlFor="plazoEntrega">Plazo Entrega<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='plazoEntrega'
+                                name='plazoEntrega'
+                                defaultValue={cotizacion.plazoEntrega}
+                                placeholder='Plazo de Entrega'
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="garantia">Garantía<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='garantia'
+                                name='garantia'
+                                placeholder='Garantía'
+                                defaultValue={cotizacion.garantia}
                                 onChange={actualizarState}
                             />
                         </div>
@@ -296,12 +363,15 @@ function FormGenerarCot() {
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
                                 value="Generar Cotización"
                                 disabled={validarForm()}
+                                onClick={crearPDF}
                             />
                         </div>
 
                     </form>
                 </div>
             </div>
+
+            <PDF contenido={contenido} cotizacion={cotizacion} herramienta={herramienta} cotizacionBackend={cotizacionBackend}/>
         </Fragment>
     )
 }

@@ -590,6 +590,10 @@ form .campo textarea{
 }
 
 /** PDF **/
+
+#pdfCreador{
+    display: none;
+}
 .pdf {
     display: flex;
     justify-content: center;
@@ -692,6 +696,7 @@ form .campo textarea{
 }
 .pdf table td {
     padding: 0.5rem 0;
+    height: 3.05rem;
 }
 .pdf__componente th{
     font-size: 1.5rem;

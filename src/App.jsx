@@ -28,7 +28,6 @@ import FromEditarTipoHerramienta from "./components/ingreso/tipoHerramienta/From
 /** COTIZADOR */
 import Cotizar from "./components/cotizar/Cotizar";
 import FormGenerarCot from "./components/cotizar/FormGenerarCot";
-import PDF from "./components/cotizar/pdf/PDF.jsx";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -69,7 +68,6 @@ function App() {
 
                         <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
-                        <Route path="/cotizacion/pdf" element={<PDF/>}/>
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
