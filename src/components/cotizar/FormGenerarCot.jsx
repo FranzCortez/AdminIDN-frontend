@@ -144,7 +144,8 @@ function FormGenerarCot() {
             contenido: contenido,
             ...cotizacion,
             otin: herramienta.otin,
-            clienteContactoId: herramienta.clienteContactoId
+            clienteContactoId: herramienta.clienteContactoId,
+            herramientumId: herramienta.id
         });
 
         if(contenido.length < 10) {
