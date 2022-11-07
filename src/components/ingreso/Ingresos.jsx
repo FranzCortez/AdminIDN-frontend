@@ -96,7 +96,7 @@ function Ingresos() {
                                     <th scope="col">N° Interno</th>
                                     <th scope="col">N° Serie</th>
                                     <th scope="col">Más Info</th>
-                                    <th scope="col">Foto Galería</th>
+                                    <th scope="col">Opciones</th>
                                     <th scope="col">Salida Equipo</th>
                                 </tr>
                             </thead>
