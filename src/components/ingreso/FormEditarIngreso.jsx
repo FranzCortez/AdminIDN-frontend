@@ -323,7 +323,7 @@ function FormEditarIngreso() {
                         <div className='campo'>
                             <label htmlFor="numeroSerie">N° Serie:</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 id='numeroSerie'
                                 name='numeroSerie'
                                 value={ingreso.numeroSerie}
@@ -335,7 +335,7 @@ function FormEditarIngreso() {
                         <div className='campo'>
                             <label htmlFor="numeroInterno">N° Interno:</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 id='numeroInterno'
                                 name='numeroInterno'
                                 value={ingreso.numeroInterno}
@@ -347,7 +347,7 @@ function FormEditarIngreso() {
                         <div className='campo'>
                             <label htmlFor="numeroGuiaCliente">N° Guía Cliente:</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 id='numeroGuiaCliente'
                                 name='numeroGuiaCliente'
                                 value={ingreso.numeroGuiaCliente}

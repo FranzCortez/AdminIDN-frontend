@@ -191,7 +191,7 @@ function FormNuevoIngreso() {
                         <div className='campo'>
                             <label htmlFor="numeroSerie">N° Serie:</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 id='numeroSerie'
                                 name='numeroSerie'
                                 placeholder='N° Serie de la Herramienta'
@@ -202,7 +202,7 @@ function FormNuevoIngreso() {
                         <div className='campo'>
                             <label htmlFor="numeroInterno">N° Interno:</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 id='numeroInterno'
                                 name='numeroInterno'
                                 placeholder='N° Interno de la Herramienta'
@@ -213,7 +213,7 @@ function FormNuevoIngreso() {
                         <div className='campo'>
                             <label htmlFor="numeroGuiaCliente">N° Guía Cliente:</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 id='numeroGuiaCliente'
                                 name='numeroGuiaCliente'
                                 placeholder='N° Guía Cliente de la Herramienta'
