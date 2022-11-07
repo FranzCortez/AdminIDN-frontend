@@ -61,7 +61,7 @@ function IngresoOpciones({ ingreso }) {
     return (
         <div>
         
-        <button className='btn-new btn-return' onClick={openModal}><FiSettings size={20}/></button>
+        <button className='btn-new btn-login' onClick={openModal}><FiSettings size={20}/></button>
 
         <Modal
             isOpen={modalIsOpen}

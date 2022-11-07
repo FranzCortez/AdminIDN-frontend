@@ -237,6 +237,14 @@ h2 {
 .btn-error:hover {
     background-color: var(--rojoOscuro);
 }
+.btn-naranja{
+    background-color: var(--naranjaClaro);
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+.btn-naranja:hover {
+    background-color: var(--naranjaOscuro);
+}
 
 /** LOGIN **/
 .login{

@@ -26,7 +26,7 @@ function IngresoInformacion(props) {
     
     return (
         <div>
-            <button className='btn-new btn-login' onClick={openModal}><TbFileInfo size={20}/></button>
+            <button className='btn-new btn-naranja' onClick={openModal}><TbFileInfo size={20}/></button>
 
             <Modal
                 isOpen={modalIsOpen}
