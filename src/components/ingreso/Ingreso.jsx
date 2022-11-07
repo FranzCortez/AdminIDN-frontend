@@ -5,6 +5,8 @@ import IngresoInformacion from './IngresoInformacion';
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
 
+import IngresoOpciones from './IngresoOpciones';
+
 function Ingreso({datos}) {
 
     const [ ingreso, guardarIngreso ] = useState({});
@@ -52,14 +54,10 @@ function Ingreso({datos}) {
             </td>
             <td>
                 <div className='table__opciones' onClick={consultarAPI}>
-                    FOTO
+                    <IngresoOpciones ingreso={ingreso}/>
                 </div>                
             </td>
-            <td>
-                <div className='table__opciones' onClick={consultarAPI}>
-                    SALIDA
-                </div>                
-            </td>
+            <td>SALIDA</td>
         </tr>
     )
 }

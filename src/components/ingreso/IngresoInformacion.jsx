@@ -34,7 +34,7 @@ function IngresoInformacion(props) {
             >
 
                 <p onClick={closeModal} className="modal__close"><AiOutlineClose/></p> 
-                <h2 className='modal__titulo'>Información Extra de "{props.nombre}"</h2>
+                <h1 className='modal__titulo'>Información Extra de "{props.nombre}"</h1>
                 <div className='modal__grid'>
 
                     <div className='modal__herramienta'>
@@ -71,13 +71,9 @@ function IngresoInformacion(props) {
                     </div>
                 </div>
 
-                <div className='modal__grid'>
-                    <Link to={`editar/${ingreso.id}`} className="btn-new btn-return">
-                        <FiEdit size={25}/> Editar Ingreso
-                    </Link>
-                    <button>generar cotizacion</button>
-                </div>
-                
+                <Link to={`editar/${ingreso.id}`} className="btn-new btn-return">
+                    <FiEdit size={25}/> Editar Ingreso
+                </Link>
             </Modal>
         </div>
     );
