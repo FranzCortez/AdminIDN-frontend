@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineClose, AiOutlineDownload } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineDownload, AiFillPicture } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineRequestQuote, MdPhotoCamera } from "react-icons/md";
 import Modal from 'react-modal';
@@ -79,13 +79,14 @@ function IngresoOpciones({ ingreso }) {
 
                     <h2 className='modal__titulo'>Foto Galería</h2>
                     
-                    <Link to={``} className="btn-new btn-login">
-                        <MdPhotoCamera size={25}/> Ver Foto Galería
+                    <Link to={`/fotogaleria/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
+                        <MdPhotoCamera size={25}/> Subir Fotos
                     </Link>
 
-                    {/* <Link to={``} className="btn-new btn-return">
-                        <FiEdit size={25}/> Editar Ingreso
-                    </Link> */}
+                    <Link to={``} className="btn-new btn-login">
+                        <AiFillPicture size={25}/> Ver Foto Galería
+                    </Link>
+
                 </div>
 
                 <div className='modal__herramienta modal__opciones'>
