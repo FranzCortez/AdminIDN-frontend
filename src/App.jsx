@@ -29,6 +29,9 @@ import FromEditarTipoHerramienta from "./components/ingreso/tipoHerramienta/From
 import Cotizar from "./components/cotizar/Cotizar";
 import FormGenerarCot from "./components/cotizar/FormGenerarCot";
 
+/** FOTO GALERIA */
+import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
+
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
 import FormNuevoUsuario from "./components/usuarios/FormNuevoUsuario";
@@ -68,6 +71,8 @@ function App() {
 
                         <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
+
+                        <Route path="/fotogaleria/nuevo/:id" element={<FormFotoGaleria/>}/>
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />

@@ -543,6 +543,16 @@ form .campo textarea{
     flex: 1;
     border: 1px solid #e1e1e1;
 }
+form .foto {
+    padding: 1.5rem;
+    flex: 1;
+    border: 1px solid #e1e1e1;
+    width: 100%;
+}
+form .centerFlex {
+    justify-content: center;
+}
+
 .porcentaje {
     background-color: var(--naranjaClaro);
     height: 5.1rem;
