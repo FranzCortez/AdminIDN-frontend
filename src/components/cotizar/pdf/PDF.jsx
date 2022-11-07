@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import { AiOutlineDownload } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
+import moment from "moment";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
 function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
+
+    moment.locale('es')
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -145,19 +148,19 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
 
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE INGRESO: </span>{herramienta?.fecha}</p>
+                                <p><span>FECHA DE INGRESO: </span>{moment(herramienta?.fecha).format('L')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>GUIA DE DESPACHO: </span>{herramienta?.fechaGuiaDespacho ? herramienta?.fechaGuiaDespacho : ''}</p>
+                                <p><span>GUIA DE DESPACHO: </span>{herramienta?.fechaGuiaDespacho ? moment(herramienta?.fechaGuiaDespacho).format('L') : ''}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE EVALUACION: </span>{cotizacion?.fechaEvaluacion}</p>
+                                <p><span>FECHA DE EVALUACION: </span>{moment(cotizacion?.fechaEvaluacion).format('L')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE COTIZACION: </span>{cotizacion?.fechaCotizacion}</p>
+                                <p><span>FECHA DE COTIZACION: </span>{moment(cotizacion?.fechaCotizacion).format('L')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>

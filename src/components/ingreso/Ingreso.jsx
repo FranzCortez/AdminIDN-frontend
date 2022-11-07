@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import IngresoInformacion from './IngresoInformacion';
+import moment from "moment";
 
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
@@ -31,6 +32,8 @@ function Ingreso({datos}) {
         }
     }
 
+    moment.locale('es')
+
     useEffect(() => {                
         if(auth.token === '' && !(auth.tipo === 1 || auth.tipo === 2) ) {
             navigate('/login', {replace: true});
@@ -41,7 +44,7 @@ function Ingreso({datos}) {
         <tr className='table__tr'>
             <td>{datos.otin}</td>
             <td>{datos.clienteContacto.clienteEmpresa.nombre}</td>
-            <td>{datos.fecha}</td>
+            <td>{moment(datos.fecha).format('L')}</td>
             <td>{datos.nombre}</td>
             <td>{datos.marca}</td>
             <td>{datos.modelo}</td>

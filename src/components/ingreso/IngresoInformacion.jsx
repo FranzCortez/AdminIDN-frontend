@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineClose } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { TbFileInfo } from "react-icons/tb";
+import moment from 'moment';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -20,6 +21,8 @@ function IngresoInformacion(props) {
     function closeModal() {
         setIsOpen(false);
     }
+
+    moment.locale('es')
     
     return (
         <div>
@@ -42,7 +45,7 @@ function IngresoInformacion(props) {
 
                         <p>OTIN: <span>{ingreso?.otin}</span></p>
                         <p>Nombre: <span>{ingreso?.nombre}</span></p>
-                        <p>Fecha Ingreso: <span>{ingreso?.fecha}</span></p>
+                        <p>Fecha Ingreso: <span>{moment(ingreso?.fecha).format('L')}</span></p>
                         <p>Tipo de Herramienta: <span>{ingreso?.tipoHerramientum?.nombre}</span></p>
                         <p>Marca: <span>{ingreso?.marca}</span></p>
                         <p>Modelo: <span>{ingreso?.modelo}</span></p>
