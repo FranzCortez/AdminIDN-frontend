@@ -389,6 +389,15 @@ h2 {
         padding-left: 4rem;
     }
 }
+.card-grid-img {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+.card-img-grid {
+    width: 38rem;
+    height: 38rem;
+}
 
 /** table **/
 .table__center th{

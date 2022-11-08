@@ -30,6 +30,7 @@ import Cotizar from "./components/cotizar/Cotizar";
 import FormGenerarCot from "./components/cotizar/FormGenerarCot";
 
 /** FOTO GALERIA */
+import FotoGaleria from "./components/fotogaleria/FotoGaleria";
 import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
 
 /** USUARIOS */
@@ -72,6 +73,7 @@ function App() {
                         <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
 
+                        <Route path="/fotogaleria/:id" element={<FotoGaleria/>}/>
                         <Route path="/fotogaleria/nuevo/:id" element={<FormFotoGaleria/>}/>
 
                         <Route path="/usuarios" element={<Usuarios/>} /> 
