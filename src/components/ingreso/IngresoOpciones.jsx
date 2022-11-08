@@ -83,7 +83,7 @@ function IngresoOpciones({ ingreso }) {
                         <MdPhotoCamera size={25}/> Subir Fotos
                     </Link>
 
-                    <Link to={``} className="btn-new btn-login">
+                    <Link to={`/fotogaleria/${ingreso.id}`} className="btn-new btn-login">
                         <AiFillPicture size={25}/> Ver Foto Galería
                     </Link>
 
