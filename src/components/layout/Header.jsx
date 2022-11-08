@@ -53,11 +53,11 @@ function Header() {
             texto: 'Tipo Herramienta',
             icono: <VscTools size={50} color={"#333333"}/>
         },
-        {
-            ruta: '/cotizacion',
-            texto: 'Cotización',
-            icono: <MdOutlineRequestQuote size={50} color={"#333333"}/>
-        },
+        // {
+        //     ruta: '/cotizacion',
+        //     texto: 'Cotización',
+        //     icono: <MdOutlineRequestQuote size={50} color={"#333333"}/>
+        // },
         {
             ruta: '/informe',
             texto: 'Informe',
