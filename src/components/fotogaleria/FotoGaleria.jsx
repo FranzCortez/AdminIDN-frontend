@@ -27,7 +27,7 @@ function FotoGaleria() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
+            console.log(res.data.rutas.length  === 0)
             guardarFotos(res.data);
             
         } catch (error) {
@@ -58,7 +58,7 @@ function FotoGaleria() {
 
                     <Link to={'/ingresos'} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
 
-                    <Link to={"tipoherramienta"} type="button" className="btn-new btn-error">
+                    <Link to={`/fotogaleria/eliminar/${id}`} type="button" className="btn-new btn-error">
                         <RiDeleteBin2Line size={25}/> Seleccionar y Eliminar Foto
                     </Link>
 
@@ -68,7 +68,7 @@ function FotoGaleria() {
                 </div>
 
                     {
-                        fotos.rutas ? 
+                        fotos.rutas && fotos.rutas?.length !== 0 ? 
                         null
                         :
                         <h1 className='card-body-subtitle'>Aun no hay fotos</h1>
@@ -77,11 +77,11 @@ function FotoGaleria() {
                     <div className='card-grid-img'> 
                         
                         {
-                            fotos.rutas ? 
+                            fotos.rutas && fotos.rutas?.length !== 0 ? 
                             fotos.rutas.map( (foto, index) => (
                                 <img className='card-img-grid' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} key={index} alt="" />
                             ))
-                            :
+                            :                            
                             <h2 className='card-body-subtitle'>Agregue fotos a esta OTIN para poder verlas</h2>
                         }
 

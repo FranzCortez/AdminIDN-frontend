@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineDownload, AiFillPicture } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
+import { RiDeleteBin2Line } from "react-icons/ri";
 import { MdOutlineRequestQuote, MdPhotoCamera } from "react-icons/md";
 import Modal from 'react-modal';
 
@@ -85,6 +86,10 @@ function IngresoOpciones({ ingreso }) {
 
                     <Link to={`/fotogaleria/${ingreso.id}`} className="btn-new btn-login">
                         <AiFillPicture size={25}/> Ver Foto Galería
+                    </Link>
+
+                    <Link to={`/fotogaleria/eliminar/${ingreso.id}`} type="button" className="btn-new btn-error">
+                        <RiDeleteBin2Line size={25}/> Seleccionar y Eliminar Foto
                     </Link>
 
                 </div>
