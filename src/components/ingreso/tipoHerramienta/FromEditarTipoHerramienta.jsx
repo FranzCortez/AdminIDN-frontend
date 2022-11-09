@@ -52,7 +52,7 @@ function FromEditarTipoHerramienta() {
             });
 
             Swal.fire({
-                title: 'Se actualizo correctamente el tipo de herramienta',
+                title: 'Se actualizó correctamente el tipo de Herramienta',
                 text: res.data.msg,
                 type: 'success',
                 timer: 3500

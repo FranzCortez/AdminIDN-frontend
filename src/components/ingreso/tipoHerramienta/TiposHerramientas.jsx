@@ -128,7 +128,7 @@ function TiposHerramientas() {
                                         herramientas.map((datos) => (
                                             <TipoHerramientaTabla datos={datos} key={datos.id}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay tipos de herramienta registrados o nadie coincide con la búsqueda </p></td></tr>
+                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay Tipos de Herramienta registrados o nadie coincide con la búsqueda </p></td></tr>
                                 }
                             </tbody>
                         </table>

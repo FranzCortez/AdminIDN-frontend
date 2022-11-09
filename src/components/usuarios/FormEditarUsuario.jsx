@@ -68,7 +68,7 @@ function FormEditarUsuario() {
             });
 
             Swal.fire({
-                title: 'Se actualizo correctamente al usuario',
+                title: 'Se actualizó correctamente al usuario',
                 text: res.data.msg,
                 type: 'success',
                 timer: 1500

@@ -8,7 +8,7 @@ function FormBuscarTipoHerramienta(props) {
                     type="text" 
                     id='buscar'
                     name='buscar'
-                    placeholder='Buscar por tipo de herramienta'
+                    placeholder='Buscar por tipo de Herramienta'
                     onChange={props.leerBusqueda}
                 />
                 <input

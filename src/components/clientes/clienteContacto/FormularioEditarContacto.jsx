@@ -53,7 +53,7 @@ function FormularioEditarContacto() {
             });
 
             Swal.fire({
-                title: 'Se actualizo correctamente el contacto',
+                title: 'Se actualizó correctamente el contacto',
                 text: res.data.msg,
                 type: 'success',
                 timer: 2500

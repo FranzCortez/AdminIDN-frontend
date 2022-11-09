@@ -54,7 +54,7 @@ function FormularioEditarEmpresa() {
             });
 
             Swal.fire({
-                title: 'Se actualizo correctamente la empresa',
+                title: 'Se actualizó correctamente la empresa',
                 text: res.data.msg,
                 type: 'success',
                 timer: 2500
