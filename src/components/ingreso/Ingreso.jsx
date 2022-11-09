@@ -48,8 +48,8 @@ function Ingreso({datos}) {
             <td>{datos.nombre}</td>
             <td>{datos.marca}</td>
             <td>{datos.modelo}</td>
-            <td>{datos.numeroInterno}</td>
             <td>{datos.numeroSerie}</td>
+            <td>{datos.numeroInterno}</td>
             <td>
                 <div className='table__opciones' onClick={consultarAPI}>
                     <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}/>

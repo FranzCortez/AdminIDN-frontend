@@ -93,8 +93,8 @@ function Ingresos() {
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Marca</th>
                                     <th scope="col">Modelo</th>
-                                    <th scope="col">N° Interno</th>
                                     <th scope="col">N° Serie</th>
+                                    <th scope="col">N° Interno</th>
                                     <th scope="col">Más Info</th>
                                     <th scope="col">Opciones</th>
                                     <th scope="col">Salida Equipo</th>
