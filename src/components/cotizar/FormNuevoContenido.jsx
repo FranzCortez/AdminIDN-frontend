@@ -45,6 +45,12 @@ function FormNuevoContenido({actualizarContenido, activo}) {
         e.preventDefault();
         closeModal();
         actualizarContenido(contenido);
+        guardarContenido({
+            nombre: '',
+            descripcion: '',
+            cantidad: '',
+            valor: '',
+        });
     }
 
     return (
