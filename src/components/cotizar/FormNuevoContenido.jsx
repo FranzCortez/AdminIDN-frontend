@@ -113,7 +113,7 @@ function FormNuevoContenido({actualizarContenido, activo}) {
                         <input 
                             type="submit" 
                             className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                            value="Crear Nuevo Cliente Empresa"
+                            value="Generar Nuevo Cobro"
                             disabled={validarForm()}
                         />
                     </div>

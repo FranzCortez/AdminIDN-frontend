@@ -22,7 +22,6 @@ function IngresoInformacion(props) {
         setIsOpen(false);
     }
 
-    moment.locale('es')
     
     return (
         <div>
@@ -45,7 +44,7 @@ function IngresoInformacion(props) {
 
                         <p>OTIN: <span>{ingreso?.otin}</span></p>
                         <p>Nombre: <span>{ingreso?.nombre}</span></p>
-                        <p>Fecha Ingreso: <span>{moment(ingreso?.fecha).format('L')}</span></p>
+                        <p>Fecha Ingreso: <span>{moment(ingreso?.fecha).format('DD/MM/YYYY')}</span></p>
                         <p>Tipo de Herramienta: <span>{ingreso?.tipoHerramientum?.nombre}</span></p>
                         <p>Marca: <span>{ingreso?.marca}</span></p>
                         <p>Modelo: <span>{ingreso?.modelo}</span></p>

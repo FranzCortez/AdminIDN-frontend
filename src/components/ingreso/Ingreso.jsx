@@ -32,7 +32,7 @@ function Ingreso({datos}) {
         }
     }
 
-    moment.locale('es')
+    moment.locale('es-mx')
 
     useEffect(() => {                
         if(auth.token === '' && !(auth.tipo === 1 || auth.tipo === 2) ) {
@@ -44,7 +44,7 @@ function Ingreso({datos}) {
         <tr className='table__tr'>
             <td>{datos.otin}</td>
             <td>{datos.clienteContacto.clienteEmpresa.nombre}</td>
-            <td>{moment(datos.fecha).format('L')}</td>
+            <td>{moment(datos.fecha).format('DD/MM/YYYY')}</td>
             <td>{datos.nombre}</td>
             <td>{datos.marca}</td>
             <td>{datos.modelo}</td>

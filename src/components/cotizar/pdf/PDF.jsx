@@ -10,7 +10,7 @@ import { CRMContext } from '../../context/CRMContext';
 
 function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
 
-    moment.locale('es')
+    moment.locale('es-mx')
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -148,19 +148,19 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
 
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE INGRESO: </span>{moment(herramienta?.fecha).format('L')}</p>
+                                <p><span>FECHA DE INGRESO: </span>{moment(herramienta?.fecha).format('DD/MM/YYYY')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>GUIA DE DESPACHO: </span>{herramienta?.fechaGuiaDespacho ? moment(herramienta?.fechaGuiaDespacho).format('L') : ''}</p>
+                                <p><span>GUIA DE DESPACHO: </span>{herramienta?.fechaGuiaDespacho ? moment(herramienta?.fechaGuiaDespacho).format('DD/MM/YYYY') : ''}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE EVALUACION: </span>{moment(cotizacion?.fechaEvaluacion).format('L')}</p>
+                                <p><span>FECHA DE EVALUACION: </span>{moment(cotizacion?.fechaEvaluacion).format('DD/MM/YYYY')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE COTIZACION: </span>{moment(cotizacion?.fechaCotizacion).format('L')}</p>
+                                <p><span>FECHA DE COTIZACION: </span>{moment(cotizacion?.fechaCotizacion).format('DD/MM/YYYY')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
@@ -270,8 +270,8 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                             </div>
                             <div className='pdf__pie-compra-campos'>
                                 <p><span>DIRECCIÓN: </span>NICOLÁS TIRADO No. 150, ANTOFAGASTA</p>
-                                <p><span>TELÉFONO: </span>+56978950016</p>
-                                <p><span>CORREO: </span>impactodelnorte@gmail.com</p>
+                                <p><span>TELÉFONO: </span>+56 978 950 016</p>
+                                <p><span>CORREO: </span>gerencia@impactodelnorte.cl</p>
                             </div>
                         </div>
                     </div>
