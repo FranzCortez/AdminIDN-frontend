@@ -68,11 +68,11 @@ function Header() {
             texto: 'Facturas',
             icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
         },
-        {
-            ruta: '/qr',
-            texto: 'QR',
-            icono: <ImQrcode size={50} color={"#333333"}/>
-        }        
+        // {
+        //     ruta: '/qr',
+        //     texto: 'QR',
+        //     icono: <ImQrcode size={50} color={"#333333"}/>
+        // }        
     ]
 
     if(auth.tipo === 1) {

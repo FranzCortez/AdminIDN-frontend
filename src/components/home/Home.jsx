@@ -30,9 +30,15 @@ function Home() {
                     <div className='card-body-options'>
                         
                         <div className='home'>
-                            <h1>BIENVENIDO A LA VERSION 2.1</h1>
+                            <h1>BIENVENIDO A LA VERSION 3.0</h1>
                             <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
                             <div className='info'>
+                                <p>Información de la actualización 3.0:</p>
+                                <ul>
+                                    <li>Salida de Equipo</li>
+                                    <li>Creación de Codigo QR</li>
+                                    <li>Posibilidad de editar la fecha de proxima mantecion</li>
+                                </ul>
                                 <p>Información de la actualización 2.1:</p>
                                 <ul>
                                     <li>Corrección de Bugs</li>
