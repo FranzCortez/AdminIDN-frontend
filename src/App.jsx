@@ -35,6 +35,7 @@ import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
 import FormEliminarGaleria from "./components/fotogaleria/FormEliminarGaleria";
 
 /** QR */
+import FormQr from "./components/qr/FormQr";
 import Qr from "./components/qr/Qr";
 
 /** USUARIOS */
@@ -77,7 +78,8 @@ function App() {
                         <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
 
-                        <Route path="/qr/:id" element={<Qr/>}/>
+                        <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
+                        <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
 
                         <Route path="/mantencion/:token/:id" element={<Cotizar/>}/>
 

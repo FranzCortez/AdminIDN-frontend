@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IngresoInformacion from './IngresoInformacion';
+import { IoQrCodeOutline } from "react-icons/io5";
+import { BsBoxArrowInRight } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
 import moment from "moment";
+import Swal from 'sweetalert2';
 
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
 
+import IngresoInformacion from './IngresoInformacion';
 import IngresoOpciones from './IngresoOpciones';
 
 function Ingreso({datos}) {
@@ -15,6 +19,40 @@ function Ingreso({datos}) {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
+
+    const generarQR = () => {
+        Swal.fire ({
+            title: '¿Estás seguro de marcar la salida de la herramienta?',
+            text: "¡Solo se puede generar 1 vez el código Qr por herramienta!",
+            type: 'warning',
+            showCancelButton : true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: "#d33",
+            confirmButtonText : 'Si, Generar!',
+            cancelButtonText: 'Cancelar'
+        }).then( (result) => {
+            if (result.value) {
+                navigate(`/qr/form/${datos.id}/${1}`, {replace: true});
+            }
+        });
+    }
+
+    const editarQR = () => {
+        Swal.fire ({
+            title: '¿Estás seguro de querer modificar la fecha de próxima mantención?',
+            text: "¡El Qr se mantendra pero se cambiara la fecha!",
+            type: 'warning',
+            showCancelButton : true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: "#d33",
+            confirmButtonText : 'Si, Modificar!',
+            cancelButtonText: 'Cancelar'
+        }).then( (result) => {
+            if (result.value) {
+                navigate(`/qr/form/${datos.id}/${2}`, {replace: true});
+            }
+        });
+    }
 
     const consultarAPI = async () => {
         
@@ -60,9 +98,27 @@ function Ingreso({datos}) {
                     <IngresoOpciones ingreso={ingreso}/>
                 </div>                
             </td>
-            <td>SALIDA</td>
+            <td>
+                <div className='table__opciones'>
+                    {
+                        datos.activo ? 
+
+                        <button type='button' className={"btn-new btn-success-new"} onClick={generarQR}>
+                            <BsBoxArrowInRight size={25}/>
+                            <IoQrCodeOutline size={25}/>
+                        </button>
+
+                        :
+
+                        <button type='button' className={"btn-new btn-return"} onClick={editarQR}>
+                            <FiEdit size={25}/>
+                            <IoQrCodeOutline size={25}/>
+                        </button>
+                    }
+                </div>                
+            </td>
         </tr>
     )
 }
 
-export default Ingreso;
+export default Ingreso;  

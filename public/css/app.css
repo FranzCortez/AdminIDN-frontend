@@ -844,6 +844,10 @@ form .centerFlex {
     font-size: 2rem;
 }
 
+.clickblock { 
+    cursor: not-allowed;
+}
+
 /** QR **/
 .qr {
     display: flex;
