@@ -18,8 +18,9 @@ function FormQr() {
     const yyyy = today.getFullYear();
     const fechaActual = `${yyyy}-${mm}-${dd}`
 
-    const [ mantencion, guardarMantencion ] = useState({
-        fecha: '',
+    const [ mantencionFecha, guardarMantencionFecha ] = useState({
+        mantencion: '',
+        proxima: '',
     });
     
     // usar context
@@ -29,17 +30,17 @@ function FormQr() {
 
     const actualizarState = e => {
         
-        guardarMantencion({
-            ...mantencion,
+        guardarMantencionFecha({
+            ...mantencionFecha,
             [e.target.name] : e.target.value
         });
     }
 
     const validarForm = () => {
 
-        const { fecha } = mantencion;
+        const { mantencion, proxima } = mantencionFecha;
         
-        if( !(!fecha.length) ){
+        if( !(!mantencion.length || !proxima.length) ){
             return false;
         }
 
@@ -50,7 +51,7 @@ function FormQr() {
 
         try {
 
-            const res = await clienteAxios.put(`qr/${id}`, mantencion,{
+            const res = await clienteAxios.put(`qr/${id}`, mantencionFecha,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -58,7 +59,7 @@ function FormQr() {
 
             Swal.fire({
                 type: 'Actualización Correcta',
-                title: 'Fecha de mantención cambiada para el ' + moment(mantencion.fecha).format('DD/MM/YYYY'),
+                title: 'Fecha de mantención cambiada para el ' + moment(mantencionFecha.proxima).format('DD/MM/YYYY'),
                 text: res.data.msg,
                 timer: 2500
             });
@@ -72,12 +73,12 @@ function FormQr() {
 
     const crearQr = async () => {        
         try {
-            const res = await clienteAxios.post(`qr/${id}`, mantencion, {
+            const res = await clienteAxios.post(`qr/${id}`, mantencionFecha, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            console.log(res.data)
+            
             return res.data;
             
         } catch (error) {
@@ -107,7 +108,10 @@ function FormQr() {
                 }
             });
             
-            guardarMantencion({fecha: res.data.mantencion});
+            guardarMantencionFecha({
+                mantencion: res.data.mantencion,
+                proxima: res.data.proxima
+            });
             
         } catch (error) {
             console.log(error);
@@ -126,8 +130,9 @@ function FormQr() {
         if(tipo === '2') {
             consultarAPI()
         } else if (tipo === '1') {
-            guardarMantencion({
-                fecha: fechaActual
+            guardarMantencionFecha({
+                mantencion: fechaActual,
+                proxima: ''
             })
         }    
     },[]);
@@ -155,12 +160,23 @@ function FormQr() {
 
                     <form onSubmit={enviarForm}>
                         <div className='campo'>
-                            <label htmlFor="fecha">Fecha Próxima Mantención<span className='campo__obligatorio'>*</span>:</label>
+                            <label htmlFor="mantencion">Fecha Mantención<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="date" 
-                                id='fecha'
-                                name='fecha'
-                                defaultValue={mantencion.fecha}
+                                id='mantencion'
+                                name='mantencion'
+                                defaultValue={mantencionFecha.mantencion}
+                                onChange={actualizarState}
+                            />
+                        </div>
+                        
+                        <div className='campo'>
+                            <label htmlFor="proxima">Fecha Próxima Mantención<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="date" 
+                                id='proxima'
+                                name='proxima'
+                                defaultValue={mantencionFecha.proxima}
                                 onChange={actualizarState}
                             />
                         </div>

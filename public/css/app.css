@@ -285,6 +285,9 @@ h2 {
     display: flex;
     justify-content: space-between;
 }
+.header--left {
+    justify-content: flex-end;
+}
 .header__logo{
     width: 15rem;
     margin: 1rem;
@@ -859,4 +862,44 @@ form .centerFlex {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+/** Mantencion **/
+.mantencion {
+    background-color: var(--naranjaClaro);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.mantencion__fecha-m {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #212529;
+}
+.mantencion__fecha {
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #000;
+}
+.mantencion__titulo {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.mantencion__cuerpo {
+    text-align: center;
+    font-weight: 700;
+}
+.mantencion__cuerpo span{
+    font-weight: 400;
+}
+.mantecion__redes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mantencion__img {
+    width: 15rem;
+    height: 15rem;
 }
