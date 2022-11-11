@@ -843,3 +843,16 @@ form .centerFlex {
 .font-2 .table__tr:last-child{
     font-size: 2rem;
 }
+
+/** QR **/
+.qr {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.qr_code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
