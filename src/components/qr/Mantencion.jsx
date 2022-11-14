@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { GrHostMaintenance } from "react-icons/gr";
+import { useParams, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 import clienteAxios from '../../config/axios';
@@ -12,6 +11,8 @@ function Mantencion() {
     const [ mantencion, guardarMantencion ] = useState('');
     const [ proxima, guardarProxima ] = useState('');
     const [ info, guardarInfo ] = useState({});
+
+    let navigate = useNavigate();
  
     const whatsapp = () => {
         
@@ -47,10 +48,10 @@ function Mantencion() {
             guardarMantencion(res.data.mantencion);
             guardarProxima(res.data.proxima);
             guardarInfo(res.data.ingreso);
-            console.log(res.data.ingreso)
 
         } catch (error) {
             console.log(error)
+            navigate("/", { replace: true });
         }
 
     }

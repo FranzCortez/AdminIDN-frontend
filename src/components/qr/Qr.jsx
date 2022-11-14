@@ -35,8 +35,8 @@ function Qr() {
         <QrCode
             id='qrCodeId'
             size={1000}
-            // value={`https://www.impactodelnorte.cl/#/mantencion/${token}/${id}`}
-            value={`http://localhost:3000/#/mantencion/${token}/${id}`}
+            value={`https://impactodelnorte.cl/#/mantencion/${token}/${id}`}
+            // value={`http://localhost:3000/#/mantencion/${token}/${id}`}
             bgColor="white"
             fgColor="black"
             level='H'
