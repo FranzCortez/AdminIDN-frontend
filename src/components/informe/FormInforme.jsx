@@ -61,16 +61,43 @@ function FormInforme() {
         guardarPrimero(datos);
     }
     
-    const guardarDatosSegundo = (fotosPrimero, textoPrimero, fotosSegundo, textoSegundo) => {
+    const guardarDatosSegundo = async (fotosPrimero, textoPrimero, fotosSegundo, textoSegundo) => {
+
+        guardarSegundoFotoA(await consultarBase(fotosPrimero));
+        guardarSegundoFotoB(await consultarBase(fotosSegundo));
         
-        guardarSegundoFotoA(fotosPrimero);
         guardarSegundoTextoA(textoPrimero);
-        guardarSegundoFotoB(fotosSegundo);
         guardarSegundoTextoB(textoSegundo);
     }
 
     const guardarDatosTercero = (datos) => {
-        guardarTercero(datos);
+
+        const conclusion = datos.conclusion.split("\n");
+        const falla = datos.falla.split("\n");
+        const recomendacion = datos.recomendacion.split("\n");
+
+        guardarTercero({
+            conclusion,
+            falla,
+            recomendacion
+        });
+    }
+
+    const consultarBase = async (fotos) => {
+        try {
+            console.log("entre")
+            const res = await clienteAxios.post(`ih/base/foto`, {fotos: fotos}, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            return res.data;
+
+        } catch (error) {
+            console.log(error)
+            navigate('/ingresos', {replace: true});
+        }
     }
 
     const consultarAPI = async () => {
@@ -82,12 +109,12 @@ function FormInforme() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            console.log(res.data)
+            
             guardarHerramienta(res.data);
 
         } catch (error) {
             console.log(error)
-            // navigate('/ingresos', {replace: true});
+            navigate('/ingresos', {replace: true});
         }
     }
 

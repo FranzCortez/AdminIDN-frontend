@@ -6,11 +6,6 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
 
     const pdfcrear = () => {
 
-        // ca();
-        // console.log(document.getElementById(3));
-        // var base64 = getBase64Image(document.getElementById(3));
-        // console.log(base64)
-
         html2pdf()
         .set({
             margin: 0,
@@ -76,78 +71,6 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
         });
     }
 
-
-    const toDataUrl = async function (url, callback) {
-      //Convert to base64
-      return new Promise((resolve, reject) => {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          var reader = new FileReader();
-          reader.onloadend = function () {
-            resolve(reader.result);
-          };
-          reader.readAsDataURL(xhr.response);
-        };
-        xhr.onerror = () => {
-          reject({
-            status: this.status,
-            statusText: xhr.statusText,
-          });
-        };
-        xhr.open("GET", url);
-        xhr.responseType = "blob";
-        xhr.send();
-      });
-    };
-
-    const ca = () => {
-        console.log("hola")
-        var c=document.getElementById("myCanvas");
-        console.log(c)
-        var ctx=c.getContext("2d");
-        console.log(ctx)
-        console.log(segundoFotoB)
-        segundoFotoB.map(foto => {
-            console.log(foto)
-            var img=document.getElementById(foto);
-            console.log(img)
-            ctx.drawImage(img,10,10);
-        })
-    };
-
-
-    async function  exportToPDF() {
-  
-        // variables as  example
-        let imagesUrls = [
-          "https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg",
-          "https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg",
-          "https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg",
-        ];
-        let content = "";
-        content += "<h1> Test of html2pdf </h1>";
-  
-        //Converting to base 64 and adding to content
-        for (let url of imagesUrls) {
-          let urlBase64 = await toDataUrl(url);
-          content += '<img src="' + urlBase64 + '" width="600" ><br>';
-        }
-        content += "<h3> End of test </h3>";
-    
-        // Images do not appear as "content" is changed after the call (asynchronous call to ToDataUrl)
-    }
-
-    function getBase64Image(img) {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        console.log(canvas)
-        console.log(ctx)
-        var dataURL = canvas.toDataURL("image/jpeg");
-        return dataURL.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-    }      
     
     return (
 
@@ -237,12 +160,12 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                                         {
                                             segundoFotoA?.length > 0 ? 
                                             segundoFotoA?.map( (foto, index) => (                                            
-                                                <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} id={index*3} crossOrigin="anonymous" />
+                                                <img className='info__img' src={`data:image/jpeg;base64,${foto}`} alt="" key={index} />
                                             ))
                                             :
                                             <p>No existen imagenes</p>
                                         }
-                                        {/* <img className='info__img' src={`data:image/jpeg;base64,${segundoFotoA}`} alt="" /> */}
+                                        {/* <img className='info__img' src={`data:image/jpeg;base64, `} alt="" /> */}
                                     </td>
                                 </tr>
                             </thead>
@@ -262,7 +185,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                                         {
                                             segundoFotoB?.length > 0 ? 
                                             segundoFotoB?.map( (foto, index) => (                                            
-                                                <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} id={foto} />
+                                                <img className='info__img' src={`data:image/jpeg;base64,${foto}`} alt="" key={index} />
                                             ))
                                             :
                                             <p>No existen imagenes</p>
@@ -285,23 +208,38 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                     <h2 className=''>OBSERVACIONES Y CONDICIONES GENERALES EN LA QUE SE ENCUENTRA EL EQUIPO, Y/O MEJORAS SUGERIDAS</h2>
                     <div className='info__falla'>
                         <h4>Equipo presenta las siguientes fallas:</h4>
-                        <p>{tercero?.falla}</p>
+                        {
+                            tercero?.falla ? 
+                            tercero?.falla.map( (text, index) => (
+                                <p key={index}>{text}</p>
+                            ))
+                            : 
+                            ''
+                        }
                         
                         {
-                            tercero?.conclusion?.length > 0 ? 
+                            tercero?.conclusion[0] !== '' ? 
                             <Fragment>
                                 <h4>CONCLUSIONES GENERALES:</h4>
-                                <p>{tercero?.conclusion}</p>
+                                {
+                                    tercero?.conclusion.map( (text, index) => (
+                                        <p key={index}>{text}</p>
+                                    ))
+                                }
                             </Fragment>
                             :
                             ''
                         }
 
                         {
-                            tercero?.recomendacion?.length > 0 ? 
+                            tercero?.recomendacion[0] !== '' ? 
                             <Fragment>
                                 <h4>RECOMENDACIONES  Y/O MEJORAS:</h4>
-                                <p>{tercero?.recomendacion}</p>
+                                {
+                                    tercero?.conclusion.map( (text, index) => (
+                                        <p key={index}>{text}</p>
+                                    ))
+                                }
                             </Fragment>
                             :
                             ''
