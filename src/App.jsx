@@ -29,6 +29,10 @@ import FromEditarTipoHerramienta from "./components/ingreso/tipoHerramienta/From
 import Cotizar from "./components/cotizar/Cotizar";
 import FormGenerarCot from "./components/cotizar/FormGenerarCot";
 
+/** INFORME */
+import Informe from "./components/informe/Informe";
+import FormInforme from "./components/informe/FormInforme";
+
 /** FOTO GALERIA */
 import FotoGaleria from "./components/fotogaleria/FotoGaleria";
 import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
@@ -78,6 +82,9 @@ function App() {
 
                         <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
+
+                        <Route path="/informe" element={<Informe/>}/>
+                        <Route path="/informe/nuevo/:id" element={<FormInforme/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
