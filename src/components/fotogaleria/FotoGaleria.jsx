@@ -27,7 +27,6 @@ function FotoGaleria() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            console.log(res.data.rutas.length  === 0)
             guardarFotos(res.data);
             
         } catch (error) {

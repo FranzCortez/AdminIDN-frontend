@@ -14,7 +14,8 @@ Modal.setAppElement('#root');
 function IngresoOpciones({ ingreso }) {
     
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [ ruta, guardarRuta ] = useState("");
+    const [ rutaCotizacion, guardarRutaCotizacion ] = useState("");
+    const [ rutaInforme, guardarRutaInforme ] = useState("");
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);    
@@ -37,14 +38,27 @@ function IngresoOpciones({ ingreso }) {
                 }
             });
             
-            guardarRuta(res.data?.rutaCotizacion ? res.data.rutaCotizacion : null);
+            guardarRutaCotizacion(res.data?.rutaCotizacion ? res.data.rutaCotizacion : null);
+
+            const resInfo = await clienteAxios.get(`ih/ingreso/informe/${ingreso.id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            }); 
+            
+            guardarRutaInforme(resInfo.data?.rutaInforme ? resInfo.data.rutaInforme : null)
 
         } catch (error) {
             console.log(error)
         }
     }
  
-    const download = () => {
+    const download = (ruta) => {
+
+        if( !ruta ) {
+            console.log(ruta)
+            return;
+        }
 
         let alink = document.createElement('a');
         alink.href = process.env.REACT_APP_BACKEND_URL_PUBLIC + ruta;
@@ -104,7 +118,7 @@ function IngresoOpciones({ ingreso }) {
                         <MdOutlineRequestQuote size={25}/> Generar Cotización
                     </Link>
 
-                    <div onClick={ ruta ? download : null} className={ ruta ? "btn-new btn-login" : "btn-new"}>
+                    <div onClick={() => download(rutaCotizacion)} className={ rutaCotizacion ? "btn-new btn-login" : "btn-new"}>
                         <AiOutlineDownload size={25}/> Descargar Cotización
                     </div>
                     
@@ -118,7 +132,7 @@ function IngresoOpciones({ ingreso }) {
                         <RiFileList2Line size={25}/> Generar Informe
                     </Link>
 
-                    <div onClick={ ruta ? download : null} className={ ruta ? "btn-new btn-login" : "btn-new"}>
+                    <div onClick={() => download(rutaInforme)} className={ rutaInforme ? "btn-new btn-login" : "btn-new"}>
                         <AiOutlineDownload size={25}/> Descargar Informe
                     </div>
                     

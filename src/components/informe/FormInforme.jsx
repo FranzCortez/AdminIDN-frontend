@@ -92,7 +92,7 @@ function FormInforme() {
 
     const consultarBase = async (fotos) => {
         try {
-            console.log("entre")
+            
             const res = await clienteAxios.post(`ih/base/foto`, {fotos: fotos}, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
@@ -167,6 +167,7 @@ function FormInforme() {
                 segundoTextoB={segundoTextoB}
                 tercero={tercero}
                 herramienta={herramienta}
+                id={id}
             />
         </Fragment>
     )
