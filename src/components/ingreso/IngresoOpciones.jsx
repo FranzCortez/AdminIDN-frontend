@@ -56,7 +56,6 @@ function IngresoOpciones({ ingreso }) {
     const download = (ruta) => {
 
         if( !ruta ) {
-            console.log(ruta)
             return;
         }
 

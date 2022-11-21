@@ -81,8 +81,6 @@ function FromEditarTipoHerramienta() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            console.log(res.data)
-
             guardarHerramienta(res.data);
         } catch (error) {
             if(error.request.status === 404 ) {
