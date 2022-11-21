@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { RiFileEditFill } from 'react-icons/ri';
 import { AiOutlineClose } from 'react-icons/ai';
+import { MdPhotoCamera } from 'react-icons/md';
 
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
@@ -118,12 +119,20 @@ function SeleccionImagen({ primero }) {
                 <form onSubmit={enviar}>
                     <div className='seleccion overflow-auto'>
                         {
-                            fotos.map((foto, index) => (
-                                <label htmlFor={index} key={index}>
-                                    <input type="checkbox" name={"foto"} value={foto} id={index} onChange={seleccionFotos} />
-                                    <img src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} id={index} />
-                                </label>
-                            ))
+                            fotos ? 
+                                fotos.map((foto, index) => (
+                                    <label htmlFor={index} key={index}>
+                                        <input type="checkbox" name={"foto"} value={foto} id={index} onChange={seleccionFotos} />
+                                        <img src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} id={index} />
+                                    </label>
+                                ))
+                            : 
+                                <div>
+                                    <p>No existen fotos, vaya la foto galería y suba fotos</p>
+                                    <Link to={`/fotogaleria/nuevo/${id}`} className="btn-new btn-success-new">
+                                        <MdPhotoCamera size={25}/> Subir Fotos
+                                    </Link>
+                                </div>
                         }
                     </div>
 

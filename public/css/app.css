@@ -173,6 +173,10 @@ h2 {
 .modal__opciones {
     width: 80rem;
 }
+.modal__opcion {
+    max-height: 40rem;
+    overflow-y: scroll;
+}
 
 /** BOTONES **/
 .btn-new{

@@ -83,7 +83,6 @@ function App() {
                         <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
 
-                        <Route path="/informe" element={<Informe/>}/>
                         <Route path="/informe/nuevo/:id" element={<FormInforme/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>

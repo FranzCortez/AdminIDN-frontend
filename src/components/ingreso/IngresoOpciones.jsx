@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineDownload, AiFillPicture } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
-import { RiDeleteBin2Line } from "react-icons/ri";
+import { RiDeleteBin2Line, RiFileList2Line } from "react-icons/ri";
 import { MdOutlineRequestQuote, MdPhotoCamera } from "react-icons/md";
 import Modal from 'react-modal';
 
@@ -74,7 +74,9 @@ function IngresoOpciones({ ingreso }) {
 
             <p onClick={closeModal} className="modal__close"><AiOutlineClose/></p> 
             <h1 className='modal__titulo'>Opciones</h1>
-            <div className=''>
+            <h2 className='modal__subtitulo'>Baje para ver más opciones</h2>
+
+            <div className='modal__opcion'>
 
                 <div className='modal__herramienta modal__opciones'>
 
@@ -108,10 +110,18 @@ function IngresoOpciones({ ingreso }) {
                     
                 </div>
 
-                <div>
-                    <div className='modal__herramienta'>
-                        
+                <div className='modal__herramienta modal__opciones'>
+
+                    <h2 className='modal__titulo'>Informe</h2>
+
+                    <Link to={`/informe/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
+                        <RiFileList2Line size={25}/> Generar Informe
+                    </Link>
+
+                    <div onClick={ ruta ? download : null} className={ ruta ? "btn-new btn-login" : "btn-new"}>
+                        <AiOutlineDownload size={25}/> Descargar Informe
                     </div>
+                    
                 </div>
             </div>
 
