@@ -74,7 +74,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
     
     return (
 
-        <Fragment>
+        <div id={'usuarioEmpresa'}>
             <div 
                 id="btnCrearPdf" 
                 className='btn-new btn-login' 
@@ -165,7 +165,6 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                                             :
                                             <p>No existen imagenes</p>
                                         }
-                                        {/* <img className='info__img' src={`data:image/jpeg;base64, `} alt="" /> */}
                                     </td>
                                 </tr>
                             </thead>
@@ -190,7 +189,6 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                                             :
                                             <p>No existen imagenes</p>
                                         }
-                                        {/* <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}/images/6XUCpGd4pA.jpeg`} alt="" /> */}
                                     </td>
                                 </tr>
                             </thead>
@@ -209,47 +207,54 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                     <div className='info__falla'>
                         <h4>Equipo presenta las siguientes fallas:</h4>
                         {
-                            tercero?.falla ? 
-                            tercero?.falla.map( (text, index) => (
-                                <p key={index}>{text}</p>
-                            ))
+                                tercero?.falla ? 
+                                tercero?.falla.map( (text, index) => (
+                                    <p key={index}>{text}</p>
+                                ))
                             : 
-                            ''
+                                ''
                         }
                         
                         {
                             tercero?.conclusion[0] !== '' ? 
-                            <Fragment>
-                                <h4>CONCLUSIONES GENERALES:</h4>
-                                {
-                                    tercero?.conclusion.map( (text, index) => (
-                                        <p key={index}>{text}</p>
-                                    ))
-                                }
-                            </Fragment>
+                                tercero?.conclusion[0] !== '' ?
+                                    <Fragment>
+                                        <h4>CONCLUSIONES GENERALES:</h4>
+                                        {
+                                            tercero?.conclusion.map( (text, index) => (
+                                                <p key={index}>{text}</p>
+                                            ))
+                                        }
+                                    </Fragment>
+                                :
+                                    ''
                             :
-                            ''
+                                ''
                         }
 
                         {
-                            tercero?.recomendacion[0] !== '' ? 
-                            <Fragment>
-                                <h4>RECOMENDACIONES  Y/O MEJORAS:</h4>
-                                {
-                                    tercero?.conclusion.map( (text, index) => (
-                                        <p key={index}>{text}</p>
-                                    ))
-                                }
-                            </Fragment>
+                            tercero?.recomendacion ? 
+
+                                tercero?.recomendacion[0] !== '' ? 
+                                    <Fragment>
+                                        <h4>RECOMENDACIONES  Y/O MEJORAS:</h4>
+                                        {
+                                            tercero?.conclusion.map( (text, index) => (
+                                                <p key={index}>{text}</p>
+                                            ))
+                                        }
+                                    </Fragment>
+                                : 
+                                    ''
                             :
-                            ''
+                                ''
                         }
                         
                     </div>
                 </div>
 
             </div>
-        </Fragment>
+        </div>
     )
 }
 

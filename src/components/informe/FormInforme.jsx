@@ -23,7 +23,11 @@ function FormInforme() {
     const [ segundoTextoA, guardarSegundoTextoA ] = useState('');
     const [ segundoFotoB, guardarSegundoFotoB ] = useState([]);
     const [ segundoTextoB, guardarSegundoTextoB ] = useState('');
-    const [ tercero, guardarTercero ] = useState({});
+    const [ tercero, guardarTercero ] = useState({
+        conclusion: [''],
+        falla: [''],
+        recomendacion: ['']
+    });
     const [ herramienta, guardarHerramienta ] = useState({});
 
     let navigate = useNavigate();
@@ -75,6 +79,9 @@ function FormInforme() {
         const conclusion = datos.conclusion.split("\n");
         const falla = datos.falla.split("\n");
         const recomendacion = datos.recomendacion.split("\n");
+
+        document.querySelector(".card").style.display = "none";
+        document.querySelector("#usuarioEmpresa").style.display = "block";
 
         guardarTercero({
             conclusion,
@@ -152,7 +159,7 @@ function FormInforme() {
                 </div>
             </div>
 
-            <Informe 
+            <Informe              
                 primero={primero}
                 segundoFotoA={segundoFotoA}
                 segundoTextoA={segundoTextoA}

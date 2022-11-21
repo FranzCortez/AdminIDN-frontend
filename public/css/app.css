@@ -909,6 +909,9 @@ form .centerFlex {
 }
 
 /** INFORME **/
+#informe {
+    display: none;
+}
 .info__img {
     margin-right: 1rem;
     max-height: 20rem;
