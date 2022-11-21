@@ -141,10 +141,7 @@ function FormGenerarCot() {
     const crearPDF = async () => {
 
         guardarCotizacionBackend({
-            contenido: contenido,
-            ...cotizacion,
             otin: herramienta.otin,
-            clienteContactoId: herramienta.clienteContactoId,
             herramientumId: herramienta.id
         });
 

@@ -37,7 +37,7 @@ function IngresoOpciones({ ingreso }) {
                 }
             });
             
-            guardarRuta(res.data?.archivo ? res.data.archivo : null);
+            guardarRuta(res.data?.rutaCotizacion ? res.data.rutaCotizacion : null);
 
         } catch (error) {
             console.log(error)
