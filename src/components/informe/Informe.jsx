@@ -1,15 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AiOutlineDownload } from "react-icons/ai";
 import html2pdf from "html2pdf.js"
 import moment from 'moment';
+import Swal from "sweetalert2";
 
-function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTextoB, tercero, herramienta }) {
+import clienteAxios from '../../config/axios';
+import { CRMContext } from '../context/CRMContext';
+
+function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTextoB, tercero, herramienta, id }) {
+
+    let navigate = useNavigate();
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     const pdfcrear = () => {
 
         html2pdf()
         .set({
             margin: 0,
-            filename: `cotizacion ${herramienta.otin}.pdf`,
+            filename: `informe ${herramienta.otin}.pdf`,
             image: {
                 type: 'jpeg',
                 quality: 0.98
@@ -33,41 +44,40 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
 
             const file = new File(
                 [pdf],
-                `cotizacion ${herramienta.otin}.pdf`,
+                `informe ${herramienta.otin}.pdf`,
                 {type: 'application/pdf'}
             ); 
 
-            // const formData = new FormData();        
-            // formData.append("document", file);
-            // formData.append("data", JSON.stringify(cotizacionBackend))
+            const formData = new FormData();        
+            formData.append("document", file);
     
-            // try {
+            try {
 
-            //     const res = await clienteAxios.post(`ih/ingreso/pdf`, formData,{
-            //         headers: {
-            //             Authorization: `Bearer ${auth.token}`
-            //         }
-            //     });       
+                const res = await clienteAxios.post(`ih/ingreso/informe/${id}`, formData,{
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`
+                    }
+                });       
                 
-            //     Swal.fire({
-            //         title: 'Cotización Realizada con Exito',
-            //         text: res.data.msg,
-            //         timer: 1500
-            //     })
+                Swal.fire({
+                    title: 'Ingreso Realizado con Exito',
+                    text: res.data.msg,
+                    timer: 1500
+                })
     
-            // } catch (error) {
-            //     console.log(error)
-            //     if(error.request.status === 404 ) {
-            //         Swal.fire({
-            //             type: 'error',
-            //             title: 'Hubo un error',
-            //             text: 'Error al guardar la cotización',
-            //             timer: 1500
-            //         })
-            //     }
-            //     // redireccionar
-            //     navigate('/ingresos', {replace: true});
-            // }            
+            } catch (error) {
+                console.log(error)
+                if(error.request.status === 404 ) {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Hubo un error',
+                        text: 'Error al guardar el informe',
+                        timer: 1500
+                    })
+                }
+                // redireccionar
+                navigate('/ingresos', {replace: true});
+            }            
         });
     }
 
@@ -75,13 +85,19 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
     return (
 
         <div id={'usuarioEmpresa'}>
-            <div 
-                id="btnCrearPdf" 
-                className='btn-new btn-login' 
-                onClick={pdfcrear}
+           
+           <Link 
+                to={"/ingresos"}
             >
-                Descargar 
-            </div>        
+                <div 
+                    id="btnCrearPdf" 
+                    className='btn-new btn-login' 
+                    onClick={pdfcrear}
+                >
+                    Descargar 
+                    <AiOutlineDownload size={25} />
+                </div>
+            </Link>        
 
             <div id='pdf' className='pdf'>
                 <div className='pdf__titulo'>
