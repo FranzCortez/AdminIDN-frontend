@@ -11,7 +11,8 @@ function InformeParteTres({ guardarDatosTercero }) {
     const [ descripcion, guardarDescripcion ] = useState({
         conclusion: '',
         falla: '',
-        recomendacion: ''
+        recomendacion: '',
+        foto: false
     });
     const [ falla, guardarFalla ] = useState({});
 
@@ -21,12 +22,24 @@ function InformeParteTres({ guardarDatosTercero }) {
     const [auth, guardarAuth] = useContext(CRMContext); 
 
     const actualizarState = (e) => {
-
-        guardarDescripcion({
-            ...descripcion,
-            [e.target.name] : e.target.value
-        });
-
+        
+        if ( e.target.name === 'foto' && descripcion.foto === false ) {
+            guardarDescripcion({
+                ...descripcion,
+                [e.target.name] : true
+            });
+        } else if ( e.target.name === 'foto' && descripcion.foto === true ) {
+            
+            guardarDescripcion({
+                ...descripcion,
+                [e.target.name] : false
+            });
+        } else {
+            guardarDescripcion({
+                ...descripcion,
+                [e.target.name] : e.target.value
+            });
+        }
     }
 
     const validarForm = () => {
@@ -115,6 +128,11 @@ function InformeParteTres({ guardarDatosTercero }) {
                         rows="5"
                         onChange={actualizarState}
                     />                 
+                </div>
+
+                <div className='campo_check'>
+                    <input type="checkbox" name="foto" id="foto" onChange={actualizarState} />
+                    <label htmlFor="foto">Generar hoja adicional con la foto galería sobrante.</label>
                 </div>
 
                 <div className="enviar">

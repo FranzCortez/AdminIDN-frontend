@@ -550,6 +550,15 @@ form .campo input:not([type="submit"]){
     flex: 1;
     border: 1px solid #e1e1e1;
 }
+form .campo_check {
+    margin-left: 2rem;
+}
+form .campo_check input {
+    margin-right: 2rem;
+}
+form .campo_check label {
+    font-weight: 700;
+}
 form select {
     padding: 1.5rem;
     flex: 1;
@@ -968,6 +977,14 @@ form .centerFlex {
 }
 .info__cuerpo {
     margin-top: 0.2rem;
+}
+.info__foto-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    row-gap: 2rem;
+    align-items: center;
+    margin-top: 0.5rem;
 }
 .seleccion {
     display: grid;
