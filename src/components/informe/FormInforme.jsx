@@ -29,6 +29,8 @@ function FormInforme() {
         recomendacion: ['']
     });
     const [ herramienta, guardarHerramienta ] = useState({});
+    const [ fotosSeleccion, guardarFotosSeleccion ] = useState([]);
+    const [ fotoGaleria, guardarFotoGaleria ] = useState(false);
 
     let navigate = useNavigate();
 
@@ -67,6 +69,8 @@ function FormInforme() {
     
     const guardarDatosSegundo = async (fotosPrimero, textoPrimero, fotosSegundo, textoSegundo) => {
 
+        guardarFotosSeleccion([...fotosPrimero, ...fotosSegundo]);
+
         guardarSegundoFotoA(await consultarBase(fotosPrimero));
         guardarSegundoFotoB(await consultarBase(fotosSegundo));
         
@@ -79,6 +83,10 @@ function FormInforme() {
         const conclusion = datos.conclusion.split("\n");
         const falla = datos.falla.split("\n");
         const recomendacion = datos.recomendacion.split("\n");
+
+        if( datos.foto ) {
+            guardarFotoGaleria(!fotoGaleria);
+        }
 
         document.querySelector(".card").style.display = "none";
         document.querySelector("#usuarioEmpresa").style.display = "block";
@@ -168,7 +176,10 @@ function FormInforme() {
                 tercero={tercero}
                 herramienta={herramienta}
                 id={id}
+                fotoGaleria={fotoGaleria}
+                fotosSeleccion={fotosSeleccion}
             />
+        
         </Fragment>
     )
 }

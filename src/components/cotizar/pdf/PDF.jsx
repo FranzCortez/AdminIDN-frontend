@@ -24,7 +24,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
         html2pdf()
         .set({
             margin: 0,
-            filename: `cotizacion ${herramienta.otin}.pdf`,
+            filename: `cotizacion OTIN ${herramienta.otin}.pdf`,
             image: {
                 type: 'jpeg',
                 quality: 0.98
