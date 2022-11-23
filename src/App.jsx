@@ -30,7 +30,6 @@ import Cotizar from "./components/cotizar/Cotizar";
 import FormGenerarCot from "./components/cotizar/FormGenerarCot";
 
 /** INFORME */
-import Informe from "./components/informe/Informe";
 import FormInforme from "./components/informe/FormInforme";
 
 /** FOTO GALERIA */
