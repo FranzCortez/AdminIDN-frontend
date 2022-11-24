@@ -714,6 +714,7 @@ form .centerFlex {
 .pdf__titulo-campo p {
     margin: 0;
     font-size: 1.2rem;
+    text-transform: uppercase;
 }
 .pdf__titulo-campo span {
     font-weight: 700;
@@ -944,12 +945,15 @@ form .centerFlex {
 }
 .info__falla__titulo h2 {
     font-size: 1.3rem;
+    background-color: var(--naranjaClaro);
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
 }
 .info__falla__titulo {
+    background-color: transparent;
     margin-top: 0.4rem;
 }
 .info__falla {
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -974,6 +978,11 @@ form .centerFlex {
 }
 .info__falla-cliente table td{
     font-size: 1.2rem;
+}
+.info__certificado {
+    margin-top: 1rem;
+    width: 90%;
+    border: 1px solid #e1e1e1;
 }
 .info__cuerpo {
     margin-top: 0.2rem;
@@ -1004,6 +1013,51 @@ form .centerFlex {
 }
 .seleccion input {
     margin-right: 2rem;
+}
+.certificado__subtitulo h2 {
+    margin: 0.5rem;
+}
+.certificado__opcion {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 1rem;
+}
+.certificado__campo {    
+    display: flex;
+    align-items: center;
+}
+.certificado__campo h2{    
+    margin-left: 1rem;
+    border: 3px solid var(--naranjaClaro);
+    border-radius: 0.8rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+}
+.certificado__firma {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+.certificado__firma img {
+    max-height: 13rem;
+}
+.certificado__certificacion {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+.certificado__certificacion img {
+    max-height: 6rem;
+}
+.certificado__certificacion img:nth-child(2) {
+    max-height: 5rem;
 }
 
 /** barra **/
@@ -1080,4 +1134,7 @@ form .centerFlex {
         height: 15px;
         font-size: 6px;
     }
+}
+.w-96 {
+    width: 96%;
 }
