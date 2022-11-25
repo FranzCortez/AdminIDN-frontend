@@ -16,12 +16,17 @@ function IngresoOpciones({ ingreso }) {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [ rutaCotizacion, guardarRutaCotizacion ] = useState("");
     const [ rutaInforme, guardarRutaInforme ] = useState("");
+    const [ rutaCertificado, guardarRutaCertificado ] = useState("");
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);    
 
     function openModal() {
-        setIsOpen(true);        
+        if(ingreso.id) {
+
+            consultarAPI();
+            setIsOpen(true);        
+        }
     }
 
     function closeModal() {
@@ -46,7 +51,15 @@ function IngresoOpciones({ ingreso }) {
                 }
             }); 
             
-            guardarRutaInforme(resInfo.data?.rutaInforme ? resInfo.data.rutaInforme : null)
+            guardarRutaInforme(resInfo.data?.rutaInforme ? resInfo.data.rutaInforme : null);
+
+            const resCer = await clienteAxios.get(`ih/ingreso/certificado/${ingreso.id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            }); 
+
+            guardarRutaCertificado(resCer.data?.rutaCertificado ? resCer.data.rutaCertificado : null)
 
         } catch (error) {
             console.log(error)
@@ -65,12 +78,6 @@ function IngresoOpciones({ ingreso }) {
         alink.target = '_blank'
         alink.click();
     }
-
-    useEffect(() =>{
-        if ( ingreso.id ) {
-            consultarAPI();
-        }
-    })
 
     return (
         <div>
@@ -133,6 +140,20 @@ function IngresoOpciones({ ingreso }) {
 
                     <div onClick={() => download(rutaInforme)} className={ rutaInforme ? "btn-new btn-login" : "btn-new"}>
                         <AiOutlineDownload size={25}/> Descargar Informe
+                    </div>
+                    
+                </div>
+
+                <div className='modal__herramienta modal__opciones'>
+
+                    <h2 className='modal__titulo'>Certificado</h2>
+
+                    <Link to={`/certificado/tipoa/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
+                        <RiFileList2Line size={25}/> Generar Certificado
+                    </Link>
+
+                    <div onClick={() => download(rutaCertificado)} className={ rutaCertificado ? "btn-new btn-login" : "btn-new"}>
+                        <AiOutlineDownload size={25}/> Descargar Certificado
                     </div>
                     
                 </div>

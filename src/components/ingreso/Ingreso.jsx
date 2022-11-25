@@ -95,7 +95,7 @@ function Ingreso({datos}) {
             </td>
             <td>
                 <div className='table__opciones' onClick={consultarAPI}>
-                    <IngresoOpciones ingreso={ingreso}/>
+                    <IngresoOpciones ingreso={datos}/>
                 </div>                
             </td>
             <td>
