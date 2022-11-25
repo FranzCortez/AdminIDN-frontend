@@ -10,11 +10,12 @@ function InformeParteTres({ guardarDatosTercero }) {
 
     const [ descripcion, guardarDescripcion ] = useState({
         conclusion: '',
-        falla: '',
+        descripcion: '',
         recomendacion: '',
-        foto: false
+        foto: false,
+        guardarRecomendacion: false,
+        guardarFalla: false,
     });
-    const [ falla, guardarFalla ] = useState({});
 
     let navigate = useNavigate();
 
@@ -22,29 +23,40 @@ function InformeParteTres({ guardarDatosTercero }) {
     const [auth, guardarAuth] = useContext(CRMContext); 
 
     const actualizarState = (e) => {
-        
-        if ( e.target.name === 'foto' && descripcion.foto === false ) {
-            guardarDescripcion({
-                ...descripcion,
-                [e.target.name] : true
-            });
-        } else if ( e.target.name === 'foto' && descripcion.foto === true ) {
+
+        switch (e.target.name) {
+            case 'foto':
+                guardarDescripcion({
+                    ...descripcion,
+                    [e.target.name] : !descripcion.foto
+                });
+                break;
             
-            guardarDescripcion({
-                ...descripcion,
-                [e.target.name] : false
-            });
-        } else {
-            guardarDescripcion({
-                ...descripcion,
-                [e.target.name] : e.target.value
-            });
+            case 'guardarFalla':
+                guardarDescripcion({
+                    ...descripcion,
+                    [e.target.name] : !descripcion.guardarFalla
+                });
+                break;
+            case 'guardarRecomendacion':
+                guardarDescripcion({
+                    ...descripcion,
+                    [e.target.name] : !descripcion.guardarRecomendacion
+                });
+                break;
+        default:
+                guardarDescripcion({
+                    ...descripcion,
+                    [e.target.name] : e.target.value
+                });
+                break;
         }
+
     }
 
     const validarForm = () => {
 
-        if( !(!descripcion.falla.length) ){
+        if( !(!descripcion.descripcion.length) ){
             return false;
         }
 
@@ -52,9 +64,47 @@ function InformeParteTres({ guardarDatosTercero }) {
 
     }
 
-    const enviar = (e) => {
+    const enviar = async (e) => {
+
         e.preventDefault();
+        
+        if (descripcion.guardarRecomendacion) {
+            guardarRecomendacionSistema();
+        }
+
+        if(descripcion.guardarFalla) {
+            guardarFallaSistema();
+        }
+
         guardarDatosTercero(descripcion);
+    }
+
+    const guardarFallaSistema = async () => {
+        try {
+
+            await clienteAxios.put(`tipo/falla/${descripcion?.id}`, { descripcion: descripcion.descripcion }, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const guardarRecomendacionSistema = async () => {
+        try {
+
+            await clienteAxios.put(`tipo/recomendacion/${descripcion?.id}`, { recomendacion: descripcion.recomendacion }, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const consultarAPI = async () => {
@@ -66,14 +116,17 @@ function InformeParteTres({ guardarDatosTercero }) {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
-            guardarFalla(res.data)     
-            
+
             guardarDescripcion({
+                id: res.data.id,
+                nombre: res.data.nombre,
                 conclusion: '',
-                falla: res.data.descripcion,
-                recomendacion: res.data.recomendacion
-            })
+                descripcion: res.data.descripcion,
+                recomendacion: res.data.recomendacion,
+                foto: false,
+                guardarRecomendacion: false,
+                guardarFalla: false,
+            });
 
         } catch (error) {
             console.log(error)
@@ -91,18 +144,18 @@ function InformeParteTres({ guardarDatosTercero }) {
     return (
         <Fragment>
 
-        <h2 className='modal__subtitulo'>Autocompletado para el tipo de herramienta: {falla.nombre}.</h2>
+        <h2 className='modal__subtitulo'>Autocompletado para el tipo de herramienta: {descripcion.nombre}.</h2>
 
             <form onSubmit={enviar}>
                 
                 <div className='campo'>
-                    <label htmlFor="falla">Falla<span className='campo__obligatorio'>*</span>:</label>
+                    <label htmlFor="descripcion">Falla<span className='campo__obligatorio'>*</span>:</label>
                     <textarea 
-                        name="falla" 
-                        id="falla" 
+                        name="descripcion" 
+                        id="descripcion" 
                         cols="30" 
                         rows="5"
-                        defaultValue={falla.descripcion}
+                        defaultValue={descripcion.descripcion}
                         onChange={actualizarState}
                     />                 
                 </div>
@@ -114,7 +167,6 @@ function InformeParteTres({ guardarDatosTercero }) {
                         id="conclusion" 
                         cols="30" 
                         rows="5"
-                        defaultValue={falla.recomendacion}
                         onChange={actualizarState}
                     />                 
                 </div>
@@ -126,10 +178,21 @@ function InformeParteTres({ guardarDatosTercero }) {
                         id="recomendacion" 
                         cols="30" 
                         rows="5"
+                        defaultValue={descripcion.recomendacion}
                         onChange={actualizarState}
                     />                 
                 </div>
 
+                <div className='campo_check'>
+                    <input type="checkbox" name="guardarFalla" id="guardarFalla" onChange={actualizarState} />
+                    <label htmlFor="guardarFalla">Guardar cambios en FALLA para el tipo de herramienta: {descripcion.nombre}.</label>
+                </div>
+
+                <div className='campo_check'>
+                    <input type="checkbox" name="guardarRecomendacion" id="guardarRecomendacion" onChange={actualizarState} />
+                    <label htmlFor="guardarRecomendacion">Guardar cambios en RECOMENDACIÓN para el tipo de herramienta: {descripcion.nombre}.</label>
+                </div>
+                
                 <div className='campo_check'>
                     <input type="checkbox" name="foto" id="foto" onChange={actualizarState} />
                     <label htmlFor="foto">Generar hoja adicional con la foto galería sobrante.</label>

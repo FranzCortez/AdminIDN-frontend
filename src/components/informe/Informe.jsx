@@ -18,7 +18,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
     const [auth, guardarAuth] = useContext(CRMContext);
 
     const pdfcrear = () => {
-        console.log("informe")
+        
         html2pdf()
         .set({
             margin: 0,
@@ -97,7 +97,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
             </div>
            
             <div id='pdf'>
-                <div className='pdf'>
+                <div className='informe'>
                     <div className='pdf__titulo'>
                         <h1>Informe técnico y registro fotográfico</h1>
                         
@@ -149,7 +149,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                         </div>
                     </div>        
 
-                    <div className='pdf__herramienta info__falla-cliente'>
+                    <div className='pdf__herramienta info__falla-cliente pdf__falla'>
                         <table className="table table-hover">
                             <thead>
                                 <tr className='table__head'>
@@ -218,7 +218,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                     
                     <div className='pdf__pie-compra info__falla__titulo'>
                         <h2 className=''>OBSERVACIONES Y CONDICIONES GENERALES EN LA QUE SE ENCUENTRA EL EQUIPO, Y/O MEJORAS SUGERIDAS</h2>
-                        <div className='info__falla'>
+                        <div className='info__falla min-h-28'>
                             <h4>Equipo presenta las siguientes fallas:</h4>
                             {
                                     tercero?.falla ? 

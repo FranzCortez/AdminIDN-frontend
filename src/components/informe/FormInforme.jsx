@@ -81,7 +81,7 @@ function FormInforme() {
     const guardarDatosTercero = (datos) => {
 
         const conclusion = datos.conclusion.split("\n");
-        const falla = datos.falla.split("\n");
+        const falla = datos.descripcion.split("\n");
         const recomendacion = datos.recomendacion.split("\n");
 
         if( datos.foto ) {
@@ -146,7 +146,7 @@ function FormInforme() {
             <div className="card contenedor">
                 <div className="card-header">
                     <RiFileList2Line size={50} color={"#333333"}/>
-                    <h1>Generar Informe OTIN: #####</h1>
+                    <h1>Generar Informe</h1>
                 </div>
                 <div className="card-body">
 
