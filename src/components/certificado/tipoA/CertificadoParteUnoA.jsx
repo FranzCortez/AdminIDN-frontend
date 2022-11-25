@@ -90,6 +90,28 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero }) {
                     />
                 </div>
 
+                <h2 className="card-body-subtitle">Campos Opcionales</h2>
+
+                <div className='campo'>
+                    <label htmlFor="toneladas">Toneladas:</label>
+                    <input 
+                        type="text" 
+                        id='toneladas'
+                        name='toneladas'
+                        onChange={actualizarState}
+                    />
+                </div>
+
+                <div className='campo'>
+                    <label htmlFor="presion">Presión de Trabajo:</label>
+                    <input 
+                        type="text" 
+                        id='presion'
+                        name='presion'
+                        onChange={actualizarState}
+                    />
+                </div>
+
                 <div className="enviar">
                     <input 
                         type="submit" 

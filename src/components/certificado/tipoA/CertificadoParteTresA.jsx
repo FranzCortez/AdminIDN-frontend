@@ -11,22 +11,22 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
-    const [ datos, guardarDatos ] = useState({
+    const [ tercero, guardarTercero ] = useState({
         operativo: '',
         proximaMantencion: ''
     });
 
     const actualizarState = (e) => {
         
-        guardarDatos({
-            ...datos,
+        guardarTercero({
+            ...tercero,
             [e.target.name] : e.target.value
         });
     }
 
     const validarForm = () => {
 
-        const { operativo, proximaMantencion } = datos;
+        const { operativo, proximaMantencion } = tercero;
         
         if( !(!proximaMantencion.length || !operativo.length) ){
             return false;
@@ -38,7 +38,7 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
 
     const enviar = (e) => {
         e.preventDefault();
-        guardarDatosTercero(datos);
+        guardarDatosTercero(tercero);
     }
 
     const consultarAPI = async () => {
@@ -49,7 +49,7 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
                 }
             });
             
-            guardarDatos({
+            guardarTercero({
                 operativo: '',
                 proximaMantencion: res?.data ? res.data.proxima : ''
             })
@@ -77,7 +77,7 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
                 </div>
 
                 {
-                    datos.proximaMantencion === '' ?
+                    tercero.proximaMantencion === '' ?
                         <h3 className='text-center' >Aún no se ha generado un codigo QR para saber la próxima mantención, ingrese una fecha y asegúrese que coincida con la que pondrá en el QR</h3>
                     :
                         null                        
@@ -89,7 +89,7 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
                         type="date" 
                         id='proximaMantencion'
                         name='proximaMantencion'
-                        defaultValue={datos.proximaMantencion}
+                        defaultValue={tercero.proximaMantencion}
                         onChange={actualizarState}
                     />
                 </div>

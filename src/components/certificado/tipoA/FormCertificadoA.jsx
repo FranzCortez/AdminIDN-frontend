@@ -1,19 +1,32 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import { RiFileList2Line } from 'react-icons/ri';
 
 import BarraProgreso from '../../layout/BarraProgreso';
+import clienteAxios from '../../../config/axios';
+import { CRMContext } from '../../context/CRMContext';
 
 import CertificadoParteUnoA from './CertificadoParteUnoA';
 import CertificadoParteDosA from './CertificadoParteDosA';
 import CertificadoParteTresA from './CertificadoParteTresA';
 
+import CertificadoUno from './CertificadoUno';
+
 function FormCertificadoA() {
+
+    const { id } = useParams();
+
+    const [ herramienta, guardarHerramienta ] = useState({});
 
     const [ primero, guardarPrimero ] = useState({});
     const [ segundo, guardarSegundo ] = useState({});
     const [ tercero, guardarTercero ] = useState({});
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+
+    let navigate = useNavigate();
 
     // pagina
     const [page, setPage] = useState("pageone");
@@ -46,12 +59,43 @@ function FormCertificadoA() {
     }
 
     const guardarDatosSegundo = (datos) => {
-        guardarSegundo(datos);
+        const mantencion = datos.mantencion.split("\n");
+        const conclucion = datos.conclucion.split("\n");
+        guardarSegundo({
+            mantencion,
+            conclucion
+        });
     }
 
     const guardarDatosTercero = (datos) => {
-        guardarTercero(datos);
+        guardarTercero(datos);    
+
+        document.querySelector(".card").style.display = "none";
+        document.querySelector("#usuarioEmpresa").style.display = "block";    
     }
+
+    const consultarAPI = async () => {
+        try {
+            const res = await clienteAxios.get(`ih/ingreso/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            guardarHerramienta(res.data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {            
+            consultarAPI();
+        } else {
+            navigate('/login', {replace: true});
+        } 
+    },[])
 
     return (
         <Fragment>
@@ -78,6 +122,13 @@ function FormCertificadoA() {
                     }
                 </div>
             </div>
+
+            <CertificadoUno
+                primero={primero}
+                segundo={segundo}
+                tercero={tercero}
+                herramienta={herramienta}
+            />
         
         </Fragment>
     )
