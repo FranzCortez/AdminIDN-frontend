@@ -53,26 +53,11 @@ function Header() {
             texto: 'Tipo Herramienta',
             icono: <VscTools size={50} color={"#333333"}/>
         },
-        // {
-        //     ruta: '/cotizacion',
-        //     texto: 'Cotización',
-        //     icono: <MdOutlineRequestQuote size={50} color={"#333333"}/>
-        // },
-        {
-            ruta: '/informe',
-            texto: 'Informe',
-            icono: <RiFileList2Line size={50} color={"#333333"}/>
-        },
         {
             ruta: '/facturas',
             texto: 'Facturas',
             icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
-        },
-        // {
-        //     ruta: '/qr',
-        //     texto: 'QR',
-        //     icono: <ImQrcode size={50} color={"#333333"}/>
-        // }        
+        },   
     ]
 
     if(auth.tipo === 1) {
@@ -81,19 +66,6 @@ function Header() {
             texto: 'Usuarios',
             icono: <FiUsers size={50} color={"#333333"}/>
         })
-    } else if (auth.tipo === 3) {
-        rutas = [
-            {
-                ruta: '/cotizacion',
-                texto: 'Cotización',
-                icono: <MdOutlineRequestQuote size={50} color={"#333333"}/>
-            },
-            {
-                ruta: '/informe',
-                texto: 'Informe',
-                icono: <RiFileList2Line size={50} color={"#333333"}/>
-            },
-        ];
     }
 
     return (

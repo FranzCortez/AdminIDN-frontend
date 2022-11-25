@@ -117,7 +117,7 @@ function Informe({ primero, segundoFotoA, segundoTextoA, segundoFotoB, segundoTe
                         <div className='pdf__titulo-bloque-info'>
                             <div className='pdf__titulo-info'>
                                 <div className='pdf__titulo-campo'>
-                                    <p><span>SEÑOR (ES): </span>{herramienta?.clienteContacto?.clienteEmpresa?.nombre}</p>
+                                    <p><span>CLIENTE: </span>{herramienta?.clienteContacto?.clienteEmpresa?.nombre}</p>
                                 </div>
 
                                 <div className='pdf__titulo-campo'>
