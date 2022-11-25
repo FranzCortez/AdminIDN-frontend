@@ -177,6 +177,9 @@ h2 {
     max-height: 40rem;
     overflow-y: scroll;
 }
+.min-h-28 {
+    min-height: 28.5rem;
+}
 
 /** BOTONES **/
 .btn-new{
@@ -995,6 +998,31 @@ form .centerFlex {
     align-items: center;
     margin-top: 0.5rem;
 }
+.pdf__falla table td{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.informe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.informe::after {
+    content: '';
+    height: 60rem;
+    z-index: -1;
+    width: 60rem;
+    position: absolute;
+    background-image: url(/img/LogoIDN.png);
+    background-size: 50rem;
+    background-repeat: no-repeat;
+    top: 75%;
+    transform: rotate(0deg);
+    left: 20%;
+    opacity: 0.15;
+}
 .seleccion {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -1137,4 +1165,7 @@ form .centerFlex {
 }
 .w-96 {
     width: 96%;
+}
+.max-w-10-table table td {
+    max-width: 10rem;
 }

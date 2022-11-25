@@ -32,6 +32,10 @@ import FormGenerarCot from "./components/cotizar/FormGenerarCot";
 /** INFORME */
 import FormInforme from "./components/informe/FormInforme";
 
+/** CERTIFICADO */
+import FormCertificadoA from "./components/certificado/tipoA/FormCertificadoA";
+import CertificadoDos from "./components/certificado/CertificadoDos";
+
 /** FOTO GALERIA */
 import FotoGaleria from "./components/fotogaleria/FotoGaleria";
 import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
@@ -83,6 +87,9 @@ function App() {
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
 
                         <Route path="/informe/nuevo/:id" element={<FormInforme/>}/>
+
+                        <Route path="/certificado/tipoa/nuevo/:id" element={<FormCertificadoA/>}/>
+                        <Route path="/certificado/tipob/nuevo/:id" element={<CertificadoDos/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
