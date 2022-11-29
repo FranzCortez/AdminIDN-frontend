@@ -439,6 +439,7 @@ h2 {
     text-align: center;
     padding-top: 1rem;
     vertical-align: middle;
+    min-width: 10rem;
 }
 .descripcion {
     width: 100%;
@@ -583,6 +584,11 @@ form .foto {
 }
 form .centerFlex {
     justify-content: center;
+}
+.multipleSelect {
+    padding: 1.5rem;
+    flex: 1;
+    border: 1px solid #e1e1e1;
 }
 
 .porcentaje {

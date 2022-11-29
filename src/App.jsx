@@ -41,6 +41,10 @@ import FotoGaleria from "./components/fotogaleria/FotoGaleria";
 import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
 import FormEliminarGaleria from "./components/fotogaleria/FormEliminarGaleria";
 
+/** FACTURA */
+import Facturas from "./components/factura/Facturas";
+import FormNuevaFactura from "./components/factura/FormNuevaFactura";
+
 /** QR */
 import FormQr from "./components/qr/FormQr";
 import Qr from "./components/qr/Qr";
@@ -90,6 +94,9 @@ function App() {
 
                         <Route path="/certificado/tipoa/nuevo/:id" element={<FormCertificadoA/>}/>
                         <Route path="/certificado/tipob/nuevo/:id" element={<CertificadoDos/>}/>
+
+                        <Route path="/facturas" element={<Facturas/>}/>
+                        <Route path="/facturas/nuevo" element={<FormNuevaFactura/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
