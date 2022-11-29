@@ -793,7 +793,12 @@ form .centerFlex {
 .pdf__pie-info-mantenimiento p {
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    margin: 0;
+    max-width: 48.5rem;
+}
+.pdf__pie-info-mantenimiento:nth-child(1) {
+    margin-bottom: 0.5rem;
 }
 .pdf__pie-info-mantenimiento span {
     font-weight: normal;
@@ -1023,6 +1028,14 @@ form .centerFlex {
     left: 20%;
     opacity: 0.15;
 }
+.pdf__tabla__certificado {
+    margin: 0;
+}
+.pdf__tabla__titulo {
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+}
 .seleccion {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -1086,6 +1099,30 @@ form .centerFlex {
 }
 .certificado__certificacion img:nth-child(2) {
     max-height: 5rem;
+}
+.certificado__titulo h2 {
+    margin: 0.1rem;
+}
+.pdf .certificado__table th {
+    padding: 0.1rem;
+}
+.pdf .certificado__table td {
+    padding-bottom: 0.1rem;
+}
+.pdf .certificado__table th {
+    font-size: 1.25rem;
+}
+.certificado__tipob img{
+    max-height: 7.5rem;
+}
+.certificado__certificacion__tipob img{
+    max-height: 5rem;
+}
+.certificado__certificacion__tipob img:nth-child(2) {
+    max-height: 4rem;
+}
+.certificado__obs h2 {
+    padding: 0.1rem 0;
 }
 
 /** barra **/

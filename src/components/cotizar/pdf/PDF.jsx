@@ -224,8 +224,13 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
 
                 <div className='pdf__pie'>
                     <div className='pdf__pie-valor'>
-
+                        
                         <div className='pdf__pie-info'>
+
+                            <div className='pdf__pie-info-mantenimiento'>
+                                <p>{cotizacion?.gastos}</p>
+                            </div>
+
                             <div className='pdf__pie-info-mantenimiento'>
                                 <p>CONDICIONES: <span>{cotizacion?.condiciones}</span></p>
                                 <p>PLAZO DE ENTREGA: <span>{cotizacion?.plazoEntrega}</span></p>
