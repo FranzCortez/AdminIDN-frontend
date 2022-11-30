@@ -23,6 +23,7 @@ function FormGenerarCot() {
         condiciones: 'VALIDEZ DEL PRESUPUESTO ES DE 15 DÍAS.',
         plazoEntrega: 'Inmediata, recibida la o/c',
         garantia: 'GARANTÍA DE 3 MESES, SÓLO DE COMPONENTES CAMBIADOS O REPARADOS.',
+        gastos: 'De no aceptarse el presente presupuesto, se cobrarán $25.000, por gastos de desarme y evaluación',
         descuento: 0,
         subtotal: 0,
         neto: 0,
@@ -266,6 +267,11 @@ function FormGenerarCot() {
                                 onChange={actualizarState}
                             />
                         </div>
+
+                        <div className='campo'>
+                            <label htmlFor="gasto">Gastos<span className='campo__obligatorio'>*</span>:</label>
+                            <textarea name="gasto" id="gasto" cols="30" rows="2" onChange={actualizarState}>{cotizacion.gastos}</textarea>                            
+                        </div>
                         
                         <h2 className='card-body-subtitle'>Contenido de la Tabla</h2>
                         <h3 className='card-body-subtitle'>Maximo 10 Filas</h3>
@@ -297,7 +303,7 @@ function FormGenerarCot() {
                                                     <td><button type='button' className="btn btn-danger" onClick={() => {eliminarContenido(datos);}}><RiDeleteBin2Line size={23}/></button></td>
                                                 </tr>
                                             ))
-                                        ) : <tr><td><p className='mensaje-vacio'>Aun no hay datos</p></td></tr>
+                                        ) : <tr><td><p className='mensaje-vacio'>Aún no hay datos</p></td></tr>
                                     }
                                 </tbody>
                             </table>
