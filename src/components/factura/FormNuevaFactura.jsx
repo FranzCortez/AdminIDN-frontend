@@ -23,13 +23,13 @@ function FormNuevaFactura() {
         fechaFactura: fechaActual,
         numeroCompra: '',
         fechaCompra: fechaActual,
-        formaPago: '',
+        formaPago: 'Crédito',
         monto: '',
         fechaPago: '',
         observaciones: '',
         guiaDespacho: '',
         fechaGuiaDespacho: '',
-        estado: 0,
+        estado: 'Pendiente',
         guardarOtines: []
     });
     const [ empresas, guardarEmpresas ] = useState([]);
@@ -63,7 +63,7 @@ function FormNuevaFactura() {
             });
 
             Swal.fire({
-                title: 'Se agrego correctamente el ingreso',
+                title: 'Se agrego correctamente la factura',
                 text: res.data.msg,
                 type: 'success',
                 timer: 3500
@@ -100,7 +100,7 @@ function FormNuevaFactura() {
             guardarOtines([]);
             guardarOtinesSeleccionadas([]);
 
-            const res = await clienteAxios.post('ih/ingreso/obtener', { empresaId: e.target.value, activo: 1 }, {
+            const res = await clienteAxios.post('ih/ingreso/obtener', { empresaId: e.target.value }, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -152,7 +152,11 @@ function FormNuevaFactura() {
         await e.forEach(element => {
             
             if( element.data !== '-' ) {
-                guiaDespacho = element.data + ',' + guiaDespacho;
+                if ( guiaDespacho === '' ) {
+                    guiaDespacho = element.data;
+                } else {
+                    guiaDespacho = element.data + ',' + guiaDespacho;
+                }
                 observaciones = element.label + ':\n   -Guía Despacho:' + moment(element.fechaData).format('DD/MM/YYYY') + "\n   -Fecha Guía Despacho: " + element.data + "\n" + observaciones;
             }
             guardarOtines.push({id: element.value});
@@ -287,38 +291,30 @@ function FormNuevaFactura() {
                                 <div className='campo' >
                                     <label htmlFor="estado">Estado<span className='campo__obligatorio'>*</span>:</label>
                                     <select name="estado" id="estado"  defaultValue={0} onChange={actualizarState} >
-                                        <option value={0}> Pendiente </option>
-                                        <option value={1}> Pagado </option>
-                                        <option value={2}> Vencido </option>
+                                        <option value={'Pendiente'}> Pendiente </option>
+                                        <option value={'Pagado'}> Pagado </option>
+                                        <option value={'Vencido'}> Vencido </option>
                                     </select>  
                                 </div>
 
-                                {
-                                    factura.estado === '1' ?
+                                <div className='campo' >
+                                    <label htmlFor="formaPago">Forma Pago:</label>
+                                    <select name="formaPago" id="formaPago"  defaultValue={0} onChange={actualizarState} >
+                                        <option value={'Crédito'}> Crédito </option>
+                                        <option value={'Contado'}> Contado </option>
+                                    </select>  
+                                </div>
 
-                                        <Fragment>
-                                            <div className='campo' >
-                                                <label htmlFor="formaPago">Forma Pago:</label>
-                                                <select name="formaPago" id="formaPago"  defaultValue={0} onChange={actualizarState} >
-                                                    <option value={0}> Crédito </option>
-                                                    <option value={1}> Contado </option>
-                                                </select>  
-                                            </div>
-
-                                            <div className='campo'>
-                                                <label htmlFor="fechaPago">Fecha Pago:</label>
-                                                <input 
-                                                    type="date" 
-                                                    id='fechaPago'
-                                                    name='fechaPago'
-                                                    defaultValue={factura.fechaPago}
-                                                    onChange={actualizarState}
-                                                />
-                                            </div>
-                                        </Fragment>
-                                    :
-                                        null
-                                }
+                                <div className='campo'>
+                                    <label htmlFor="fechaPago">Fecha Pago:</label>
+                                    <input 
+                                        type="date" 
+                                        id='fechaPago'
+                                        name='fechaPago'
+                                        defaultValue={factura.fechaPago}
+                                        onChange={actualizarState}
+                                    />
+                                </div>                                
 
                                 <div className='campo'>
                                     <label htmlFor="monto">Monto<span className='campo__obligatorio'>*</span>:</label>
