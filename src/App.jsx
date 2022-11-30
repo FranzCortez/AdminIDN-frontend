@@ -44,6 +44,9 @@ import FormEliminarGaleria from "./components/fotogaleria/FormEliminarGaleria";
 /** FACTURA */
 import Facturas from "./components/factura/Facturas";
 import FormNuevaFactura from "./components/factura/FormNuevaFactura";
+import FormEditarFactura from "./components/factura/FormEditarFactura";
+import FacturaPagar from "./components/factura/FacturaPagar";
+import FacturaNotaCredito from "./components/factura/FacturaNotaCredito";
 
 /** QR */
 import FormQr from "./components/qr/FormQr";
@@ -97,6 +100,9 @@ function App() {
 
                         <Route path="/facturas" element={<Facturas/>}/>
                         <Route path="/facturas/nuevo" element={<FormNuevaFactura/>}/>
+                        <Route path="/facturas/editar/:id" element={<FormEditarFactura/>}/>
+                        <Route path="/facturas/pagar/:id" element={<FacturaPagar/>}/>
+                        <Route path="/facturas/nota/:id" element={<FacturaNotaCredito/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
