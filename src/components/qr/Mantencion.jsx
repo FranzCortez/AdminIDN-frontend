@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import clienteAxios from '../../config/axios';
 
+import Spinner from '../layout/Spinner';
+
 function Mantencion() {
 
     const { id, token } = useParams();
@@ -59,6 +61,10 @@ function Mantencion() {
     useEffect(() => {
         consultarAPI();
     },[])
+
+    if ( mantencion === '' ) {
+        return <Spinner/>;
+    }
 
     return (
         <Fragment>

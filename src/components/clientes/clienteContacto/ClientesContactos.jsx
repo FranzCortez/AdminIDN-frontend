@@ -8,12 +8,15 @@ import clienteAxios from '../../../config/axios';
 import ClienteContacto from './ClienteContacto';
 import { CRMContext } from '../../context/CRMContext.jsx';
 
+import Spinner from '../../layout/Spinner';
+
 function ClientesContactos() {
 
     const { id: idEmpresa } = useParams();
 
     const [ contactos, guardarContactos ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
+    const [ spin, guardarSpin ] = useState(true);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -49,6 +52,10 @@ function ClientesContactos() {
             navigate('/login', {replace: true});
         } 
     },[cambio]);
+
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 2000);
 
     return (
         <Fragment>
@@ -89,7 +96,19 @@ function ClientesContactos() {
                                         contactos.map((datos) => (
                                             <ClienteContacto datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p></td></tr>
+                                    ) 
+                                    :
+
+                                        spin ? 
+                                            <Spinner/>
+                                        
+                                        :
+
+                                            <tr>                                  
+                                                <td>
+                                                    <p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p>
+                                                </td>
+                                            </tr>
                                 }
                             </tbody>
                         </table>

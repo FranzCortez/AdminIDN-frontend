@@ -8,11 +8,14 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
 
+import Spinner from '../layout/Spinner';
+
 function FotoGaleria() {
 
     const { id } = useParams();
 
     const [ fotos, guardarFotos ] = useState({});
+    const [ spin, guardarSpin ] = useState(true);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -43,6 +46,10 @@ function FotoGaleria() {
             navigate('/login', {replace: true});
         }      
     }, []);
+
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 2000);
 
     return (
         <Fragment>
@@ -80,7 +87,10 @@ function FotoGaleria() {
                             fotos.rutas.map( (foto, index) => (
                                 <img className='card-img-grid' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} key={index} alt="" />
                             ))
-                            :                            
+                            :         
+                                spin ? 
+                                    <Spinner/>                                        
+                                        :                   
                             <h2 className='card-body-subtitle'>Agregue fotos a esta OTIN para poder verlas</h2>
                         }
 

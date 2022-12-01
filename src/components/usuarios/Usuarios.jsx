@@ -10,12 +10,15 @@ import Paginacion from '../layout/Paginacion';
 import Usuario from './Usuario';
 import FormBuscarUsuario from './FormBuscarUsuario';
 
+import Spinner from '../layout/Spinner';
+
 function Usuarios() {
 
     // state usuarios
     const [ usuarios, guardarUsuarios ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+    const [ spin, guardarSpin ] = useState(true);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -95,6 +98,10 @@ function Usuarios() {
         }      
     }, [cambio, offset]);
 
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 2000);
+
     return (
         <Fragment>
             <div className="card contenedor">
@@ -132,7 +139,10 @@ function Usuarios() {
                                         usuarios.map((datos) => (
                                             <Usuario datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p></td></tr>
+                                    ) : spin ? 
+                                    <Spinner/>                                        
+                                        : 
+                                        <tr><td><p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p></td></tr>
                                 }
                             </tbody>
                         </table>

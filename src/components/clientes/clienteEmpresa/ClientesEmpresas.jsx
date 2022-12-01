@@ -10,11 +10,14 @@ import ClienteEmpresa from './ClienteEmpresa.jsx';
 import FormularioBuscarEmpresa from './FormularioBuscarEmpresa.jsx';
 import { CRMContext } from '../../context/CRMContext.jsx';
 
+import Spinner from '../../layout/Spinner.jsx';
+
 function ClientesEmpresas() {
 
     const [ empresas, guardarEmpresas ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+    const [ spin, guardarSpin ] = useState(true);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -92,6 +95,9 @@ function ClientesEmpresas() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cambio,offset]);
 
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 2000);
 
     return (
         <Fragment>
@@ -131,7 +137,12 @@ function ClientesEmpresas() {
                                         empresas.map((datos) => (
                                             <ClienteEmpresa datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p></td></tr>
+                                    ) : 
+                                    spin ? 
+                                            <Spinner/>
+                                        
+                                        :
+                                    <tr><td><p className='mensaje-vacio'>Aun no hay usuarios registrados o nadie coincide con la búsqueda </p></td></tr>
                                 }
                             </tbody>
                         </table>

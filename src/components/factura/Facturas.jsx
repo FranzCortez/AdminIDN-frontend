@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdAddCircle } from "react-icons/md";
-import { VscTools } from 'react-icons/vsc';
 
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
@@ -10,12 +9,15 @@ import clienteAxios from '../../config/axios';
 import Factura from './Factura';
 import FacturaFiltro from './FacturaFiltro';
 
+import Spinner from '../layout/Spinner';
+
 function Facturas() {
 
     // state usuarios
     const [ facturas, guardarFacturas ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+    const [ spin, guardarSpin ] = useState(true);
 
     const [ filtros, guardarFiltros ] = useState({});
 
@@ -57,6 +59,10 @@ function Facturas() {
             navigate('/login', {replace: true});
         }      
     }, [cambio]);
+
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 2000);
 
     return (
         <Fragment>
@@ -101,7 +107,12 @@ function Facturas() {
                                         facturas.map((datos) => (
                                             <Factura datos={datos} key={datos.id}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aún no hay facturas registradas o nada coincide con la búsqueda </p></td></tr>
+                                    ) :
+                                    spin ? 
+                                            <Spinner/>
+                                        
+                                        :
+                                    <tr><td><p className='mensaje-vacio'>Aún no hay facturas registradas o nada coincide con la búsqueda </p></td></tr>
                                 }
                             </tbody>
                         </table>

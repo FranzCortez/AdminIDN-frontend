@@ -9,12 +9,16 @@ import clienteAxios from '../../config/axios';
 import Ingreso from './Ingreso';
 import FormFiltroIngreso from './FormFiltroIngreso';
 
+import Spinner from '../layout/Spinner';
+
 function Ingresos() {
 
     // state usuarios
     const [ ingresos, guardarIngresos ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+    const [ spin, guardarSpin ] = useState(true);
+
 
     const [ filtros, guardarFiltros ] = useState({});
 
@@ -56,6 +60,10 @@ function Ingresos() {
             navigate('/login', {replace: true});
         }      
     }, [cambio]);
+
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 2000);
 
     return (
         <Fragment>
@@ -106,7 +114,11 @@ function Ingresos() {
                                         ingresos.map((datos) => (
                                             <Ingreso datos={datos} key={datos.id}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aun no hay ingresos registrados o nadie coincide con la búsqueda </p></td></tr>
+                                    ) : 
+                                    spin ? 
+                                    <Spinner/>                                        
+                                        : 
+                                    <tr><td><p className='mensaje-vacio'>Aun no hay ingresos registrados o nadie coincide con la búsqueda </p></td></tr>
                                 }
                             </tbody>
                         </table>
