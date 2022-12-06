@@ -335,7 +335,7 @@ function FormNuevaFactura() {
                                 }
 
                                 <div className='campo'>
-                                    <label htmlFor="numeroCompra">Número Orden de Compra<span className='campo__obligatorio'>*</span>:</label>
+                                    <label htmlFor="numeroCompra">Número Orden de Compra:</label>
                                     <input 
                                         type="number" 
                                         id='numeroCompra'
@@ -346,7 +346,7 @@ function FormNuevaFactura() {
                                 </div>
 
                                 <div className='campo'>
-                                    <label htmlFor="fechaCompra">Fecha Orden de Compra<span className='campo__obligatorio'>*</span>:</label>
+                                    <label htmlFor="fechaCompra">Fecha Orden de Compra:</label>
                                     <input 
                                         type="date" 
                                         id='fechaCompra'
