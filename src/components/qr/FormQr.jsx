@@ -21,6 +21,8 @@ function FormQr() {
     const [ mantencionFecha, guardarMantencionFecha ] = useState({
         mantencion: '',
         proxima: '',
+        guiaDespacho: '',
+        fechaGuiaDespacho: ''
     });
     
     // usar context
@@ -110,7 +112,9 @@ function FormQr() {
             
             guardarMantencionFecha({
                 mantencion: res.data.mantencion,
-                proxima: res.data.proxima
+                proxima: res.data.proxima,
+                guiaDespacho:  res.data.guiaDespacho,
+                fechaGuiaDespacho: res.data.fechaGuiaDespacho
             });
             
         } catch (error) {
@@ -132,7 +136,9 @@ function FormQr() {
         } else if (tipo === '1') {
             guardarMantencionFecha({
                 mantencion: fechaActual,
-                proxima: ''
+                proxima: '',
+                guiaDespacho: '',
+                fechaGuiaDespacho: ''
             })
         }    
     },[]);
@@ -177,6 +183,28 @@ function FormQr() {
                                 id='proxima'
                                 name='proxima'
                                 defaultValue={mantencionFecha.proxima}
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="guiaDespacho">Guía de Despacho IDN<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='guiaDespacho'
+                                name='guiaDespacho'
+                                defaultValue={mantencionFecha.guiaDespacho}
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="fechaGuiaDespacho">Fecha Guía de Despacho IDN<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="date" 
+                                id='fechaGuiaDespacho'
+                                name='fechaGuiaDespacho'
+                                defaultValue={mantencionFecha.fechaGuiaDespacho}
                                 onChange={actualizarState}
                             />
                         </div>
