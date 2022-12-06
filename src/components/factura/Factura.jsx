@@ -77,7 +77,7 @@ function Factura({ datos, boleta }) {
             <td>{moment(datos.fechaFactura).format('DD-MM-YYYY')}</td>
             <td>{datos.otines}</td>
             <td>{datos.herramientas[0].clienteContacto.clienteEmpresa.nombre}</td>
-            <td>{datos.guiaDespacho} / {moment(datos.numeroInterno).format('DD-MM-YYYY')}</td>
+            <td>{datos.guiaDespacho} / {moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY')}</td>
             <td>${valorNumero( datos.monto + ( datos.monto * 0.19 ) )}</td>
             {/* <td><p className={estadoClase()} >{datos.estado}</p></td> */}
             <td>{datos.estado}</td>

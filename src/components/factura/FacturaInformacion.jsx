@@ -56,6 +56,7 @@ function FacturaInformacion({datos}) {
                     <p>Fecha Orden de Compra: <span>{moment(datos?.fechaCompra).format('DD/MM/YYYY')}</span></p>
                     <p>Monto Neto: <span>${valorNumero(datos?.monto)}</span></p>
                     <p>IVA: <span>${valorNumero((datos?.monto * 0.19))}</span></p>
+                    <p>Monto Total: <span>${valorNumero((datos?.monto + (datos?.monto * 0.19)))}</span></p>
                     <p>Forma de Pago: <span>{datos?.formaPago}</span></p>
                     <p>Fecha Vencimiento: <span>{moment(fechaVencimiento).format('DD/MM/YYYY')}</span></p>
                     <p>Fecha de Pago: <span>{datos?.fechaPago === '0000-00-00' ? 'No hay pago' : moment(datos?.fechaPago).format('DD/MM/YYYY') }</span></p>
