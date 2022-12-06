@@ -4,8 +4,6 @@ import { FaBars } from "react-icons/fa";
 import { VscTools } from 'react-icons/vsc';
 import { RiContactsBook2Line } from "react-icons/ri";
 import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool, AiFillHome } from "react-icons/ai";
-import { RiFileList2Line } from "react-icons/ri";
-import { MdOutlineRequestQuote } from "react-icons/md";
 import { ImQrcode } from "react-icons/im";
 import { FiUsers } from "react-icons/fi";
 
@@ -52,6 +50,11 @@ function Header() {
             ruta: '/ingresos/tipoherramienta',
             texto: 'Tipo Herramienta',
             icono: <VscTools size={50} color={"#333333"}/>
+        },
+        {
+            ruta: '/qr/sd/form',
+            texto: 'QR sin Datos',
+            icono: <ImQrcode size={50} color={"#333333"}/>
         },
         {
             ruta: '/facturas',

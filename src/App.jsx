@@ -34,7 +34,7 @@ import FormInforme from "./components/informe/FormInforme";
 
 /** CERTIFICADO */
 import FormCertificadoA from "./components/certificado/tipoA/FormCertificadoA";
-import CertificadoDos from "./components/certificado/CertificadoDos";
+import FormCertificadoB from "./components/certificado/tipoB/FormCertificadoB";
 
 /** FOTO GALERIA */
 import FotoGaleria from "./components/fotogaleria/FotoGaleria";
@@ -52,6 +52,9 @@ import FacturaNotaCredito from "./components/factura/FacturaNotaCredito";
 import FormQr from "./components/qr/FormQr";
 import Qr from "./components/qr/Qr";
 import Mantencion from "./components/qr/Mantencion";
+// Sin datos
+import FormQrSD from "./components/qrSinDato/FormQrSD";
+import MantencionSD from "./components/qrSinDato/MantecionSD";
 
 /** USUARIOS */
 import Usuarios from "./components/usuarios/Usuarios";
@@ -62,6 +65,11 @@ import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
 import Login from "./components/login/Login";
 import Inicio from "./components/main/Inicio";
 import Error404 from "./components/layout/Error404";
+
+/** PRESENTACION */
+import PresentacionGerente from "./components/presentacion/PresentacionGerente";
+import PresentacionAdm from "./components/presentacion/PresentacionAdm";
+import PresentacionVenta from "./components/presentacion/PresentacionVenta";
 
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
 
@@ -96,7 +104,7 @@ function App() {
                         <Route path="/informe/nuevo/:id" element={<FormInforme/>}/>
 
                         <Route path="/certificado/tipoa/nuevo/:id" element={<FormCertificadoA/>}/>
-                        <Route path="/certificado/tipob/nuevo/:id" element={<CertificadoDos/>}/>
+                        {/* <Route path="/certificado/tipob/nuevo/:id" element={<FormCertificadoB/>}/> */}
 
                         <Route path="/facturas" element={<Facturas/>}/>
                         <Route path="/facturas/nuevo" element={<FormNuevaFactura/>}/>
@@ -107,7 +115,10 @@ function App() {
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
 
+                        <Route path="/qr/sd/form" element={<FormQrSD/>}/>
+
                         <Route path="/mantencion/:token/:id" element={<Mantencion/>}/>
+                        <Route path="/mantencion/b/:mantencion/:proxima/:nserie/:modelo/:marca/:cliente/:equipo" element={<MantencionSD/>}/>
 
                         <Route path="/fotogaleria/:id" element={<FotoGaleria/>}/>
                         <Route path="/fotogaleria/nuevo/:id" element={<FormFotoGaleria/>}/>
@@ -117,8 +128,12 @@ function App() {
                         <Route path="/usuarios/nuevo" element={<FormNuevoUsuario/>} />
                         <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
 
-                        <Route path="/home" element={<Home/>} />
+                        <Route path="/gerente" element={<PresentacionGerente/>} />
+                        <Route path="/adm" element={<PresentacionAdm/>} />
+                        <Route path="/ventas" element={<PresentacionVenta/>} />
                 
+                        <Route path="/home" element={<Home/>} />
+                        
                         <Route path="/login" element={<Login/>} />
                         <Route path="/" element={<Inicio/>} />
                         <Route path="/not_found" element={<Error404/>} />
