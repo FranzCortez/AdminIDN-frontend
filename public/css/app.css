@@ -473,6 +473,18 @@ h2 {
     font-weight: 700;
     color: white;
 }
+.table__row-estado-vencido {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+.table__row-estado-pendiente {
+    background-color: rgba(236, 165, 0, 0.3);
+}
+.table__row-estado-pagado {
+    background-color: rgba(20, 131, 20, 0.3);
+}
+.table__row-estado-anulado {
+    background-color: rgba(112, 112, 112, 0.3);
+}
 .descripcion {
     width: 100%;
     height: 100%;
@@ -1071,7 +1083,6 @@ form .centerFlex {
 }
 .pdf__tabla__titulo {
     font-weight: 700;
-    text-align: left;
     margin: 0;
 }
 .seleccion {
@@ -1243,4 +1254,108 @@ form .centerFlex {
 }
 .max-w-10-table table td {
     max-width: 10rem;
+}
+
+/** BOLETA **/
+.boleta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.boleta::after {
+    content: '';
+    height: 60rem;
+    z-index: -1;
+    width: 60rem;
+    position: absolute;
+    background-image: url(/img/LogoIDN.png);
+    background-size: 50rem;
+    background-repeat: no-repeat;
+    top: 35%;
+    transform: rotate(0deg);
+    left: 30%;
+    opacity: 0.15;
+}
+.boleta__fecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.boleta__empresa h2 {
+    font-size: 2rem;
+    background-color: #06837F;
+    margin: 0;
+    padding: 0.5rem;
+    /* color: #212529; */
+    color: white;
+    text-transform: uppercase;
+}
+.boleta__vencida h2 {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0.5rem;
+    color: white;
+    background-color: #ff3838;
+    border: 1px solid black;
+    text-transform: uppercase;
+}
+.boleta__vencer h2 {
+    font-size: 2rem;
+    background-color: #FDC100;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0.5rem;
+    color: white;
+    text-transform: uppercase;
+}
+.boleta__mora {
+    color: #ff2626;
+    font-weight: 700;
+}
+.boleta__valor-total {
+    font-size: 2rem;
+    font-weight: 700;
+    color: black;
+}
+.boleta__table thead tr th {
+    border: 1px solid black;
+    border-top: none;
+}
+.boleta__table thead tr th:nth-child(2) {
+    width: 1rem;
+}
+.boleta__table thead tr th:nth-child(3) {
+    width: 1rem;
+}
+.boleta__table thead tr th:nth-child(4) {
+    width: 18rem;
+}
+.boleta__table thead tr th:nth-child(5) {
+    width: 24rem;
+}
+table .boleta__total th {
+    height: 1rem;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+}
+.boleta__datos p {
+    font-size: 1.3rem;
+    max-width: none;
+    margin-left: 30%;
+}
+.boleta__datos p:nth-child(1) {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-left: 0;
+}
+.presentacion {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+.boleta__td td {
+    font-weight: 700;
 }
