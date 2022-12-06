@@ -106,6 +106,7 @@ function Ingresos() {
                                     <th scope="col">Más Info</th>
                                     <th scope="col">Opciones</th>
                                     <th scope="col">Salida Equipo</th>
+                                    <th scope="col">Guía Des. IN / Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>

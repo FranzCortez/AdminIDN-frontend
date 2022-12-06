@@ -82,7 +82,7 @@ function Ingreso({datos}) {
         <tr className='table__tr'>
             <td>{datos.otin}</td>
             <td>{datos.clienteContacto.clienteEmpresa.nombre}</td>
-            <td>{moment(datos.fecha).format('DD/MM/YYYY')}</td>
+            <td>{moment(datos.fecha).format('DD-MM-YYYY')}</td>
             <td>{datos.nombre}</td>
             <td>{datos.marca}</td>
             <td>{datos.modelo}</td>
@@ -109,7 +109,7 @@ function Ingreso({datos}) {
                         </button>
 
                         :
-
+                        
                         <button type='button' className={"btn-new btn-return"} onClick={editarQR}>
                             <FiEdit size={25}/>
                             <IoQrCodeOutline size={25}/>
@@ -117,6 +117,12 @@ function Ingreso({datos}) {
                     }
                 </div>                
             </td>
+            {
+                datos.guiaDespacho === '-' || datos.guiaDespacho === null ? 
+                    <td>-</td>
+                :
+                    <td>{datos.guiaDespacho} / {moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY')}</td>
+            }
         </tr>
     )
 }
