@@ -13,12 +13,15 @@ Modal.setAppElement('#root');
 function FacturaFiltro(props) {
 
     const [ empresas, guardarEmpresas ] = useState([]); 
+    const [ year, guardarYear ] = useState([]);
 
     // filtro
     const [ filtro, guardarFiltro ] = useState({
         fechaFactura: '', 
         numeroFactura: '', 
         estado: 'Todos',
+        mes: '',
+        year: '',
         idEmpresa: '',
     });
 
@@ -96,11 +99,27 @@ function FacturaFiltro(props) {
         props.guardarFiltro(filtro);
     }
 
+    const calcularYear = () => {
+        
+        const inicio = 2022;
+
+        const fecha = parseInt(new Date().getFullYear());
+
+        const lista = [];
+
+        for (let i = inicio; i <= fecha; i++) {
+            lista.push(i);
+        }
+
+        guardarYear(lista);
+    }
+
     useEffect(() => {        
         
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
             
             consultarAPI();
+            calcularYear();
         } else {
             navigate('/login', {replace: true});
         }      
@@ -151,6 +170,24 @@ function FacturaFiltro(props) {
                                     value={filtro.fechaFactura}
                                 />
                             </div>
+
+                            <div className='campo'>
+                                <label htmlFor="year">Año:</label>
+                                <select name="year" id="year" 
+                                    onChange={filtros}
+                                    defaultValue={filtro.year}
+                                >
+                                    <option value="">Todos</option>
+                                    {
+                                        year.length > 0 ?
+                                            year.map(data => (
+                                                <option value={data} key={data}>{data}</option>
+                                            ))
+                                        :
+                                            null
+                                    }
+                                </select>
+                            </div> 
                         </div>
 
                         <div>
@@ -180,6 +217,28 @@ function FacturaFiltro(props) {
                                     value={filtro.numeroFactura}
                                 />
                             </div>
+
+                            <div className='campo'>
+                                <label htmlFor="mes">Mes:</label>
+                                <select name="mes" id="mes" 
+                                    onChange={filtros}
+                                    defaultValue={filtro.mes}
+                                >
+                                    <option value="">Todos</option>
+                                    <option value="01">Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </div> 
                         </div>
 
                         <div className='wifu'>

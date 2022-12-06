@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdAddCircle } from "react-icons/md";
+import { FaRegMoneyBillAlt } from 'react-icons/fa';
 
 import { CRMContext } from '../context/CRMContext';
 import clienteAxios from '../../config/axios';
@@ -11,6 +12,8 @@ import FacturaFiltro from './FacturaFiltro';
 
 import Spinner from '../layout/Spinner';
 
+import BoletaEstadoCuenta from './estadoCuenta/BoletaEstadoCuenta';
+
 function Facturas() {
 
     // state usuarios
@@ -19,6 +22,8 @@ function Facturas() {
     const [ busqueda, guardarBusqueda ] = useState('');
     const [ spin, guardarSpin ] = useState(true);
 
+    const [ seleccion, guardarSeleccion ] = useState([]);
+
     const [ filtros, guardarFiltros ] = useState({});
 
     // usar context
@@ -26,12 +31,49 @@ function Facturas() {
 
     let navigate = useNavigate();
 
+    const boleta = async (e) => {
+
+        let existe = [];
+
+        existe = seleccion.filter( factura => factura.id !== e.target.id );
+
+        if ( existe.length === seleccion.length ){
+            // agrega
+
+            existe.push({
+                id: e.target.id,
+                estado: e.target.dataset.estado,
+                otin: e.target.dataset.otin,
+                valor: e.target.dataset.valor,
+                factura: e.target.dataset.factura,
+                orden: e.target.dataset.orden,
+                despacho: e.target.dataset.despacho,
+                fechafactura: e.target.dataset.fechafactura,
+                fechavencimiento: e.target.dataset.fechavencimiento,
+                mora: e.target.dataset.mora,
+                cliente: e.target.dataset.cliente
+            });
+
+            await guardarSeleccion(existe);
+
+        } else {
+            // elimina
+            await guardarSeleccion(existe);
+        }
+
+    }
+
     const escucharCambio = (e) => {
         guardarCambio(!cambio);
     }
 
     const guardarFiltro = (data) => {
         guardarFiltros(data);
+    }
+
+    const generarEstado = () => {
+        document.querySelector(".card").style.display = "none";
+        document.querySelector("#usuarioEmpresa").style.display = "block";
     }
 
     const consultarAPI = async () => {
@@ -77,6 +119,11 @@ function Facturas() {
 
                         <FacturaFiltro guardarFiltro={guardarFiltro} escucharCambio={escucharCambio}/>
 
+                        <button className={seleccion.length === 0 ? 'btn-new' : 'btn-new btn-login'} onClick={generarEstado} disabled={seleccion.length > 0 ? false : true}>
+                            <FaRegMoneyBillAlt size={25}/>
+                            Generar Estado de Cuenta
+                        </button>
+
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <MdAddCircle size={25}/>
                             <AiOutlineDollarCircle size={25}/>
@@ -105,7 +152,7 @@ function Facturas() {
                                 {
                                     facturas.length > 0 ? (
                                         facturas.map((datos) => (
-                                            <Factura datos={datos} key={datos.id}/>
+                                            <Factura datos={datos} key={datos.id} boleta={boleta} />
                                         ))
                                     ) :
                                     spin ? 
@@ -121,6 +168,10 @@ function Facturas() {
                     ual={pagActual} offset={offset}/> */}
                 </div>
             </div>
+
+            <BoletaEstadoCuenta
+                seleccion={seleccion}
+            />
         </Fragment>
     )
 }
