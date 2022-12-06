@@ -62,7 +62,7 @@ function InformeFotoGaleria({ id, fotosSeleccion, otin, fotoGaleria }) {
                         <img src="/img/LogoIDN.png" alt="Logo Impacto del Norte" className='pdf__titulo-logo' />
 
                         <div className='pdf__titulo-dueño'>
-                            <h2>ALBERTO GARCIA LOPEZ</h2>
+                            <h2>ALBERTO GARCÍA LÓPEZ</h2>
                             <h2>REPARACIONES Y MANTENCION E.I.R.L</h2>
                             <h2>R.U.T 76.546.349-1</h2>
                         </div>
