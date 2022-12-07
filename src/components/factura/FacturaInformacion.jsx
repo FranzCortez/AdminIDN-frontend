@@ -52,6 +52,14 @@ function FacturaInformacion({datos}) {
                 <div className='modal__herramienta'>
                     {/* <h2>Sobre la Herramienta:</h2> */}
 
+                    {
+                        datos.numeroNotaCredito ? 
+
+                            <p>N° Nota de Crédito: <span>{datos?.numeroNotaCredito}</span></p>
+                        :
+                            null
+                    }
+                    
                     <p>N° Orden de Compra: <span>{datos?.numeroCompra}</span></p>
                     <p>Fecha Orden de Compra: <span>{moment(datos?.fechaCompra).format('DD/MM/YYYY')}</span></p>
                     <p>Monto Neto: <span>${valorNumero(datos?.monto)}</span></p>
