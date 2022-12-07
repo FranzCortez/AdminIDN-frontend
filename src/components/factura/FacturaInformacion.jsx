@@ -60,15 +60,15 @@ function FacturaInformacion({datos}) {
                             null
                     }
                     
-                    <p>N° Orden de Compra: <span>{datos?.numeroCompra}</span></p>
-                    <p>Fecha Orden de Compra: <span>{moment(datos?.fechaCompra).format('DD/MM/YYYY')}</span></p>
-                    <p>Monto Neto: <span>${valorNumero(datos?.monto)}</span></p>
-                    <p>IVA: <span>${valorNumero((datos?.monto * 0.19))}</span></p>
-                    <p>Monto Total: <span>${valorNumero((datos?.monto + (datos?.monto * 0.19)))}</span></p>
-                    <p>Forma de Pago: <span>{datos?.formaPago}</span></p>
-                    <p>Fecha Vencimiento: <span>{moment(fechaVencimiento).format('DD/MM/YYYY')}</span></p>
-                    <p>Fecha de Pago: <span>{datos?.fechaPago === '0000-00-00' ? 'No hay pago' : moment(datos?.fechaPago).format('DD/MM/YYYY') }</span></p>
-                    <p>Días de Mora: <span>{datos?.fechaPago === '0000-00-00' && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)} Días de mora` : 'No hay Mora'}</span></p>
+                    <p>N° Orden de Compra: <span>{datos.herramientas.length > 0 ? datos?.numeroCompra : '-'}</span></p>
+                    <p>Fecha Orden de Compra: <span>{datos.herramientas.length > 0 ? moment(datos?.fechaCompra).format('DD/MM/YYYY') : '-'}</span></p>
+                    <p>Monto Neto: <span>${datos.herramientas.length > 0 ? valorNumero(datos?.monto) : '-'}</span></p>
+                    <p>IVA: <span>${datos.herramientas.length > 0 ? valorNumero((datos?.monto * 0.19)) : '-'}</span></p>
+                    <p>Monto Total: <span>${datos.herramientas.length > 0 ? valorNumero((datos?.monto + (datos?.monto * 0.19))) : '-'}</span></p>
+                    <p>Forma de Pago: <span>{datos.herramientas.length > 0 ? datos?.formaPago : '-'}</span></p>
+                    <p>Fecha Vencimiento: <span>{datos.herramientas.length > 0 ? moment(fechaVencimiento).format('DD/MM/YYYY') : '-'}</span></p>
+                    <p>Fecha de Pago: <span>{ datos.herramientas.length > 0 ? (datos?.fechaPago === '0000-00-00' ? 'No hay pago' : moment(datos?.fechaPago).format('DD/MM/YYYY'))  : '-' }</span></p>
+                    <p>Días de Mora: <span>{datos.herramientas.length > 0 ? (datos?.fechaPago === '0000-00-00' && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)} Días de mora` : 'No hay Mora') : '-' }</span></p>
                 </div>
 
                 <div>
