@@ -764,6 +764,12 @@ form .centerFlex {
     justify-items: center;
     margin: 0.5rem 0;
 }
+.pdf__titulo-bloque-info-m {
+    margin: 0.1rem 0;
+}
+.pdf .pdf__mt-05 {
+    margin-top: 0.5rem;
+}
 .pdf__titulo-campo p {
     margin: 0;
     font-size: 1.2rem;
@@ -913,7 +919,7 @@ form .centerFlex {
 }
 .pdf__pie-img div {
     background-color: var(--naranjaClaro);
-    height: 0.6rem;
+    height: 1rem;
     width: 80.6rem;
 }
 .font-2 {

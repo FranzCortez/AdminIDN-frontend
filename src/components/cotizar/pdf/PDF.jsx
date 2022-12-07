@@ -119,7 +119,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                         <h2 className='pdf__titulo-otin'>OTIN {herramienta?.otin}</h2>
                     </div>
 
-                    <div className='pdf__titulo-bloque-info'>
+                    <div className='pdf__titulo-bloque-info pdf__titulo-bloque-info-m'>
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
                                 <p><span>Empresa: </span>{herramienta?.clienteContacto?.clienteEmpresa?.nombre}</p>
@@ -170,7 +170,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                     </div>
                 </div>
 
-                <div className='pdf__herramienta'>
+                <div className='pdf__herramienta pdf__mt-05'>
                     <table className="table table-hover">
                         <thead>
                             <tr className='table__head'>
@@ -193,7 +193,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                     </table>
                 </div>
 
-                <div className='pdf__componente'>
+                <div className='pdf__componente pdf__mt-05'>
                     <table className="table table-hover">
                         <thead>
                             <tr className='table__head'>
@@ -222,7 +222,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                     </table>
                 </div>
 
-                <div className='pdf__pie'>
+                <div className='pdf__pie pdf__mt-05'>
                     <div className='pdf__pie-valor'>
                         
                         <div className='pdf__pie-info'>
@@ -266,7 +266,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                         </div>
                     </div>
                     
-                    <div className='pdf__pie-compra'>
+                    <div className='pdf__pie-compra pdf__mt-05'>
                         <h2>GENERAR ORDEN DE COMPRA</h2>
                         <div className='pdf__pie-compra-info'>
                             <div className='pdf__pie-compra-campos'>
@@ -285,7 +285,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                 <div className='pdf__pie-img'>
                     <img src="/img/Cotizacion/LogoEmpresa.jpeg" alt="" />
                     <div></div>
-                </div>
+                </div>                
 
             </div>
             
