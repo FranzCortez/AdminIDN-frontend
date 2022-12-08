@@ -427,6 +427,10 @@ h2 {
 .table__head th{
     text-align: center;
 }
+.table__head-no th {
+    padding: 0;
+    font-size: 1.4rem;
+}
 .table__center-flex{
     display: flex;
 }
@@ -444,6 +448,13 @@ h2 {
     padding-top: 1rem;
     vertical-align: middle;
     min-width: 10rem;
+}
+.table__tr-no td {
+    min-width: 0;
+    padding: 0;
+    border: 1px solid #bebebe;
+    border-top: none;
+    font-size: 1.3rem;
 }
 .table__tr .select {
     min-width: 0;
@@ -1147,6 +1158,27 @@ form .centerFlex {
 .seleccion input {
     margin-right: 2rem;
 }
+.certificado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.certificado::after {
+    content: '';
+    height: 60rem;
+    z-index: -1;
+    width: 60rem;
+    position: absolute;
+    background-image: url(/img/LogoIDN.png);
+    background-size: 50rem;
+    background-repeat: no-repeat;
+    top: 35%;
+    transform: rotate(0deg);
+    left: 20%;
+    opacity: 0.15;
+}
 .certificado__subtitulo h2 {
     margin: 0.5rem;
 }
@@ -1408,4 +1440,7 @@ table .boleta__total th {
 }
 .db {
     display: block;
+}
+.mb-0 {
+    margin-bottom: 0;
 }

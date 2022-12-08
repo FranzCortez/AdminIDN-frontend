@@ -93,7 +93,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                     <AiOutlineDownload size={25} />
             </div>
             <div id='pdf'>
-                <div className='pdf'>
+                <div className='certificado'>
                     <div className='pdf__titulo'>
                         <h1>CERTIFICADO DE MANTENCIÓN y/o REPARACIÓN DE EQUIPOS</h1>
                         
@@ -104,7 +104,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                             <h2 className='pdf__titulo-otin'>OTIN {herramienta?.otin}</h2>
 
                             <div className='pdf__titulo-dueño'>
-                                <h2>Fecha Emición {moment(primero?.fechaEmicion).format('DD/MM/YYYY')}</h2>
+                                <h2>Fecha Emisión {moment(primero?.fechaEmicion).format('DD/MM/YYYY')}</h2>
                             </div>
                         </div>
 
@@ -140,13 +140,13 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
 
                     </div>    
                     
-                    <div className='pdf__componente w-96 max-w-10-table'>
+                    <div className='info__componente w-96 '>
                         <div className='pdf__titulo-dueño certificado__subtitulo'>
                             <h2>Equipo a Certificar:</h2>
                         </div>
-                        <table className="table table-hover">
+                        <table className="table table-hover mb-0">
                             <thead>
-                                <tr className='table__head'>
+                                <tr className='table__head table__head-no'>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Marca</th>
                                     <th scope="col">Modelo</th>
@@ -167,7 +167,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className='table__tr'>
+                                <tr className='table__tr table__tr-no'>
                                     <td>{herramienta?.nombre}</td>
                                     <td>{herramienta?.marca}</td>
                                     <td>{herramienta?.modelo}</td>
@@ -190,13 +190,13 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                         </table>
                     </div>
 
-                    <div className='pdf__componente w-96'>
+                    <div className='info__componente w-96'>
                         <div className='pdf__titulo-dueño certificado__subtitulo'>
-                            <h2>Instrumento Patron:</h2>
+                            <h2>Instrumento Patrón:</h2>
                         </div>
-                        <table className="table table-hover">
+                        <table className="table table-hover mb-0">
                             <thead>
-                                <tr className='table__head'>
+                                <tr className='table__head table__head-no'>
                                     <th scope="col">Marca</th>
                                     <th scope="col">Serie</th>
                                     <th scope="col">Unidad</th>
@@ -207,7 +207,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className='table__tr'>
+                                <tr className='table__tr table__tr-no'>
                                     <td>PARKER</td>
                                     <td>SCJR 8700-02</td>
                                     <td>Lb-pie</td>
@@ -219,32 +219,6 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                             </tbody>
                         </table>
                     </div>
-                    
-                    {/* <div className='pdf__pie-compra info__falla__titulo info__certificado w-96'>
-                        <h2 className=''>MANTENCIONES O REPARACIONES REALIZADAS</h2>
-                        <div className='info__falla'>
-                            <p>*  Revisión y evaluación</p>
-                            <p>*  Reparación general del equipo</p>                            
-                            <p>*  Sustitución de sellos de base y cilindro</p>                            
-                            <p>*  Sustitución de aceite y filtro</p>                            
-                            <p>*  Sustitución de manómetro</p>                            
-                            <p>*  Sustitución de manilla de control de válvula</p>                            
-                            <p>*  Mantenimiento preventivo a motor eléctrico</p>                            
-                            <p>*  Prueba de funcionamiento correcta, sin fugas hidráulicas</p>                            
-                            <p>*  Implementación de señaletica de precaución y tonelaje </p>                            
-                            <p>*  Pruebas de carga en banco de prueba alcansando 150 Ton.</p>                            
-                        </div>
-                    </div>
-
-                    <div className='pdf__pie-compra info__falla__titulo info__certificado w-96'>
-                        <h2 className=''>CONCLUSIONES</h2>
-                        <div className='info__falla'>
-                            <p>Se realiza ensayo de equipo operando correctamente según sus características, alcanzando una presión de trabajo de 10.000 PSI y una variacion de +/- 0,3 %.</p>
-                            <p>Se prueba equipo bajo presión de carga, alcanzando una fuerza de elevación nominal máxima de 150 Ton. sin pérdidas de presión.</p>                            
-                            <p>Los valores entregados son bajo condiciones normales de operación.</p>                            
-                            <p>Se certifica que esta herramienta luego de su intervención, reparación y prueba, se encuentra operando dentro de los rangos de trabajo recomendados por su fabricante para este tipo de equipos, determinándose  "OPERATIVA".</p>                         
-                        </div>
-                    </div> */}
 
                     <div className='pdf__pie-compra info__falla__titulo info__certificado w-96'>
                         <h2 className=''>MANTENCIONES O REPARACIONES REALIZADAS</h2>
@@ -275,10 +249,10 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                     </div>
 
                     {
-                        tercero?.operativo ?
+                        tercero?.operativo === 'true' ?
                             <div className='certificado__opcion'>
                                 <div className='certificado__campo' >
-                                    <h3>OPERATIVA</h3>
+                                    <h3>OPERATIVO</h3>
                                     <h2>X</h2>
                                 </div>
                                 <div className='certificado__campo' >
@@ -289,7 +263,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                         :
                             <div className='certificado__opcion'>
                                 <div className='certificado__campo' >
-                                    <h3>OPERATIVA</h3>
+                                    <h3>OPERATIVO</h3>
                                     <h2></h2>
                                 </div>
                                 <div className='certificado__campo' >
@@ -299,7 +273,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                             </div>
                     }
                     
-                    <h1>Proxima Manteción Recomendada: {moment(tercero?.proximaMantencion).format('DD/MM/YYYY')}</h1>
+                    <h1>Próxima Mantención Recomendada: {moment(tercero?.proximaMantencion).format('DD/MM/YYYY')}</h1>
 
                     <div className='certificado__firma'>
                         

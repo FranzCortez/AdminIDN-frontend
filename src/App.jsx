@@ -26,7 +26,6 @@ import FormNuevoTipoHerramienta from "./components/ingreso/tipoHerramienta/FormN
 import FromEditarTipoHerramienta from "./components/ingreso/tipoHerramienta/FromEditarTipoHerramienta";
 
 /** COTIZADOR */
-import Cotizar from "./components/cotizar/Cotizar";
 import FormGenerarCot from "./components/cotizar/FormGenerarCot";
 
 /** INFORME */
@@ -98,7 +97,6 @@ function App() {
                         <Route path="/ingresos/tipoherramienta/nuevo" element={<FormNuevoTipoHerramienta/>} />
                         <Route path="/ingresos/tipoherramienta/editar/:id" element={<FromEditarTipoHerramienta/>} />
 
-                        <Route path="/cotizacion" element={<Cotizar/>}/>
                         <Route path="/cotizacion/nuevo/:id" element={<FormGenerarCot/>}/>
 
                         <Route path="/informe/nuevo/:id" element={<FormInforme/>}/>
