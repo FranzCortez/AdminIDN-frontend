@@ -71,13 +71,14 @@ function BoletaEstadoCuenta({ seleccion }) {
 
             if ( factura.estado === 'Vencido' ) {
                 ven.push(factura);
-                venTotal += parseInt(factura.valor);
+                venTotal += parseInt(factura.valor.split('.').join(''));
             } else if ( factura.estado === 'Pendiente' ) {
                 pen.push(factura);
-                penTotal += parseInt(factura.valor);
+                penTotal += parseInt(factura.valor.split('.').join(''));
             }
 
         });
+        
 
         guardarEmpresa( ven.length === 0 ? pen[0].cliente : ven[0].cliente );
         guardarPendiente(pen);
@@ -150,7 +151,7 @@ function BoletaEstadoCuenta({ seleccion }) {
                                                     <td>{vencer.orden === '' || vencer.orden === '-' ? vencer.despacho : vencer.orden}</td>
                                                     <td>{vencer.fechafactura}</td>
                                                     <td>{vencer.fechavencimiento}/<span className='boleta__mora'>{vencer.mora}</span></td>                                    
-                                                    <td>${valorNumero(parseInt(vencer.valor))}</td>                                    
+                                                    <td>${valorNumero(parseInt(vencer.valor.split('.').join('')))}</td>                                    
                                                 </tr> 
                                             ))
                                         }                               
@@ -193,7 +194,7 @@ function BoletaEstadoCuenta({ seleccion }) {
                                                     <td>{pendient.orden === '' || pendient.orden === '-' ? pendient.despacho : pendient.orden}</td>
                                                     <td>{pendient.fechafactura}</td>
                                                     <td>{pendient.fechavencimiento}</td>                                    
-                                                    <td>${valorNumero(parseInt(pendient.valor))}</td>                                    
+                                                    <td>${valorNumero(parseInt(pendient.valor.split('.').join('')))}</td>                                    
                                                 </tr> 
                                             ))
                                         }
