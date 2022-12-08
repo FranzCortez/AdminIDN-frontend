@@ -39,6 +39,7 @@ function FormEditarFactura() {
     const [ otinesSeleccionadas, guardarOtinesSeleccionadas ] = useState([]);
     const [ texto, guardarTexto ] = useState(false);
     const [ facturaEditar, guardarFacturaEditar ] = useState([]);
+    const [ empresa, guardarEmpresa ] = useState(0);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -99,7 +100,7 @@ function FormEditarFactura() {
 
     const obtenerOtin = async (e) => {
         try {
-
+            guardarEmpresa(e.target.value)
             guardarOtines([]);
             guardarOtinesSeleccionadas([]);
             
@@ -136,13 +137,14 @@ function FormEditarFactura() {
             });
 
             guardarEmpresas(res.data);
-
+                        
             const fact = await clienteAxios.get(`factura/${id}`, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
 
+            guardarEmpresa(fact.data.empresaId);
             guardarFacturaEditar(fact.data);
 
             const otines = await clienteAxios.post('ih/ingreso/obtener', { empresaId: fact.data.empresaId }, {
@@ -251,7 +253,8 @@ function FormEditarFactura() {
                         {/** EMPRESA */}
                         <div className='campo'>
                             <label htmlFor="empresa">Seleccione Empresa a Facturar<span className='campo__obligatorio'>*</span>:</label>
-                            <select name="empresa" id="empresa"  defaultValue={facturaEditar.empresaId} onChange={obtenerOtin}>
+                            
+                            <select name="empresa" id="empresa"  value={empresa} onChange={obtenerOtin}>
                                 <option value={0} disabled> -- Seleccione -- </option>    
                                 {
                                     empresas.map(empresa => (
