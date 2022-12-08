@@ -12,7 +12,7 @@ function PresentacionGerente() {
     return (
         <div>
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js">
-                <Viewer fileUrl={'presentacion/PRESENTACION IMPACTO DEL NORTE GERENTE.pdf'} plugins={[defaultLayoutPluginInstance]} ></Viewer>
+                <Viewer fileUrl={'presentacion/PRESENTACION IMPACTO DEL NORTE GERENTE.pdf'} plugins={[]} ></Viewer>
             </Worker>
         </div>
     )
