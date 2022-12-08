@@ -146,6 +146,10 @@ h2 {
     font-size: 4.8rem;
     text-align: center;
 }
+.modal__scroll {
+    overflow-y: scroll;
+    height: 45rem;
+}
 .modal__subtitulo {
     font-size: 2rem;
     text-align: center;
@@ -713,7 +717,7 @@ form .centerFlex {
     background-image: url(/img/LogoIDN.png);
     background-size: 50rem;
     background-repeat: no-repeat;
-    top: 35%;
+    top: 12%;
     transform: rotate(0deg);
     left: 20%;
     opacity: 0.15;
@@ -1025,6 +1029,20 @@ form .centerFlex {
 }
 .info__table:last-child {
     margin-bottom: 0;
+}
+.info__herramienta table{
+    margin: 0;
+}
+.info__herramienta th{
+    font-size: 1.3rem;
+}
+.info__herramienta td{
+    font-size: 1.1rem;
+}
+.info__componente {
+    margin-top: 1rem;
+    width: 90%;
+    border: 1px solid #e1e1e1;
 }
 .info__falla__titulo h2 {
     font-size: 1.3rem;
@@ -1383,4 +1401,11 @@ table .boleta__total th {
 }
 .boleta__td td {
     font-weight: 700;
+}
+
+.dn {
+    display: none;
+}
+.db {
+    display: block;
 }

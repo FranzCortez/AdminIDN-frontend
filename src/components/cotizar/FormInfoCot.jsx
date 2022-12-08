@@ -8,13 +8,13 @@ import { CRMContext } from '../context/CRMContext';
 
 import BarraProgreso from '../layout/BarraProgreso';
 
-import InformeParteUno from './InformeParteUno';
-import InformeParteDos from './InformeParteDos';
-import InformeParteTres from './InformeParteTres';
+import InformeParteUno from '../informe/InformeParteUno';
+import InformeParteDos from '../informe/InformeParteDos';
+import InformeParteTres from '../informe/InformeParteTres';
 
-import Informe from "./Informe";
+import PDF from './pdf/PDF';
 
-function FormInforme() {
+function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend }) {
 
     const { id } = useParams();
 
@@ -88,7 +88,8 @@ function FormInforme() {
             guardarFotoGaleria(!fotoGaleria);
         }
 
-        document.querySelector(".card").style.display = "none";
+        document.querySelector("#info").classList.add("dn");
+        document.querySelector("#info").classList.remove("db");
         document.querySelector("#usuarioEmpresa").style.display = "block";
 
         guardarTercero({
@@ -167,7 +168,12 @@ function FormInforme() {
                 </div>
             </div>
 
-            <Informe              
+            <PDF 
+                contenido={contenido}
+                cotizacion={cotizacion}
+                herramientaInfo={herramientaInfo}
+                cotizacionBackend={cotizacionBackend}
+
                 primero={primero}
                 segundoFotoA={segundoFotoA}
                 segundoTextoA={segundoTextoA}
@@ -178,11 +184,10 @@ function FormInforme() {
                 id={id}
                 fotoGaleria={fotoGaleria}
                 fotosSeleccion={fotosSeleccion}
-                guardar={true}
             />
         
         </Fragment>
     )
 }
 
-export default FormInforme;
+export default FormInfoCot;

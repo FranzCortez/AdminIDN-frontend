@@ -8,7 +8,19 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
+import Informe from '../../informe/Informe';
+
+function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
+    primero,
+    segundoFotoA,
+    segundoTextoA,
+    segundoFotoB,
+    segundoTextoB,
+    tercero,
+    herramienta,
+    id,
+    fotoGaleria,
+    fotosSeleccion }) {
 
     moment.locale('es-mx')
 
@@ -24,7 +36,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
         html2pdf()
         .set({
             margin: 0,
-            filename: `cotizacion OTIN ${herramienta.otin}.pdf`,
+            filename: `cotizacion OTIN ${herramientaInfo.otin}.pdf`,
             image: {
                 type: 'jpeg',
                 quality: 0.98
@@ -47,7 +59,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
 
             const file = new File(
                 [pdf],
-                `cotizacion ${herramienta.otin}.pdf`,
+                `cotizacion ${herramientaInfo.otin}.pdf`,
                 {type: 'application/pdf'}
             ); 
 
@@ -80,13 +92,13 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                     })
                 }
                 // redireccionar
-                navigate('/ingresos', {replace: true});
+                // navigate('/ingresos', {replace: true});
             }            
         });
     }
 
     return (
-        <div id="pdfCreador">
+        <div id="usuarioEmpresa">
 
             <Link 
                 to={"/ingresos"}
@@ -116,21 +128,21 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                             <h2>R.U.T 76.546.349-1</h2>
                         </div>
 
-                        <h2 className='pdf__titulo-otin'>OTIN {herramienta?.otin}</h2>
+                        <h2 className='pdf__titulo-otin'>OTIN {herramientaInfo?.otin}</h2>
                     </div>
 
                     <div className='pdf__titulo-bloque-info pdf__titulo-bloque-info-m'>
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
-                                <p><span>Empresa: </span>{herramienta?.clienteContacto?.clienteEmpresa?.nombre}</p>
+                                <p><span>Empresa: </span>{herramientaInfo?.clienteContacto?.clienteEmpresa?.nombre}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>Sucursal: </span>{herramienta?.clienteContacto?.clienteEmpresa?.direccion}</p>
+                                <p><span>Sucursal: </span>{herramientaInfo?.clienteContacto?.clienteEmpresa?.direccion}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>Rut: </span>{herramienta?.clienteContacto?.clienteEmpresa?.rut}</p>
+                                <p><span>Rut: </span>{herramientaInfo?.clienteContacto?.clienteEmpresa?.rut}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
@@ -138,21 +150,21 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>Atención: </span>{herramienta?.clienteContacto?.nombre}</p>
+                                <p><span>Atención: </span>{herramientaInfo?.clienteContacto?.nombre}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>E-Mail: </span>{herramienta?.clienteContacto?.correo}</p>
+                                <p><span>E-Mail: </span>{herramientaInfo?.clienteContacto?.correo}</p>
                             </div>
                         </div>
 
                         <div className='pdf__titulo-info'>
                             <div className='pdf__titulo-campo'>
-                                <p><span>FECHA DE INGRESO: </span>{moment(herramienta?.fecha).format('DD/MM/YYYY')}</p>
+                                <p><span>FECHA DE INGRESO: </span>{moment(herramientaInfo?.fecha).format('DD/MM/YYYY')}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>GUIA DE DESPACHO: </span>{herramienta?.fechaGuiaDespacho ? moment(herramienta?.fechaGuiaDespacho).format('DD/MM/YYYY') : ''}</p>
+                                <p><span>GUIA DE DESPACHO: </span>{herramientaInfo?.fechaGuiaDespacho ? moment(herramientaInfo?.fechaGuiaDespacho).format('DD/MM/YYYY') : ''}</p>
                             </div>
 
                             <div className='pdf__titulo-campo'>
@@ -164,7 +176,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                             </div>
 
                             <div className='pdf__titulo-campo'>
-                                <p><span>TELEFONO: </span>{herramienta?.clienteContacto?.telefono}</p>
+                                <p><span>TELEFONO: </span>{herramientaInfo?.clienteContacto?.telefono}</p>
                             </div>
                         </div>
                     </div>
@@ -183,11 +195,11 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                         </thead>
                         <tbody>
                             <tr className='table__tr'>
-                                <td>{herramienta?.nombre}</td>
-                                <td>{herramienta?.marca}</td>
-                                <td>{herramienta?.modelo}</td>
-                                <td>{herramienta?.numeroSerie ? herramienta?.numeroSerie : ''}</td>
-                                <td>{herramienta?.numeroInterno ? herramienta?.numeroInterno : ''}</td>
+                                <td>{herramientaInfo?.nombre}</td>
+                                <td>{herramientaInfo?.marca}</td>
+                                <td>{herramientaInfo?.modelo}</td>
+                                <td>{herramientaInfo?.numeroSerie ? herramientaInfo?.numeroSerie : ''}</td>
+                                <td>{herramientaInfo?.numeroInterno ? herramientaInfo?.numeroInterno : ''}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -198,10 +210,10 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                         <thead>
                             <tr className='table__head'>
                                 <th scope="col">ITEM</th>
-                                <th scope="col">Nombre del Componente</th>
-                                <th scope="col">Desc. Repuesto</th>
+                                <th scope="col">Nombre Componente</th>
+                                <th scope="col">Descripción Repuesto</th>
                                 <th scope="col">Cant.</th>
-                                <th scope="col">Valor Unit. Repuesto</th>
+                                <th scope="col">Valor Unit.</th>
                                 <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
@@ -285,7 +297,23 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                 <div className='pdf__pie-img'>
                     <img src="/img/Cotizacion/LogoEmpresa.jpeg" alt="" />
                     {/* <div></div> */}
-                </div>                
+                </div>    
+
+                <div className="html2pdf__page-break"></div>
+
+                <Informe
+                    primero={primero}
+                    segundoFotoA={segundoFotoA}
+                    segundoTextoA={segundoTextoA}
+                    segundoFotoB={segundoFotoB}
+                    segundoTextoB={segundoTextoB}
+                    tercero={tercero}
+                    herramienta={herramienta}
+                    id={id}
+                    fotoGaleria={fotoGaleria}
+                    fotosSeleccion={fotosSeleccion}
+                    guardar={false}
+                />            
 
             </div>
             

@@ -8,7 +8,8 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
 import FormNuevoContenido from './FormNuevoContenido';
-import PDF from './pdf/PDF';
+
+import FormInfoCot from './FormInfoCot';
 
 function FormGenerarCot() {
 
@@ -152,8 +153,9 @@ function FormGenerarCot() {
             guardarContenido(guardar);
         } 
 
-        document.querySelector(".card").style.display = "none";
-        document.querySelector("#pdfCreador").style.display = "block";
+        document.querySelector("#cot").classList.add("dn");
+        document.querySelector("#info").classList.remove("dn");
+        document.querySelector("#info").classList.add("db");
     }
 
     const consultarAPI = async () => {
@@ -190,11 +192,12 @@ function FormGenerarCot() {
         } else {
             consultarAPI();
         }
+        document.querySelector("#info").classList.add("dn");
     }, [contenido]);
 
     return (
         <Fragment>
-            <div className="card contenedor">
+            <div className="card contenedor" id='cot'>
                 <div className="card-header">
                     <MdOutlineRequestQuote size={50} color={"#333333"}/>
                     <h1>Nueva Cotización para otin: {herramienta.otin}</h1>
@@ -375,7 +378,13 @@ function FormGenerarCot() {
                 </div>
             </div>
 
-            <PDF contenido={contenido} cotizacion={cotizacion} herramienta={herramienta} cotizacionBackend={cotizacionBackend}/>
+            <FormInfoCot
+                contenido={contenido} 
+                cotizacion={cotizacion} 
+                herramientaInfo={herramienta} 
+                cotizacionBackend={cotizacionBackend}
+            />
+
         </Fragment>
     )
 }
