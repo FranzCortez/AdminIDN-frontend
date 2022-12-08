@@ -118,14 +118,14 @@ function IngresoOpciones({ ingreso }) {
 
                 <div className='modal__herramienta modal__opciones'>
 
-                    <h2 className='modal__titulo'>Cotización</h2>
+                    <h2 className='modal__titulo'>Cotización e Informe</h2>
 
                     <Link to={`/cotizacion/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
-                        <MdOutlineRequestQuote size={25}/> Generar Cotización
+                        <MdOutlineRequestQuote size={25}/> Generar Cotización e Informe
                     </Link>
 
                     <div onClick={() => download(rutaCotizacion)} className={ rutaCotizacion ? "btn-new btn-login" : "btn-new"}>
-                        <AiOutlineDownload size={25}/> Descargar Cotización
+                        <AiOutlineDownload size={25}/> Descargar Cotización e Informe
                     </div>
                     
                 </div>

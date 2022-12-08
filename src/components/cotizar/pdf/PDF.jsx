@@ -108,7 +108,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                     className='btn-new btn-login' 
                     onClick={pdfcrear}
                 >
-                    Descargar 
+                    Descargar Cotización e Informe
                     <AiOutlineDownload size={25} />
                 </div>
             </Link>
