@@ -129,7 +129,7 @@ function App() {
                         <Route path="/usuarios/editar/:id" element={<FormEditarUsuario/>} />
 
                         <Route path="/gerente" element={<PresentacionGerente/>} />
-                        <Route path="/adm" element={<PresentacionAdm/>} />
+                        <Route path="/administracion" element={<PresentacionAdm/>} />
                         <Route path="/ventas" element={<PresentacionVenta/>} />
                 
                         <Route path="/home" element={<Home/>} />
