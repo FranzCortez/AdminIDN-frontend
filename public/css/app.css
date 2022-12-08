@@ -786,17 +786,33 @@ form .centerFlex {
 }
 .pdf__herramienta table{
     margin: 0;
+    table-layout: fixed;
 }
 .pdf__herramienta th{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .pdf__herramienta td{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 .pdf__componente {
     margin-top: 1rem;
-    width: 90%;
+    /* width: 90%; */
     border: 1px solid #e1e1e1;
+}
+.pdf__componente table {
+    table-layout: fixed;
+}
+ .pdf__componente thead tr th:nth-child(1) {
+    width: 5%;
+}
+ .pdf__componente thead tr th:nth-child(4) {
+    width: 5%;
+}
+.pdf__componente thead tr th:nth-child(5) {
+    width: 15%;
+}
+.pdf__componente thead tr th:nth-child(6) {
+    width: 14%;
 }
 .pdf__componente table{
     margin: 0;
@@ -809,10 +825,10 @@ form .centerFlex {
     height: 3.05rem;
 }
 .pdf__componente th{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .pdf__componente td{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 /** pie */
 .pdf__pie {
@@ -835,7 +851,7 @@ form .centerFlex {
     align-items: center;
 }
 .pdf__pie-info-certificado p {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-weight: 700;
     background: var(--naranjaClaro);
     padding: 0.2rem;
@@ -849,7 +865,7 @@ form .centerFlex {
 .pdf__pie-info-mantenimiento p {
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0;
     max-width: 48.5rem;
 }
@@ -861,9 +877,12 @@ form .centerFlex {
 }
 .pdf__pie-final {
     margin-right: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-top: 0.5rem;
     border: 1px solid #e1e1e1;
+}
+.pdf__pie-final:last-child {
+    font-size: 1.3rem;
 }
 .pdf__pie-final table {
     margin-bottom: 0;
@@ -880,7 +899,7 @@ form .centerFlex {
     background-color: var(--naranjaClaro);
 }
 .pdf__pie-final .table__tr:last-child {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
 }
 .pdf__pie-compra {
@@ -891,7 +910,7 @@ form .centerFlex {
 .pdf__pie-compra h2{
     color: #000;
     font-weight: 900;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding-top: 0.5rem;
 }
 .pdf__pie-compra-info {
@@ -906,7 +925,7 @@ form .centerFlex {
     flex-direction: column;
 }
 .pdf__pie-compra-campos p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0;
     text-transform: uppercase;
 }
@@ -914,7 +933,7 @@ form .centerFlex {
     font-weight: 700;
 }
 .pdf__pie-img img{
-    height: 20rem;
+    height: 18rem;
     width: 80rem;
 }
 .pdf__pie-img div {

@@ -197,7 +197,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
                     <table className="table table-hover">
                         <thead>
                             <tr className='table__head'>
-                                <th scope="col"><div>ITEM</div></th>
+                                <th scope="col">ITEM</th>
                                 <th scope="col">Nombre del Componente</th>
                                 <th scope="col">Desc. Repuesto</th>
                                 <th scope="col">Cant.</th>
@@ -284,7 +284,7 @@ function PDF({ contenido, cotizacion, herramienta, cotizacionBackend }) {
 
                 <div className='pdf__pie-img'>
                     <img src="/img/Cotizacion/LogoEmpresa.jpeg" alt="" />
-                    <div></div>
+                    {/* <div></div> */}
                 </div>                
 
             </div>
