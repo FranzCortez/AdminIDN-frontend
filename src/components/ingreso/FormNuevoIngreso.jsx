@@ -222,6 +222,26 @@ function FormNuevoIngreso() {
                         </div>
 
                         <div className='campo'>
+                            <label htmlFor="guiaDespacho">Guía de Despacho IDN:</label>
+                            <input 
+                                type="text" 
+                                id='guiaDespacho'
+                                name='guiaDespacho'
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="fechaGuiaDespacho">Fecha Guía de Despacho IDN:</label>
+                            <input 
+                                type="date" 
+                                id='fechaGuiaDespacho'
+                                name='fechaGuiaDespacho'
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
                             <label htmlFor="comentario">Comentario<span className='campo__obligatorio'>*</span>:</label>
 
                             <textarea name="comentario" id="comentario" cols="50" rows="10" defaultValue={ingreso.comentario}onChange={handleChange} ></textarea>

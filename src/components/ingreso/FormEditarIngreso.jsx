@@ -22,7 +22,9 @@ function FormEditarIngreso() {
         numeroGuiaCliente: '',
         numeroSerie: '',
         clienteContactoId: '',
-        tipoHerramientaId: 0
+        tipoHerramientaId: 0,
+        guiaDespacho: '',
+        fechaGuiaDespacho: ''
     });
     const [ tipos, guardarTipos ] = useState([]);
     const [ tipo, guardarTipo ] = useState(0);
@@ -100,8 +102,9 @@ function FormEditarIngreso() {
                 numeroGuiaCliente: res.data.numeroGuiaCliente,
                 numeroSerie: res.data.numeroSerie,
                 clienteContactoId: res.data.clienteContactoId,
-                tipoHerramientaId: res.data.tipoHerramientaId
-                
+                tipoHerramientaId: res.data.tipoHerramientaId,
+                fechaGuiaDespacho: res.data.fechaGuiaDespacho,
+                guiaDespacho: res.data.guiaDespacho
             });
             guardarFecha(res.data.fecha);
 
@@ -352,6 +355,28 @@ function FormEditarIngreso() {
                                 name='numeroGuiaCliente'
                                 value={ingreso.numeroGuiaCliente}
                                 placeholder='N° Guía Cliente de la Herramienta'
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="guiaDespacho">Guía de Despacho IDN</label>
+                            <input 
+                                type="text" 
+                                id='guiaDespacho'
+                                name='guiaDespacho'
+                                value={ingreso.guiaDespacho}
+                                onChange={actualizarState}
+                            />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="fechaGuiaDespacho">Fecha Guía de Despacho IDN</label>
+                            <input 
+                                type="date" 
+                                id='fechaGuiaDespacho'
+                                name='fechaGuiaDespacho'
+                                value={ingreso.fechaGuiaDespacho}
                                 onChange={actualizarState}
                             />
                         </div>

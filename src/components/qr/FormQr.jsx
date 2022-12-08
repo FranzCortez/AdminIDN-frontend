@@ -104,18 +104,44 @@ function FormQr() {
     const consultarAPI = async () => {
         
         try {
-            const res = await clienteAxios.get(`qr/${id}`,{
+
+            const ih = await clienteAxios.get(`ih/ingreso/${id}`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
-            guardarMantencionFecha({
-                mantencion: res.data.mantencion,
-                proxima: res.data.proxima,
-                guiaDespacho:  res.data.guiaDespacho,
-                fechaGuiaDespacho: res.data.fechaGuiaDespacho
-            });
+
+            if (tipo === '1') {
+                guardarMantencionFecha({
+                    mantencion: fechaActual,
+                    proxima: '',
+                    guiaDespacho: ih.data.guiaDespacho,
+                    fechaGuiaDespacho: ih.data.fechaGuiaDespacho
+                });
+                return;
+            }  
+
+            const res = await clienteAxios.get(`qr/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });           
+
+            if ( res.data.guiaDespacho === '' || res.data.guiaDespacho === null ) {
+                guardarMantencionFecha({
+                    mantencion: res.data.mantencion,
+                    proxima: res.data.proxima,
+                    guiaDespacho:  ih.data.guiaDespacho,
+                    fechaGuiaDespacho: ih.data.fechaGuiaDespacho
+                });
+            } else {
+                guardarMantencionFecha({
+                    mantencion: res.data.mantencion,
+                    proxima: res.data.proxima,
+                    guiaDespacho:  res.data.guiaDespacho,
+                    fechaGuiaDespacho: res.data.fechaGuiaDespacho
+                });
+            }
             
         } catch (error) {
             console.log(error);
@@ -131,16 +157,7 @@ function FormQr() {
             navigate('/login', {replace: true});
         } 
         
-        if(tipo === '2') {
-            consultarAPI()
-        } else if (tipo === '1') {
-            guardarMantencionFecha({
-                mantencion: fechaActual,
-                proxima: '',
-                guiaDespacho: '',
-                fechaGuiaDespacho: ''
-            })
-        }    
+        consultarAPI();
     },[]);
 
     return (
