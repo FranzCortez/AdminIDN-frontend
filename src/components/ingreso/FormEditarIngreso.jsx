@@ -57,6 +57,7 @@ function FormEditarIngreso() {
         e.preventDefault();
 
         try {            
+            console.log(ingreso)
             const res = await clienteAxios.put(`/ih/ingreso/${id}`, ingreso,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
@@ -137,7 +138,6 @@ function FormEditarIngreso() {
             guardarContactos(resContacto.data);
             guardarContacto(res.data.clienteContactoId);
 
-
         } catch (error) {
             console.log(error)
             if(error.request.status === 404 ) {
@@ -157,7 +157,8 @@ function FormEditarIngreso() {
         try {
             idEmpresa = (e.target.value);
             guardarEmpresa(e.target.value);
-
+            guardarContacto(0);
+            
             const res = await clienteAxios.get(`contactos/contacto/${idEmpresa}`, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
