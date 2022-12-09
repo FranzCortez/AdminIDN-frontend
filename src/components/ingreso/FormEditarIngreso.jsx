@@ -56,8 +56,7 @@ function FormEditarIngreso() {
     const editarIngreso = async (e) => {
         e.preventDefault();
 
-        try {            
-            console.log(ingreso)
+        try {
             const res = await clienteAxios.put(`/ih/ingreso/${id}`, ingreso,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
