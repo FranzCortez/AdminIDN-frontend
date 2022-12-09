@@ -30,9 +30,16 @@ function Home() {
                     <div className='card-body-options'>
                         
                         <div className='home'>
-                            <h1>BIENVENIDO A LA VERSION 4.2</h1>
+                            <h1>BIENVENIDO A LA VERSION 5.0</h1>
                             <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
                             <div className='info'>
+                                <p>Información de la actualización 5.0:</p>
+                                <ul>
+                                    <li>Facturación</li>
+                                    <li>lista de morosos</li>
+                                    <li>Correcciones en ingreso</li>
+                                    <li>Certificados listos</li>
+                                </ul>
                                 <p>Información de la actualización 4.2:</p>
                                 <ul>
                                     <li>Cambios en la cotización</li>

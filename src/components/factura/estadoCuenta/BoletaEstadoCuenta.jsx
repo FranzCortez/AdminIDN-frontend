@@ -168,7 +168,7 @@ function BoletaEstadoCuenta({ seleccion }) {
 
                     {
                         pendiente.length > 0 ?
-                            <div className='pdf__componente w-96 max-w-10-table'>
+                            <div className='certificado__componente w-96 max-w-10-table'>
                             
                                 <div className='pdf__titulo-dueño certificado__subtitulo boleta__vencer'>
                                     <h2>FACTURAS POR VENCER</h2>
