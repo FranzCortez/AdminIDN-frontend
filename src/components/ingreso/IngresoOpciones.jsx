@@ -1,8 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineDownload, AiFillPicture } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
 import { RiDeleteBin2Line, RiFileList2Line } from "react-icons/ri";
+import { TbFileCertificate } from 'react-icons/tb';
 import { MdOutlineRequestQuote, MdPhotoCamera } from "react-icons/md";
 import Modal from 'react-modal';
 
@@ -148,9 +149,15 @@ function IngresoOpciones({ ingreso }) {
 
                     <h2 className='modal__titulo'>Certificado</h2>
 
-                    <Link to={`/certificado/tipoa/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
-                        <RiFileList2Line size={25}/> Generar Certificado
-                    </Link>
+                    <div className='opciones__certificado'>
+                        <Link to={`/certificado/tipoa/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
+                            <TbFileCertificate size={25}/> Generar Certificado Manteción
+                        </Link>
+
+                        <Link to={`/certificado/tipob/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
+                            <TbFileCertificate size={25}/> Generar Certificado Calibración
+                        </Link>
+                    </div>
 
                     <div onClick={() => download(rutaCertificado)} className={ rutaCertificado ? "btn-new btn-login" : "btn-new"}>
                         <AiOutlineDownload size={25}/> Descargar Certificado

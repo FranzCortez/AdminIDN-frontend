@@ -46,6 +46,7 @@ import FormNuevaFactura from "./components/factura/FormNuevaFactura";
 import FormEditarFactura from "./components/factura/FormEditarFactura";
 import FacturaPagar from "./components/factura/FacturaPagar";
 import FacturaNotaCredito from "./components/factura/FacturaNotaCredito";
+import FacturaNoExiste from "./components/factura/FacturaNoExiste";
 
 /** QR */
 import FormQr from "./components/qr/FormQr";
@@ -102,13 +103,14 @@ function App() {
                         <Route path="/informe/nuevo/:id" element={<FormInforme/>}/>
 
                         <Route path="/certificado/tipoa/nuevo/:id" element={<FormCertificadoA/>}/>
-                        {/* <Route path="/certificado/tipob/nuevo/:id" element={<FormCertificadoB/>}/> */}
+                        <Route path="/certificado/tipob/nuevo/:id" element={<FormCertificadoB/>}/>
 
                         <Route path="/facturas" element={<Facturas/>}/>
                         <Route path="/facturas/nuevo" element={<FormNuevaFactura/>}/>
                         <Route path="/facturas/editar/:id" element={<FormEditarFactura/>}/>
                         <Route path="/facturas/pagar/:id" element={<FacturaPagar/>}/>
                         <Route path="/facturas/nota/:id" element={<FacturaNotaCredito/>}/>
+                        <Route path="/facturas/error" element={<FacturaNoExiste/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>

@@ -181,6 +181,12 @@ h2 {
     max-height: 40rem;
     overflow-y: scroll;
 }
+.opciones__certificado {
+    display: flex;
+}
+.opciones__certificado a {
+    width: 50%;
+}
 .min-h-28 {
     min-height: 28.5rem;
 }
@@ -1247,6 +1253,46 @@ form .centerFlex {
 }
 .certificado__obs h2 {
     padding: 0.1rem 0;
+}
+.certificado__componente {
+    margin-top: 1rem;
+    width: 90%;
+    border: 1px solid #e1e1e1;
+}
+.certificado__componente table {
+    margin-bottom: 0;
+}
+.certificado__componente th{
+    font-size: 1.3rem;
+}
+.certificado__componente td{
+    font-size: 1.1rem;
+}
+.certificado-wd {
+    width: 100%;
+}
+.certificado__form-mw {
+    max-width: 100%;
+}
+.certificado__invisible {
+    color: white;
+    margin: 0;
+}
+.certificado__inp {
+    font-size: 1.5rem;
+    text-align: right;
+    width: 5rem;
+}
+.certificado__componente__rango td:first-child {
+    font-size: 1.5rem;
+}
+.certificado__tabla-data {
+    font-size: 1.3rem;
+    border: 1px solid #e1e1e1;
+    margin: 0;
+}
+.certificado__tabla-rango {
+    font-size: 1.5rem;
 }
 
 /** barra **/

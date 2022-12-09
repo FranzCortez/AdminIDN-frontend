@@ -1,8 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-
-import clienteAxios from '../../../config/axios';
-import { CRMContext } from '../../context/CRMContext';
+import React, { Fragment, useState } from 'react';
 
 function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo }) {
 
@@ -10,9 +6,6 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo }) {
         conclucion: '',
         mantencion: '',
     });    
-
-    // usar context
-    const [auth, guardarAuth] = useContext(CRMContext); 
 
     const actualizarState = (e) => {    
         guardarDescripcion({
