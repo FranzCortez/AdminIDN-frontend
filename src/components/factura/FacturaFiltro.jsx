@@ -203,6 +203,7 @@ function FacturaFiltro(props) {
                                     <option value="Pagado">Pagado</option>
                                     <option value="Vencido">Vencido</option>
                                     <option value="Anulada">Anulada</option>
+                                    <option value="No Existe">No Existe</option>
                                 </select>
                             </div>  
 

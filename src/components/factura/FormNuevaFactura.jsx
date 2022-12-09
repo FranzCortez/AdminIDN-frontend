@@ -191,8 +191,10 @@ function FormNuevaFactura() {
                 </div>
                 <div className="card-body">
 
-                    <div className='top-left'>
+                    <div className='card-body-options'>
                         <Link to={'/facturas'} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+
+                        <Link to={'/facturas/error'} className="btn-new btn-cerrar"><IoArrowBackCircleOutline size={25}/> N° Factura No Existente</Link>
                     </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>

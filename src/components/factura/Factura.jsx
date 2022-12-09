@@ -47,8 +47,10 @@ function Factura({ datos, boleta }) {
             return 'table__tr table__row-estado-pagado';            
         } else if ( datos.estado === 'Anulada' ) {
             return 'table__tr table__row-estado-anulado'
-        } else {
+        } else if ( datos.estado === 'Vencida' ) {
             return 'table__tr table__row-estado-vencido';            
+        } else {
+            return 'table__tr'
         }
     }
 
@@ -122,7 +124,7 @@ function Factura({ datos, boleta }) {
                     }
 
                     {
-                        datos.numeroNotaCredito === '' || datos.numeroNotaCredito === null ? 
+                        (datos.numeroNotaCredito === '' || datos.numeroNotaCredito === null) && datos.estado !== 'No Existe' ? 
 
                             <Link to={`nota/${datos.id}`}>
                                 <button type='button' className="btn btn-danger">
