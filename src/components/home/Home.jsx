@@ -27,65 +27,14 @@ function Home() {
                 </div>
                 <div className="card-body">
 
-                    <div className='card-body-options'>
+                    <div className='home'>
+                        <h2>BIENVENIDO A LA VERSION FINAL 1</h2>
+                        <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
                         
-                        <div className='home'>
-                            <h1>BIENVENIDO A LA VERSION 5.0</h1>
-                            <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
-                            <div className='info'>
-                                <p>Información de la actualización 5.0:</p>
-                                <ul>
-                                    <li>Facturación</li>
-                                    <li>lista de morosos</li>
-                                    <li>Correcciones en ingreso</li>
-                                    <li>Certificados listos</li>
-                                </ul>
-                                <p>Información de la actualización 4.2:</p>
-                                <ul>
-                                    <li>Cambios en la cotización</li>
-                                    <li>Creación de certificados Tipo A primera fase</li>
-                                    <li>Cambios menores</li>
-                                </ul>
-                                <p>Información de la actualización 4.1:</p>
-                                <ul>
-                                    <li>Corrección estetica de Informes</li>
-                                    <li>Opción de guardado de falla en Informes</li>
-                                    <li>Opción de guardado de recomendación en Informes</li>
-                                </ul>
-                                <p>Información de la actualización 4.0:</p>
-                                <ul>
-                                    <li>Generación de Informes</li>
-                                    <li>Generación de Foto Galeria Informe</li>
-                                    <li>Correcciones menores</li>
-                                    <li>Cambios en estilos</li>
-                                </ul>
-                                <p>Información de la actualización 3.0:</p>
-                                <ul>
-                                    <li>Salida de Equipo</li>
-                                    <li>Creación de Codigo QR</li>
-                                    <li>Posibilidad de editar la fecha de proxima mantecion</li>
-                                </ul>
-                                <p>Información de la actualización 2.1:</p>
-                                <ul>
-                                    <li>Corrección de Bugs</li>
-                                    <li>Cambios Gramaticales</li>
-                                </ul>
-                                <p>Información de la actualización 2.0:</p>
-                                <ul>
-                                    <li>Generación de Cotización AUTOMATICA!</li>
-                                    <li>Descarga de Cotización generada</li>
-                                    <li>Foto Galería! (ver, subir y eliminar fotos)</li>
-                                    <li>Cambio en las opciones en ingreso</li>
-                                    <li>Corrección de los campos al crear un ingreso</li>
-                                    <li>Corrección de fallas menores</li>
-                                </ul>
-                            </div>
-                            <p>IMPORTANTE: AUN HAY COSAS EN DESARROLLO Y PUEDE QUE COSAS FALLEN, EN CASO DE ENCONTRAR ALGUN ERROR O PROBLEMA, COMUNICARLO A FRANZ POR CUALQUIER MEDIO, EXPLICANDO COMO FUE EL ERROR Y EN LO POSIBLE CON UNA IMAGEN DE REFERENCIA</p>
-                            <p>Para iniciar oprima las barras lateral izquierda <FaBars/> y navegue por las secciones</p>
-                            <h2>Espero que disfruten su prueba!</h2>
-                        </div>
+                        <img className='home__logo' src="/img/LogoIDN.png" alt="" />
                         
-                        
+                        <p>Para iniciar oprima las barras lateral izquierda <FaBars/> y navegue por las secciones</p>
+                        <h2>Espero que disfruten su prueba!</h2>
                     </div>
                 </div>
             </div>
