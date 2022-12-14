@@ -712,6 +712,9 @@ form .centerFlex {
     gap: 2rem;
     text-align: center;
 }
+.home__logo {
+    height: 20rem;
+}
 
 /** PDF **/
 
@@ -1152,6 +1155,7 @@ form .centerFlex {
     justify-content: center;
     align-items: center;
     max-height: 30rem;
+    width: 80rem;
 }
 .seleccion img {
     max-height: 15rem;

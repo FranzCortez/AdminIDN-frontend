@@ -47,7 +47,7 @@ function Factura({ datos, boleta }) {
             return 'table__tr table__row-estado-pagado';            
         } else if ( datos.estado === 'Anulada' ) {
             return 'table__tr table__row-estado-anulado'
-        } else if ( datos.estado === 'Vencida' ) {
+        } else if ( datos.estado === 'Vencido' ) {
             return 'table__tr table__row-estado-vencido';            
         } else {
             return 'table__tr'
@@ -79,7 +79,7 @@ function Factura({ datos, boleta }) {
             <td>{datos.herramientas.length > 0 ? moment(datos.fechaFactura).format('DD-MM-YYYY') : '-'}</td>
             <td>{datos.herramientas.length > 0 ? datos.otines : '-'}</td>
             <td>{datos.herramientas.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}</td>
-            <td>{datos.herramientas.length > 0 ? datos.guiaDespacho : '- '} / {datos.herramientas.length > 0 ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : ' -'}</td>
+            <td>{datos.herramientas.length > 0 ? datos.guiaDespacho : '- '} / {datos.herramientas.length > 0 && datos.fechaGuiaDespacho !== '0000-00-00' ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : '-'}</td>
             <td>${datos.herramientas.length > 0 ? valorNumero( datos.monto + ( datos.monto * 0.19 ) ) : '-'}</td>
             {/* <td><p className={estadoClase()} >{datos.estado}</p></td> */}
             <td>{datos.estado ? datos.estado : '-'}</td>

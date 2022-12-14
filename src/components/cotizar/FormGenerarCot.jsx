@@ -272,8 +272,8 @@ function FormGenerarCot() {
                         </div>
 
                         <div className='campo'>
-                            <label htmlFor="gasto">Gastos<span className='campo__obligatorio'>*</span>:</label>
-                            <textarea name="gasto" id="gasto" cols="30" rows="2" onChange={actualizarState}>{cotizacion.gastos}</textarea>                            
+                            <label htmlFor="gastos">Gastos<span className='campo__obligatorio'>*</span>:</label>
+                            <textarea name="gastos" id="gasto" cols="30" rows="2" onChange={actualizarState}>{cotizacion.gastos}</textarea>                            
                         </div>
                         
                         <h2 className='card-body-subtitle'>Contenido de la Tabla</h2>

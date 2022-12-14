@@ -22,7 +22,7 @@ function FormNuevaFactura() {
         numeroFactura: '',
         fechaFactura: fechaActual,
         numeroCompra: '',
-        fechaCompra: fechaActual,
+        fechaCompra: '',
         formaPago: 'Crédito',
         monto: '',
         fechaPago: '',
@@ -280,7 +280,7 @@ function FormNuevaFactura() {
                                 ))}
                                 
                                 <div className='campo'>
-                                    <label htmlFor="fechaGuiaDespacho">Fecha Guía Despacho<span className='campo__obligatorio'>*</span>:</label>
+                                    <label htmlFor="fechaGuiaDespacho">Fecha Guía Despacho:</label>
                                     <input 
                                         type="date" 
                                         id='fechaGuiaDespacho'
@@ -339,7 +339,7 @@ function FormNuevaFactura() {
                                 <div className='campo'>
                                     <label htmlFor="numeroCompra">Número Orden de Compra:</label>
                                     <input 
-                                        type="number" 
+                                        type="text" 
                                         id='numeroCompra'
                                         name='numeroCompra'
                                         placeholder='Número Orden de Compra'
@@ -361,7 +361,7 @@ function FormNuevaFactura() {
                                 {
                                     texto ? 
                                         <div className='campo'>
-                                            <label htmlFor="observaciones">Observaciones<span className='campo__obligatorio'>*</span>:</label>
+                                            <label htmlFor="observaciones">Observaciones:</label>
 
                                             <textarea name="observaciones" id="observaciones" cols="50" rows="10" 
                                             defaultValue={factura.observaciones} onChange={actualizarState} 

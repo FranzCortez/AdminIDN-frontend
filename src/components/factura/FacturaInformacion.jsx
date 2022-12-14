@@ -33,7 +33,7 @@ function FacturaInformacion({datos}) {
     const diffInDays = (x, y) => Math.floor((x - y) / (1000 * 60 * 60 * 24));
     
     const observaciones = datos.observaciones.split("\n");
-
+    console.log(datos)
     return (
         <div>
             <button className='btn-new btn-naranja' onClick={openModal}><TbFileInfo size={20}/></button>
@@ -61,8 +61,8 @@ function FacturaInformacion({datos}) {
                                 null
                         }
                         
-                        <p>N° Orden de Compra: <span>{datos.herramientas.length > 0 ? datos?.numeroCompra : '-'}</span></p>
-                        <p>Fecha Orden de Compra: <span>{datos.herramientas.length > 0 ? moment(datos?.fechaCompra).format('DD/MM/YYYY') : '-'}</span></p>
+                        <p>N° Orden de Compra: <span>{datos.herramientas.length > 0 && datos?.numeroCompra > 0 ? datos?.numeroCompra : '-'}</span></p>
+                        <p>Fecha Orden de Compra: <span>{datos.herramientas.length > 0 && datos?.fechaCompra !== "0000-00-00" ? moment(datos?.fechaCompra).format('DD/MM/YYYY') : '-'}</span></p>
                         <p>Monto Neto: <span>${datos.herramientas.length > 0 ? valorNumero(datos?.monto) : '-'}</span></p>
                         <p>IVA: <span>${datos.herramientas.length > 0 ? valorNumero((datos?.monto * 0.19)) : '-'}</span></p>
                         <p>Monto Total: <span>${datos.herramientas.length > 0 ? valorNumero((datos?.monto + (datos?.monto * 0.19))) : '-'}</span></p>
