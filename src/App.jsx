@@ -40,7 +40,7 @@ import FotoGaleria from "./components/fotogaleria/FotoGaleria";
 import FormFotoGaleria from "./components/fotogaleria/FormFotoGaleria";
 import FormEliminarGaleria from "./components/fotogaleria/FormEliminarGaleria";
 
-/** FACTURA */
+/** FACTURA  */
 import Facturas from "./components/factura/Facturas";
 import FormNuevaFactura from "./components/factura/FormNuevaFactura";
 import FormEditarFactura from "./components/factura/FormEditarFactura";
