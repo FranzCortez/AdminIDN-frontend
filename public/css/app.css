@@ -530,6 +530,9 @@ h2 {
 .swal2-popup .swal2-html-container{
     font-size: 1.8rem!important;
 }
+.swal2-styled.swal2-deny {
+    font-size: 2rem!important;
+}
 
 /** Formularios **/
 form {

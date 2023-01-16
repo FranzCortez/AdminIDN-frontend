@@ -34,16 +34,28 @@ function FormFotoGaleria() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-
+            
             Swal.fire({
-                title: 'Se agrego correctamente el ingreso',
+                title: 'Foto agregada correctamente',
                 text: res.data.msg,
-                type: 'success',
-                timer: 3500
+                showCancelButton: true,
+                showDenyButton: true,
+                confirmButtonText: 'Subir más fotos',
+                denyButtonText: `Regresar Inicio`,
+                cancelButtonText: 'Cotizar'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  
+                } else if (result.isDenied) {
+                    navigate('/ingresos', {replace: true});
+                } else {
+                    // cotizar
+                    navigate(`/cotizacion/nuevo/${id}`, {replace: true});
+                }
             });
                 
             // redireccionar
-            navigate('/ingresos', {replace: true});
         } catch (error) {
             console.log(error)
             Swal.fire({
