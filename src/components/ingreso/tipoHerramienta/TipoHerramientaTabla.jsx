@@ -38,6 +38,14 @@ function TipoHerramientaTabla({datos}) {
                 }
             </td>
             <td>
+                {
+                    datos.conclusion ? 
+                    <textarea name="" id="" className='descripcion' value={datos.conclusion} disabled></textarea>
+                    : 
+                    'Aun no hay conclusión asociada'
+                }
+            </td>
+            <td>
                 <div className='table__opciones'>
                     <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><BsPencilSquare size={23} color="#ffff"/></button></Link>
                 </div>

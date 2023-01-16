@@ -67,7 +67,7 @@ function TiposHerramientas() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });            
-
+console.log(res.data)
             guardarHerramientas(res.data);
             
         } catch (error) {
@@ -120,6 +120,7 @@ function TiposHerramientas() {
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripción Falla Común</th>
                                     <th scope="col">Recomendacion</th>
+                                    <th scope="col">Conclusión</th>
                                     <th scope="col">Editar</th>
                                 </tr>
                             </thead>

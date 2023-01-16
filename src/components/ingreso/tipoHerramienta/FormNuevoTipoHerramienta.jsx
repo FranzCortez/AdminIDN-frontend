@@ -13,7 +13,8 @@ function FormNuevoTipoHerramienta() {
     const [ herramienta, guardarHerramienta ] = useState({
         nombre: '',
         descripcion: '',
-        recomendacion: ''
+        recomendacion: '',
+        conclusion: ''
     });
 
     // usar context
@@ -118,6 +119,12 @@ function FormNuevoTipoHerramienta() {
                             <label htmlFor="recomendacion">Recomendación (opcional):</label>
 
                             <textarea name="recomendacion" id="recomendacion" cols="50" rows="10" onChange={actualizarState} ></textarea>
+                        </div>
+                        
+                        <div className='campo'>
+                            <label htmlFor="conclusion">Conclusión (opcional):</label>
+
+                            <textarea name="conclusion" id="conclusion" cols="50" rows="10" onChange={actualizarState} ></textarea>
                         </div>
 
                         <div className="enviar">
