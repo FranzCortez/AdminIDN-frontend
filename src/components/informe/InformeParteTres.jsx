@@ -14,6 +14,7 @@ function InformeParteTres({ guardarDatosTercero }) {
         recomendacion: '',
         foto: false,
         guardarRecomendacion: false,
+        guardarConclusion: false,
         guardarFalla: false,
     });
 
@@ -42,6 +43,12 @@ function InformeParteTres({ guardarDatosTercero }) {
                 guardarDescripcion({
                     ...descripcion,
                     [e.target.name] : !descripcion.guardarRecomendacion
+                });
+                break;
+            case 'guardarConclusion':
+                guardarDescripcion({
+                    ...descripcion,
+                    [e.target.name] : !descripcion.guardarConclusion
                 });
                 break;
         default:
@@ -76,6 +83,10 @@ function InformeParteTres({ guardarDatosTercero }) {
             guardarFallaSistema();
         }
 
+        if(descripcion.guardarConclusion) {
+            guardarConclusionSistema();
+        }
+
         guardarDatosTercero(descripcion);
     }
 
@@ -83,6 +94,20 @@ function InformeParteTres({ guardarDatosTercero }) {
         try {
 
             await clienteAxios.put(`tipo/falla/${descripcion?.id}`, { descripcion: descripcion.descripcion }, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const guardarConclusionSistema = async () => {
+        try {
+
+            await clienteAxios.put(`tipo/conclusion/${descripcion?.id}`, { conclusion: descripcion.conclusion }, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -120,7 +145,7 @@ function InformeParteTres({ guardarDatosTercero }) {
             guardarDescripcion({
                 id: res.data.id,
                 nombre: res.data.nombre,
-                conclusion: '',
+                conclusion: res.data.conclusion,
                 descripcion: res.data.descripcion,
                 recomendacion: res.data.recomendacion,
                 foto: false,
@@ -157,16 +182,17 @@ function InformeParteTres({ guardarDatosTercero }) {
                         rows="5"
                         defaultValue={descripcion.descripcion}
                         onChange={actualizarState}
-                    />                 
+                        />                 
                 </div>
                 
                 <div className='campo'>
-                    <label htmlFor="conclusion">Conclución:</label>
+                    <label htmlFor="conclusion">Conclusión:</label>
                     <textarea 
                         name="conclusion" 
                         id="conclusion" 
                         cols="30" 
                         rows="5"
+                        defaultValue={descripcion.conclusion}
                         onChange={actualizarState}
                     />                 
                 </div>
@@ -186,6 +212,11 @@ function InformeParteTres({ guardarDatosTercero }) {
                 <div className='campo_check'>
                     <input type="checkbox" name="guardarFalla" id="guardarFalla" onChange={actualizarState} />
                     <label htmlFor="guardarFalla">Guardar cambios en FALLA para el tipo de herramienta: {descripcion.nombre}.</label>
+                </div>
+
+                <div className='campo_check'>
+                    <input type="checkbox" name="guardarConclusion" id="guardarConclusion" onChange={actualizarState} />
+                    <label htmlFor="guardarConclusion">Guardar cambios en CONCLUSIÓN para el tipo de herramienta: {descripcion.nombre}.</label>
                 </div>
 
                 <div className='campo_check'>
