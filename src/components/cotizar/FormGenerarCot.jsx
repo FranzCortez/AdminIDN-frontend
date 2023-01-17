@@ -24,7 +24,7 @@ function FormGenerarCot() {
         condiciones: 'VALIDEZ DEL PRESUPUESTO ES DE 15 DÍAS.',
         plazoEntrega: 'Inmediata, recibida la o/c',
         garantia: 'GARANTÍA DE 3 MESES, SÓLO DE COMPONENTES CAMBIADOS O REPARADOS.',
-        gastos: 'De no aceptarse el presente presupuesto, se cobrarán $25.000, por gastos de desarme, evaluación e informeß',
+        gastos: 'De no aceptarse el presente presupuesto, se cobrarán $25.000, por gastos de desarme, evaluación e informe',
         descuento: 0,
         subtotal: 0,
         neto: 0,
