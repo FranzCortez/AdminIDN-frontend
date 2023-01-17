@@ -169,7 +169,7 @@ function InformeParteTres({ guardarDatosTercero }) {
     return (
         <Fragment>
 
-        <h2 className='modal__subtitulo'>Autocompletado para el tipo de herramienta: {descripcion.nombre}.</h2>
+            <h2 className='modal__subtitulo'>Autocompletado para el tipo de herramienta: {descripcion.nombre}.</h2>
 
             <form onSubmit={enviar}>
                 
