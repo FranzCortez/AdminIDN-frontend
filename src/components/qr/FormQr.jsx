@@ -38,6 +38,30 @@ function FormQr() {
         });
     }
 
+    const fechaAutomatica = e => {
+
+        if ( mantencionFecha.mantencion !== '' ) {
+
+            let prox = mantencionFecha.mantencion.split('-');
+            
+            prox[1] = (parseInt(prox[1]) + parseInt(e.target.id));
+
+            if ( prox[1] > 12 ) {
+                prox[1] = prox[1] - 12;
+                prox[0] = parseInt(prox[0]) + 1;
+            } else if( prox[1] < 10 ) {
+                prox[1] = '0' + prox[1];
+            }
+            
+            guardarMantencionFecha({
+                ...mantencionFecha,
+                proxima : prox.join('-')
+            });
+        
+        }
+
+    }
+
     const validarForm = () => {
 
         const { mantencion, proxima } = mantencionFecha;
@@ -191,6 +215,15 @@ function FormQr() {
                                 defaultValue={mantencionFecha.mantencion}
                                 onChange={actualizarState}
                             />
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="fecha">Próxima Mantención Automática:</label>
+                            <div className='fecha__opciones'>
+                                <div className='fecha__btn' onClick={fechaAutomatica} id='3' >3 Meses</div>
+                                <div className='fecha__btn' onClick={fechaAutomatica} id='4' >4 Meses</div>
+                                <div className='fecha__btn' onClick={fechaAutomatica} id='6' >6 Meses</div>
+                            </div>
                         </div>
                         
                         <div className='campo'>

@@ -653,6 +653,23 @@ form .foto {
 form .centerFlex {
     justify-content: center;
 }
+form .fecha__opciones {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+form .fecha__btn {
+    border: none;
+    background-color: var(--bs-blue);
+    padding: 1rem;
+    color: white;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+form .fecha__btn:hover {
+    background-color: var(--azul);
+}
 .multipleSelect {
     padding: 1.5rem;
     flex: 1;
