@@ -57,7 +57,7 @@ function TipoHerramienta(props) {
                         ))
                     }
                 </select>     
-                <Link to={'#'} className="btn-new btn-success-new">Crear Tipo Herramienta</Link>                    
+                <Link to={'/ingresos/tipoherramienta/nuevo'} className="btn-new btn-success-new">Crear Tipo Herramienta</Link>                    
             </div>  
         </Fragment>
     )

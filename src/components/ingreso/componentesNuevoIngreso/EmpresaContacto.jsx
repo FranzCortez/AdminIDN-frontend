@@ -10,7 +10,7 @@ function EmpresaContacto(props) {
     const [ empresas, guardarEmpresas ] = useState([]);
     const [ contactos, guardarContactos ] = useState([]);
 
-    let idEmpresa = 0;
+    const [ id, guardarId ] = useState(0);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -43,9 +43,9 @@ function EmpresaContacto(props) {
     
     const consultarContactos = async (e) => {
         try {
-            idEmpresa = e.target.value;
+            guardarId(e.target.value);
 
-            const res = await clienteAxios.get(`contactos/contacto/${idEmpresa}`, {
+            const res = await clienteAxios.get(`contactos/contacto/${e.target.value}`, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -86,7 +86,7 @@ function EmpresaContacto(props) {
                         ))
                     }
                 </select>     
-                <Link to={'/clientes/nuevo'} className="btn-new btn-success-new">Crear Nueva Empresa</Link>                    
+                <Link to={`/clientes/nuevo`} className="btn-new btn-success-new">Crear Nueva Empresa</Link>                    
             </div>                                   
 
             <div className='campo'>
@@ -99,7 +99,7 @@ function EmpresaContacto(props) {
                         ))
                     }
                 </select>   
-                <Link to={`/clientes/contacto/${idEmpresa}/nuevo`} className="btn-new btn-success-new">Crear Nueva Contacto</Link>                         
+                <Link to={`/clientes/contacto/${id}/nuevo`} className="btn-new btn-success-new">Crear Nueva Contacto</Link>                         
             </div>  
         </Fragment>
     )
