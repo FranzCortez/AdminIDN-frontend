@@ -208,7 +208,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                         <div className='pdf__titulo-bloque-info pdf__titulo-bloque-info-m'>
                             <div className='pdf__titulo-info'>
                                 <div className='pdf__titulo-campo'>
-                                    <p><span>Empresa: </span>{herramientaInfo?.clienteContacto?.clienteEmpresa?.nombre}</p>
+                                    <p><span>Empresa: </span>{cotizacion.nombreCliente}</p>
                                 </div>
 
                                 <div className='pdf__titulo-campo'>
@@ -398,7 +398,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                         <div className='pdf__titulo-bloque-info'>
                             <div className='pdf__titulo-info'>
                                 <div className='pdf__titulo-campo'>
-                                    <p><span>CLIENTE: </span>{herramienta?.clienteContacto?.clienteEmpresa?.nombre}</p>
+                                    <p><span>CLIENTE: </span>{cotizacion.nombreCliente}</p>
                                 </div>
 
                                 <div className='pdf__titulo-campo'>

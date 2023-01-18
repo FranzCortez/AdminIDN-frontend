@@ -24,12 +24,13 @@ function FormGenerarCot() {
         condiciones: 'VALIDEZ DEL PRESUPUESTO ES DE 15 DÍAS.',
         plazoEntrega: 'Inmediata, recibida la o/c',
         garantia: 'GARANTÍA DE 3 MESES, SÓLO DE COMPONENTES CAMBIADOS O REPARADOS.',
-        gastos: 'De no aceptarse el presente presupuesto, se cobrarán $25.000, por gastos de desarme, evaluación e informe',
+        gastos: 'De no aceptarse el presente presupuesto (o en caso de baja del equipo), se cobrarán $40.000, por gastos de desarme, evaluación e informe técnico.',
         descuento: 0,
         subtotal: 0,
         neto: 0,
         iva: 0,
-        total: 0
+        total: 0,
+        nombreCliente: ''
     });
 
     // usar context
@@ -65,7 +66,7 @@ function FormGenerarCot() {
             });
         }
     }
-    
+
     const actualizarContenido = (data) => {
 
         let guardar = [...contenido];
@@ -169,6 +170,11 @@ function FormGenerarCot() {
 
             guardarHerramienta(res.data);
 
+            guardarCotizacion({
+                ...cotizacion,
+                nombreCliente : res.data.clienteContacto?.clienteEmpresa?.nombre
+            });
+
         } catch (error) {
             console.log(error)
             if(error.request.status === 404 ) {
@@ -211,6 +217,18 @@ function FormGenerarCot() {
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 
                     <form onSubmit={e => e.preventDefault()}>
+
+                        <div className="campo">
+                            <label htmlFor="nombreCliente">Nombre Cliente<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='nombreCliente'
+                                name='nombreCliente'
+                                placeholder='Nombre del Cliente'
+                                defaultValue={cotizacion.nombreCliente}
+                                onChange={actualizarState}
+                            />
+                        </div>
 
                         <div className='campo'>
                             <label htmlFor="fechaEvaluacion">Fecha Evaluación<span className='campo__obligatorio'>*</span>:</label>

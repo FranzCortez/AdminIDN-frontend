@@ -131,7 +131,7 @@ function IngresoOpciones({ ingreso }) {
                     
                 </div>
 
-                <div className='modal__herramienta modal__opciones'>
+                {/* <div className='modal__herramienta modal__opciones'>
 
                     <h2 className='modal__titulo'>Informe</h2>
 
@@ -143,7 +143,7 @@ function IngresoOpciones({ ingreso }) {
                         <AiOutlineDownload size={25}/> Descargar Informe
                     </div>
                     
-                </div>
+                </div> */}
 
                 <div className='modal__herramienta modal__opciones'>
 
