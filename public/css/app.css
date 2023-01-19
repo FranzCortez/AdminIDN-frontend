@@ -670,6 +670,10 @@ form .fecha__btn {
 form .fecha__btn:hover {
     background-color: var(--azul);
 }
+form .opciones {
+    display: flex;
+    justify-content: space-between;
+}
 .multipleSelect {
     padding: 1.5rem;
     flex: 1;

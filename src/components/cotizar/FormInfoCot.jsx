@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { IoArrowBackCircleOutline } from 'react-icons/io5';
+import { ImCancelCircle } from 'react-icons/im';
 import { RiFileList2Line } from 'react-icons/ri';
 
 import clienteAxios from '../../config/axios';
@@ -101,6 +101,10 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
 
     const consultarBase = async (fotos) => {
         try {
+
+            if ( fotos[0] === segundoFotoA[0] || fotos[0] === segundoFotoB[0] ) {
+                return fotos;
+            }
             
             const res = await clienteAxios.post(`ih/base/foto`, {fotos: fotos}, {
                 headers: {
@@ -152,7 +156,7 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                 <div className="card-body">
 
                     <div className='top-left'>
-                        <Link to={'/ingresos'} className="btn-new btn-error"><IoArrowBackCircleOutline size={25}/> Cancelar Informe</Link>
+                        <Link to={`/ingresos`} className="btn-new btn-error"><ImCancelCircle size={25}/> Cancelar Informe</Link>
                     </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
@@ -160,9 +164,9 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                     <BarraProgreso page={page} onPageNumberClick={nextPageNumber} />
                     {
                         {
-                            pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} />,
-                            pagetwo: <InformeParteDos onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} />,
-                            pagethree: <InformeParteTres guardarDatosTercero={guardarDatosTercero}/>
+                            pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} data={primero}/>,
+                            pagetwo: <InformeParteDos onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundoFotoA={segundoFotoA} segundoTextoA={segundoTextoA} segundoFotoB={segundoFotoB} segundoTextoB={segundoTextoB} />,
+                            pagethree: <InformeParteTres onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero}/>
                         }[page]
                     }
                 </div>

@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
 
-function InformeParteTres({ guardarDatosTercero }) {
+function InformeParteTres({ onButtonClick, guardarDatosTercero }) {
 
     const { id } = useParams();
 
@@ -88,6 +88,10 @@ function InformeParteTres({ guardarDatosTercero }) {
         }
 
         guardarDatosTercero(descripcion);
+    }
+
+    const regresar = () => {
+        onButtonClick("pagetwo");
     }
 
     const guardarFallaSistema = async () => {
@@ -229,15 +233,22 @@ function InformeParteTres({ guardarDatosTercero }) {
                     <label htmlFor="foto">Generar hoja adicional con la foto galería sobrante.</label>
                 </div>
 
-                <div className="enviar">
-                    <input 
-                        type="submit" 
-                        className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                        value="Generar Informe"
-                        disabled={validarForm()}
-                    />
-                </div>
+                <div className='opciones' >
+                    <div className='enviar' >
+                        <div className='btn-new btn-return' onClick={regresar}>
+                            Regresar
+                        </div>
+                    </div>
 
+                    <div className="enviar">
+                        <input 
+                            type="submit" 
+                            className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
+                            value="Generar Informe"
+                            disabled={validarForm()}
+                        />
+                    </div>
+                </div>
             </form>
         </Fragment>
     )

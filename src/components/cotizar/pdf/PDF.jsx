@@ -152,7 +152,9 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                     text: res.data.msg,
                     timer: 1500
                 })
-    
+                
+                // redireccionar
+                navigate('/ingresos', {replace: true});
             } catch (error) {
                 console.log(error)
                 if(error.request.status === 404 ) {
@@ -163,27 +165,31 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                         timer: 1500
                     })
                 }
-                // redireccionar
-                // navigate('/ingresos', {replace: true});
             }            
         });
+    }
+
+    const regresar = () => {
+        document.querySelector("#info").classList.add("db");
+        document.querySelector("#info").classList.remove("dn");
+        document.querySelector("#usuarioEmpresa").style.display = "none";
     }
 
     return (
         <div id="usuarioEmpresa">
 
-            <Link 
-                to={"/ingresos"}
+            <div className='btn-new btn-return' onClick={regresar}>
+                Regresar a Editar los Datos
+            </div>
+
+            <div 
+                id="btnCrearPdf" 
+                className='btn-new btn-login' 
+                onClick={pdfcrear}
             >
-                <div 
-                    id="btnCrearPdf" 
-                    className='btn-new btn-login' 
-                    onClick={pdfcrear}
-                >
-                    Descargar Cotización e Informe
-                    <AiOutlineDownload size={25} />
-                </div>
-            </Link>
+                Descargar Cotización e Informe
+                <AiOutlineDownload size={25} />
+            </div>
 
             <div id='pdfDescargar'>
                 

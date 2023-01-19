@@ -2,12 +2,12 @@ import React, { Fragment, useState } from 'react';
 
 import SeleccionImagen from './SeleccionImagen';
 
-function InformeParteDos({ onButtonClick, guardarDatosSegundo }) {
+function InformeParteDos({ onButtonClick, guardarDatosSegundo, segundoFotoA, segundoTextoA, segundoFotoB, segundoTextoB }) {
 
-    const [ textoPrimero, guardarTextoPrimero ] = useState('');
-    const [ fotosPrimero, guardarFotosPrimero ] = useState([]);
-    const [ textoSegundo, guardarTextoSegundo ] = useState('');
-    const [ fotosSegundo, guardarFotosSegundo ] = useState([]);
+    const [ textoPrimero, guardarTextoPrimero ] = useState(segundoTextoA);
+    const [ fotosPrimero, guardarFotosPrimero ] = useState(segundoFotoA);
+    const [ textoSegundo, guardarTextoSegundo ] = useState(segundoTextoB);
+    const [ fotosSegundo, guardarFotosSegundo ] = useState(segundoFotoB);
 
     const primero = (texto, fotos) => {
 
@@ -33,6 +33,10 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo }) {
 
     }
 
+    const regresar = () => {
+        onButtonClick("pageone");
+    }
+
     const enviar = (e) => {
         onButtonClick("pagethree");
         guardarDatosSegundo(fotosPrimero, textoPrimero, fotosSegundo, textoSegundo);
@@ -53,11 +57,19 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo }) {
                                 <td>
                                     {
                                         fotosPrimero.length > 0 ? 
-                                        fotosPrimero.map( (foto, index) => (                                            
-                                            <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} />
-                                        ))
+
+                                            fotosPrimero[0] === segundoFotoA[0] ?
+
+                                                segundoFotoA?.map( (foto, index) => (                                            
+                                                    <img className='info__img' src={`data:image/jpeg;base64,${foto}`} alt="" key={index} />
+                                                ))
+                                            :
+
+                                                fotosPrimero.map( (foto, index) => (                                            
+                                                    <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} />
+                                                ))
                                         :
-                                        <p>aún no selecciona imagenes</p>
+                                            <p>aún no selecciona imagenes</p>
                                     }
                                 </td>
                             </tr>
@@ -86,9 +98,16 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo }) {
                                 <td>
                                     {
                                         fotosSegundo.length > 0 ? 
-                                        fotosSegundo.map( (foto, index) => (                                            
-                                            <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} />
-                                        ))
+                                            fotosSegundo[0] === segundoFotoB[0] ?
+
+                                                segundoFotoB?.map( (foto, index) => (                                            
+                                                    <img className='info__img' src={`data:image/jpeg;base64,${foto}`} alt="" key={index} />
+                                                ))
+                                            :
+
+                                                fotosSegundo.map( (foto, index) => (                                            
+                                                    <img className='info__img' src={`${process.env.REACT_APP_BACKEND_URL_PUBLIC}${foto}`} alt="" key={index} />
+                                                ))
                                         :
                                         <p>aún no selecciona imagenes</p>
                                     }
@@ -110,16 +129,23 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo }) {
                     </table>
                 </div>
 
-                <div className="enviar">
-                    <input 
-                        type="submit" 
-                        className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                        value="Siguiente"
-                        disabled={validarForm()}
-                        onClick={enviar}
-                    />
-                </div>
+                <div className='opciones' >
+                    <div className='enviar' >
+                        <div className='btn-new btn-return' onClick={regresar}>
+                            Regresar
+                        </div>
+                    </div>
 
+                    <div className="enviar">
+                        <input 
+                            type="submit" 
+                            className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
+                            value="Siguiente"
+                            disabled={validarForm()}
+                            onClick={enviar}
+                        />
+                    </div>
+                </div>
             </form>
         </Fragment>
     )

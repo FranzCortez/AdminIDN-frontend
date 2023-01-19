@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RiDeleteBin2Line } from "react-icons/ri";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { ImCancelCircle } from "react-icons/im";
 import { MdOutlineRequestQuote } from "react-icons/md";
 import Swal from 'sweetalert2';
 
@@ -18,6 +18,7 @@ function FormGenerarCot() {
     const [ cotizacionBackend, guardarCotizacionBackend ] = useState({});
     const [ herramienta, guardarHerramienta ] = useState({});
     const [ contenido, guardarContenido ] = useState([]);
+    const [ contenidoPdf, guardarContenidoPdf ] = useState([]);
     const [ cotizacion, guardarCotizacion ] = useState({
         fechaEvaluacion: '',
         fechaCotizacion: '',
@@ -151,10 +152,11 @@ function FormGenerarCot() {
         if(contenido.length < 10) {
             let guardar = [...contenido];
             guardar = await relleno(guardar)
-            guardarContenido(guardar);
+            guardarContenidoPdf(guardar);
         } 
 
         document.querySelector("#cot").classList.add("dn");
+        document.querySelector("#cot").classList.remove("db");
         document.querySelector("#info").classList.remove("dn");
         document.querySelector("#info").classList.add("db");
     }
@@ -211,7 +213,7 @@ function FormGenerarCot() {
                 <div className="card-body">
 
                     <div className='top-left'>
-                        <Link to={`/ingresos`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                        <Link to={`/ingresos`} className="btn-new btn-error"><ImCancelCircle size={25}/> Cancelar Informe</Link>
                     </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
@@ -386,7 +388,7 @@ function FormGenerarCot() {
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Generar Cotización"
+                                value="Continuar con Informe"
                                 disabled={validarForm()}
                                 onClick={crearPDF}
                             />
@@ -397,7 +399,7 @@ function FormGenerarCot() {
             </div>
 
             <FormInfoCot
-                contenido={contenido} 
+                contenido={contenidoPdf} 
                 cotizacion={cotizacion} 
                 herramientaInfo={herramienta} 
                 cotizacionBackend={cotizacionBackend}
