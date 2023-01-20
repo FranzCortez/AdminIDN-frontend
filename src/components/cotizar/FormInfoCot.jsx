@@ -79,7 +79,7 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
     }
 
     const guardarDatosTercero = (datos) => {
-
+        
         const conclusion = datos.conclusion.split("\n");
         const falla = datos.descripcion.split("\n");
         const recomendacion = datos.recomendacion.split("\n");
@@ -166,7 +166,7 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                         {
                             pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} data={primero}/>,
                             pagetwo: <InformeParteDos onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundoFotoA={segundoFotoA} segundoTextoA={segundoTextoA} segundoFotoB={segundoFotoB} segundoTextoB={segundoTextoB} />,
-                            pagethree: <InformeParteTres onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero}/>
+                            pagethree: <InformeParteTres onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} />
                         }[page]
                     }
                 </div>

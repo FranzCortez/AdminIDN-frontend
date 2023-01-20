@@ -148,13 +148,24 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                 });       
                 
                 Swal.fire({
+                    
+                });
+
+                Swal.fire({
                     title: 'Cotización Realizada con Exito',
                     text: res.data.msg,
-                    timer: 1500
-                })
+                    showDenyButton: true,
+                    confirmButtonText: 'Regresar a Ingresos',
+                    denyButtonText: `Quedarme para Editar`,
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      // redireccionar
+                      navigate('/ingresos', {replace: true});
+                    }
+                  })
+                  
                 
-                // redireccionar
-                navigate('/ingresos', {replace: true});
             } catch (error) {
                 console.log(error)
                 if(error.request.status === 404 ) {

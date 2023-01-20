@@ -60,18 +60,19 @@ function FormCertificadoA() {
 
     const guardarDatosSegundo = (datos) => {
         const mantencion = datos.mantencion.split("\n");
-        const conclucion = datos.conclucion.split("\n");
+        const conclusion = datos.conclusion.split("\n");
+        
         guardarSegundo({
             mantencion,
-            conclucion
+            conclusion
         });
+
+        document.querySelector(".card").style.display = "none";
+        document.querySelector("#usuarioEmpresa").style.display = "block"; 
     }
 
     const guardarDatosTercero = (datos) => {
         guardarTercero(datos);    
-
-        document.querySelector(".card").style.display = "none";
-        document.querySelector("#usuarioEmpresa").style.display = "block";    
     }
 
     const consultarAPI = async () => {
@@ -115,9 +116,9 @@ function FormCertificadoA() {
                     <BarraProgreso page={page} onPageNumberClick={nextPageNumber} />
                     {
                         {
-                            pageone: <CertificadoParteUnoA onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} />,
-                            pagetwo: <CertificadoParteDosA onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} />,
-                            pagethree: <CertificadoParteTresA guardarDatosTercero={guardarDatosTercero}/>
+                            pageone: <CertificadoParteUnoA onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} primero={primero} />,
+                            pagetwo: <CertificadoParteTresA onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} />,
+                            pagethree: <CertificadoParteDosA onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundo={segundo} />
                         }[page]
                     }
                 </div>

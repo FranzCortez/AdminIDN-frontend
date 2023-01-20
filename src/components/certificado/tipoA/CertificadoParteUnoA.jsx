@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero }) {
+function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero, primero }) {
 
     const today = new Date();
     const dd = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
@@ -9,9 +9,11 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero }) {
     const fechaActual = `${yyyy}-${mm}-${dd}`
 
     const [ datos, guardarDatos ] = useState({
-        fechaEmicion: fechaActual,
-        fechaCalibracion: "",
-        fechaProximaCalibracion: ""
+        fechaEmicion: primero?.fechaEmicion ? primero.fechaEmicion : fechaActual,
+        fechaCalibracion: primero?.fechaCalibracion ? primero.fechaCalibracion : "",
+        fechaProximaCalibracion: primero?.fechaProximaCalibracion ? primero.fechaProximaCalibracion : "",
+        toneladas: primero?.toneladas ? primero.toneladas : '',
+        presion: primero?.presion ? primero.presion : ''
     });
 
     const actualizarState = (e) => {
@@ -98,6 +100,7 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero }) {
                         type="text" 
                         id='toneladas'
                         name='toneladas'
+                        defaultValue={datos.toneladas}
                         onChange={actualizarState}
                     />
                 </div>
@@ -108,6 +111,7 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero }) {
                         type="text" 
                         id='presion'
                         name='presion'
+                        defaultValue={datos.presion}
                         onChange={actualizarState}
                     />
                 </div>

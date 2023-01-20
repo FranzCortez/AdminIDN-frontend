@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
 
-function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo }) {
+function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
 
     const [ descripcion, guardarDescripcion ] = useState({
-        conclucion: '',
-        mantencion: '',
+        conclusion: segundo?.conclusion ? segundo?.conclusion?.join('\n') : '',
+        mantencion: segundo?.mantencion ? segundo?.mantencion?.join('\n') : '',
     });    
 
     const actualizarState = (e) => {    
@@ -16,7 +16,7 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo }) {
 
     const validarForm = () => {
 
-        if( !(!descripcion.mantencion.length || !descripcion.conclucion.length ) ){
+        if( !(!descripcion.mantencion.length || !descripcion.conclusion.length ) ){
             return false;
         }
 
@@ -24,16 +24,18 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo }) {
 
     }
 
-    const enviar = (e) => {
-        e.preventDefault();
-        onButtonClick("pagethree");
+    const enviar = () => {
         guardarDatosSegundo(descripcion);
+    }
+
+    const regresar = () => {
+        onButtonClick("pagetwo");
     }
 
     return (
         <Fragment>
 
-            <form onSubmit={enviar}>
+            <form onSubmit={e => e.preventDefault()}>
                 
                 <div className='campo'>
                     <label htmlFor="Mantención">Mantención o Reparación<span className='campo__obligatorio'>*</span>:</label>
@@ -48,26 +50,34 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo }) {
                 </div>
                 
                 <div className='campo'>
-                    <label htmlFor="conclucion">Conclución<span className='campo__obligatorio'>*</span>:</label>
+                    <label htmlFor="conclusion">Conclusión<span className='campo__obligatorio'>*</span>:</label>
                     <textarea 
-                        name="conclucion" 
-                        id="conclucion" 
+                        name="conclusion" 
+                        id="conclusion" 
                         cols="30" 
                         rows="5"
-                        defaultValue={descripcion.conclucion}
+                        defaultValue={descripcion.conclusion}
                         onChange={actualizarState}
                     />                 
                 </div>
 
-                <div className="enviar">
-                    <input 
-                        type="submit" 
-                        className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                        value="Siguiente"
-                        disabled={validarForm()}
-                    />
-                </div>
+                <div className='opciones' >
+                    <div className='enviar' >
+                        <div className='btn-new btn-return' onClick={regresar}>
+                            Regresar
+                        </div>
+                    </div>
 
+                    <div className="enviar">
+                        <input 
+                            type="submit" 
+                            className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
+                            value="Generar Certificado"
+                            disabled={validarForm()}
+                            onClick={enviar}
+                        />
+                    </div>
+                </div>
             </form>
         </Fragment>
     )

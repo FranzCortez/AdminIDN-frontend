@@ -4,31 +4,31 @@ import { useParams } from 'react-router-dom';
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function CertificadoParteTresA({ guardarDatosTercero }) {
+function CertificadoParteTresA({ onButtonClick, guardarDatosTercero, tercero }) {
 
     const { id } = useParams();
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
-
-    const [ tercero, guardarTercero ] = useState({
-        operativo: '',
-        proximaMantencion: ''
+    
+    const [ data, guardarData ] = useState({
+        operativo: tercero?.operativo ? tercero.operativo : 0,
+        proximaMantencion: tercero?.proximaMantencion ? tercero?.proximaMantencion : ''
     });
 
     const actualizarState = (e) => {
         
-        guardarTercero({
-            ...tercero,
+        guardarData({
+            ...data,
             [e.target.name] : e.target.value
         });
     }
 
     const validarForm = () => {
 
-        const { operativo, proximaMantencion } = tercero;
+        const { operativo, proximaMantencion } = data;
         
-        if( !(!proximaMantencion.length || !operativo.length) ){
+        if( (proximaMantencion !== '' && operativo !== 0) || ( tercero.proximaMantencion && tercero?.proximaMantencion !== '' && tercero?.operativo !== 0 ) ){
             return false;
         }
 
@@ -36,9 +36,17 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
 
     }
 
-    const enviar = (e) => {
-        e.preventDefault();
-        guardarDatosTercero(tercero);
+    const enviar = () => {
+        onButtonClick("pagethree");
+        
+        if ( tercero.proximaMantencion && data.proximaMantencion !== tercero.proximaMantencion && data.proximaMantencion === '' && data.operativo === 0) {
+            guardarDatosTercero(tercero)
+        } else {
+            const guardar = data;
+            guardar.operativo = guardar.operativo === '' || guardar.operativo === 0 ? tercero.operativo : guardar.operativo;
+            guardar.proximaMantencion = guardar.proximaMantencion === '' || guardar.proximaMantencion === 0 ? tercero.proximaMantencion : guardar.proximaMantencion;
+            guardarDatosTercero(guardar);
+        }
     }
 
     const consultarAPI = async () => {
@@ -48,8 +56,8 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
-            guardarTercero({
+            // manesentao
+            guardarData({
                 operativo: '',
                 proximaMantencion: res?.data ? res.data.proxima : ''
             })
@@ -59,17 +67,21 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
         }
     }
 
+    const regresar = () => {
+        onButtonClick("pageone")
+    }
+
     useEffect(() => {
         consultarAPI();
     },[]);
 
     return (
         <Fragment>
-            <form onSubmit={enviar}>
+            <form onSubmit={e => e.preventDefault()}>
                 
                 <div className='campo'>
                     <label htmlFor="operativo">Estado<span className='campo__obligatorio'>*</span>:</label>
-                    <select name="operativo" id="operativo" onChange={actualizarState} defaultValue={0}>
+                    <select name="operativo" id="operativo" onChange={actualizarState} defaultValue={data.operativo}>
                         <option value={0} disabled> -- Seleccione -- </option>    
                         <option value={true}>Operativo</option>
                         <option value={false}>Dar de Baja</option>
@@ -77,7 +89,7 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
                 </div>
 
                 {
-                    tercero.proximaMantencion === '' ?
+                    data.proximaMantencion === '' ?
                         <h3 className='text-center' >Aún no se ha generado un codigo QR para saber la próxima mantención, ingrese una fecha y asegúrese que coincida con la que pondrá en el QR</h3>
                     :
                         null                        
@@ -89,18 +101,27 @@ function CertificadoParteTresA({ guardarDatosTercero }) {
                         type="date" 
                         id='proximaMantencion'
                         name='proximaMantencion'
-                        defaultValue={tercero.proximaMantencion}
+                        defaultValue={data.proximaMantencion}
                         onChange={actualizarState}
                     />
-                </div>
+                </div>                
 
-                <div className="enviar">
-                    <input 
-                        type="submit" 
-                        className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                        value="Generar Certificado"
-                        disabled={validarForm()}
-                    />
+                <div className='opciones' >
+                    <div className='enviar' >
+                        <div className='btn-new btn-return' onClick={regresar}>
+                            Regresar
+                        </div>
+                    </div>
+
+                    <div className="enviar">
+                        <input 
+                            type="submit" 
+                            className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
+                            value="Siguiente"
+                            disabled={validarForm()}
+                            onClick={enviar}
+                        />
+                    </div>
                 </div>
 
             </form>

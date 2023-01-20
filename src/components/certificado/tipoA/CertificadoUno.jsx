@@ -59,12 +59,20 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                         Authorization: `Bearer ${auth.token}`
                     }
                 });       
-                
+
                 Swal.fire({
                     title: 'Certificado Realizado con Exito',
                     text: res.data.msg,
-                    timer: 1500
-                })
+                    showDenyButton: true,
+                    confirmButtonText: 'Regresar a Ingresos',
+                    denyButtonText: `Quedarme para Editar`,
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      // redireccionar
+                      navigate('/ingresos', {replace: true});
+                    }
+                  })
     
             } catch (error) {
                 console.log(error)
@@ -76,22 +84,31 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                         timer: 1500
                     })
                 }
-            }            
-            // redireccionar
-            navigate('/ingresos', {replace: true});
+            }
         });
+    }
+
+    const regresar = () => {
+        document.querySelector(".card").style.display = "block";
+        document.querySelector("#usuarioEmpresa").style.display = "none"; 
     }
 
     return (
         <div id="usuarioEmpresa">
-            <div 
-                    id="btnCrearPdf" 
-                    className='btn-new btn-login' 
-                    onClick={pdfcrear}
-                >
-                    Descargar Certificado
-                    <AiOutlineDownload size={25} />
+
+            <div className='btn-new btn-return' onClick={regresar}>
+                Regresar a Editar los Datos
             </div>
+
+            <div 
+                id="btnCrearPdf" 
+                className='btn-new btn-login' 
+                onClick={pdfcrear}
+            >
+                Descargar Certificado
+                <AiOutlineDownload size={25} />
+            </div>
+
             <div id='pdf'>
                 <div className='certificado'>
                     <div className='pdf__titulo'>
@@ -238,8 +255,8 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                         <h2 className=''>CONCLUSIONES</h2>
                         <div className='info__falla'>
                             {
-                                segundo?.conclucion ? 
-                                    segundo?.conclucion.map( (text, index) => (
+                                segundo?.conclusion ? 
+                                    segundo?.conclusion.map( (text, index) => (
                                         <p key={index}>{text}</p>
                                     ))
                                 : 
@@ -272,8 +289,14 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                                 </div>
                             </div>
                     }
+
+                    {
+                        tercero?.operativo === 'true' ?
+                            <h1>Próxima Mantención Recomendada: {moment(tercero?.proximaMantencion).format('DD/MM/YYYY')}</h1>
+                        :
+                            null
+                    }
                     
-                    <h1>Próxima Mantención Recomendada: {moment(tercero?.proximaMantencion).format('DD/MM/YYYY')}</h1>
 
                     <div className='certificado__firma'>
                         

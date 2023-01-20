@@ -4,18 +4,18 @@ import { useParams, useNavigate } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
 
-function InformeParteTres({ onButtonClick, guardarDatosTercero }) {
+function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero }) {
 
     const { id } = useParams();
 
     const [ descripcion, guardarDescripcion ] = useState({
-        conclusion: '',
-        descripcion: '',
-        recomendacion: '',
-        foto: false,
-        guardarRecomendacion: false,
-        guardarConclusion: false,
-        guardarFalla: false,
+        conclusion: tercero?.conclusion ? tercero.conclusion.join('\n') : '',
+        descripcion: tercero?.descripcion ? tercero.descripcion.join('\n') : '',
+        recomendacion: tercero?.recomendacion ? tercero.recomendacion.join('\n') : '',
+        foto: tercero?.foto ? tercero.foto : false,
+        guardarRecomendacion: tercero?.guardarRecomendacion ? tercero.guardarRecomendacion : false,
+        guardarConclusion: tercero?.guardarConclusion ? tercero.guardarConclusion : false,
+        guardarFalla: tercero?.guardarFalla ? tercero.guardarFalla : false,
     });
 
     let navigate = useNavigate();
@@ -145,7 +145,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero }) {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-
+            
             guardarDescripcion({
                 id: res.data.id,
                 nombre: res.data.nombre,
