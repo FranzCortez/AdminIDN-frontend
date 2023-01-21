@@ -72,7 +72,7 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                       // redireccionar
                       navigate('/ingresos', {replace: true});
                     }
-                  })
+                })
     
             } catch (error) {
                 console.log(error)
