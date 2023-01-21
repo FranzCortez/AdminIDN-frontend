@@ -1,19 +1,43 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
-function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unidad }) {
+function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unidad, segundo }) {
+
+    if ( segundo.llegadaFinal && segundo?.llegadaFinal[segundo?.llegadaFinal?.length-1].usado !== false ) {
+        segundo.llegadaFinal.push({
+            name: (parseInt(segundo.llegadaFinal[segundo.llegadaFinal.length - 1].name) + 1).toString(),
+            numero: 0,
+            usado:false
+        });
+    }
+
+    if ( segundo.comparacionFinal && segundo?.comparacionFinal[segundo?.comparacionFinal?.length-1].usado !== false ) {
+        segundo.comparacionFinal.push({
+            name: (parseInt(segundo.comparacionFinal[segundo.comparacionFinal.length - 1].name) + 1).toString(),
+            numero: 0,
+            usado:false
+        });
+    }
+
+    if ( segundo.entregaFinal && segundo?.entregaFinal[segundo?.entregaFinal?.length-1].usado !== false ) {
+        segundo.entregaFinal.push({
+            name: (parseInt(segundo.entregaFinal[segundo.entregaFinal.length - 1].name) + 1).toString(),
+            numero: 0,
+            usado:false
+        });
+    }
 
     const [ tabla, guardarTabla ] = useState({
-        llegada: [{
+        llegada: segundo.llegadaFinal ? segundo.llegadaFinal : [{
             name: '0',
             numero: 0,
             usado: false
         }],
-        comparcion: [{
+        comparcion: segundo.comparacionFinal ? segundo.comparacionFinal : [{
             name: '0',
             numero: 0,
             usado: false
         }],
-        entrega: [{
+        entrega: segundo.entregaFinal ? segundo.entregaFinal : [{
             name: '0',
             numero: 0,
             usado: false
@@ -176,6 +200,14 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
         onButtonClick("pagethree");
     }
 
+    const regresar = () => {
+        onButtonClick("pageone")
+    }
+
+    useEffect(() => {
+
+    }, [tabla.comparcion, tabla.entrega, tabla.llegada]);
+
     return (
         <Fragment>
 
@@ -214,6 +246,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                                                             name={index}
                                                             className={'certificado__inp'}
                                                             onChange={actualizarInstrumentoI}
+                                                            defaultValue={isNaN(dato.numero) || dato.numero === 0 ? null : dato.numero}
                                                         /> {unidad}
                                                     </div>
                                                 ))
@@ -333,6 +366,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                                                             name={index}
                                                             className={'certificado__inp'}
                                                             onChange={actualizarEntrega}
+                                                            defaultValue={isNaN(dato.numero) || dato.numero === 0 ? null : dato.numero}
                                                         /> {unidad}
                                                     </div>
                                                 ))
@@ -417,15 +451,22 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                     </table>
                 </div>
 
-                <div className="enviar">
-                    <input 
-                        type="submit" 
-                        className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                        value="Siguiente"
-                        disabled={validarForm()}
-                    />
-                </div>
+                <div className='opciones' >
+                    <div className='enviar' >
+                        <div className='btn-new btn-return' onClick={regresar}>
+                            Regresar
+                        </div>
+                    </div>
 
+                    <div className="enviar">
+                        <input 
+                            type="submit" 
+                            className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
+                            value="Siguiente"
+                            disabled={validarForm()}
+                        />
+                    </div>
+                </div>
             </form>
         </Fragment>
     )

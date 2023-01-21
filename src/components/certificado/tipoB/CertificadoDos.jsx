@@ -63,7 +63,15 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                 Swal.fire({
                     title: 'Certificado Realizado con Exito',
                     text: res.data.msg,
-                    timer: 1500
+                    showDenyButton: true,
+                    confirmButtonText: 'Regresar a Ingresos',
+                    denyButtonText: `Quedarme para Editar`,
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      // redireccionar
+                      navigate('/ingresos', {replace: true});
+                    }
                 })
     
             } catch (error) {
@@ -76,9 +84,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                         timer: 1500
                     })
                 }
-            }            
-            // redireccionar
-            navigate('/ingresos', {replace: true});
+            }
         });
     }
 
@@ -101,8 +107,18 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
 
     }
 
+    const regresar = () => {
+        document.querySelector(".card").style.display = "block";
+        document.querySelector("#usuarioEmpresa").style.display = "none"; 
+    }
+
     return (
         <div id='usuarioEmpresa'>
+
+            <div className='btn-new btn-return' onClick={regresar}>
+                Regresar a Editar los Datos
+            </div>
+
             <div 
                     id="btnCrearPdf" 
                     className='btn-new btn-login' 
@@ -111,6 +127,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                     Descargar 
                     <AiOutlineDownload size={25} />
             </div>
+
             <div id='pdf'>
                 <div className='pdf certificado'>
                     <div className='pdf__titulo'>

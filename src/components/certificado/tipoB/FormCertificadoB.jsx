@@ -19,23 +19,7 @@ function FormCertificadoB() {
 
     const [ herramienta, guardarHerramienta ] = useState({});
 
-    const [ primero, guardarPrimero ] = useState({
-        fechaEmicion: '',        
-        fechaComparacion: "",
-        unidad: '',
-        rango: '', 
-        resolucion: '',
-
-        patron: '',
-        numeroSeriePatron: '',
-        marcaPatron: '',
-        modeloPatron: '',
-        unidadPatron: '',
-        rangoPatron: '',
-        resolucionPatron: '',
-        fechaCalibracionPatron: "",
-    });
-
+    const [ primero, guardarPrimero ] = useState({});
     const [ segundo, guardarSegundo ] = useState({});
     const [ tercero, guardarTercero ] = useState({});
 
@@ -76,6 +60,7 @@ function FormCertificadoB() {
 
     const guardarDatosSegundo = (datos) => {
         guardarSegundo(datos);
+        console.log(datos)
     }
 
     const guardarDatosTercero = (datos) => {
@@ -135,9 +120,9 @@ function FormCertificadoB() {
                     <BarraProgreso page={page} onPageNumberClick={nextPageNumber} />
                     {
                         {
-                            pageone: <CertificadoParteUnoB onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} id={id} />,
-                            pagetwo: <CertificadoParteDosB onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} rango={primero.rango} unidad={primero.unidad} />,
-                            pagethree: <CertificadoParteTresB guardarDatosTercero={guardarDatosTercero}/>
+                            pageone: <CertificadoParteUnoB onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} id={id} primero={primero} />,
+                            pagetwo: <CertificadoParteDosB onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} rango={primero.rango} unidad={primero.unidad} segundo={segundo} />,
+                            pagethree: <CertificadoParteTresB onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} />
                         }[page]
                     }
                 </div>

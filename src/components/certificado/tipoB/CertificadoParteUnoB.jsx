@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../../config/axios';
 
-function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id }) {
+function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero }) {
 
     const today = new Date();
     const dd = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
@@ -15,22 +15,22 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id }) {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     const [ datos, guardarDatos ] = useState({
-        fechaEmicion: fechaActual,        
-        fechaComparacion: "",
-        unidad: '',
-        rango: '', 
-        resolucion: '',
-        fechaCalibracion: '',
+        fechaEmicion: primero.fechaEmicion ? primero.fechaEmicion : fechaActual,        
+        fechaComparacion: primero.fechaComparacion ? primero.fechaComparacion : "",
+        unidad: primero.unidad ? primero.unidad : '',
+        rango: primero.rango ? primero.rango : '', 
+        resolucion: primero.resolucion ? primero.resolucion : '',
+        fechaCalibracion: primero.fechaCalibracion ? primero.fechaCalibracion : '',
 
-        patron: 'CERTIFICATE',
-        numeroSeriePatron: '413880020',
-        marcaPatron: 'CDI',
-        modeloPatron: '10005-F-DTT',
-        unidadPatron: 'Lbrs/pie',
-        rangoPatron: '0-1000',
-        resolucionPatron: '0.1',
-        fechaCalibracionPatron: "2021-12-15",
-        proximaMantencion: ''
+        patron: primero.patron ? primero.patron : 'CERTIFICATE',
+        numeroSeriePatron: primero.numeroSeriePatron ? primero.numeroSeriePatron : '413880020',
+        marcaPatron: primero.marcaPatron ? primero.marcaPatron : 'CDI',
+        modeloPatron: primero.modeloPatron ? primero.modeloPatron : '10005-F-DTT',
+        unidadPatron: primero.unidadPatron ? primero.unidadPatron : 'Lbrs/pie',
+        rangoPatron: primero.rangoPatron ? primero.rangoPatron : '0-1000',
+        resolucionPatron: primero.resolucionPatron ? primero.resolucionPatron : '0.1',
+        fechaCalibracionPatron: primero.fechaCalibracionPatron ? primero.fechaCalibracionPatron : "2021-12-15",
+        proximaMantencion: primero.proximaMantencion ? primero.proximaMantencion : ''
     });
 
     const actualizarState = (e) => {
@@ -44,7 +44,7 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id }) {
     const validarForm = () => {
 
         const { fechaEmicion, fechaCalibracionPatron, fechaComparacion, unidad, rango, resolucion, patron, unidadPatron, numeroSeriePatron, marcaPatron, modeloPatron, rangoPatron, resolucionPatron, fechaCalibracion, proximaMantencion } = datos;
-
+        
         if( !(!fechaCalibracionPatron.length || !fechaEmicion.length || !unidad.length || !rango.length || !resolucion.length || !patron.length || !numeroSeriePatron.length || !marcaPatron.length || !modeloPatron.length || !fechaComparacion.length || !unidadPatron.length || !rangoPatron.length || !resolucionPatron.length || !fechaCalibracion.length || !proximaMantencion.length) ){
             return false;
         }
@@ -68,7 +68,7 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id }) {
             });
             guardarDatos({
                 ...datos,
-                proximaMantencion: res?.data ? res.data.proxima : ''
+                proximaMantencion: primero.proximaMantencion ? primero.proximaMantencion : res?.data ? res.data.proxima : ''
             })
 
         } catch (error) {
