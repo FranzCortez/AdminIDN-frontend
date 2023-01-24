@@ -237,7 +237,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                         </thead>
                         <tbody>
                             <tr className='table__tr'>
-                                <td className='certificado__inp'>{rango}</td>
+                                <td className='certificado__inp'>{rango} {unidad}</td>
 
                                 <td>
                                     <p className='pdf__tabla__titulo' >Ascendente</p>
@@ -253,7 +253,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                                                             className={'certificado__inp'}
                                                             onChange={actualizarInstrumentoI}
                                                             defaultValue={isNaN(dato.numero) || dato.numero === 0 ? null : dato.numero}
-                                                        /> {unidad}
+                                                        />
                                                     </div>
                                                 ))
                                             :
@@ -277,7 +277,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                                                             className={'certificado__inp'}
                                                             onChange={actualizarComparacion}
                                                             defaultValue={ isNaN(dato.numero) || dato.numero === 0 ? null : dato.numero}
-                                                        /> {unidad}
+                                                        />
                                                     </div>
                                                 ))
                                             :
@@ -357,7 +357,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                         </thead>
                         <tbody>
                             <tr className='table__tr'>
-                                <td className='certificado__inp'>{rango}</td>
+                                <td className='certificado__inp'>{rango} {unidad}</td>
 
                                 <td>
                                     <p className='pdf__tabla__titulo' >Ascendente</p>
@@ -373,7 +373,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                                                             className={'certificado__inp'}
                                                             onChange={actualizarEntrega}
                                                             defaultValue={isNaN(dato.numero) || dato.numero === 0 ? null : dato.numero}
-                                                        /> {unidad}
+                                                        />
                                                     </div>
                                                 ))
                                             :
@@ -397,7 +397,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                                                             className={'certificado__inp'}
                                                             onChange={actualizarComparacion}
                                                             defaultValue={ isNaN(dato.numero) || dato.numero === 0 ? null : dato.numero}
-                                                        /> {unidad}
+                                                        />
                                                     </div>
                                                 ))
                                             :

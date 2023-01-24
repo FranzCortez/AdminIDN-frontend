@@ -1168,6 +1168,12 @@ form .opciones {
 .pdf__tabla__certificado {
     margin: 0;
 }
+.certificado__tolerancia {
+    width: 95%;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 700;
+}
 .pdf__tabla__titulo {
     font-weight: 700;
     margin: 0;

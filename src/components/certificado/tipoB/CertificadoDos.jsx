@@ -239,7 +239,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                             </thead>
                             <tbody>
                                 <tr className='table__tr'>
-                                    <td className='certificado__tabla-rango' >{primero?.rango}</td>
+                                    <td className='certificado__tabla-rango' >{primero?.rango} {primero?.unidad}</td>
                                     <td>
                                         <p className='pdf__tabla__titulo' >Ascendente</p>
                                         {
@@ -307,7 +307,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                             </thead>
                             <tbody>
                                 <tr className='table__tr'>
-                                    <td className='certificado__tabla-rango' >{primero?.rango}</td>
+                                    <td className='certificado__tabla-rango' >{primero?.rango} {primero?.unidad}</td>
                                     <td>
                                         <p className='pdf__tabla__titulo' >Ascendente</p>
                                         {
@@ -358,6 +358,8 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                             </tbody>
                         </table>
                     </div>
+
+                    <p className='certificado__tolerancia' >Tolerancia del Equipo en Comparación = ± 5%</p>
 
                     <div className='pdf__pie-compra info__falla__titulo info__certificado w-96 mt-1 certificado__obs'>
                         <h2 className=''>Observaciones</h2>
