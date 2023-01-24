@@ -2,28 +2,34 @@ import React, { Fragment, useState, useEffect } from 'react';
 
 function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unidad, segundo }) {
 
-    if ( segundo.llegadaFinal && segundo?.llegadaFinal[segundo?.llegadaFinal?.length-1].usado !== false ) {
-        segundo.llegadaFinal.push({
-            name: (parseInt(segundo.llegadaFinal[segundo.llegadaFinal.length - 1].name) + 1).toString(),
-            numero: 0,
-            usado:false
-        });
+    if ( segundo.llegadaFinal ) {
+        if( segundo?.llegadaFinal[segundo?.llegadaFinal?.length-1].usado !== false ) {
+            segundo.llegadaFinal.push({
+                name: (parseInt(segundo.llegadaFinal[segundo.llegadaFinal.length - 1].name) + 1).toString(),
+                numero: 0,
+                usado:false
+            });
+        }
     }
 
-    if ( segundo.comparacionFinal && segundo?.comparacionFinal[segundo?.comparacionFinal?.length-1].usado !== false ) {
-        segundo.comparacionFinal.push({
-            name: (parseInt(segundo.comparacionFinal[segundo.comparacionFinal.length - 1].name) + 1).toString(),
-            numero: 0,
-            usado:false
-        });
+    if ( segundo.comparacionFinal ) {
+        if( segundo?.comparacionFinal[segundo?.comparacionFinal?.length-1].usado !== false ){
+            segundo.comparacionFinal.push({
+                name: (parseInt(segundo.comparacionFinal[segundo.comparacionFinal.length - 1].name) + 1).toString(),
+                numero: 0,
+                usado:false
+            });
+        }
     }
 
-    if ( segundo.entregaFinal && segundo?.entregaFinal[segundo?.entregaFinal?.length-1].usado !== false ) {
-        segundo.entregaFinal.push({
-            name: (parseInt(segundo.entregaFinal[segundo.entregaFinal.length - 1].name) + 1).toString(),
-            numero: 0,
-            usado:false
-        });
+    if ( segundo.entregaFinal ) {
+        if( segundo?.entregaFinal[segundo?.entregaFinal?.length-1].usado !== false ) {
+            segundo.entregaFinal.push({
+                name: (parseInt(segundo.entregaFinal[segundo.entregaFinal.length - 1].name) + 1).toString(),
+                numero: 0,
+                usado:false
+            });
+        }
     }
 
     const [ tabla, guardarTabla ] = useState({
@@ -51,8 +57,8 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
         if ( existe ) {
 
             const actualizar = tabla.llegada;
-
-            actualizar[existe.name].numero = parseFloat(e.target.value);
+            
+            actualizar[existe.name].numero = parseFloat(e.target.value.split(',').join('.'));
             
             if ( !actualizar[existe.name].numero ) {
                 actualizar[existe.name].usado = false;
@@ -223,7 +229,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                         <thead>
                             <tr className='table__head'>
                                 <th scope="col">Rango</th>
-                                <th scope="col"></th>
+                                <th scope="col">Lectura Patrón</th>
                                 <th scope="col">Lectura Instrumento</th>
                                 <th scope="col">Desviación</th>
                                 <th scope="col">% Desviación</th>
@@ -343,7 +349,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
                         <thead>
                             <tr className='table__head'>
                                 <th scope="col">Rango</th>
-                                <th scope="col"></th>
+                                <th scope="col">Lectura Patrón</th>
                                 <th scope="col">Lectura Instrumento</th>
                                 <th scope="col">Desviación</th>
                                 <th scope="col">% Desviación</th>

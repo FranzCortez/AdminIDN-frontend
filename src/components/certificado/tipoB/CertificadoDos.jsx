@@ -231,7 +231,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                             <thead>
                                 <tr className='table__head'>
                                     <th scope="col">Rango</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Lectura de Patrón</th>
                                     <th scope="col">Lectura de Instrumento</th>
                                     <th scope="col">Desviación</th>
                                     <th scope="col">Porcentaje de Desviación</th>
@@ -299,7 +299,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                             <thead>
                                 <tr className='table__head'>
                                     <th scope="col">Rango</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Lectura de Patrón</th>
                                     <th scope="col">Lectura de Instrumento</th>
                                     <th scope="col">Desviación</th>
                                     <th scope="col">Porcentaje de Desviación</th>

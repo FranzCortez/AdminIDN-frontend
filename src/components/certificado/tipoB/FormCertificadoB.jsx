@@ -60,7 +60,6 @@ function FormCertificadoB() {
 
     const guardarDatosSegundo = (datos) => {
         guardarSegundo(datos);
-        console.log(datos)
     }
 
     const guardarDatosTercero = (datos) => {

@@ -28,13 +28,12 @@ function Home() {
                 <div className="card-body">
 
                     <div className='home'>
-                        <h2>BIENVENIDO A LA VERSION FINAL 1</h2>
+                        <h2>BIENVENIDO A LA VERSION FINAL 2.1</h2>
                         <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
                         
                         <img className='home__logo' src="/img/LogoIDN.png" alt="" />
                         
                         <p>Para iniciar oprima las barras lateral izquierda <FaBars/> y navegue por las secciones</p>
-                        <h2>Espero que disfruten su prueba!</h2>
                     </div>
                 </div>
             </div>

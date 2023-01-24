@@ -19,7 +19,7 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero 
         fechaComparacion: primero.fechaComparacion ? primero.fechaComparacion : "",
         unidad: primero.unidad ? primero.unidad : '',
         rango: primero.rango ? primero.rango : '', 
-        resolucion: primero.resolucion ? primero.resolucion : '',
+        resolucion: primero.resolucion ? primero.resolucion : 1,
         fechaCalibracion: primero.fechaCalibracion ? primero.fechaCalibracion : '',
 
         patron: primero.patron ? primero.patron : 'CERTIFICATE',
@@ -29,7 +29,7 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero 
         unidadPatron: primero.unidadPatron ? primero.unidadPatron : 'Lbrs/pie',
         rangoPatron: primero.rangoPatron ? primero.rangoPatron : '0-1000',
         resolucionPatron: primero.resolucionPatron ? primero.resolucionPatron : '0.1',
-        fechaCalibracionPatron: primero.fechaCalibracionPatron ? primero.fechaCalibracionPatron : "2021-12-15",
+        fechaCalibracionPatron: primero.fechaCalibracionPatron ? primero.fechaCalibracionPatron : "2022-12-15",
         proximaMantencion: primero.proximaMantencion ? primero.proximaMantencion : ''
     });
 
@@ -43,9 +43,9 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero 
 
     const validarForm = () => {
 
-        const { fechaEmicion, fechaCalibracionPatron, fechaComparacion, unidad, rango, resolucion, patron, unidadPatron, numeroSeriePatron, marcaPatron, modeloPatron, rangoPatron, resolucionPatron, fechaCalibracion, proximaMantencion } = datos;
+        const { fechaEmicion, fechaCalibracionPatron, fechaComparacion, unidad, rango, patron, unidadPatron, numeroSeriePatron, marcaPatron, modeloPatron, rangoPatron, resolucionPatron, fechaCalibracion, proximaMantencion } = datos;
         
-        if( !(!fechaCalibracionPatron.length || !fechaEmicion.length || !unidad.length || !rango.length || !resolucion.length || !patron.length || !numeroSeriePatron.length || !marcaPatron.length || !modeloPatron.length || !fechaComparacion.length || !unidadPatron.length || !rangoPatron.length || !resolucionPatron.length || !fechaCalibracion.length || !proximaMantencion.length) ){
+        if( !(!fechaCalibracionPatron.length || !fechaEmicion.length || !unidad.length || !rango.length || !patron.length || !numeroSeriePatron.length || !marcaPatron.length || !modeloPatron.length || !fechaComparacion.length || !unidadPatron.length || !rangoPatron.length || !resolucionPatron.length || !fechaCalibracion.length || !proximaMantencion.length) ){
             return false;
         }
 
