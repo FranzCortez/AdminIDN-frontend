@@ -125,7 +125,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
 
             let alink = document.createElement('a');
             alink.href = url;
-            alink.download = `cotizacion ${herramientaInfo.otin}.pdf`;
+            alink.download = `cotizacion OTIN ${herramientaInfo.otin}.pdf`;
             alink.target = '_blank'
             alink.click();
 

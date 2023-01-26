@@ -85,7 +85,7 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero 
         <form onSubmit={enviar}>
 
             <div className='campo'>
-                <label htmlFor="fechaEmicion">Fecha Emición<span className='campo__obligatorio'>*</span>:</label>
+                <label htmlFor="fechaEmicion">Fecha Emisión<span className='campo__obligatorio'>*</span>:</label>
                 <input 
                     type="date" 
                     id='fechaEmicion'

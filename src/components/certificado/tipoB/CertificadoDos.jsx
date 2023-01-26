@@ -140,7 +140,7 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
                             <h2 className='pdf__titulo-otin'>OTIN {herramienta?.otin}</h2>
 
                             <div className='pdf__titulo-dueño'>
-                                <h2>Fecha Emición {moment(primero?.fechaEmicion).format('DD-MM-YYYY')}</h2>
+                                <h2>Fecha Emisión {moment(primero?.fechaEmicion).format('DD-MM-YYYY')}</h2>
                             </div>
                         </div>
 
