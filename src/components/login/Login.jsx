@@ -42,7 +42,7 @@ function Login() {
             Swal.fire({
                 type: 'error',
                 title: 'Hubo un error',
-                text: error.response.data.mensaje || error.message
+                text: error.response.data?.mensaje ? error.response.data.mensaje : error.message
             })
         }
     }
@@ -66,7 +66,7 @@ function Login() {
                 <div className='login__form'>
                     <div className="card-body">
 
-                        <h1>Incia sesión para poder entrar al sistema</h1>
+                        <h1>Inicia sesión para poder entrar al sistema</h1>
 
                         <form onSubmit={iniciarSesion}>
                             <div className='campo'>

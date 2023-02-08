@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 
 import SeleccionImagen from './SeleccionImagen';
 
-function InformeParteDos({ onButtonClick, guardarDatosSegundo, segundoFotoA, segundoTextoA, segundoFotoB, segundoTextoB }) {
+function InformeParteDos({ onButtonClick, guardarDatosSegundo, segundoFotoA, segundoTextoA, segundoFotoB, segundoTextoB, datosInfo }) {
 
     const [ textoPrimero, guardarTextoPrimero ] = useState(segundoTextoA);
     const [ fotosPrimero, guardarFotosPrimero ] = useState(segundoFotoA);
@@ -40,6 +40,13 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo, segundoFotoA, seg
     const enviar = (e) => {
         onButtonClick("pagethree");
         guardarDatosSegundo(fotosPrimero, textoPrimero, fotosSegundo, textoSegundo);
+    }
+
+    if ( textoPrimero === '' && textoSegundo === '' && datosInfo.cuadroA ) {
+        guardarFotosPrimero(datosInfo.cuadroA.fotoA);
+        guardarTextoPrimero(datosInfo.cuadroA.segundoTextoA);
+        guardarFotosSegundo(datosInfo.cuadroB.fotoB);
+        guardarTextoSegundo(datosInfo.cuadroB.segundoTextoB);
     }
 
     return (

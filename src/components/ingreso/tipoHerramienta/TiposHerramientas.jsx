@@ -66,8 +66,8 @@ function TiposHerramientas() {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
-            });            
-console.log(res.data)
+            });
+            
             guardarHerramientas(res.data);
             
         } catch (error) {

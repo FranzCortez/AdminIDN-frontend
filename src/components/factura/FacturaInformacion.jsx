@@ -33,7 +33,7 @@ function FacturaInformacion({datos}) {
     const diffInDays = (x, y) => Math.floor((x - y) / (1000 * 60 * 60 * 24));
     
     const observaciones = datos.observaciones.split("\n");
-    console.log(datos)
+
     return (
         <div>
             <button className='btn-new btn-naranja' onClick={openModal}><TbFileInfo size={20}/></button>

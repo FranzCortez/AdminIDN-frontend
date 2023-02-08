@@ -15,6 +15,7 @@ function FormGenerarCot() {
 
     const { id } = useParams();
 
+    const [ datosInfo, guardarDatosInfo ] = useState({});
     const [ cotizacionBackend, guardarCotizacionBackend ] = useState({});
     const [ herramienta, guardarHerramienta ] = useState({});
     const [ contenido, guardarContenido ] = useState([]);
@@ -164,6 +165,10 @@ function FormGenerarCot() {
     const consultarAPI = async () => {
         try {
 
+            if ( cotizacion.nombreCliente !== '' ) {
+                return;
+            }
+
             const res = await clienteAxios.get(`ih/ingreso/${id}`, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
@@ -176,6 +181,58 @@ function FormGenerarCot() {
                 ...cotizacion,
                 nombreCliente : res.data.clienteContacto?.clienteEmpresa?.nombre
             });
+
+            const info = await clienteAxios.get(`ih/info/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            if ( info.data && contenido.length === 0 ) {
+
+                let subtotal = 0;
+
+                const contenido = JSON.parse(JSON.parse(info.data.contenido));
+
+                contenido.forEach(element => {
+                    subtotal += (element.valor * element.cantidad);
+                });
+
+                let neto = subtotal - ( subtotal * (cotizacion.descuento / 100) );
+
+                let iva = neto *0.19;
+
+                let total = iva + neto;
+
+                guardarCotizacion({
+                    fechaEvaluacion: info.data.fechaEvaluacion,
+                    fechaCotizacion: info.data.fechaCotizacion,
+                    condiciones: info.data.condiciones,
+                    plazoEntrega: info.data.plazoEntrega,
+                    garantia: info.data.garantia,
+                    gastos: info.data.gastos,
+                    descuento: info.data.descuento,
+                    subtotal,
+                    neto,
+                    iva,
+                    total,
+                    nombreCliente: info.data.nombreCliente
+                });
+
+                guardarDatosInfo({
+                    conclusion: info.data.conclusion,
+                    condiciones: info.data.condiciones,
+                    cuadroA: JSON.parse(JSON.parse(info.data.cuadroA)),
+                    cuadroB: JSON.parse(JSON.parse(info.data.cuadroB)),
+                    falla: info.data.falla,
+                    fallaText: info.data.fallaText,
+                    fechaInfo: info.data.fechaInfo,
+                    recomendacion: info.data.recomendacion,
+                    tecnico: info.data.tecnico
+                });
+                
+                guardarContenido(contenido);
+            }
 
         } catch (error) {
             console.log(error)
@@ -239,6 +296,7 @@ function FormGenerarCot() {
                                 id='fechaEvaluacion'
                                 name='fechaEvaluacion'
                                 placeholder='Fecha Evaluación de la Herramienta'
+                                defaultValue={cotizacion.fechaEvaluacion}
                                 onChange={actualizarState}
                             />
                         </div>
@@ -249,6 +307,7 @@ function FormGenerarCot() {
                                 type="date" 
                                 id='fechaCotizacion'
                                 name='fechaCotizacion'
+                                defaultValue={cotizacion.fechaCotizacion}
                                 placeholder='Fecha Cotización de la Herramienta'
                                 onChange={actualizarState}
                             />
@@ -400,9 +459,11 @@ function FormGenerarCot() {
 
             <FormInfoCot
                 contenido={contenidoPdf} 
+                contenidoBack={contenido}
                 cotizacion={cotizacion} 
                 herramientaInfo={herramienta} 
                 cotizacionBackend={cotizacionBackend}
+                datosInfo={datosInfo}
             />
 
         </Fragment>

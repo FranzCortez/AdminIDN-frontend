@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
 
-function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero }) {
+function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosInfo }) {
 
     const { id } = useParams();
 
@@ -62,7 +62,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero }) {
     }
 
     const validarForm = () => {
-
+        
         if( !(!descripcion.descripcion.length) ){
             return false;
         }
@@ -140,6 +140,8 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero }) {
         
         try {
 
+            
+
             const res = await clienteAxios.get(`tipo/falla/${id}`, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
@@ -156,6 +158,17 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero }) {
                 guardarRecomendacion: false,
                 guardarFalla: false,
             });
+
+            if ( datosInfo.tecnico ) {
+                if ( descripcion.conclusion != datosInfo.conclusion || descripcion.descripcion != datosInfo.fallaText || descripcion.recomendacion != datosInfo.recomendacion ) {
+                    guardarDescripcion({
+                        ...descripcion,
+                        conclusion: datosInfo.conclusion,
+                        recomendacion: datosInfo.recomendacion,
+                        descripcion: datosInfo.fallaText
+                    });
+                }
+            }
 
         } catch (error) {
             console.log(error)

@@ -14,8 +14,8 @@ import InformeParteTres from '../informe/InformeParteTres';
 
 import PDF from './pdf/PDF';
 
-function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend }) {
-
+function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend, contenidoBack, datosInfo }) {
+console.log(datosInfo)
     const { id } = useParams();
 
     const [ primero, guardarPrimero ] = useState({});
@@ -23,6 +23,8 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
     const [ segundoTextoA, guardarSegundoTextoA ] = useState('');
     const [ segundoFotoB, guardarSegundoFotoB ] = useState([]);
     const [ segundoTextoB, guardarSegundoTextoB ] = useState('');
+    const [ fotoA, guardarFotoA ] = useState([]);
+    const [ fotoB, guardarFotoB ] = useState([]);
     const [ tercero, guardarTercero ] = useState({
         conclusion: [''],
         falla: [''],
@@ -70,6 +72,9 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
     const guardarDatosSegundo = async (fotosPrimero, textoPrimero, fotosSegundo, textoSegundo) => {
 
         guardarFotosSeleccion([...fotosPrimero, ...fotosSegundo]);
+
+        guardarFotoA(fotosPrimero);
+        guardarFotoB(fotosSegundo);
 
         guardarSegundoFotoA(await consultarBase(fotosPrimero));
         guardarSegundoFotoB(await consultarBase(fotosSegundo));
@@ -164,9 +169,9 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                     <BarraProgreso page={page} onPageNumberClick={nextPageNumber} />
                     {
                         {
-                            pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} data={primero}/>,
-                            pagetwo: <InformeParteDos onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundoFotoA={segundoFotoA} segundoTextoA={segundoTextoA} segundoFotoB={segundoFotoB} segundoTextoB={segundoTextoB} />,
-                            pagethree: <InformeParteTres onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} />
+                            pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} data={primero} datosInfo={datosInfo} />,
+                            pagetwo: <InformeParteDos onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundoFotoA={segundoFotoA} segundoTextoA={segundoTextoA} segundoFotoB={segundoFotoB} segundoTextoB={segundoTextoB} datosInfo={datosInfo} />,
+                            pagethree: <InformeParteTres onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} datosInfo={datosInfo} />
                         }[page]
                     }
                 </div>
@@ -177,6 +182,7 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                 cotizacion={cotizacion}
                 herramientaInfo={herramientaInfo}
                 cotizacionBackend={cotizacionBackend}
+                contenidoBack={contenidoBack}
 
                 primero={primero}
                 segundoFotoA={segundoFotoA}
@@ -188,6 +194,8 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                 id={id}
                 fotoGaleria={fotoGaleria}
                 fotosSeleccion={fotosSeleccion}
+                fotoA={fotoA}
+                fotoB={fotoB}
             />
         
         </Fragment>

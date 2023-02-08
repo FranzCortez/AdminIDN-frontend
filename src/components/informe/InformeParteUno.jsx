@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-function InformeParteUno({ onButtonClick, guardarDatosPrimero, data }) {
+function InformeParteUno({ onButtonClick, guardarDatosPrimero, data, datosInfo }) {
 
     const today = new Date();
     const dd = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
@@ -13,6 +13,7 @@ function InformeParteUno({ onButtonClick, guardarDatosPrimero, data }) {
         nombre: data?.nombre ? data.nombre : "Alberto García",
         falla: data?.falla ? data.falla : ""
     });
+
     const actualizarState = (e) => {
 
         guardarDatos({
@@ -45,6 +46,14 @@ function InformeParteUno({ onButtonClick, guardarDatosPrimero, data }) {
         e.preventDefault();
         onButtonClick("pagetwo");
         guardarDatosPrimero(datos);
+    }
+
+    if( datosInfo.tecnico && datos.falla === '' ) {
+        guardarDatos({
+            fecha: datosInfo.fechaInfo,
+            nombre: datosInfo.tecnico,
+            falla: datosInfo.falla
+        });
     }
 
     return (

@@ -22,7 +22,10 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
     herramienta,
     id,
     fotoGaleria,
-    fotosSeleccion }) {
+    fotosSeleccion,
+    contenidoBack,
+    fotoA,
+    fotoB}) {
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -32,6 +35,8 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
     const pdfcrear = async () => {
+        
+        await guardarDatosInfo();
 
         const merger = new PDFMerger()
         
@@ -148,10 +153,6 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                 });       
                 
                 Swal.fire({
-                    
-                });
-
-                Swal.fire({
                     title: 'Cotización Realizada con Exito',
                     text: res.data.msg,
                     showDenyButton: true,
@@ -178,6 +179,50 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                 }
             }            
         });
+    }
+
+    const guardarDatosInfo = async () => {
+        
+        const info = {
+            contenido: contenidoBack,
+            falla: primero.falla,
+            fechaInfo: primero.fecha,
+            tecnico: primero.nombre,
+            cuadroA: {
+                fotoA,
+                segundoTextoA
+            },
+            cuadroB: {
+                fotoB,
+                segundoTextoB
+            },
+            conclusion: tercero.conclusion,
+            fallaText: tercero.falla,
+            recomendacion: tercero.recomendacion,
+            id,
+            condiciones: cotizacion.condiciones,
+            descuento: cotizacion.descuento,
+            fechaCotizacion: cotizacion.fechaCotizacion,
+            fechaEvaluacion: cotizacion.fechaEvaluacion,
+            garantia: cotizacion.garantia,
+            gastos: cotizacion.gastos,
+            nombreCliente: cotizacion.nombreCliente,
+            plazoEntrega: cotizacion.plazoEntrega
+        }
+        
+
+        try {
+            
+            await clienteAxios.post(`ih/info`, info ,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     const regresar = () => {
