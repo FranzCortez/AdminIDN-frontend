@@ -136,6 +136,7 @@ h2 {
     background: #f3f3f3;
     padding: 4rem;
     border-radius: 1rem;
+    width: 90%;
 }
 .modal__close{
     display: flex;
