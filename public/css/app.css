@@ -136,6 +136,8 @@ h2 {
     background: #f3f3f3;
     padding: 4rem;
     border-radius: 1rem;
+}
+.modal__filtro {
     width: 90%;
 }
 .modal__close{

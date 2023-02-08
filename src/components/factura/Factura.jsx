@@ -63,7 +63,7 @@ function Factura({ datos, boleta }) {
                     id={datos.id} 
                     data-estado={datos.estado}
                     data-otin={datos.otines}
-                    data-valor={valorNumero( datos.monto + ( datos.monto * 0.19 ) )}
+                    data-valor={valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) )}
                     data-factura={datos.numeroFactura}
                     data-orden={datos.numeroCompra}
                     data-despacho={datos.guiaDespacho}
@@ -80,7 +80,7 @@ function Factura({ datos, boleta }) {
             <td>{datos.herramientas.length > 0 ? datos.otines : '-'}</td>
             <td>{datos.herramientas.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}</td>
             <td>{datos.herramientas.length > 0 ? datos.guiaDespacho : '- '} / {datos.herramientas.length > 0 && datos.fechaGuiaDespacho !== '0000-00-00' ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : '-'}</td>
-            <td>${datos.herramientas.length > 0 ? valorNumero( datos.monto + ( datos.monto * 0.19 ) ) : '-'}</td>
+            <td>${datos.herramientas.length > 0 ? valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) ) : '-'}</td>
             {/* <td><p className={estadoClase()} >{datos.estado}</p></td> */}
             <td>{datos.estado ? datos.estado : '-'}</td>
             <td>

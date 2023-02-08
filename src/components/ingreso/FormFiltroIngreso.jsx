@@ -140,7 +140,7 @@ function FormFiltroIngreso(props) {
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                className="Modal"
+                className="Modal modal__filtro"
                 contentLabel="Example Modal"
                 overlayClassName="Overlay"
             >

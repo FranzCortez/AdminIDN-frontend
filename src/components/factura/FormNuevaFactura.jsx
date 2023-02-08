@@ -331,7 +331,7 @@ function FormNuevaFactura() {
                                 
                                 {
                                     factura.monto !== '' ?
-                                        <h3 className='card-body-subtitle' >Total + IVA: ${valorNumero(( parseInt(factura.monto) + ( factura.monto*0.19 ) ))}</h3>
+                                        <h3 className='card-body-subtitle' >Total + IVA: ${valorNumero(( parseInt(factura.monto) + parseInt( factura.monto*0.19 ) ))}</h3>
                                     :
                                         null
                                 }
