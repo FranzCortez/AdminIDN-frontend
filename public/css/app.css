@@ -1448,6 +1448,15 @@ form .opciones {
     color: white;
     text-transform: uppercase;
 }
+.boleta__componente thead tr th:nth-child(1) {
+    width: 8% !important;
+}
+.boleta__componente thead tr th:nth-child(2) {
+    width: 6.5rem !important;
+}
+.boleta__componente thead tr th:nth-child(3) {
+    width: 6rem !important;
+}
 .boleta__vencida h2 {
     font-size: 2rem;
     margin: 0;

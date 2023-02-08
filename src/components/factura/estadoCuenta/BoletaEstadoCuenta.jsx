@@ -127,7 +127,7 @@ function BoletaEstadoCuenta({ seleccion }) {
 
                     {
                         vencido.length > 0 ? 
-                            <div className='pdf__componente w-96 max-w-10-table'>
+                            <div className='pdf__componente boleta__componente w-96 max-w-10-table'>
                                 <div className='pdf__titulo-dueño certificado__subtitulo boleta__vencida'>
                                     <h2>FACTURAS VENCIDAS</h2>
                                 </div>
