@@ -509,6 +509,12 @@ h2 {
 .table__row-estado-anulado {
     background-color: rgba(112, 112, 112, 0.3);
 }
+.ingreso__gd {
+    margin: 0;
+}
+.ingreso__gd span {
+    display: block;
+}
 .descripcion {
     width: 100%;
     height: 100%;

@@ -121,7 +121,11 @@ function Ingreso({datos}) {
                 datos.guiaDespacho === '-' || datos.guiaDespacho === null ? 
                     <td>-</td>
                 :
-                    <td>{datos.guiaDespacho} / {moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY')}</td>
+                    <td>
+                        <p className='ingreso__gd'>
+                            {datos.guiaDespacho} / <span>{moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY')}</span>
+                        </p>
+                    </td>
             }
         </tr>
     )

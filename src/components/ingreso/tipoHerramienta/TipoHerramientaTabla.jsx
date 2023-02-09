@@ -26,7 +26,7 @@ function TipoHerramientaTabla({datos}) {
                     datos.descripcion ? 
                     <textarea name="" id="" className='descripcion' value={datos.descripcion} disabled></textarea>
                     : 
-                    'Aun no hay descripción asociada'
+                    '-'
                 }
             </td>
             <td>
@@ -34,7 +34,7 @@ function TipoHerramientaTabla({datos}) {
                     datos.recomendacion ? 
                     <textarea name="" id="" className='descripcion' value={datos.recomendacion} disabled></textarea>
                     : 
-                    'Aun no hay recomendacion asociada'
+                    '_'
                 }
             </td>
             <td>
@@ -42,7 +42,7 @@ function TipoHerramientaTabla({datos}) {
                     datos.conclusion ? 
                     <textarea name="" id="" className='descripcion' value={datos.conclusion} disabled></textarea>
                     : 
-                    'Aun no hay conclusión asociada'
+                    '-'
                 }
             </td>
             <td>
