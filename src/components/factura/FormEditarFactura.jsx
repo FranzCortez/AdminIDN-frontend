@@ -58,7 +58,8 @@ function FormEditarFactura() {
 
     const actualizarFactura = async (e) => {
         e.preventDefault();
-        
+        console.log(factura)
+        return
         try {            
             const res = await clienteAxios.put(`/factura/${facturaEditar.id}`, factura,{
                 headers: {
@@ -155,6 +156,7 @@ function FormEditarFactura() {
             
             const otin = [];
             const otinEditar = [];
+            const otinSeleccion = [];
             
             otines.data.forEach(data => {
                 if ( data.facturaId === null ) {
@@ -162,6 +164,7 @@ function FormEditarFactura() {
                 } else if ( data.facturaId === fact.data.id ) {
                     otin.push({ label: `OTIN ${data.otin}`, value: data.id, data: data.guiaDespacho, fechaData: data.fechaGuiaDespacho });
                     otinEditar.push({ label: `OTIN ${data.otin}`, value: data.id, data: data.guiaDespacho, fechaData: data.fechaGuiaDespacho });
+                    otinSeleccion.push({ id: data.id });
                 }
             });
 
@@ -182,6 +185,7 @@ function FormEditarFactura() {
                 guiaDespacho: fact.data.guiaDespacho,
                 fechaGuiaDespacho: fact.data.fechaGuiaDespacho,
                 estado: fact.data.estado,
+                guardarOtines: otinSeleccion
             });
 
         } catch (error) {
