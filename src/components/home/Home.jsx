@@ -28,7 +28,7 @@ function Home() {
                 <div className="card-body">
 
                     <div className='home'>
-                        <h2>BIENVENIDO A LA VERSION FINAL 2.3</h2>
+                        <h2>BIENVENIDO A LA VERSION FINAL 3</h2>
                         <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
                         
                         <img className='home__logo' src="/img/LogoIDN.png" alt="" />

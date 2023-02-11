@@ -509,6 +509,15 @@ h2 {
 .table__row-estado-anulado {
     background-color: rgba(112, 112, 112, 0.3);
 }
+.factura__vencido {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+}
+.factura__pendiente {
+    background-color: rgba(236, 165, 0, 0.3) !important;
+}
+.factura__pagado {
+    background-color: rgba(20, 131, 20, 0.3) !important;
+}
 .ingreso__gd {
     margin: 0;
 }

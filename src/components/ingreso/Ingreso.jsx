@@ -72,6 +72,18 @@ function Ingreso({datos}) {
 
     moment.locale('es-mx')
 
+    const estadoRow = (estado) => {
+        if( estado === 'Pendiente' ) {
+            return 'factura__pendiente';
+        } else if ( estado === 'Pagado' ) {
+            return 'factura__pagado';            
+        } else if ( estado === 'Vencido' ) {
+            return 'factura__vencido';            
+        } else {
+            return ''
+        }
+    }
+
     useEffect(() => {                
         if(auth.token === '' && !(auth.tipo === 1 || auth.tipo === 2) ) {
             navigate('/login', {replace: true});
@@ -124,6 +136,16 @@ function Ingreso({datos}) {
                     <td>
                         <p className='ingreso__gd'>
                             {datos.guiaDespacho} / <span>{moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY')}</span>
+                        </p>
+                    </td>
+            }
+            {
+                datos.factura === '-' || datos.factura === null ? 
+                    <td>-</td>
+                :
+                    <td className={estadoRow(datos.factura.estado)} >
+                        <p className='ingreso__gd'>
+                            {datos.factura.numeroFactura} / <span>{moment(datos.factura.fechaFactura).format('DD-MM-YYYY')}</span>
                         </p>
                     </td>
             }

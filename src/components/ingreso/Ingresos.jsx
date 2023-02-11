@@ -43,7 +43,7 @@ function Ingresos() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
+
             guardarIngresos(res.data);
             
         } catch (error) {
@@ -107,6 +107,7 @@ function Ingresos() {
                                     <th scope="col">Opciones</th>
                                     <th scope="col">Salida Equipo</th>
                                     <th scope="col">Guía Des. IN / Fecha</th>
+                                    <th scope="col">Num. Fac. / Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
