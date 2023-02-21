@@ -469,6 +469,9 @@ h2 {
     min-width: 0;
     padding-left: 1rem;
 }
+.table__tr-informe {
+    background-color: #c6dfe7 !important;
+}
 .table__estado-vencido {
     margin-bottom: 0;
     background-color: red;

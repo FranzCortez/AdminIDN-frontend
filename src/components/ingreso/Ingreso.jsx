@@ -84,6 +84,12 @@ function Ingreso({datos}) {
         }
     }
 
+    const informe = (estado) => {
+        if ( estado ) {
+            return 'table__tr-informe';
+        }
+    }
+
     useEffect(() => {                
         if(auth.token === '' && !(auth.tipo === 1 || auth.tipo === 2) ) {
             navigate('/login', {replace: true});
@@ -92,25 +98,25 @@ function Ingreso({datos}) {
 
     return (
         <tr className='table__tr'>
-            <td>{datos.otin}</td>
-            <td>{datos.clienteContacto.clienteEmpresa.nombre}</td>
-            <td>{moment(datos.fecha).format('DD-MM-YYYY')}</td>
-            <td>{datos.nombre}</td>
-            <td>{datos.marca}</td>
-            <td>{datos.modelo}</td>
-            <td>{datos.numeroSerie}</td>
-            <td>{datos.numeroInterno}</td>
-            <td>
+            <td className={informe(datos.archivo)} >{datos.otin}</td>
+            <td className={informe(datos.archivo)} >{datos.clienteContacto.clienteEmpresa.nombre}</td>
+            <td className={informe(datos.archivo)} >{moment(datos.fecha).format('DD-MM-YYYY')}</td>
+            <td className={informe(datos.archivo)} >{datos.nombre}</td>
+            <td className={informe(datos.archivo)} >{datos.marca}</td>
+            <td className={informe(datos.archivo)} >{datos.modelo}</td>
+            <td className={informe(datos.archivo)} >{datos.numeroSerie}</td>
+            <td className={informe(datos.archivo)} >{datos.numeroInterno}</td>
+            <td className={informe(datos.archivo)} >
                 <div className='table__opciones' onClick={consultarAPI}>
                     <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}/>
                 </div>                
             </td>
-            <td>
+            <td className={informe(datos.archivo)} >
                 <div className='table__opciones' onClick={consultarAPI}>
                     <IngresoOpciones ingreso={datos}/>
                 </div>                
             </td>
-            <td>
+            <td className={informe(datos.archivo)} >
                 <div className='table__opciones'>
                     {
                         datos.activo ? 
@@ -131,9 +137,9 @@ function Ingreso({datos}) {
             </td>
             {
                 datos.guiaDespacho === '-' || datos.guiaDespacho === null ? 
-                    <td>-</td>
+                    <td className={informe(datos.archivo)} >-</td>
                 :
-                    <td>
+                    <td className={informe(datos.archivo)} >
                         <p className='ingreso__gd'>
                             {datos.guiaDespacho} / <span>{moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY')}</span>
                         </p>
@@ -141,7 +147,7 @@ function Ingreso({datos}) {
             }
             {
                 datos.factura === '-' || datos.factura === null ? 
-                    <td>-</td>
+                    <td className={informe(datos.archivo)} >-</td>
                 :
                     <td className={estadoRow(datos.factura.estado)} >
                         <p className='ingreso__gd'>
