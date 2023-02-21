@@ -312,7 +312,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                                 </div>
 
                                 <div className='pdf__titulo-campo'>
-                                    <p><span>TELEFONO: </span>{herramientaInfo?.clienteContacto?.telefono}</p>
+                                    <p><span>TELÉFONO: </span>{herramientaInfo?.clienteContacto?.telefono}</p>
                                 </div>
                             </div>
                         </div>

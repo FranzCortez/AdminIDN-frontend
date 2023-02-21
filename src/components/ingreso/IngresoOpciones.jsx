@@ -151,7 +151,7 @@ function IngresoOpciones({ ingreso }) {
 
                     <div className='opciones__certificado'>
                         <Link to={`/certificado/tipoa/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
-                            <TbFileCertificate size={25}/> Generar Certificado Manteción
+                            <TbFileCertificate size={25}/> Generar Certificado Mantención
                         </Link>
 
                         <Link to={`/certificado/tipob/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >

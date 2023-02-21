@@ -22,14 +22,19 @@ function Home() {
         <Fragment>
             <div className="card contenedor">
                 <div className="card-header">
-                    <AiFillHome size={50} color={"#333333"}/>
-                    <h1>Hola! {auth.nombre}</h1>
+                    <div className='card-home'>
+                        <div className='card-saludo'>
+                            <AiFillHome size={50} color={"#333333"}/>
+                            <h1>Hola! {auth.nombre}</h1>
+                        </div>
+                        <h2 className='version'>V4.0</h2>
+                    </div>
                 </div>
                 <div className="card-body">
 
                     <div className='home'>
-                        <h2>BIENVENIDO A LA VERSION FINAL 3</h2>
-                        <h2>DEL SISTEMA DE ADMINITRACION DE "IMPACTO DEL NORTE"</h2>
+                        <h2>BIENVENIDO AL</h2>
+                        <h2>SISTEMA DE ADMINISTRACIÓN DE "IMPACTO DEL NORTE"</h2>
                         
                         <img className='home__logo' src="/img/LogoIDN.png" alt="" />
                         

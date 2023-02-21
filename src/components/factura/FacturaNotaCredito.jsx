@@ -42,13 +42,13 @@ function FacturaNotaCredito() {
         e.preventDefault();
 
         Swal.fire ({
-            title: '¿Estas seguro de crear una nota de crédito?',
+            title: '¿Estás seguro de crear una nota de crédito?',
             text: "Una vez realizado no se puede borrar",
             type: 'warning',
             showCancelButton : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
-            confirmButtonText : 'Si, Crear!',
+            confirmButtonText : 'Sí, Crear!',
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
             if (result.value) {

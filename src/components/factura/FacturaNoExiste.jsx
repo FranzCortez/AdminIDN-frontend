@@ -42,13 +42,13 @@ function FacturaNoExiste() {
         e.preventDefault();
 
         Swal.fire ({
-            title: '¿Estas seguro de agregar este n° de factura?',
+            title: '¿Estás seguro de agregar este n° de factura?',
             text: "Una vez ingresado no se puede borrar",
             type: 'warning',
             showCancelButton : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
-            confirmButtonText : 'Si, Agregar!',
+            confirmButtonText : 'Sí, Agregar!',
             cancelButtonText: 'Cancelar'
         }).then( async (result) => {
             if (result.value) {

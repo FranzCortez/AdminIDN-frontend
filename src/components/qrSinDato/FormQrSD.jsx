@@ -90,7 +90,7 @@ function FormQrSD() {
                         <Link to={'/ingresos'} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                     </div>
 
-                    <h2 className='card-body-subtitle'> IMPORTANTE: No usar tildes (Se mantienen las reglas de funcionamiento como la anterior pagina)</h2>
+                    <h2 className='card-body-subtitle'> IMPORTANTE: No usar tildes. (Se mantienen las reglas de funcionamiento como en la anterior página)</h2>
 
                     <form onSubmit={enviarForm}>
                         <div className='campo'>

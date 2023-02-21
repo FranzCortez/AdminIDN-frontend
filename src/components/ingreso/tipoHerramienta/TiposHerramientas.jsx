@@ -119,7 +119,7 @@ function TiposHerramientas() {
                                 <tr className='table__head'>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripción Falla Común</th>
-                                    <th scope="col">Recomendacion</th>
+                                    <th scope="col">Recomendación</th>
                                     <th scope="col">Conclusión</th>
                                     <th scope="col">Editar</th>
                                 </tr>

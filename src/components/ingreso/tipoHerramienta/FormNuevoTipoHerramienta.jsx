@@ -104,7 +104,7 @@ function FormNuevoTipoHerramienta() {
                                 type="text" 
                                 id='nombre'
                                 name='nombre'
-                                placeholder='Nombre Generico para el Tipo de Herramienta'
+                                placeholder='Nombre Genérico para el Tipo de Herramienta'
                                 onChange={actualizarState}
                             />
                         </div>

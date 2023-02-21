@@ -133,7 +133,7 @@ function FromEditarTipoHerramienta() {
                                 id='nombre'
                                 name='nombre'
                                 value={herramienta.nombre}
-                                placeholder='Nombre Generico para el Tipo de Herramienta'
+                                placeholder='Nombre Genérico para el Tipo de Herramienta'
                                 onChange={actualizarState}
                             />
                         </div>

@@ -49,13 +49,13 @@ function FormEliminarGaleria() {
         e.preventDefault();
 
         Swal.fire ({
-            title: '¿Estas seguro de eliminar?',
+            title: '¿Estás seguro de eliminar?',
             text: "Un foto eliminada no se puede recuperar",
             type: 'warning',
             showCancelButton : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
-            confirmButtonText : 'Si, Eliminar!',
+            confirmButtonText : 'Sí, ¡Eliminar!',
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
             if (result.value) {

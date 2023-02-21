@@ -23,12 +23,12 @@ function Ingreso({datos}) {
     const generarQR = () => {
         Swal.fire ({
             title: '¿Estás seguro de marcar la salida de la herramienta?',
-            text: "¡Solo se puede generar 1 vez el código Qr por herramienta!",
+            text: "¡Sólo se puede generar 1 vez el código QR por herramienta!",
             type: 'warning',
             showCancelButton : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
-            confirmButtonText : 'Si, Generar!',
+            confirmButtonText : 'Sí, ¡Generar!',
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
             if (result.value) {
@@ -40,12 +40,12 @@ function Ingreso({datos}) {
     const editarQR = () => {
         Swal.fire ({
             title: '¿Estás seguro de querer modificar la fecha de próxima mantención?',
-            text: "¡El Qr se mantendra pero se cambiara la fecha!",
+            text: "¡El QR se mantendrá pero se cambiará la fecha!",
             type: 'warning',
             showCancelButton : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
-            confirmButtonText : 'Si, Modificar!',
+            confirmButtonText : 'Sí, ¡Modificar!',
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
             if (result.value) {

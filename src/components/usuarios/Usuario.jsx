@@ -24,13 +24,13 @@ function Usuario({datos, escucharCambio}) {
 
     const eliminarCliente = (id) => {
         Swal.fire ({
-            title: '¿Estas seguro de eliminarlo?',
+            title: '¿Estás seguro de eliminarlo?',
             text: "Un usuario eliminado no se puede recuperar",
             type: 'warning',
             showCancelButton : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
-            confirmButtonText : 'Si, Eliminar!',
+            confirmButtonText : 'Sí, ¡Eliminar!',
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
             if (result.value) {

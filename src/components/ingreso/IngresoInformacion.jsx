@@ -59,7 +59,7 @@ function IngresoInformacion(props) {
                         <p>Nombre Empresa: <span>{ingreso?.clienteContacto?.clienteEmpresa?.nombre}</span></p>
                         <p>Nombre Contacto: <span>{ingreso?.clienteContacto?.nombre}</span></p>
                         <p>Correo Contacto: <span>{ingreso?.clienteContacto?.correo}</span></p>
-                        <p>Telefono Contacto: <span>{ingreso?.clienteContacto?.telefono}</span></p>
+                        <p>Teléfono Contacto: <span>{ingreso?.clienteContacto?.telefono}</span></p>
                     </div>
 
                     <div>
