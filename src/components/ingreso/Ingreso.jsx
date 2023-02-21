@@ -116,15 +116,15 @@ function Ingreso({datos}) {
                         datos.activo ? 
 
                         <button type='button' className={"btn-new btn-success-new"} onClick={generarQR}>
-                            <BsBoxArrowInRight size={25}/>
-                            <IoQrCodeOutline size={25}/>
+                            <BsBoxArrowInRight size={20}/>
+                            <IoQrCodeOutline size={20}/>
                         </button>
 
                         :
                         
                         <button type='button' className={"btn-new btn-return"} onClick={editarQR}>
-                            <FiEdit size={25}/>
-                            <IoQrCodeOutline size={25}/>
+                            <FiEdit size={20}/>
+                            <IoQrCodeOutline size={20}/>
                         </button>
                     }
                 </div>                

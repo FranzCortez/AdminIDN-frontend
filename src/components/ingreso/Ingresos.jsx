@@ -90,9 +90,8 @@ function Ingresos() {
                         </Link>
                     </div>
 
-
-                    <div className="table-responsive">
-                        <table className="table table-hover">
+                    <div className="table-responsive ingreso__tabla">
+                        <table className="table table-hover ">
                             <thead>
                                 <tr className='table__head'>
                                     <th scope="col">OTIN</th>
@@ -104,7 +103,7 @@ function Ingresos() {
                                     <th scope="col">N° Serie</th>
                                     <th scope="col">N° Interno</th>
                                     <th scope="col">Más Info</th>
-                                    <th scope="col">Opciones</th>
+                                    <th scope="col">Ops</th>
                                     <th scope="col">Salida Equipo</th>
                                     <th scope="col">Guía Des. IN / Fecha</th>
                                     <th scope="col">Num. Fac. / Fecha</th>
