@@ -71,7 +71,7 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero, primero }) {
                 <h2 className="card-body-subtitle">Instrumento Patron</h2>
 
                 <div className='campo'>
-                    <label htmlFor="fechaCalibracion">Fecha Calibración:</label>
+                    <label htmlFor="fechaCalibracion">Fecha Certificación:</label>
                     <input 
                         type="date" 
                         id='fechaCalibracion'
@@ -82,7 +82,7 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero, primero }) {
                 </div>
 
                 <div className='campo'>
-                    <label htmlFor="fechaProximaCalibracion">Próxima Calibración:</label>
+                    <label htmlFor="fechaProximaCalibracion">Próxima Certificación:</label>
                     <input 
                         type="date" 
                         id='fechaProximaCalibracion'

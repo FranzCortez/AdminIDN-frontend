@@ -106,7 +106,7 @@ function FormCertificadoB() {
             <div className="card contenedor">
                 <div className="card-header">
                     <RiFileList2Line size={50} color={"#333333"}/>
-                    <h1>Generar Certificado</h1>
+                    <h1>Generar Certificado de Calibración</h1>
                 </div>
                 <div className="card-body">
 

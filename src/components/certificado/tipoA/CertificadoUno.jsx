@@ -217,8 +217,8 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                                     <th scope="col">Marca</th>
                                     <th scope="col">Serie</th>
                                     <th scope="col">Unidad</th>
-                                    <th scope="col">Fecha de Calibración</th>
-                                    <th scope="col">Próxima Calibración</th>
+                                    <th scope="col">Fecha de Certificación</th>
+                                    <th scope="col">Próxima Certificación</th>
                                     <th scope="col">Modelo</th>
                                     <th scope="col">Emisor</th>
                                 </tr>

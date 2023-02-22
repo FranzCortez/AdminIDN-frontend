@@ -79,6 +79,8 @@ function CertificadoParteTresA({ onButtonClick, guardarDatosTercero, tercero }) 
         <Fragment>
             <form onSubmit={e => e.preventDefault()}>
                 
+                <h3 className='text-center' >En caso de "Dar de Baja" seleccione una fecha al azar</h3>
+
                 <div className='campo'>
                     <label htmlFor="operativo">Estado<span className='campo__obligatorio'>*</span>:</label>
                     <select name="operativo" id="operativo" onChange={actualizarState} defaultValue={data.operativo}>

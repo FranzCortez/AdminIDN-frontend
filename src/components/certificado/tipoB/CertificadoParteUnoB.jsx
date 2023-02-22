@@ -182,7 +182,7 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero 
             </div>
                    
             <div className='campo'>
-                <label htmlFor="fechaCalibracionPatron">Fecha Calibración<span className='campo__obligatorio'>*</span>:</label>
+                <label htmlFor="fechaCalibracionPatron">Fecha Certificación<span className='campo__obligatorio'>*</span>:</label>
                 <input 
                     type="date" 
                     id='fechaCalibracionPatron'

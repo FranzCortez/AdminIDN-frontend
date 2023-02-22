@@ -1,6 +1,15 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+
+import clienteAxios from '../../../config/axios';
+import { CRMContext } from '../../context/CRMContext';
 
 function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
+
+    const {id} = useParams();
+
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     const [ descripcion, guardarDescripcion ] = useState({
         conclusion: segundo?.conclusion ? segundo?.conclusion?.join('\n') : '',
@@ -31,6 +40,32 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
     const regresar = () => {
         onButtonClick("pagetwo");
     }
+
+    const consultarAPI = async () => {
+        
+        try {
+
+            const res = await clienteAxios.get(`tipo/falla/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            guardarDescripcion({
+                ...descripcion,
+                conclusion: res.data.conclusion
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {            
+            consultarAPI();
+        }  
+    }, [])
 
     return (
         <Fragment>
