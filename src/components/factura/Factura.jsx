@@ -72,7 +72,7 @@ function Factura({ datos, boleta }) {
                     data-fechavencimiento={moment(fechaVencimiento).format('DD/MM/YYYY')}
                     data-mora={datos?.fechaPago === '0000-00-00' && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)} Días` : ''}
                     onChange={boleta} 
-                    disabled={datos.estado === 'Anulada' || datos.estado === 'Pagado' ? true : false}
+                    disabled={datos.estado === 'Anulada' || datos.estado === 'Pagado' || datos.estado === 'No Existe' ? true : false}
                 />
             </td>
             <td>{datos.numeroFactura}</td>
