@@ -9,12 +9,15 @@ import clienteAxios from '../../../config/axios';
 import TipoHerramientaTabla from './TipoHerramientaTabla';
 import FormBuscarTipoHerramienta from './FormBuscarTipoHerramienta';
 
+import Spinner from '../../layout/Spinner';
+
 function TiposHerramientas() {
 
     // state usuarios
     const [ herramientas, guardarHerramientas ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
     const [ busqueda, guardarBusqueda ] = useState('');
+    const [ spin, guardarSpin ] = useState(true);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -92,6 +95,10 @@ function TiposHerramientas() {
         }      
     }, [cambio]);
 
+    setTimeout(() => {
+        guardarSpin(false);
+    }, 10000);
+
     return (
         <Fragment>
             <div className="card contenedor">
@@ -130,7 +137,10 @@ function TiposHerramientas() {
                                         herramientas.map((datos) => (
                                             <TipoHerramientaTabla datos={datos} key={datos.id}/>
                                         ))
-                                    ) : <tr><td><p className='mensaje-vacio'>Aún no hay Tipos de Herramienta registrados o nadie coincide con la búsqueda </p></td></tr>
+                                    ) : spin ?
+                                    <Spinner/>
+                                    :
+                                    <tr><td><p className='mensaje-vacio'>Aún no hay Tipos de Herramienta registrados o nadie coincide con la búsqueda </p></td></tr>
                                 }
                             </tbody>
                         </table>

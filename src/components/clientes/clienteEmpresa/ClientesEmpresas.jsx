@@ -97,7 +97,7 @@ function ClientesEmpresas() {
 
     setTimeout(() => {
         guardarSpin(false);
-    }, 2000);
+    }, 10000);
 
     return (
         <Fragment>
