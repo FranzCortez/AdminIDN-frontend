@@ -13,7 +13,12 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero, primero }) {
         fechaCalibracion: primero?.fechaCalibracion ? primero.fechaCalibracion : "",
         fechaProximaCalibracion: primero?.fechaProximaCalibracion ? primero.fechaProximaCalibracion : "",
         toneladas: primero?.toneladas ? primero.toneladas : '',
-        presion: primero?.presion ? primero.presion : ''
+        presion: primero?.presion ? primero.presion : '',
+        marca: primero?.marca ? primero.marca : '',
+        serie: primero?.serie ? primero.serie : '',
+        unidad: primero?.unidad ? primero.unidad : '',
+        modelo: primero?.modelo ? primero.modelo : '',
+        emisor: primero?.emisor ? primero.emisor : 'Impacto del Norte'
     });
 
     const actualizarState = (e) => {
@@ -68,7 +73,43 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero, primero }) {
                     />
                 </div>
 
-                <h2 className="card-body-subtitle">Instrumento Patron</h2>
+                <h2 className="card-body-subtitle">Instrumento Patrón</h2>
+
+                <div className='campo'>
+                    <label htmlFor="marca">Marca:</label>
+                    <input 
+                        type="text" 
+                        id='marca'
+                        name='marca'
+                        defaultValue={datos.marca}
+                        onChange={actualizarState}
+                        placeholder='Marca de instrumento patrón'
+                    />
+                </div>
+
+                <div className='campo'>
+                    <label htmlFor="serie">Serie:</label>
+                    <input 
+                        type="text" 
+                        id='serie'
+                        name='serie'
+                        defaultValue={datos.serie}
+                        onChange={actualizarState}
+                        placeholder='Serie de instrumento patrón'
+                    />
+                </div>
+
+                <div className='campo'>
+                    <label htmlFor="unidad">Unidad:</label>
+                    <input 
+                        type="text" 
+                        id='unidad'
+                        name='unidad'
+                        defaultValue={datos.unidad}
+                        onChange={actualizarState}
+                        placeholder='Unidad de instrumento patrón'
+                    />
+                </div>
 
                 <div className='campo'>
                     <label htmlFor="fechaCalibracion">Fecha Certificación:</label>
@@ -89,6 +130,30 @@ function CertificadoParteUnoA({ onButtonClick, guardarDatosPrimero, primero }) {
                         name='fechaProximaCalibracion'
                         defaultValue={datos.fechaProximaCalibracion}
                         onChange={actualizarState}
+                    />
+                </div>
+
+                <div className='campo'>
+                    <label htmlFor="modelo">Modelo:</label>
+                    <input 
+                        type="text" 
+                        id='modelo'
+                        name='modelo'
+                        defaultValue={datos.modelo}
+                        onChange={actualizarState}
+                        placeholder='Modelo de instrumento patrón'
+                    />
+                </div>
+
+                <div className='campo'>
+                    <label htmlFor="emisor">Emisor:</label>
+                    <input 
+                        type="text" 
+                        id='emisor'
+                        name='emisor'
+                        defaultValue={datos.emisor}
+                        onChange={actualizarState}
+                        placeholder='Emisor de instrumento patrón'
                     />
                 </div>
 

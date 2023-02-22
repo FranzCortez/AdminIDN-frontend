@@ -225,13 +225,13 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
                             </thead>
                             <tbody>
                                 <tr className='table__tr table__tr-no'>
-                                    <td>PARKER</td>
-                                    <td>SCJR 8700-02</td>
-                                    <td>Lb-pie</td>
+                                    <td>{primero?.marca}</td>
+                                    <td>{primero?.serie}</td>
+                                    <td>{primero?.unidad}</td>
                                     <td>{moment(primero?.fechaCalibracion).format('DD/MM/YYYY')}</td>
                                     <td>{moment(primero?.fechaProximaCalibracion).format('DD/MM/YYYY')}</td>
-                                    <td>87000</td>
-                                    <td>Impacto del Norte</td>
+                                    <td>{primero?.modelo}</td>
+                                    <td>{primero?.emisor}</td>
                                 </tr>
                             </tbody>
                         </table>
