@@ -51,10 +51,16 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
                 }
             });
             
+            const conclu = await clienteAxios.get(`ih/info/conclu/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
             guardarDescripcion({
-                ...descripcion,
+                mantencion: conclu.data.conclusion,
                 conclusion: res.data.conclusion
-            })
+            });
 
         } catch (error) {
             console.log(error)
