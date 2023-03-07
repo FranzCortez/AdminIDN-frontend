@@ -16,7 +16,7 @@ function BoletaEstadoCuenta({ seleccion }) {
 
     let navigate = useNavigate();
 
-    const pdfcrear = () => {
+    const pdfcrear = async () => {
         
         if ( (vencido.length <= 2 && pendiente.length === 0) || (vencido.length === 0 && pendiente.length <= 2) ) {
             hoja = "a5" 
@@ -28,7 +28,7 @@ function BoletaEstadoCuenta({ seleccion }) {
             hoja = "a2"
         }        
 
-        html2pdf()
+        await html2pdf()
         .set({
             margin: 0,
             filename: `Estado de Cuenta ${empresa}.pdf`,
@@ -49,7 +49,7 @@ function BoletaEstadoCuenta({ seleccion }) {
         .from(document.querySelector("#pdf"))
         .save();
 
-        navigate('/ingresos', {replace: true})
+        navigate(0)
     }
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
@@ -64,6 +64,8 @@ function BoletaEstadoCuenta({ seleccion }) {
         const pen = [];
         let venTotal = 0;
         let penTotal = 0;
+        let nombre = seleccion[0]?.cliente;
+        let cambio = false;
 
         seleccion.forEach( factura => {
 
@@ -75,10 +77,14 @@ function BoletaEstadoCuenta({ seleccion }) {
                 penTotal += parseInt(factura.valor.split('.').join(''));
             }
 
+            if ( nombre !== factura.cliente ){
+                cambio = true;
+            }
+
         });
         
 
-        guardarEmpresa( ven.length === 0 ? pen[0].cliente : ven[0].cliente );
+        guardarEmpresa( cambio ? 'Listado de Facturas' : ven.length === 0 ? pen[0].cliente : ven[0].cliente );
         guardarPendiente(pen);
         guardarVencido(ven);
         guardarPendienteTotal(penTotal);
