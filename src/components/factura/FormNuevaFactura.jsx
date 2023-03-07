@@ -134,6 +134,17 @@ function FormNuevaFactura() {
 
             guardarEmpresas(res.data);
 
+            const nfact = await clienteAxios.get(`factura/`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            guardarFactura({
+                ...factura,
+                numeroFactura: nfact.data.numero + 1
+            })
+
         } catch (error) {
             console.log(error);
             navigate('/facturas', { replace: true });
@@ -247,6 +258,7 @@ function FormNuevaFactura() {
                                         name='numeroFactura'
                                         placeholder='Número Factura'
                                         onChange={actualizarState}
+                                        defaultValue={factura.numeroFactura}
                                     />
                                 </div>
 
