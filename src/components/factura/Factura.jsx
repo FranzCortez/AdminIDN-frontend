@@ -60,27 +60,27 @@ function Factura({ datos, boleta }) {
                 <input 
                     type="checkbox" 
                     name="facturaId" 
-                    id={datos.id} 
-                    data-estado={datos.estado}
-                    data-otin={datos.otines}
-                    data-valor={valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) )}
-                    data-factura={datos.numeroFactura}
-                    data-orden={datos.numeroCompra}
-                    data-despacho={datos.guiaDespacho}
-                    data-cliente={datos.herramientas.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
-                    data-fechafactura={moment(datos.fechaFactura).format('DD-MM-YYYY')}
+                    id={datos?.id} 
+                    data-estado={datos?.estado}
+                    data-otin={datos?.otines}
+                    data-valor={valorNumero( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
+                    data-factura={datos?.numeroFactura}
+                    data-orden={datos?.numeroCompra}
+                    data-despacho={datos?.guiaDespacho}
+                    data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                    data-fechafactura={moment(datos?.fechaFactura).format('DD-MM-YYYY')}
                     data-fechavencimiento={moment(fechaVencimiento).format('DD/MM/YYYY')}
                     data-mora={datos?.fechaPago === '0000-00-00' && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)} Días` : ''}
                     onChange={boleta} 
-                    disabled={datos.estado === 'Anulada' || datos.estado === 'Pagado' || datos.estado === 'No Existe' ? true : false}
+                    disabled={datos?.estado === 'Anulada' || datos?.estado === 'Pagado' || datos?.estado === 'No Existe' ? true : false}
                 />
             </td>
             <td>{datos.numeroFactura}</td>
-            <td>{datos.herramientas.length > 0 ? moment(datos.fechaFactura).format('DD-MM-YYYY') : '-'}</td>
-            <td>{datos.herramientas.length > 0 ? datos.otines : '-'}</td>
-            <td>{datos.herramientas.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}</td>
-            <td>{datos.herramientas.length > 0 ? datos.guiaDespacho : '- '} / {datos.herramientas.length > 0 && datos.fechaGuiaDespacho !== '0000-00-00' ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : '-'}</td>
-            <td>${datos.herramientas.length > 0 ? valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) ) : '-'}</td>
+            <td>{datos?.herramientas?.length > 0 ? moment(datos.fechaFactura).format('DD-MM-YYYY') : '-'}</td>
+            <td>{datos?.herramientas?.length > 0 ? datos.otines : '-'}</td>
+            <td>{datos?.herramientas?.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}</td>
+            <td>{datos?.herramientas?.length > 0 ? datos.guiaDespacho : '- '} / {datos?.herramientas?.length > 0 && datos.fechaGuiaDespacho !== '0000-00-00' ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : '-'}</td>
+            <td>${datos?.herramientas?.length > 0 ? valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) ) : '-'}</td>
             {/* <td><p className={estadoClase()} >{datos.estado}</p></td> */}
             <td>{datos.estado ? datos.estado : '-'}</td>
             <td>
@@ -92,7 +92,7 @@ function Factura({ datos, boleta }) {
                 <div className='table__opciones'>
                      
                     {
-                        datos.herramientas.length > 0 ?
+                        datos?.herramientas?.length > 0 ?
 
                         <Link to={`editar/${datos.id}`}>
                             <button type='button' className="btn btn-warning" >
@@ -108,7 +108,7 @@ function Factura({ datos, boleta }) {
                     }
                     
                     {
-                        (datos.fechaPago === null || datos.fechaPago === '0000-00-00') && datos.herramientas.length > 0 ?
+                        (datos.fechaPago === null || datos.fechaPago === '0000-00-00') && datos?.herramientas?.length > 0 ?
 
                             <Link to={`pagar/${datos.id}`}>
                                 <button type='button' className={'btn-new btn-success-new'} >
