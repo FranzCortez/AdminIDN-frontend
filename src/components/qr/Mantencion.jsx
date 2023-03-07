@@ -19,7 +19,7 @@ function Mantencion() {
     const whatsapp = () => {
         
         const archor = document.createElement("a");
-        archor.href = `https://wa.me/+56978950016?text=Hola,%20soy%20el%20cliente%20${info?.clienteContacto?.clienteEmpresa?.nombre}%20y%20quiero%20programar%20la%20mantención%20de%20${info?.nombre}%20${info?.marca}%20que%20vence%20el%20${proxima}`;
+        archor.href = `https://wa.me/+56978950016?text=Hola,%20soy%20el%20cliente%20${info?.clienteContacto?.clienteEmpresa?.nombre}%20y%20quiero%20programar%20la%20mantención%20de%20${info?.nombre}%20${info?.marca}%20que%20vence%20el%20${moment(proxima).format('DD-MM-YYYY')}`;
         archor.target = "_blank"
         document.body.appendChild(archor);
         archor.click();
