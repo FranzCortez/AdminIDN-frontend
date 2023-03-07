@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineDownload } from 'react-icons/ai';
 import moment from 'moment';
 import html2pdf from 'html2pdf.js';
-import Swal from 'sweetalert2';
-
 
 function BoletaEstadoCuenta({ seleccion }) {    
 

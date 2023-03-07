@@ -18,6 +18,8 @@ function Home() {
         }  
     }, []);   
 
+    localStorage.setItem('ultima', `/home`);
+
     return (
         <Fragment>
             <div className="card contenedor">

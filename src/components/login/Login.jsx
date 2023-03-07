@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,7 @@ function Login() {
             const res = await clienteAxios.post('/login', datos);
             
             const { token, tipo, nombre } = res.data;
-            
+            console.log(res.data)
             localStorage.setItem('token', token);
 
             guardarAuth({
@@ -47,6 +47,27 @@ function Login() {
         }
     }
 
+    const validar = async (token) => {
+
+        const res = await clienteAxios.get('/auth', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        
+        if ( res.status === 200 ) {
+            guardarAuth({
+                token,
+                nombre: res.data.revisarToken.usuario,
+                tipo: res.data.revisarToken.tipo,
+                auth: true
+            });
+        }
+
+        navigate(localStorage.getItem('ultima'), {replace: true})
+
+    }
+
     const actualizarState = e => {
         
         guardarDatos({
@@ -54,6 +75,15 @@ function Login() {
             [e.target.name] : e.target.value
         });
     }
+
+    useEffect(() => {
+        
+        const token = localStorage.getItem('token');
+        if ( token ) {
+            validar(token);
+        }
+
+    }, [])
 
     return (
         <div className='center'>

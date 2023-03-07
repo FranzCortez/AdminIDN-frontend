@@ -31,7 +31,7 @@ function ClientesContactos() {
 
         try {
             
-            // TODO Redireccionar y validar permiso
+            localStorage.setItem('ultima', `/clientes/contacto/${idEmpresa}`);
 
             const res = await clienteAxios.get(`contactos/contacto/${idEmpresa}`,{
                 headers: {

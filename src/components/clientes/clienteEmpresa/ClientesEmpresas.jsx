@@ -71,7 +71,7 @@ function ClientesEmpresas() {
     const consultarAPI = async () => {
 
         try {
-
+            localStorage.setItem('ultima', `/clientes`);
             const res = await clienteAxios.get(`empresas/empresa/${offset}`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`

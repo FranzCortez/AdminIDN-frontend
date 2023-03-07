@@ -36,7 +36,7 @@ function Ingresos() {
     }
 
     const consultarAPI = async () => {
-        
+        localStorage.setItem('ultima', `/ingresos`);
         try {
             const res = await clienteAxios.post(`ih/ingreso/obtener`, filtros, {
                 headers: {

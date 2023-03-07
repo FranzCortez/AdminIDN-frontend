@@ -64,6 +64,7 @@ function TiposHerramientas() {
     const consultarAPI = async () => {
         
         try {
+            localStorage.setItem('ultima', `/ingresos/tipoherramienta`);
             
             const res = await clienteAxios.get(`tipo/categoria/herramientas`,{
                 headers: {

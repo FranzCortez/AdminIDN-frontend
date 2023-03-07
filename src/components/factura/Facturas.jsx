@@ -79,6 +79,9 @@ function Facturas() {
     const consultarAPI = async () => {
         
         try {
+
+            localStorage.setItem('ultima', `/facturas`);
+
             const res = await clienteAxios.post(`/factura/filtro`, filtros, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
