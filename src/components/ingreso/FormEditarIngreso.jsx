@@ -64,7 +64,7 @@ function FormEditarIngreso() {
             });
 
             Swal.fire({
-                title: 'Se actulizo correctamente el ingreso',
+                title: 'Se actualizó correctamente el ingreso',
                 text: res.data.msg,
                 type: 'success',
                 timer: 3500
