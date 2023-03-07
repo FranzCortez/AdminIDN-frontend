@@ -58,8 +58,7 @@ function FormEditarFactura() {
 
     const actualizarFactura = async (e) => {
         e.preventDefault();
-        console.log(factura)
-        return
+        
         try {            
             const res = await clienteAxios.put(`/factura/${facturaEditar.id}`, factura,{
                 headers: {
