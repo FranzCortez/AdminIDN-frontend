@@ -25,7 +25,9 @@ function Header() {
             auth: false
         });
 
-        localStorage.setItem('token', '');
+        localStorage.removeItem('token');
+        localStorage.removeItem('ultima');
+        localStorage.removeItem('pagina');
 
         navigate('/login', {replace: true});
     }
