@@ -333,8 +333,7 @@ function FormNuevaFactura() {
                                 <div className='campo'>
                                     <label htmlFor="monto">Monto<span className='campo__obligatorio'>*</span>:</label>
                                     <input 
-                                        onKeyUp={e => e.preventDefault()}
-                                        onKeyDown={e => e.preventDefault()}
+                                        onKeyDown={e => e.keyCode === 38 || e.keyCode === 40 ? e.preventDefault() : null }
                                         type="number" 
                                         id='monto'
                                         name='monto'                                        
