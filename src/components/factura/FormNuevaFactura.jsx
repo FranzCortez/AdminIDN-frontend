@@ -85,9 +85,9 @@ function FormNuevaFactura() {
 
     const validarForm = () => {
 
-        const { numeroFactura, fechaFactura } = factura;
+        const { fechaFactura } = factura;
         
-        if( !(!numeroFactura.length || !fechaFactura.length) ){
+        if( !(!fechaFactura.length) ){
             return false;
         }
 
