@@ -70,7 +70,7 @@ function Factura({ datos, boleta }) {
                     data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
                     data-fechafactura={moment(datos?.fechaFactura).format('DD-MM-YYYY')}
                     data-fechavencimiento={moment(fechaVencimiento).format('DD/MM/YYYY')}
-                    data-mora={datos?.fechaPago === '0000-00-00' && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)} Días` : ''}
+                    data-mora={(datos?.fechaPago === '0000-00-00' || datos?.fechaPago === null) && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)+1} Día(s)` : ''}
                     onChange={boleta} 
                     disabled={datos?.estado === 'Anulada' || datos?.estado === 'Pagado' || datos?.estado === 'No Existe' ? true : false}
                 />
