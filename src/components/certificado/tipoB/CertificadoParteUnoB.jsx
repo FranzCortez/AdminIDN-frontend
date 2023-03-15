@@ -76,13 +76,22 @@ function CertificadoParteUnoB({ onButtonClick, guardarDatosPrimero, id, primero 
         }
     }
 
+    const avanzar = (event) => {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT" && event.target.type !== 'submit') {
+            var form = event.target.form;
+            var index = Array.prototype.indexOf.call(form, event.target);
+            form.elements[index + 1].focus();
+            event.preventDefault();
+        }
+    }
+
     useEffect(() => {
         consultarAPI();
     },[]);
 
     return (
         <Fragment>
-        <form onSubmit={enviar}>
+        <form onSubmit={enviar} onKeyDown={avanzar}>
 
             <div className='campo'>
                 <label htmlFor="fechaEmicion">Fecha Emisión<span className='campo__obligatorio'>*</span>:</label>

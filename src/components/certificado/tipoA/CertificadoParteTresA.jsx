@@ -71,13 +71,22 @@ function CertificadoParteTresA({ onButtonClick, guardarDatosTercero, tercero }) 
         onButtonClick("pageone")
     }
 
+    const avanzar = (event) => {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT" && event.target.type !== 'submit') {
+            var form = event.target.form;
+            var index = Array.prototype.indexOf.call(form, event.target);
+            form.elements[index + 1].focus();
+            event.preventDefault();
+        }
+    }
+
     useEffect(() => {
         consultarAPI();
     },[]);
 
     return (
         <Fragment>
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={e => e.preventDefault()} onKeyDown={avanzar} >
                 
                 <h3 className='text-center' >En caso de "Dar de Baja" seleccione una fecha al azar</h3>
 

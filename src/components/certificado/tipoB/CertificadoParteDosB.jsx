@@ -210,6 +210,15 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
         onButtonClick("pageone")
     }
 
+    const avanzar = (event) => {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT" && event.target.type !== 'submit') {
+            var form = event.target.form;
+            var index = Array.prototype.indexOf.call(form, event.target);
+            form.elements[index + 1].focus();
+            event.preventDefault();
+        }
+    }
+
     useEffect(() => {
 
     }, [tabla.comparcion, tabla.entrega, tabla.llegada]);
@@ -217,7 +226,7 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
     return (
         <Fragment>
 
-            <form onSubmit={enviar} className='certificado__form-mw'>
+            <form onSubmit={enviar} className='certificado__form-mw' onKeyDown={avanzar}>
                 
                 <h3 className="card-body-subtitle">No importa si deja casillas en blanco</h3>
 

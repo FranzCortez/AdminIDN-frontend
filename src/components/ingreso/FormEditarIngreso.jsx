@@ -208,6 +208,15 @@ function FormEditarIngreso() {
         guardarTipo(e.target.value);
     }
 
+    const avanzar = (event) => {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT" && event.target.type !== 'submit') {
+            var form = event.target.form;
+            var index = Array.prototype.indexOf.call(form, event.target);
+            form.elements[index + 1].focus();
+            event.preventDefault();
+        }
+    }
+
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
@@ -235,7 +244,7 @@ function FormEditarIngreso() {
                     <h2 className='card-body-subtitle'> Modifique los campos según corresponda: </h2>
                     <p className='text-center'>Asegúrese que están ingresados anteriormente los primeros 3 datos para poder seleccionarlos</p>
 
-                    <form onSubmit={editarIngreso}>
+                    <form onSubmit={editarIngreso} onKeyDown={avanzar}>
                         <div className='campo'>
                             <label htmlFor="nombre">Seleccione Empresa<span className='campo__obligatorio'>*</span>:</label>
                             <select name="empresa" id="empresa"  value={empresa} onChange={consultarContactos}>

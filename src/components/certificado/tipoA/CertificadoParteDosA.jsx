@@ -67,16 +67,25 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
         }
     }
 
+    const avanzar = (event) => {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT" && event.target.type !== 'submit') {
+            var form = event.target.form;
+            var index = Array.prototype.indexOf.call(form, event.target);
+            form.elements[index + 1].focus();
+            event.preventDefault();
+        }
+    }
+
     useEffect(() => {
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {            
             consultarAPI();
         }  
-    }, [])
+    }, []);
 
     return (
         <Fragment>
 
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={e => e.preventDefault()} onKeyDown={avanzar}>
                 
                 <div className='campo'>
                     <label htmlFor="Mantención">Mantención o Reparación<span className='campo__obligatorio'>*</span>:</label>

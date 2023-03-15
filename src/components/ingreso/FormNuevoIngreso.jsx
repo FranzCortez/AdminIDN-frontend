@@ -113,6 +113,15 @@ function FormNuevoIngreso() {
         });
     }
 
+    const avanzar = (event) => {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT" && event.target.type !== 'submit') {
+            var form = event.target.form;
+            var index = Array.prototype.indexOf.call(form, event.target);
+            form.elements[index + 1].focus();
+            event.preventDefault();
+        }
+    }
+
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
@@ -138,7 +147,7 @@ function FormNuevoIngreso() {
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
                     <p className='text-center'>Asegúrese que están ingresados anteriormente los primeros 3 datos para poder seleccionarlos</p>
 
-                    <form onSubmit={agregarIngreso}>
+                    <form onSubmit={agregarIngreso} onKeyDown={avanzar}>
                         <EmpresaContacto contactoListo={contactoListo}/>                    
  
                         <TipoHerramienta tipoListo={tipoListo}/>                    
