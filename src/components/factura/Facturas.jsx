@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdAddCircle } from "react-icons/md";
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
@@ -17,6 +17,8 @@ import BoletaEstadoCuenta from './estadoCuenta/BoletaEstadoCuenta';
 
 function Facturas() {
 
+    const location = useLocation();
+    
     // state usuarios
     const [ facturas, guardarFacturas ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
@@ -27,7 +29,14 @@ function Facturas() {
 
     // filtro
     const [ filtroLocal, guardarFiltroLocal ] = useState(localStorage.getItem('filtroFactura'));
-    const [ filtros, guardarFiltros ] = useState(
+    const [ filtros, guardarFiltros ] = useState( location.state?.from ? {
+        fechaFactura: '', 
+        numeroFactura: location.state.from, 
+        estado: 'Todos',
+        mes: '',
+        year: '',
+        idEmpresa: '',
+    } :
         filtroLocal?.split('-')[1] === 'fa' ? JSON.parse(filtroLocal.split('-')[0]) : {}
     );
 
@@ -132,7 +141,6 @@ function Facturas() {
     }
     
     useEffect(() => {        
-        
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
             localStorage.setItem('ultima', `/facturas`);
             localStorage.removeItem('filtroEmpresa');
@@ -158,7 +166,7 @@ function Facturas() {
 
                     <div className='card-body-options'>
 
-                        <FacturaFiltro guardarFiltro={guardarFiltro} escucharCambio={escucharCambio}/>
+                        <FacturaFiltro guardarFiltro={guardarFiltro} escucharCambio={escucharCambio} filtros={filtros} />
 
                         <button className={seleccion.length === 0 ? 'btn-new' : 'btn-new btn-login'} onClick={generarEstado} disabled={seleccion.length > 0 ? false : true}>
                             <FaRegMoneyBillAlt size={25}/>

@@ -17,12 +17,12 @@ function FacturaFiltro(props) {
 
     // filtro
     const [ filtro, guardarFiltro ] = useState({
-        fechaFactura: '', 
-        numeroFactura: '', 
-        estado: 'Todos',
-        mes: '',
-        year: '',
-        idEmpresa: '',
+        fechaFactura: props.filtros?.fechaFactura ? props.filtros.fechaFactura : '', 
+        numeroFactura: props.filtros?.numeroFactura ? props.filtros.numeroFactura : '', 
+        estado: props.filtros?.estado ? props.filtros.estado : 'Todos',
+        mes: props.filtros?.mes ? props.filtros.mes : '',
+        year: props.filtros?.year ? props.filtros.year : '',
+        idEmpresa: props.filtros?.idEmpresa ? props.filtros.idEmpresa : '',
     });
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
