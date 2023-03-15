@@ -11,6 +11,7 @@ import Factura from './Factura';
 import FacturaFiltro from './FacturaFiltro';
 
 import Spinner from '../layout/Spinner';
+import Paginacion from '../layout/Paginacion';
 
 import BoletaEstadoCuenta from './estadoCuenta/BoletaEstadoCuenta';
 
@@ -24,7 +25,42 @@ function Facturas() {
 
     const [ seleccion, guardarSeleccion ] = useState([]);
 
-    const [ filtros, guardarFiltros ] = useState({});
+    // filtro
+    const [ filtroLocal, guardarFiltroLocal ] = useState(localStorage.getItem('filtroFactura'));
+    const [ filtros, guardarFiltros ] = useState(
+        filtroLocal?.split('-')[1] === 'fa' ? JSON.parse(filtroLocal.split('-')[0]) : {}
+    );
+
+    const guardarFiltro = (data) => {
+        localStorage.setItem('filtroFactura', `${JSON.stringify(data)}-fa`);
+        guardarFiltros(data);
+    }
+
+    // paginacion
+    const [ cantPaginas, guardarCantPaginas ] = useState(0);
+    const [ pag, guardarPag ] = useState(localStorage.getItem('pagina')?.split('-'));
+    const [ offset, guardarOffset ] = useState(!!pag ? pag[1] === 'fa' && parseInt(pag[0]) !== 0 ? parseInt(pag[0]) : 0 : 0);
+
+    const cantPaginaFactura = async () => {
+
+        try {
+
+            const res = await clienteAxios.get(`factura/fact/cant`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            guardarCantPaginas(res.data.cantPag);
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    const pagActual = (numero) => {
+        guardarOffset(numero)
+    } 
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -67,10 +103,6 @@ function Facturas() {
         guardarCambio(!cambio);
     }
 
-    const guardarFiltro = (data) => {
-        guardarFiltros(data);
-    }
-
     const generarEstado = () => {
         document.querySelector(".card").style.display = "none";
         document.querySelector("#usuarioEmpresa").style.display = "block";
@@ -80,9 +112,13 @@ function Facturas() {
         
         try {
 
-            localStorage.setItem('ultima', `/facturas`);
+            if ( facturas.length === 0 ) {
+                cantPaginaFactura();
+            }
 
-            const res = await clienteAxios.post(`/factura/filtro`, filtros, {
+            localStorage.setItem('pagina', `${offset}-fa`);
+
+            const res = await clienteAxios.post(`factura/filtro/${offset}`, filtros, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -94,16 +130,18 @@ function Facturas() {
             console.log(error)
         }
     }
-
+    
     useEffect(() => {        
         
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
-            
+            localStorage.setItem('ultima', `/facturas`);
+            localStorage.removeItem('filtroEmpresa');
+            localStorage.removeItem('filtroIngreso');
             consultarAPI();
         } else {
             navigate('/login', {replace: true});
         }      
-    }, [cambio]);
+    }, [cambio, offset]);
 
     setTimeout(() => {
         guardarSpin(false);
@@ -167,8 +205,13 @@ function Facturas() {
                             </tbody>
                         </table>
                     </div>
-                    {/* <Paginacion cantPaginas={cantPaginas} pagAct+
-                    ual={pagActual} offset={offset}/> */}
+                    {
+                        filtros?.idEmpresa === '' ?
+
+                            <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
+                        :
+                            null
+                    }
                 </div>
             </div>
 

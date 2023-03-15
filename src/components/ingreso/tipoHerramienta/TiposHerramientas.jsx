@@ -91,6 +91,10 @@ function TiposHerramientas() {
         
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
             consultarAPI();
+            localStorage.removeItem('filtroEmpresa');
+            localStorage.removeItem('filtroIngreso');
+            localStorage.removeItem('filtroFactura');
+            localStorage.removeItem('pagina');
         } else {
             navigate('/login', {replace: true});
         }      

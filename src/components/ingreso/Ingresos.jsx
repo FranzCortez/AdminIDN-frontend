@@ -9,6 +9,7 @@ import clienteAxios from '../../config/axios';
 import Ingreso from './Ingreso';
 import FormFiltroIngreso from './FormFiltroIngreso';
 
+import Paginacion from '../layout/Paginacion';
 import Spinner from '../layout/Spinner';
 
 function Ingresos() {
@@ -16,35 +17,51 @@ function Ingresos() {
     // state usuarios
     const [ ingresos, guardarIngresos ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
-    const [ busqueda, guardarBusqueda ] = useState('');
     const [ spin, guardarSpin ] = useState(true);
 
+    // filtro
+    const [ filtroLocal, guardarFiltroLocal ] = useState(localStorage.getItem('filtroIngreso'));
+    const [ filtros, guardarFiltros ] = useState(
+        filtroLocal?.split('-')[1] === 'in' ? JSON.parse(filtroLocal.split('-')[0]) : {}
+    );
 
-    const [ filtros, guardarFiltros ] = useState({});
+    const guardarFiltro = (data) => {
+        localStorage.setItem('filtroIngreso', `${JSON.stringify(data)}-in`);
+        guardarFiltros(data);
+    }
+
+    // paginacion
+    const [ cantPaginas, guardarCantPaginas ] = useState(0);
+    const [ pag, guardarPag ] = useState(localStorage.getItem('pagina')?.split('-'));
+    const [ offset, guardarOffset ] = useState(!!pag ? pag[1] === 'in' && parseInt(pag[0]) !== 0 ? parseInt(pag[0]) : 0 : 0);
+    
+    const pagActual = (numero) => {
+        guardarOffset(numero)
+    } 
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
 
-    const escucharCambio = (e) => {
+    const escucharCambio = () => {
         guardarCambio(!cambio);
     }
 
-    const guardarFiltro = (data) => {
-        guardarFiltros(data);
-    }
-
     const consultarAPI = async () => {
-        localStorage.setItem('ultima', `/ingresos`);
+        
         try {
-            const res = await clienteAxios.post(`ih/ingreso/obtener`, filtros, {
+
+            localStorage.setItem('pagina', `${offset}-in`);
+
+            const res = await clienteAxios.post(`ih/ingreso/obtener/${offset}`, filtros, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
 
-            guardarIngresos(res.data);
+            guardarIngresos(res.data.herramientaFiltro);
+            guardarCantPaginas(res.data.cantPag);
             
         } catch (error) {
             console.log(error)
@@ -54,12 +71,14 @@ function Ingresos() {
     useEffect(() => {        
         
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
-            
+            localStorage.setItem('ultima', `/ingresos`);
+            localStorage.removeItem('filtroEmpresa');
+            localStorage.removeItem('filtroFactura');
             consultarAPI();
         } else {
             navigate('/login', {replace: true});
         }      
-    }, [cambio]);
+    }, [cambio,offset]);
 
     setTimeout(() => {
         guardarSpin(false);
@@ -76,7 +95,7 @@ function Ingresos() {
 
                     <div className='card-body-options'>
 
-                        <FormFiltroIngreso guardarFiltro={guardarFiltro} escucharCambio={escucharCambio}/>
+                        <FormFiltroIngreso guardarFiltro={guardarFiltro} escucharCambio={escucharCambio} filtros={filtros} />
 
                         <Link to={"tipoherramienta"} type="button" className="btn-new btn-login">
                             <VscTools size={25}/>
@@ -124,7 +143,7 @@ function Ingresos() {
                             </tbody>
                         </table>
                     </div>
-                    {/* <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/> */}
+                    <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
                 </div>
             </div>
         </Fragment>

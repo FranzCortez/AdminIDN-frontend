@@ -10,6 +10,7 @@ function FormularioBuscarEmpresa(props) {
                     name='buscar'
                     placeholder='Buscar por nombre de empresa'
                     onChange={props.leerBusqueda}
+                    value={props.texto}
                 />
                 <input
                     className='campo-buscar-enviar'

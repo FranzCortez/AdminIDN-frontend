@@ -16,8 +16,13 @@ function ClientesEmpresas() {
 
     const [ empresas, guardarEmpresas ] = useState([]);
     const [ cambio, guardarCambio ] = useState(true);
-    const [ busqueda, guardarBusqueda ] = useState('');
+    const [ filtroLocal, guardarFiltroLocal ] = useState(localStorage.getItem('filtroEmpresa'));
+    const [ filtrado, guardarFiltrado ] = useState(true);
+    const [ busqueda, guardarBusqueda ] = useState(
+        filtroLocal === 'filtroEmpresa' ? filtroLocal.split(':')[1] : ''
+    );
     const [ spin, guardarSpin ] = useState(true);
+    const [ pag, guardarPag ] = useState(localStorage.getItem('pagina')?.split('-'));
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -26,7 +31,7 @@ function ClientesEmpresas() {
 
     // paginacion
     const [ cantPaginas, guardarCantPaginas ] = useState(0);
-    const [ offset, guardarOffset ] = useState(0);
+    const [ offset, guardarOffset ] = useState(!!pag ? pag[1] === 'ce' && parseInt(pag[0]) !== 0 ? parseInt(pag[0]) : 0 : 0);
     
     const pagActual = (numero) => {
         guardarOffset(numero)
@@ -34,16 +39,19 @@ function ClientesEmpresas() {
 
     const escucharCambio = () => {
         guardarCambio(!cambio);
+        guardarBusqueda('')
     }
 
     const leerBusqueda = (e) => {
         guardarBusqueda(e.target.value);
+        localStorage.setItem('filtroEmpresa', `empresa:${e.target.value}`);
     }
 
     const buscarEmpresa = async (e) => {
-        e.preventDefault();
+        e?.preventDefault();
 
-        if(e.nativeEvent.submitter.value === 'Limpiar Filtros'){
+        if(e?.nativeEvent?.submitter?.value === 'Limpiar Filtros'){
+            guardarFiltrado(true);
             escucharCambio();
             return;
         }
@@ -64,6 +72,7 @@ function ClientesEmpresas() {
             
             if(res.status === 200){
                 guardarEmpresas(res.data);
+                guardarFiltrado(false)
             }
         }
     }
@@ -71,13 +80,16 @@ function ClientesEmpresas() {
     const consultarAPI = async () => {
 
         try {
-            localStorage.setItem('ultima', `/clientes`);
+
+            localStorage.setItem('pagina', `${offset}-ce`);
+            localStorage.removeItem('filtroEmpresa');
+            
             const res = await clienteAxios.get(`empresas/empresa/${offset}`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-
+            
             guardarCantPaginas(res.data.cantPag);
             guardarEmpresas(res?.data?.empresas);
         } catch (error) {
@@ -85,10 +97,17 @@ function ClientesEmpresas() {
         }
         
     }
-
+    
     useEffect(() => {
         if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
-            consultarAPI();
+            if ( busqueda === '' ) {
+                consultarAPI();
+            } else {
+                buscarEmpresa();
+            }
+            localStorage.setItem('ultima', `/clientes`);
+            localStorage.removeItem('filtroIngreso');
+            localStorage.removeItem('filtroFactura');
         } else {
             navigate('/login', {replace: true});
         } 
@@ -109,7 +128,7 @@ function ClientesEmpresas() {
                 <div className="card-body">
 
                     <div className='card-body-options'>
-                        <FormularioBuscarEmpresa leerBusqueda={leerBusqueda} buscarEmpresa={buscarEmpresa} escucharCambio={escucharCambio}/>
+                        <FormularioBuscarEmpresa leerBusqueda={leerBusqueda} buscarEmpresa={buscarEmpresa} escucharCambio={escucharCambio} texto={busqueda}/>
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <FiPlusCircle size={25}/>
@@ -147,11 +166,15 @@ function ClientesEmpresas() {
                             </tbody>
                         </table>
                     </div>
-                    <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
+                    {
+                        filtrado ? 
+                        <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
+                        : null
+                    }
                 </div>
             </div>
         </Fragment>
     )
 }
 
-export default ClientesEmpresas
+export default ClientesEmpresas;

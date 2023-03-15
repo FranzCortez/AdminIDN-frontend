@@ -27,6 +27,9 @@ function Header() {
 
         localStorage.removeItem('token');
         localStorage.removeItem('ultima');
+        localStorage.removeItem('filtroEmpresa');
+        localStorage.removeItem('filtroIngreso');
+        localStorage.removeItem('filtroFactura');
         localStorage.removeItem('pagina');
 
         navigate('/login', {replace: true});

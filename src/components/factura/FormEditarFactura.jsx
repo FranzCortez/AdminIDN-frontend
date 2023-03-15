@@ -104,7 +104,7 @@ function FormEditarFactura() {
             guardarOtines([]);
             guardarOtinesSeleccionadas([]);
             
-            const res = await clienteAxios.post('ih/ingreso/obtener', { empresaId: e.target.value}, {
+            const res = await clienteAxios.post('ih/ingreso/empresa', { empresaId: e.target.value}, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -147,7 +147,7 @@ function FormEditarFactura() {
             guardarEmpresa(fact.data.empresaId);
             guardarFacturaEditar(fact.data);
 
-            const otines = await clienteAxios.post('ih/ingreso/obtener', { empresaId: fact.data.empresaId }, {
+            const otines = await clienteAxios.post('ih/ingreso/empresa', { empresaId: fact.data.empresaId }, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }

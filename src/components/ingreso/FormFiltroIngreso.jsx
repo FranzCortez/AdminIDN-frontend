@@ -17,16 +17,16 @@ function FormFiltroIngreso(props) {
 
     // filtro
     const [ filtro, guardarFiltro ] = useState({
-        fecha: '', 
-        otin: '', 
-        nombre: '',
-        marca: '',
-        modelo: '',
-        numeroInterno: '',
-        numeroSerie: '',
-        empresaId: '',
-        tipoHerramientaId: '',
-        activo: ''
+        fecha: props.filtros?.fecha ? props.filtros.fecha : '', 
+        otin: props.filtros?.otin ? props.filtros.otin : '', 
+        nombre: props.filtros?.nombre ? props.filtros.nombre : '',
+        marca: props.filtros?.marca ? props.filtros.marca : '',
+        modelo: props.filtros?.modelo ? props.filtros.modelo : '',
+        numeroInterno: props.filtros?.numeroInterno ? props.filtros.numeroInterno : '',
+        numeroSerie: props.filtros?.numeroSerie ? props.filtros.numeroSerie : '',
+        empresaId: props.filtros?.empresaId ? props.filtros.empresaId : '',
+        tipoHerramientaId: props.filtros?.tipoHerramientaId ? props.filtros.tipoHerramientaId : '',
+        activo: props.filtros?.activo ? props.filtros.activo : ''
     });
     
     const [modalIsOpen, setIsOpen] = React.useState(false);

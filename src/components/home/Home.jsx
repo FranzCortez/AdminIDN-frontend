@@ -1,5 +1,5 @@
-import {React, Fragment, useEffect, useState, useContext} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {React, Fragment, useEffect, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 
@@ -16,6 +16,10 @@ function Home() {
         if(auth.token === '' && (auth.tipo !== 1 || auth.tipo !== 2 || auth.tipo !== 3 ) ) {
             navigate('/login', {replace: true});
         }  
+        localStorage.removeItem('filtroEmpresa');
+        localStorage.removeItem('filtroIngreso');
+        localStorage.removeItem('filtroFactura');
+        localStorage.removeItem('pagina');
     }, []);   
 
     localStorage.setItem('ultima', `/home`);
@@ -29,7 +33,7 @@ function Home() {
                             <AiFillHome size={50} color={"#333333"}/>
                             <h1>Hola! {auth.nombre}</h1>
                         </div>
-                        <h2 className='version'>V4.0</h2>
+                        <h2 className='version'>PRE V5.0</h2>
                     </div>
                 </div>
                 <div className="card-body">

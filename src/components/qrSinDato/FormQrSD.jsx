@@ -73,6 +73,10 @@ function FormQrSD() {
         } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
             navigate('/login', {replace: true});
         }
+        localStorage.removeItem('filtroEmpresa');
+        localStorage.removeItem('filtroIngreso');
+        localStorage.removeItem('filtroFactura');
+        localStorage.removeItem('pagina');
 
     },[]);
 

@@ -100,7 +100,7 @@ function FormNuevaFactura() {
             guardarOtines([]);
             guardarOtinesSeleccionadas([]);
 
-            const res = await clienteAxios.post('ih/ingreso/obtener', { empresaId: e.target.value }, {
+            const res = await clienteAxios.post('ih/ingreso/empresa', { empresaId: e.target.value }, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
