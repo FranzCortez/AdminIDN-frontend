@@ -22,7 +22,6 @@ function Facturas() {
     // state usuarios
     const [ facturas, guardarFacturas ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
-    const [ busqueda, guardarBusqueda ] = useState('');
     const [ spin, guardarSpin ] = useState(true);
 
     const [ seleccion, guardarSeleccion ] = useState([]);
@@ -214,7 +213,7 @@ function Facturas() {
                         </table>
                     </div>
                     {
-                        filtros?.idEmpresa === '' ?
+                        filtros?.idEmpresa === '' || !filtros?.idEmpresa ?
 
                             <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
                         :
