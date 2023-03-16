@@ -274,6 +274,17 @@ h2 {
 .btn-naranja:hover {
     background-color: var(--naranjaOscuro);
 }
+.btn-factura {
+    padding: 0.3rem;
+    background: #f8f9fa57;
+    font-weight: 100;
+    color: var(--bs-table-color);
+}
+.center-btn-factura{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /** LOGIN **/
 .login{

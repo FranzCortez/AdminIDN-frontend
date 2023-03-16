@@ -151,10 +151,7 @@ function Ingreso({datos}) {
                     <td className={informe(datos.archivo)} >-</td>
                 :
                     <td className={estadoRow(datos.factura.estado)} >
-                        <InformacionFactura nFactura={datos.factura.numeroFactura}/>
-                        <p className='ingreso__gd'>
-                            {datos.factura.numeroFactura} / <span>{moment(datos.factura.fechaFactura).format('DD-MM-YYYY')}</span>
-                        </p>
+                        <InformacionFactura nFactura={datos.factura.numeroFactura} fechaFactura={datos.factura.fechaFactura} />
                     </td>
             }
         </tr>

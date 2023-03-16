@@ -12,7 +12,7 @@ import clienteAxios from '../../config/axios';
 Modal.setAppElement('#root');
 
 
-function InformacionFactura({ nFactura }) {
+function InformacionFactura({ nFactura, fechaFactura }) {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -61,8 +61,12 @@ function InformacionFactura({ nFactura }) {
     }
 
     return (
-        <div>
-            <button className='btn-new btn-naranja' onClick={openModal}><TbFileInfo size={20}/></button>
+        <div className='center-btn-factura' >
+            <button className='btn-new btn-factura' onClick={openModal}>
+                <p className='ingreso__gd'>
+                    {nFactura} / <span>{moment(fechaFactura).format('DD-MM-YYYY')}</span>
+                </p>
+            </button>
 
             <Modal
                 isOpen={modalIsOpen}
