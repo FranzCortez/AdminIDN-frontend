@@ -142,6 +142,13 @@ function BoletaEstadoCuenta({ seleccion }) {
                                             <th scope="col">FACTURA</th>
                                             <th scope="col">O.C/G.D</th>
                                             <th scope="col">Fecha Emisión Factura</th>
+                                            {
+                                                empresa === 'Listado de Facturas' ?
+                                                
+                                                    <th scope='col'>Cliente</th>
+                                                :
+                                                    null
+                                            }
                                             <th scope="col">Fecha Vencimiento / Días Mora</th>
                                             <th scope="col">Valor</th>
                                         </tr>
@@ -154,7 +161,14 @@ function BoletaEstadoCuenta({ seleccion }) {
                                                     <td>{vencer.factura}</td>
                                                     <td>{vencer.orden === '' || vencer.orden === '-' ? vencer.despacho : vencer.orden}</td>
                                                     <td>{vencer.fechafactura}</td>
-                                                    <td>{vencer.fechavencimiento}/<span className='boleta__mora'>{vencer.mora}</span></td>                                    
+                                                    {
+                                                        empresa === 'Listado de Facturas' ?
+                                                        
+                                                            <td>{vencer.cliente}</td>
+                                                        :
+                                                            null
+                                                    }
+                                                    <td>{vencer.fechavencimiento}/<span className='boleta__mora'>{vencer.mora}</span></td>                               
                                                     <td>${valorNumero(parseInt(vencer.valor.split('.').join('')))}</td>                                    
                                                 </tr> 
                                             ))
@@ -185,6 +199,13 @@ function BoletaEstadoCuenta({ seleccion }) {
                                             <th scope="col">FACTURA</th>
                                             <th scope="col">O.C/G.D</th>
                                             <th scope="col">Fecha Emisión Factura</th>
+                                            {
+                                                empresa === 'Listado de Facturas' ?
+                                                
+                                                    <th scope="col">Cliente</th>
+                                                :
+                                                    null
+                                            }
                                             <th scope="col">Fecha Vencimiento</th>
                                             <th scope="col">Valor</th>
                                         </tr>
@@ -197,6 +218,13 @@ function BoletaEstadoCuenta({ seleccion }) {
                                                     <td>{pendient.factura}</td>
                                                     <td>{pendient.orden === '' || pendient.orden === '-' ? pendient.despacho : pendient.orden}</td>
                                                     <td>{pendient.fechafactura}</td>
+                                                    {
+                                                        empresa === 'Listado de Facturas' ?
+                                                        
+                                                            <td>{pendient.cliente}</td>
+                                                        :
+                                                            null
+                                                    }
                                                     <td>{pendient.fechavencimiento}</td>                                    
                                                     <td>${valorNumero(parseInt(pendient.valor.split('.').join('')))}</td>                                    
                                                 </tr> 
