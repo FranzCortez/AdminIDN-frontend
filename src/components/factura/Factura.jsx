@@ -1,20 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { IoQrCodeOutline } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import { GiCancel } from "react-icons/gi";
 import moment from "moment";
-import Swal from 'sweetalert2';
 
 import FacturaInformacion from './FacturaInformacion';
 
-import clienteAxios from '../../config/axios';
-import { CRMContext } from '../context/CRMContext';
-
 function Factura({ datos, boleta }) {
-    
-    const [auth, guardarAuth] = useContext(CRMContext);
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
@@ -26,7 +18,7 @@ function Factura({ datos, boleta }) {
         return res;
     }
 
-    const fechaVencimiento = datos.formaPago === 'Crédito' ? addDaysToDate(datos?.fechaFactura, 30) : addDaysToDate(datos?.fechaFactura, 1); // cambiar por credito o contado
+    const fechaVencimiento = datos.formaPago === 'Crédito' ? addDaysToDate(datos?.fechaFactura, 29) : addDaysToDate(datos?.fechaFactura, 0); // cambiar por credito o contado
 
     const estadoRow = () => {
         if( datos.estado === 'Pendiente' ) {
