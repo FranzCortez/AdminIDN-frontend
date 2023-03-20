@@ -18,18 +18,6 @@ function Factura({ datos, boleta }) {
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
-    // const estadoClase = () => {
-    //     if( datos.estado === 'Pendiente' ) {
-    //         return 'table__estado-pendiente';
-    //     } else if ( datos.estado === 'Pagado' ) {
-    //         return 'table__estado-pagado';            
-    //     } else if ( datos.estado === 'Anulada' ) {
-    //         return 'table__estado-anulado'
-    //     } else {
-    //         return 'table__estado-vencido';            
-    //     }
-    // }
-
     const diffInDays = (x, y) => Math.floor((x - y) / (1000 * 60 * 60 * 24));
 
     function addDaysToDate(date, days){
