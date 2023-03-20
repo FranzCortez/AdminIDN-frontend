@@ -225,6 +225,12 @@ function Facturas() {
             <BoletaEstadoCuenta
                 seleccion={seleccion}
             />
+            
+            {
+                setTimeout(() => {
+                    window.scrollTo({top: 0, left: 0});
+                }, 300)
+            }
         </Fragment>
     )
 }

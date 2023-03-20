@@ -75,6 +75,7 @@ function Ingresos() {
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroFactura');
             consultarAPI();
+            
         } else {
             navigate('/login', {replace: true});
         }      
@@ -146,6 +147,11 @@ function Ingresos() {
                     <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
                 </div>
             </div>
+            {
+                setTimeout(() => {
+                    window.scrollTo({top: 0, left: 0});
+                }, 300)
+            }
         </Fragment>
     )
 }
