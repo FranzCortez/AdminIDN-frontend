@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdAddCircle } from "react-icons/md";
@@ -10,8 +10,10 @@ import clienteAxios from '../../config/axios';
 
 function FacturaNoExiste() {
 
+    const location = useLocation();
+
     const [ factura, guardarFactura ] = useState({
-        numeroFactura: '',
+        numeroFactura: location.state.from,
         fechaFactura: '',
         numeroCompra: '',
         fechaCompra: '',
@@ -92,6 +94,20 @@ function FacturaNoExiste() {
         return true;
     }
 
+    const consultarAPI = async () => {
+
+        const nfact = await clienteAxios.get(`factura/`, {
+            headers: {
+                Authorization: `Bearer ${auth.token}`
+            }
+        });
+
+        guardarFactura({
+            ...factura,
+            numeroFactura: nfact.data.numero + 1
+        });
+    }
+
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
@@ -127,6 +143,7 @@ function FacturaNoExiste() {
                                 name='numeroFactura'
                                 placeholder='Número Factura'
                                 onChange={actualizarState}
+                                defaultValue={factura.numeroFactura}
                             />
                         </div>
 
