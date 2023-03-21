@@ -80,7 +80,6 @@ function BoletaEstadoCuenta({ seleccion }) {
             if ( nombre !== factura.cliente ){
                 cambio = true;
             }
-
         });
         
 

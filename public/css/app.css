@@ -1489,6 +1489,10 @@ form .opciones {
 }
 
 /** BOLETA **/
+.boleta-automatico {
+    display: none;
+}
+
 .boleta {
     display: flex;
     justify-content: center;

@@ -14,6 +14,7 @@ import Spinner from '../layout/Spinner';
 import Paginacion from '../layout/Paginacion';
 
 import BoletaEstadoCuenta from './estadoCuenta/BoletaEstadoCuenta';
+import FormEstadoCuenta from './FormEstadoCuenta';
 
 function Facturas() {
 
@@ -75,7 +76,7 @@ function Facturas() {
 
     let navigate = useNavigate();
 
-    const boleta = async (e) => {
+    const boleta = (e) => {
 
         let existe = [];
 
@@ -98,13 +99,19 @@ function Facturas() {
                 cliente: e.target.dataset.cliente
             });
 
-            await guardarSeleccion(existe);
+            guardarSeleccion(existe);
 
         } else {
             // elimina
-            await guardarSeleccion(existe);
+            guardarSeleccion(existe);
         }
 
+    }
+
+    const boletaAutomatica = (seleccion) => {
+        guardarSeleccion(seleccion);
+        document.querySelector(".boleta-automatico").style.display = "none"
+        document.querySelector("#usuarioEmpresa").style.display = "block";
     }
 
     const escucharCambio = (e) => {
@@ -112,8 +119,13 @@ function Facturas() {
     }
 
     const generarEstado = () => {
-        document.querySelector(".card").style.display = "none";
+        document.querySelector("#fact").style.display = "none";
         document.querySelector("#usuarioEmpresa").style.display = "block";
+    }
+
+    const opcionesAutomaticas = () => {
+        document.querySelector("#fact").style.display = "none";
+        document.querySelector(".boleta-automatico").style.display = "block"
     }
 
     const consultarAPI = async () => {
@@ -159,7 +171,7 @@ function Facturas() {
 
     return (
         <Fragment>
-            <div className="card contenedor">
+            <div className="card contenedor" id='fact'>
                 <div className="card-header">
                     <AiOutlineDollarCircle size={50} color={"#333333"}/>
                     <h1>Facturas</h1>
@@ -170,9 +182,14 @@ function Facturas() {
 
                         <FacturaFiltro guardarFiltro={guardarFiltro} escucharCambio={escucharCambio} filtros={filtros} />
 
+                        <button className={'btn-new btn-login'} onClick={opcionesAutomaticas} >
+                            <FaRegMoneyBillAlt size={25}/>
+                            Generar Estado Automático
+                        </button>
+
                         <button className={seleccion.length === 0 ? 'btn-new' : 'btn-new btn-login'} onClick={generarEstado} disabled={seleccion.length > 0 ? false : true}>
                             <FaRegMoneyBillAlt size={25}/>
-                            Generar Estado de Cuenta
+                            Generar Estado Manual
                         </button>
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
@@ -224,6 +241,10 @@ function Facturas() {
                     }
                 </div>
             </div>
+
+            <FormEstadoCuenta 
+                boletaAutomatica={boletaAutomatica}
+            />
 
             <BoletaEstadoCuenta
                 seleccion={seleccion}
