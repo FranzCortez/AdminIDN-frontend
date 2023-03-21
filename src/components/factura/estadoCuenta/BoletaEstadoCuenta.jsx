@@ -49,7 +49,11 @@ function BoletaEstadoCuenta({ seleccion }) {
         .from(document.querySelector("#pdf"))
         .save();
 
-        navigate(0)
+        regresar();
+    }
+
+    const regresar = () => {
+        navigate(0);
     }
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
@@ -105,6 +109,9 @@ function BoletaEstadoCuenta({ seleccion }) {
                 >
                     Descargar Estado de Cuenta
                     <AiOutlineDownload size={25} />
+            </div>
+            <div className='btn-new btn-return' onClick={regresar}>
+                Regresar a las Facturas
             </div>
             <div id='pdf'>
                 <div className='boleta'>
