@@ -123,10 +123,23 @@ function Ingresos() {
                                     <th scope="col">N° Serie</th>
                                     <th scope="col">N° Interno</th>
                                     <th scope="col">Más Info</th>
-                                    <th scope="col">Ops</th>
+                                    {
+                                        auth.tipo === 1 ? 
+
+                                        <th scope="col">Ops</th>
+                                        
+                                        :
+                                        null
+                                    }
                                     <th scope="col">Salida Equipo</th>
                                     <th scope="col">Guía Des. IN / Fecha</th>
-                                    <th scope="col">Num. Fac. / Fecha</th>
+                                    {
+                                        auth.tipo === 1 ? 
+
+                                        <th scope="col">Num. Fac. / Fecha</th>
+                                        :
+                                        null
+                                    }
                                 </tr>
                             </thead>
                             <tbody>

@@ -60,20 +60,22 @@ function Header() {
             ruta: '/qr/sd/form',
             texto: 'QR sin Datos',
             icono: <ImQrcode size={50} color={"#333333"}/>
-        },
-        {
-            ruta: '/facturas',
-            texto: 'Facturas',
-            icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
-        },   
+        } 
     ]
 
     if(auth.tipo === 1) {
-        rutas.push({
-            ruta: '/usuarios',
-            texto: 'Usuarios',
-            icono: <FiUsers size={50} color={"#333333"}/>
-        })
+        rutas.push(
+            {
+                ruta: '/facturas',
+                texto: 'Facturas',
+                icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
+            },  
+            {
+                ruta: '/usuarios',
+                texto: 'Usuarios',
+                icono: <FiUsers size={50} color={"#333333"}/>
+            }
+        )
     }
 
     return (

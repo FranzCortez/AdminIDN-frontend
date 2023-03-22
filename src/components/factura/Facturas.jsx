@@ -155,7 +155,7 @@ function Facturas() {
     }
     
     useEffect(() => {        
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+        if(auth.token !== '' && auth.tipo === 1 ) {
             localStorage.setItem('ultima', `/facturas`);
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroIngreso');

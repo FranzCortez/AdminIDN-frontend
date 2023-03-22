@@ -112,11 +112,18 @@ function Ingreso({datos}) {
                     <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}/>
                 </div>                
             </td>
-            <td className={informe(datos.archivo)} >
-                <div className='table__opciones' onClick={consultarAPI}>
-                    <IngresoOpciones ingreso={datos}/>
-                </div>                
-            </td>
+            {
+                auth.tipo === 1 ? 
+
+                    <td className={informe(datos.archivo)} >
+                        <div className='table__opciones' onClick={consultarAPI}>
+                            <IngresoOpciones ingreso={datos}/>
+                        </div>                
+                    </td>
+            
+                :
+                    null
+            }
             <td className={informe(datos.archivo)} >
                 <div className='table__opciones'>
                     {
@@ -147,12 +154,16 @@ function Ingreso({datos}) {
                     </td>
             }
             {
-                datos.factura === '-' || datos.factura === null ? 
-                    <td className={informe(datos.archivo)} >-</td>
+                auth.tipo === 1 ? 
+
+                    datos.factura === '-' || datos.factura === null ? 
+                        <td className={informe(datos.archivo)} >-</td>
+                    :
+                        <td className={estadoRow(datos.factura.estado)} >
+                            <InformacionFactura nFactura={datos.factura.numeroFactura} fechaFactura={datos.factura.fechaFactura} />
+                        </td>
                 :
-                    <td className={estadoRow(datos.factura.estado)} >
-                        <InformacionFactura nFactura={datos.factura.numeroFactura} fechaFactura={datos.factura.fechaFactura} />
-                    </td>
+                    null
             }
         </tr>
     )
