@@ -258,7 +258,7 @@ function Inicio() {
                             <tr className="tabla__tr">
                                 <td className="tabla__td">Viernes</td>
                                 <td className="tabla__td">09:00</td>
-                                <td className="tabla__td">19:00</td>
+                                <td className="tabla__td">18:00</td>
                             </tr>
 
                             <tr className="tabla__tr">
