@@ -20,6 +20,10 @@ function FormNuevoIngreso() {
     const yyyy = today.getFullYear();
     const fechaActual = `${yyyy}-${mm}-${dd}`
     
+    const [ preInforme, guardarPreInforme ] = useState({
+        falla: '',
+        tecnico: 'Alberto García'
+    });
     const [ ingreso, guardarIngreso ] = useState({
         nombre: '',
         marca: '',
@@ -39,6 +43,15 @@ function FormNuevoIngreso() {
 
     let navigate = useNavigate();
     
+    const actualizarPre = e => {
+        
+        guardarPreInforme({
+            ...preInforme,
+            [e.target.name] : e.target.value
+        });
+
+    }
+
     const actualizarState = e => {
         
         guardarIngreso({
@@ -55,6 +68,20 @@ function FormNuevoIngreso() {
         
         try {            
             const res = await clienteAxios.post('/ih/ingreso', ingreso,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            const { herramientumId } = res.data;
+            
+            const datosPreinforme = {
+                herramientumId,
+                falla: preInforme.falla,
+                tecnico: preInforme.tecnico
+            }
+
+            await clienteAxios.post('/ih/preinforme', datosPreinforme,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -254,6 +281,26 @@ function FormNuevoIngreso() {
                             <label htmlFor="comentario">Comentario<span className='campo__obligatorio'>*</span>:</label>
 
                             <textarea name="comentario" id="comentario" cols="50" rows="10" defaultValue={ingreso.comentario}onChange={handleChange} ></textarea>
+                        </div>
+
+                        <h2 className='card-body-subtitle'>Preinforme</h2>
+
+                        <div className='campo'>
+                            <label htmlFor="falla">Fallas Presentadas:</label>
+
+                            <textarea name="falla" id="falla" cols="50" rows="10" onChange={actualizarPre} ></textarea>
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="tecnico" >Técnico:</label>
+                            <select name="tecnico" id="tecnico" 
+                                onChange={actualizarPre}
+                            >
+                                <option value={'Alberto García'} > Alberto García </option>    
+                                <option value={'David Nilo'} > David Nilo </option>    
+                                <option value={'Eduardo Beluzarán'} > Eduardo Beluzarán </option>    
+                                
+                            </select>
                         </div>
 
                         <div className="enviar">
