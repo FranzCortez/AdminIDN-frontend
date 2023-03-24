@@ -149,12 +149,41 @@ function FormNuevoIngreso() {
         }
     }
 
+    const consultarAPI = async () => {
+
+        try {        
+
+            const res = await clienteAxios.get('/ih/otin',{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            guardarIngreso({
+                ...ingreso,
+                otin: res.data
+            })
+
+        } catch (error) {
+            console.log(error);     
+            Swal.fire({
+                type: 'error',
+                title: 'Error en la OTIN',
+                text: error.response.data.msg,
+                timer: 1500
+            }); 
+            // redireccionar
+            navigate('/ingresos', {replace: true});
+        }
+    }
+
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
         } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
             navigate('/login', {replace: true});
         }
+        consultarAPI();
     },[]);
 
     return (
@@ -177,7 +206,19 @@ function FormNuevoIngreso() {
                     <form onSubmit={agregarIngreso} onKeyDown={avanzar}>
                         <EmpresaContacto contactoListo={contactoListo}/>                    
  
-                        <TipoHerramienta tipoListo={tipoListo}/>                    
+                        <TipoHerramienta tipoListo={tipoListo}/>  
+                        
+                        <div className='campo'>
+                            <label htmlFor="otin">OTIN<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='otin'
+                                name='otin'
+                                placeholder='otin de la Herramienta'
+                                onChange={actualizarState}
+                                defaultValue={ingreso.otin}
+                            />
+                        </div>                  
 
                         <div className='campo'>
                             <label htmlFor="fecha">Fecha Ingreso<span className='campo__obligatorio'>*</span>:</label>
