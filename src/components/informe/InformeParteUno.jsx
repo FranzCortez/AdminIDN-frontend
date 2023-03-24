@@ -1,6 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 
-function InformeParteUno({ onButtonClick, guardarDatosPrimero, data, datosInfo }) {
+import clienteAxios from '../../config/axios';
+import { CRMContext } from '../context/CRMContext';
+
+function InformeParteUno({ onButtonClick, guardarDatosPrimero, data, datosInfo, id }) {
 
     const today = new Date();
     const dd = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
@@ -9,10 +12,12 @@ function InformeParteUno({ onButtonClick, guardarDatosPrimero, data, datosInfo }
     const fechaActual = `${yyyy}-${mm}-${dd}`;
     
     const [ datos, guardarDatos ] = useState({
-        fecha: data?.fecha ? data.fecha : fechaActual,
-        nombre: data?.nombre ? data.nombre : "Alberto García",
-        falla: data?.falla ? data.falla : ""
+        nombre: '',
+        fecha: '',
+        falla: ''
     });
+
+    const [auth, guardarAuth] = useContext(CRMContext);
 
     const actualizarState = (e) => {
 
@@ -55,6 +60,42 @@ function InformeParteUno({ onButtonClick, guardarDatosPrimero, data, datosInfo }
             falla: datosInfo.falla
         });
     }
+
+    const consultarAPI = async () => {
+
+        try {
+
+            if(data?.nombre) {
+                guardarDatos({
+                    fecha: data?.fecha,
+                    nombre: data?.nombre,
+                    falla: data?.falla
+                });
+
+                return;
+            }
+
+            const res = await clienteAxios.get(`ih/preinforme/tecnico/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            guardarDatos({
+                fecha: fechaActual,
+                nombre: res.data.tecnico,
+                falla: ""
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    useEffect(() =>{
+        consultarAPI();
+    },[]);
 
     return (
         <Fragment>
