@@ -33,7 +33,7 @@ function Home() {
                             <AiFillHome size={50} color={"#333333"}/>
                             <h1>Hola! {auth.nombre}</h1>
                         </div>
-                        <h2 className='version'>V5.1</h2>
+                        <h2 className='version'>V5.2.0</h2>
                     </div>
                 </div>
                 <div className="card-body">
