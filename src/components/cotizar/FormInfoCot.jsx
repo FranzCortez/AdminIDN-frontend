@@ -15,7 +15,7 @@ import InformeParteTres from '../informe/InformeParteTres';
 import PDF from './pdf/PDF';
 
 function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend, contenidoBack, datosInfo }) {
-console.log(datosInfo)
+    
     const { id } = useParams();
 
     const [ primero, guardarPrimero ] = useState({});
@@ -144,7 +144,7 @@ console.log(datosInfo)
     }
 
     useEffect(() => {
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {            
+        if(auth.token !== '' && (auth.tipo === 1) ) {            
             consultarAPI();
         } else {
             navigate('/login', {replace: true});
@@ -169,7 +169,7 @@ console.log(datosInfo)
                     <BarraProgreso page={page} onPageNumberClick={nextPageNumber} />
                     {
                         {
-                            pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} data={primero} datosInfo={datosInfo} />,
+                            pageone: <InformeParteUno onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} data={primero} datosInfo={datosInfo} id={id} />,
                             pagetwo: <InformeParteDos onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundoFotoA={segundoFotoA} segundoTextoA={segundoTextoA} segundoFotoB={segundoFotoB} segundoTextoB={segundoTextoB} datosInfo={datosInfo} />,
                             pagethree: <InformeParteTres onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} datosInfo={datosInfo} />
                         }[page]

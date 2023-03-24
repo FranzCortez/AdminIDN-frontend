@@ -17,6 +17,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
         guardarConclusion: tercero?.guardarConclusion ? tercero.guardarConclusion : false,
         guardarFalla: tercero?.guardarFalla ? tercero.guardarFalla : false,
     });
+    const [ preinfo, guardarPreinfo ] = useState('')
 
     let navigate = useNavigate();
 
@@ -170,6 +171,14 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
                 }
             }
 
+            const preinfo = await clienteAxios.get(`ih/preinforme/falla/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            guardarPreinfo(preinfo.data?.falla ? preinfo.data.falla : 'No Hay Preinforme');
+
         } catch (error) {
             console.log(error)
         }
@@ -190,6 +199,18 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
 
             <form onSubmit={enviar}>
                 
+                <div className='campo'>
+                    <label htmlFor="descripcion">Falla Preinforme:</label>
+                    <textarea 
+                        name="preinfo" 
+                        id="preinfo" 
+                        cols="10" 
+                        rows="5"
+                        defaultValue={preinfo}
+                        disabled={true}
+                        />                 
+                </div>
+
                 <div className='campo'>
                     <label htmlFor="descripcion">Falla<span className='campo__obligatorio'>*</span>:</label>
                     <textarea 

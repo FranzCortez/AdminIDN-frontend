@@ -83,7 +83,7 @@ function InformeParteUno({ onButtonClick, guardarDatosPrimero, data, datosInfo, 
 
             guardarDatos({
                 fecha: fechaActual,
-                nombre: res.data.tecnico,
+                nombre: res.data?.tecnico ? res.data?.tecnico : 'Alberto García',
                 falla: ""
             })
 
