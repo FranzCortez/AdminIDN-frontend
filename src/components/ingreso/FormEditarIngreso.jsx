@@ -12,7 +12,10 @@ function FormEditarIngreso() {
 
     const { id } = useParams();
 
-    const [ preInforme, guardarPreInforme ] = useState({});
+    const [ preInforme, guardarPreInforme ] = useState({
+        falla: '',
+        tecnico: ''
+    });
     const [ ingreso, guardarIngreso ] = useState({
         nombre: '',
         marca: '',
@@ -162,7 +165,10 @@ function FormEditarIngreso() {
                 }
             });
 
-            guardarPreInforme(pre.data);
+            guardarPreInforme({
+                falla: pre.data?.falla ? pre.data.falla: '',
+                tecnico: pre.data?.tecnico ? pre.data.tecnico: 'Alberto García'
+            });
 
         } catch (error) {
             console.log(error)
@@ -440,13 +446,13 @@ function FormEditarIngreso() {
                         <div className='campo'>
                             <label htmlFor="falla">Fallas Presentadas:</label>
 
-                            <textarea name="falla" id="falla" cols="50" rows="10" onChange={actualizarPre} value={preInforme.falla} ></textarea>
+                            <textarea name="falla" id="falla" cols="50" rows="10" onChange={actualizarPre} value={preInforme?.falla} ></textarea>
                         </div>
 
                         <div className='campo'>
                             <label htmlFor="tecnico" >Técnico:</label>
                             <select name="tecnico" id="tecnico" 
-                                onChange={actualizarPre} value={preInforme.tecnico}
+                                onChange={actualizarPre} value={preInforme?.tecnico}
                             >
                                 <option value={'Alberto García'} > Alberto García </option>    
                                 <option value={'David Nilo'} > David Nilo </option>    
