@@ -12,6 +12,7 @@ function FormEditarIngreso() {
 
     const { id } = useParams();
 
+    const [ preInforme, guardarPreInforme ] = useState({});
     const [ ingreso, guardarIngreso ] = useState({
         nombre: '',
         marca: '',
@@ -41,6 +42,15 @@ function FormEditarIngreso() {
 
     let navigate = useNavigate();
     
+    const actualizarPre = e => {
+        
+        guardarPreInforme({
+            ...preInforme,
+            [e.target.name] : e.target.value
+        });
+
+    }
+
     const actualizarState = e => {
         
         guardarIngreso({
@@ -58,6 +68,12 @@ function FormEditarIngreso() {
 
         try {
             const res = await clienteAxios.put(`/ih/ingreso/${id}`, ingreso,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            await clienteAxios.put(`/ih/preinforme/actualizar/${id}`, preInforme,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -106,6 +122,7 @@ function FormEditarIngreso() {
                 fechaGuiaDespacho: res.data.fechaGuiaDespacho,
                 guiaDespacho: res.data.guiaDespacho
             });
+
             guardarFecha(res.data.fecha);
 
             const resTipo = await clienteAxios.get(`tipo/categoria/herramienta`, {
@@ -136,6 +153,14 @@ function FormEditarIngreso() {
             
             guardarContactos(resContacto.data);
             guardarContacto(res.data.clienteContactoId);
+
+            const pre = await clienteAxios.get(`ih/preinforme/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            guardarPreInforme(pre.data);
 
         } catch (error) {
             console.log(error)
@@ -394,6 +419,26 @@ function FormEditarIngreso() {
                             <label htmlFor="comentario">Comentario<span className='campo__obligatorio'>*</span>:</label>
 
                             <textarea name="comentario" id="comentario" cols="50" rows="10" defaultValue={ingreso.comentario} onChange={actualizarState} ></textarea>
+                        </div>
+
+                        <h2 className='card-body-subtitle'>Preinforme</h2>
+
+                        <div className='campo'>
+                            <label htmlFor="falla">Fallas Presentadas:</label>
+
+                            <textarea name="falla" id="falla" cols="50" rows="10" onChange={actualizarPre} value={preInforme.falla} ></textarea>
+                        </div>
+
+                        <div className='campo'>
+                            <label htmlFor="tecnico" >Técnico:</label>
+                            <select name="tecnico" id="tecnico" 
+                                onChange={actualizarPre} value={preInforme.tecnico}
+                            >
+                                <option value={'Alberto García'} > Alberto García </option>    
+                                <option value={'David Nilo'} > David Nilo </option>    
+                                <option value={'Eduardo Beluzarán'} > Eduardo Beluzarán </option>    
+                                
+                            </select>
                         </div>
  
                         <div className="enviar">
