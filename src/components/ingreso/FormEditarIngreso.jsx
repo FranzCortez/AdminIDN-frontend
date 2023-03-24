@@ -25,7 +25,8 @@ function FormEditarIngreso() {
         clienteContactoId: '',
         tipoHerramientaId: 0,
         guiaDespacho: '',
-        fechaGuiaDespacho: ''
+        fechaGuiaDespacho: '',
+        otin: ''
     });
     const [ tipos, guardarTipos ] = useState([]);
     const [ tipo, guardarTipo ] = useState(0);
@@ -120,7 +121,8 @@ function FormEditarIngreso() {
                 clienteContactoId: res.data.clienteContactoId,
                 tipoHerramientaId: res.data.tipoHerramientaId,
                 fechaGuiaDespacho: res.data.fechaGuiaDespacho,
-                guiaDespacho: res.data.guiaDespacho
+                guiaDespacho: res.data.guiaDespacho,
+                otin: res.data.otin
             });
 
             guardarFecha(res.data.fecha);
@@ -206,10 +208,10 @@ function FormEditarIngreso() {
 
     const validarForm = () => {
 
-        const { nombre, marca, fecha, modelo, comentario, clienteContactoId, tipoHerramientaId } = ingreso;
+        const { nombre, marca, fecha, modelo, comentario, clienteContactoId, tipoHerramientaId, otin } = ingreso;
 
 
-        if( !(!nombre.length || !marca.length || !fecha.length || !modelo.length || !clienteContactoId || !comentario.length || !tipoHerramientaId) ){
+        if( !(!nombre.length || !marca.length || !fecha.length || !modelo.length || !clienteContactoId || !comentario.length || !tipoHerramientaId || !otin) ){
             return false;
         }
 
@@ -307,7 +309,19 @@ function FormEditarIngreso() {
                                 }
                             </select>     
                             <Link to={'#'} className="btn-new btn-success-new">Crear Tipo Herramienta</Link>                    
-                        </div>                
+                        </div>     
+
+                        <div className='campo'>
+                            <label htmlFor="otin">OTIN<span className='campo__obligatorio'>*</span>:</label>
+                            <input 
+                                type="text" 
+                                id='otin'
+                                name='otin'
+                                placeholder='otin de la Herramienta'
+                                onChange={actualizarState}
+                                defaultValue={ingreso.otin}
+                            />
+                        </div>             
 
                         <div className='campo'>
                             <label htmlFor="fecha">Fecha Ingreso<span className='campo__obligatorio'>*</span>:</label>

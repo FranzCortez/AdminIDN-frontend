@@ -34,7 +34,8 @@ function FormNuevoIngreso() {
         numeroGuiaCliente: '',
         numeroSerie: '',
         clienteContactoId: '',
-        tipoHerramientaId: ''
+        tipoHerramientaId: '',
+        otin: ''
     });
     const [ fecha, guardarFecha ] = useState(fechaActual);
 
@@ -110,9 +111,9 @@ function FormNuevoIngreso() {
 
     const validarForm = () => {
 
-        const { nombre, marca, fecha, modelo, comentario, clienteContactoId, tipoHerramientaId } = ingreso;
+        const { nombre, marca, fecha, modelo, comentario, clienteContactoId, tipoHerramientaId, otin } = ingreso;
         
-        if( !(!nombre.length || !marca.length || !fecha.length || !modelo.length || !clienteContactoId.length || !comentario.length || !tipoHerramientaId.length) ){
+        if( !(!nombre.length || !marca.length || !fecha.length || !modelo.length || !clienteContactoId.length || !comentario.length || !tipoHerramientaId.length  || !otin.length) ){
             return false;
         }
 
