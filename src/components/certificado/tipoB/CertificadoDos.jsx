@@ -17,7 +17,15 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
     
     let navigate = useNavigate();
 
+    let entre = 0;
+
     const pdfcrear = () => {
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
 
         html2pdf()
         .set({

@@ -21,6 +21,7 @@ function FacturaPagar() {
     const [ fecha, guaradrFecha ] = useState({
         fechaPago: fechaActual
     });
+    let entre = 0;
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -43,6 +44,12 @@ function FacturaPagar() {
         try {
 
             e.preventDefault();
+
+            if( entre > 0) {
+                return;
+            }
+            
+            entre = 1;
 
             const res = await clienteAxios.post(`/factura/pagar/${id}`, fecha, {
                 headers: {

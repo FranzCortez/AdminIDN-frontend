@@ -11,6 +11,7 @@ import { CRMContext } from '../../context/CRMContext';
 function CertificadoUno({ primero, segundo, tercero, herramienta }) {
 
     const { id } = useParams();
+    let entre = 0;
 
     let navigate = useNavigate();
 
@@ -18,6 +19,12 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     const pdfcrear = () => {
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
 
         html2pdf()
         .set({

@@ -13,6 +13,7 @@ function FormFotoGaleria() {
     const { id } = useParams();
 
     const fileTypes = ["JPG", "PNG", "JPEG"];
+    let entre = 0;
 
     const [fotos, setFotos] = useState(null);
 
@@ -27,6 +28,12 @@ function FormFotoGaleria() {
 
     const agregarIngreso = async (e) => {
         e.preventDefault();
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         
         try {            
             const res = await clienteAxios.post(`/ih/ingreso/foto/${id}`, fotos,{

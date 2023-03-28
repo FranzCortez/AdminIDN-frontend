@@ -18,6 +18,8 @@ function FormularioEditarContacto() {
         telefono: ''
     });
 
+    let entre = 0;
+
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -44,7 +46,11 @@ function FormularioEditarContacto() {
 
     const actualizarContacto = async (e) => {
         e.preventDefault();
+        if( entre > 0) {
+            return;
+        }
         
+        entre = 1;
         try {            
             const res = await clienteAxios.put(`/contactos/contacto/${idEmpresa}`, contacto,{
                 headers: {

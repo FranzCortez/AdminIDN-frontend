@@ -12,6 +12,7 @@ function BoletaPagado({ pagado }) {
 
     const [ total, guardarTotal ] = useState(0);
     const [ pagar, guardarPagar ] = useState([]);
+    let entre = 0;
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -22,7 +23,7 @@ function BoletaPagado({ pagado }) {
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
     const obtenerTotal = () => {
-        console.log(pagado)
+        
         let suma = 0;
         const id = [];
 
@@ -31,15 +32,18 @@ function BoletaPagado({ pagado }) {
             suma += parseInt(boleta?.valor);
             id.push(boleta.id);
         });
-        console.log(id)
-        console.log(suma)
+        
         guardarPagar(id);
         guardarTotal(suma);
 
     }
     
     const pdfcrear = async () => {
-
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         await guardarPagadas();
         
         if ( (pagado.length <= 2 ) ) {

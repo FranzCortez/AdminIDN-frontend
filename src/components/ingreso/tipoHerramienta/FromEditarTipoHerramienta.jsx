@@ -18,6 +18,7 @@ function FromEditarTipoHerramienta() {
         recomendacion: '',
         conclusion: ''
     });
+    let entre = 0;
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -45,7 +46,11 @@ function FromEditarTipoHerramienta() {
 
     const guardarTipoHerramienta = async (e) => {
         e.preventDefault();
+        if( entre > 0) {
+            return;
+        }
         
+        entre = 1;
         try {            
             const res = await clienteAxios.put(`tipo/categoria/herramienta/${id}`, herramienta,{
                 headers: {

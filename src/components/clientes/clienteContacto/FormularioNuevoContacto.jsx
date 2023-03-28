@@ -11,6 +11,7 @@ import { CRMContext } from '../../context/CRMContext';
 function FormularioCrearContacto() {
 
     const { idEmpresa } = useParams();
+    let entre = 0;
 
     const [ contacto, guardarContacto ] = useState({
         nombre: '',
@@ -45,7 +46,11 @@ function FormularioCrearContacto() {
 
     const nuevoContacto = async (e) => {
         e.preventDefault();
+        if( entre > 0) {
+            return;
+        }
         
+        entre = 1;
         try {            
             const res = await clienteAxios.post(`/contactos/contacto/${idEmpresa}`, contacto,{
                 headers: {

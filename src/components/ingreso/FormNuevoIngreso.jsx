@@ -38,7 +38,7 @@ function FormNuevoIngreso() {
         otin: ''
     });
     const [ fecha, guardarFecha ] = useState(fechaActual);
-
+    let entre = 0;
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -66,6 +66,11 @@ function FormNuevoIngreso() {
 
     const agregarIngreso = async (e) => {
         e.preventDefault();
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         
         try {            
             const res = await clienteAxios.post('/ih/ingreso', ingreso,{

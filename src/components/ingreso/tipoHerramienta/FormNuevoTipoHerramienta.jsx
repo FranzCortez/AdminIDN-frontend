@@ -16,6 +16,7 @@ function FormNuevoTipoHerramienta() {
         recomendacion: '',
         conclusion: ''
     });
+    let entre = 0;
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -43,6 +44,12 @@ function FormNuevoTipoHerramienta() {
 
     const agregarTipoHerramienta = async (e) => {
         e.preventDefault();
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         
         try {            
             const res = await clienteAxios.post('tipo/categoria/herramienta', herramienta,{

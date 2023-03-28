@@ -40,6 +40,7 @@ function FormEditarFactura() {
     const [ texto, guardarTexto ] = useState(false);
     const [ facturaEditar, guardarFacturaEditar ] = useState([]);
     const [ empresa, guardarEmpresa ] = useState(0);
+    let entre = 0;
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -58,6 +59,12 @@ function FormEditarFactura() {
 
     const actualizarFactura = async (e) => {
         e.preventDefault();
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         
         try {            
             const res = await clienteAxios.put(`/factura/${facturaEditar.id}`, factura,{

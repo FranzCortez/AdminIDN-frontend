@@ -179,7 +179,7 @@ function Facturas() {
             setTimeout(() => {
                 window.scrollTo({top: 0, left: 0});
             }, 300)
-            console.log(res.data)
+            
             guardarFacturas(res.data);
             
         } catch (error) {

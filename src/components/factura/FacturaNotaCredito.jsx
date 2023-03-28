@@ -11,6 +11,7 @@ import { CRMContext } from '../context/CRMContext';
 function FacturaNotaCredito() {
   
     const { id } = useParams();
+    let entre = 0;
     
     const [ numero, guaradarNumero ] = useState({
         numeroNotaCredito: 0
@@ -40,7 +41,11 @@ function FacturaNotaCredito() {
     const notaCredito = (e) => {
 
         e.preventDefault();
-
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         Swal.fire ({
             title: '¿Estás seguro de crear una nota de crédito?',
             text: "Una vez realizado no se puede borrar",

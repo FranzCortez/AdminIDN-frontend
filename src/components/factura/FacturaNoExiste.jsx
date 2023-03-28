@@ -27,6 +27,8 @@ function FacturaNoExiste() {
         guardarOtines: []
     });
 
+    let entre = 0;
+
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -42,6 +44,11 @@ function FacturaNoExiste() {
 
     const agregarFactura = async (e) => {
         e.preventDefault();
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
 
         Swal.fire ({
             title: '¿Estás seguro de agregar este n° de factura?',
@@ -114,6 +121,7 @@ function FacturaNoExiste() {
         } else if (auth.tipo !== 1){ 
             navigate('/login', {replace: true});
         }
+        consultarAPI();
     },[]);
 
     return (

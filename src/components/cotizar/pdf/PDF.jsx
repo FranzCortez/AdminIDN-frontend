@@ -30,11 +30,19 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
+    let entre = 0;
+
     let navigate = useNavigate();
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
     const pdfcrear = async () => {
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         
         await guardarDatosInfo();
 

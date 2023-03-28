@@ -12,11 +12,19 @@ function BoletaEstadoCuenta({ seleccion }) {
     const [ pendienteTotal, guardarPendienteTotal ] = useState(0);
     const [ empresa, guardarEmpresa ] = useState('');
 
+    let entre = 0;
+
     let hoja = '';
 
     let navigate = useNavigate();
 
     const pdfcrear = async () => {
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
         
         if ( (vencido.length <= 2 && pendiente.length === 0) || (vencido.length === 0 && pendiente.length <= 2) ) {
             hoja = "a5" 

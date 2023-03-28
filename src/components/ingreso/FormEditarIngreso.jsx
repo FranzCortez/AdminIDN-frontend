@@ -11,6 +11,7 @@ import clienteAxios from '../../config/axios';
 function FormEditarIngreso() {
 
     const { id } = useParams();
+    let entre = 0;
 
     const [ preInforme, guardarPreInforme ] = useState({
         falla: '',
@@ -69,6 +70,12 @@ function FormEditarIngreso() {
 
     const editarIngreso = async (e) => {
         e.preventDefault();
+
+        if( entre > 0) {
+            return;
+        }
+        
+        entre = 1;
 
         try {
             const res = await clienteAxios.put(`/ih/ingreso/${id}`, ingreso,{
