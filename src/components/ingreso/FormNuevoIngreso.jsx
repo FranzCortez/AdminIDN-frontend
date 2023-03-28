@@ -218,6 +218,7 @@ function FormNuevoIngreso() {
                                 placeholder='otin de la Herramienta'
                                 onChange={actualizarState}
                                 defaultValue={ingreso.otin}
+                                disabled={ auth.tipo === 2 ? true : false }
                             />
                         </div>                  
 
