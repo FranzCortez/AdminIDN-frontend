@@ -23,7 +23,7 @@ function FormGenerarCot() {
     const [ cotizacion, guardarCotizacion ] = useState({
         fechaEvaluacion: '',
         fechaCotizacion: '',
-        condiciones: 'VALIDEZ DEL PRESUPUESTO ES DE 15 DÍAS.',
+        condiciones: 'VALIDEZ DEL PRESUPUESTO ES DE 5 DÍAS.',
         plazoEntrega: 'Inmediata, recibida la o/c',
         garantia: 'GARANTÍA DE 3 MESES, SÓLO DE COMPONENTES CAMBIADOS O REPARADOS.',
         gastos: 'De no aceptarse el presente presupuesto (o en caso de baja del equipo), se cobrarán $40.000, por gastos de desarme, evaluación e informe técnico.',
