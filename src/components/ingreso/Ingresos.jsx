@@ -123,14 +123,7 @@ function Ingresos() {
                                     <th scope="col">N° Serie</th>
                                     <th scope="col">N° Interno</th>
                                     <th scope="col">Más Info</th>
-                                    {
-                                        auth.tipo === 1 ? 
-
-                                        <th scope="col">Ops</th>
-                                        
-                                        :
-                                        null
-                                    }
+                                    <th scope="col">Ops</th>
                                     <th scope="col">Salida Equipo</th>
                                     <th scope="col">Guía Des. IN / Fecha</th>
                                     {

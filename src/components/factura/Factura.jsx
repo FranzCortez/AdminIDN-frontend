@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
+import { BsFileEarmarkCheckFill } from 'react-icons/bs';
 import { GiCancel } from "react-icons/gi";
 import moment from "moment";
 
 import FacturaInformacion from './FacturaInformacion';
 
-function Factura({ datos, boleta }) {
+function Factura({ datos, boleta, boletaPago }) {
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
@@ -37,23 +38,42 @@ function Factura({ datos, boleta }) {
     return (
         <tr className={estadoRow()}>
             <td className='select'>
-                <input 
-                    type="checkbox" 
-                    name="facturaId" 
-                    id={datos?.id} 
-                    data-estado={datos?.estado}
-                    data-otin={datos?.otines}
-                    data-valor={valorNumero( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
-                    data-factura={datos?.numeroFactura}
-                    data-orden={datos?.numeroCompra}
-                    data-despacho={datos?.guiaDespacho}
-                    data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
-                    data-fechafactura={moment(datos?.fechaFactura).format('DD-MM-YYYY')}
-                    data-fechavencimiento={moment(fechaVencimiento).format('DD/MM/YYYY')}
-                    data-mora={(datos?.fechaPago === '0000-00-00' || datos?.fechaPago === null) && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)+1} Día(s)` : ''}
-                    onChange={boleta} 
-                    disabled={datos?.estado === 'Anulada' || datos?.estado === 'Pagado' || datos?.estado === 'No Existe' ? true : false}
-                />
+                {
+                    datos?.estado === 'Pagado' ?
+                        datos?.boletaPagado === true ?
+                            <BsFileEarmarkCheckFill size={20} color={"rgb(0 168 0 / 68%)"} />
+                            :
+                            <input 
+                                type="checkbox" 
+                                name="facturaPago"
+                                className='factura__check-boletaPagado' 
+                                id={datos?.id}
+                                data-factura={datos?.numeroFactura}
+                                data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                                data-valor={( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
+                                data-fechapago={moment(datos?.fechaPago).format('DD-MM-YYYY')}
+                                onChange={boletaPago}
+                            />
+                    :
+                        <input 
+                            type="checkbox" 
+                            name="facturaId" 
+                            id={datos?.id} 
+                            data-estado={datos?.estado}
+                            data-otin={datos?.otines}
+                            data-valor={( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
+                            data-factura={datos?.numeroFactura}
+                            data-orden={datos?.numeroCompra}
+                            data-despacho={datos?.guiaDespacho}
+                            data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                            data-fechafactura={moment(datos?.fechaFactura).format('DD-MM-YYYY')}
+                            data-fechavencimiento={moment(fechaVencimiento).format('DD/MM/YYYY')}
+                            data-mora={(datos?.fechaPago === '0000-00-00' || datos?.fechaPago === null) && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)+1} Día(s)` : ''}
+                            onChange={boleta} 
+                            disabled={datos?.estado === 'Anulada' || datos?.estado === 'Pagado' || datos?.estado === 'No Existe' ? true : false}
+                        />
+                }
+                
             </td>
             <td>{datos.numeroFactura}</td>
             <td>{datos?.herramientas?.length > 0 ? moment(datos.fechaFactura).format('DD-MM-YYYY') : '-'}</td>

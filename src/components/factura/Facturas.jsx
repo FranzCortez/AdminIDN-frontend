@@ -15,6 +15,7 @@ import Paginacion from '../layout/Paginacion';
 
 import BoletaEstadoCuenta from './estadoCuenta/BoletaEstadoCuenta';
 import FormEstadoCuenta from './FormEstadoCuenta';
+import BoletaPagado from './estadoCuenta/BoletaPagado';
 
 function Facturas() {
 
@@ -26,6 +27,7 @@ function Facturas() {
     const [ spin, guardarSpin ] = useState(true);
 
     const [ seleccion, guardarSeleccion ] = useState([]);
+    const [ pagado, guardarPagado ] = useState([]);
 
     // filtro
     const [ filtroLocal, guardarFiltroLocal ] = useState(localStorage.getItem('filtroFactura'));
@@ -75,6 +77,37 @@ function Facturas() {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
+
+    const boletaPago = (e) => {
+
+        let existe = [];
+
+        existe = pagado.filter( factura => factura.id !== e.target.id );
+
+        if ( existe.length === pagado.length ){
+            // agrega
+
+            existe.push({
+                id: e.target.id,
+                valor: e.target.dataset.valor,
+                factura: e.target.dataset.factura,
+                fechapago: e.target.dataset.fechapago,
+                cliente: e.target.dataset.cliente,
+            });
+
+            guardarPagado(existe);
+
+        } else {
+            // elimina
+            guardarPagado(existe);
+        }
+
+    }
+
+    const generarRecepcion = () => {
+        document.querySelector("#fact").style.display = "none";
+        document.querySelector(".dn").style.display = "block";
+    }
 
     const boleta = (e) => {
 
@@ -146,7 +179,7 @@ function Facturas() {
             setTimeout(() => {
                 window.scrollTo({top: 0, left: 0});
             }, 300)
-            
+            console.log(res.data)
             guardarFacturas(res.data);
             
         } catch (error) {
@@ -181,6 +214,11 @@ function Facturas() {
                     <div className='card-body-options'>
 
                         <FacturaFiltro guardarFiltro={guardarFiltro} escucharCambio={escucharCambio} filtros={filtros} />
+
+                        <button className={pagado.length === 0 ? 'btn-new' : 'btn-new btn-success-new'} onClick={generarRecepcion} disabled={pagado.length > 0 ? false : true}>
+                            <FaRegMoneyBillAlt size={25}/>
+                            Generar Recepción de Pago
+                        </button>
 
                         <button className={'btn-new btn-login'} onClick={opcionesAutomaticas} >
                             <FaRegMoneyBillAlt size={25}/>
@@ -220,7 +258,7 @@ function Facturas() {
                                 {
                                     facturas.length > 0 ? (
                                         facturas.map((datos) => (
-                                            <Factura datos={datos} key={datos.id} boleta={boleta} />
+                                            <Factura datos={datos} key={datos.id} boleta={boleta} boletaPago={boletaPago} />
                                         ))
                                     ) :
                                     spin ? 
@@ -248,6 +286,10 @@ function Facturas() {
 
             <BoletaEstadoCuenta
                 seleccion={seleccion}
+            />
+
+            <BoletaPagado
+                pagado={pagado}
             />
 
         </Fragment>
