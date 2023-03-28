@@ -112,18 +112,13 @@ function Ingreso({datos}) {
                     <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}/>
                 </div>                
             </td>
-            {
-                auth.tipo === 1 ? 
-
-                    <td className={informe(datos.archivo)} >
-                        <div className='table__opciones' onClick={consultarAPI}>
-                            <IngresoOpciones ingreso={datos}/>
-                        </div>                
-                    </td>
             
-                :
-                    null
-            }
+            <td className={informe(datos.archivo)} >
+                <div className='table__opciones' onClick={consultarAPI}>
+                    <IngresoOpciones ingreso={datos}/>
+                </div>                
+            </td>
+
             <td className={informe(datos.archivo)} >
                 <div className='table__opciones'>
                     {

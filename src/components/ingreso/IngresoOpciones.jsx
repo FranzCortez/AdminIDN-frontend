@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineDownload, AiFillPicture } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
@@ -117,53 +117,47 @@ function IngresoOpciones({ ingreso }) {
 
                 </div>
 
-                <div className='modal__herramienta modal__opciones'>
+                {
+                    auth.tipo === 1 ?
 
-                    <h2 className='modal__titulo'>Cotización e Informe</h2>
+                    <Fragment>
+                        <div className='modal__herramienta modal__opciones'>
 
-                    <Link to={`/cotizacion/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
-                        <MdOutlineRequestQuote size={25}/> Generar Cotización e Informe
-                    </Link>
+                            <h2 className='modal__titulo'>Cotización e Informe</h2>
 
-                    <div onClick={() => download(rutaCotizacion)} className={ rutaCotizacion ? "btn-new btn-login" : "btn-new"}>
-                        <AiOutlineDownload size={25}/> Descargar Cotización e Informe
-                    </div>
-                    
-                </div>
+                            <Link to={`/cotizacion/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
+                                <MdOutlineRequestQuote size={25}/> Generar Cotización e Informe
+                            </Link>
 
-                {/* <div className='modal__herramienta modal__opciones'>
+                            <div onClick={() => download(rutaCotizacion)} className={ rutaCotizacion ? "btn-new btn-login" : "btn-new"}>
+                                <AiOutlineDownload size={25}/> Descargar Cotización e Informe
+                            </div>
 
-                    <h2 className='modal__titulo'>Informe</h2>
+                        </div>
 
-                    <Link to={`/informe/nuevo/${ingreso.id}`} className="btn-new btn-success-new">
-                        <RiFileList2Line size={25}/> Generar Informe
-                    </Link>
+                        <div className='modal__herramienta modal__opciones'>
 
-                    <div onClick={() => download(rutaInforme)} className={ rutaInforme ? "btn-new btn-login" : "btn-new"}>
-                        <AiOutlineDownload size={25}/> Descargar Informe
-                    </div>
-                    
-                </div> */}
+                            <h2 className='modal__titulo'>Certificado</h2>
 
-                <div className='modal__herramienta modal__opciones'>
+                            <div className='opciones__certificado'>
+                                <Link to={`/certificado/tipoa/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
+                                    <TbFileCertificate size={25}/> Generar Certificado Mantención
+                                </Link>
 
-                    <h2 className='modal__titulo'>Certificado</h2>
+                                <Link to={`/certificado/tipob/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
+                                    <TbFileCertificate size={25}/> Generar Certificado Calibración
+                                </Link>
+                            </div>
 
-                    <div className='opciones__certificado'>
-                        <Link to={`/certificado/tipoa/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
-                            <TbFileCertificate size={25}/> Generar Certificado Mantención
-                        </Link>
+                            <div onClick={() => download(rutaCertificado)} className={ rutaCertificado ? "btn-new btn-login" : "btn-new"}>
+                                <AiOutlineDownload size={25}/> Descargar Certificado
+                            </div>
 
-                        <Link to={`/certificado/tipob/nuevo/${ingreso.id}`} className="btn-new btn-success-new" >
-                            <TbFileCertificate size={25}/> Generar Certificado Calibración
-                        </Link>
-                    </div>
-
-                    <div onClick={() => download(rutaCertificado)} className={ rutaCertificado ? "btn-new btn-login" : "btn-new"}>
-                        <AiOutlineDownload size={25}/> Descargar Certificado
-                    </div>
-                    
-                </div>
+                        </div>
+                    </Fragment>
+                :
+                    null
+                }
             </div>
 
             <div className='modal__grid'>
