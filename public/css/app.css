@@ -1924,3 +1924,12 @@ table .boleta__total th {
         margin-bottom: 0;
     }
 }
+
+/** BALANCE*/
+.balance table tr:nth-child(1) {
+    width: 20%;
+}
+.balance table td {
+    text-align: center;
+    font-size: 1.4rem;
+}
