@@ -48,6 +48,9 @@ import FacturaPagar from "./components/factura/FacturaPagar";
 import FacturaNotaCredito from "./components/factura/FacturaNotaCredito";
 import FacturaNoExiste from "./components/factura/FacturaNoExiste";
 
+/** BALANCE */
+import SeleccionBalance from "./components/balance/SeleccionBalance";
+
 /** QR */
 import FormQr from "./components/qr/FormQr";
 import Qr from "./components/qr/Qr";
@@ -111,6 +114,8 @@ function App() {
                         <Route path="/facturas/pagar/:id" element={<FacturaPagar/>}/>
                         <Route path="/facturas/nota/:id" element={<FacturaNotaCredito/>}/>
                         <Route path="/facturas/error" element={<FacturaNoExiste/>}/>
+
+                        <Route path="/balance" element={<SeleccionBalance/>}/>
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
