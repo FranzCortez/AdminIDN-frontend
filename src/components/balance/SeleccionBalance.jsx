@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoGraph } from 'react-icons/go';
 
 import FacturacionMes from './FacturacionMes';
+import IngresoMes from './IngresoMes';
 
 import { CRMContext } from '../context/CRMContext';
 
@@ -56,9 +57,12 @@ function SeleccionBalance() {
 
                     {
                         tipoBalance === 1 ?
-
                         <FacturacionMes/>
-                        : null
+                        :
+                        tipoBalance === 2 ?
+                        <IngresoMes/>
+                        :
+                        null
                     }
                     
                 </div>
