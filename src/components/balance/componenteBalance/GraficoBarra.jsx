@@ -1,12 +1,11 @@
-import { Fragment } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 function GraficoBarra({ totalPrimero, totalSegundo, texto, uv, pv }) {
     const data = [
         {
           name: texto,
-          [uv] : totalPrimero,
-          [pv] : totalSegundo,
+          [uv] : totalSegundo,
+          [pv] : totalPrimero,
           amt: totalSegundo
         },
     ];
