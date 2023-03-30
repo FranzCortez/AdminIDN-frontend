@@ -60,7 +60,7 @@ function FacturacionMes() {
     //  Obtiene info de la primera fecha
     const consultarPrimero = async () => {
         
-        const res = await clienteAxios.post('/factura/balance', fechaPrimero,{
+        const res = await clienteAxios.post('/factura/balance/factura/mes', fechaPrimero,{
             headers: {
                 Authorization: `Bearer ${auth.token}`
             }
@@ -80,7 +80,7 @@ function FacturacionMes() {
     // Obtiene info de la segunda fecha
     const consultarSegundo = async () => {
 
-        const res = await clienteAxios.post('/factura/balance', fechaSegundo,{
+        const res = await clienteAxios.post('/factura/balance/factura/mes', fechaSegundo,{
             headers: {
                 Authorization: `Bearer ${auth.token}`
             }
