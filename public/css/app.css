@@ -1926,10 +1926,15 @@ table .boleta__total th {
 }
 
 /** BALANCE*/
-.balance table tr:nth-child(1) {
+.balance table tr th:nth-child(1) {
     width: 20%;
 }
 .balance table td {
     text-align: center;
     font-size: 1.4rem;
+}
+.balance_tablas{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem;
 }
