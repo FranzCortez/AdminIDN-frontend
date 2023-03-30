@@ -133,6 +133,7 @@ function IngresoMes() {
 
     return (
         <Fragment>
+            <h2 className='card-body-subtitle'>Ingreso por Mes</h2>
 
             <form onSubmit={e => e.preventDefault()}>
                 <div className='campo'>
