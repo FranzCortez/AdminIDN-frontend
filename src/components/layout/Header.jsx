@@ -6,6 +6,7 @@ import { RiContactsBook2Line } from "react-icons/ri";
 import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool, AiFillHome } from "react-icons/ai";
 import { ImQrcode } from "react-icons/im";
 import { FiUsers } from "react-icons/fi";
+import { GoGraph } from "react-icons/go";
 
 import Sidebar from "./Sidebar";
 
@@ -70,6 +71,11 @@ function Header() {
                 texto: 'Facturas',
                 icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
             },  
+            {
+                ruta: '/balance',
+                texto: 'Balance',
+                icono: <GoGraph size={50} color={"#333333"}/>
+            },
             {
                 ruta: '/usuarios',
                 texto: 'Usuarios',
