@@ -4,6 +4,7 @@ import { GoGraph } from 'react-icons/go';
 
 import FacturacionMes from './FacturacionMes';
 import IngresoMes from './IngresoMes';
+import IngresoFacturaMes from './IngresoFacturaMes';
 
 import { CRMContext } from '../context/CRMContext';
 
@@ -47,10 +48,11 @@ function SeleccionBalance() {
                                 <option value={0} disabled> -- Seleccione -- </option>    
                                 <option value={1} > Facturación por mes </option>    
                                 <option value={2} > Ingreso por mes </option>    
-                                <option value={3} > Facturación por año </option>    
-                                <option value={4} > Ingreso por año </option>    
-                                <option value={5} > Ingreso vs Factura </option>    
-                                <option value={6} > Por empresa </option>    
+                                <option value={3} > Ingreso Mes VS Factura Mes </option>    
+                                <option value={4} > Facturación por año </option>    
+                                <option value={5} > Ingreso por año </option>    
+                                <option value={6} > Ingreso vs Factura </option>    
+                                <option value={7} > Por empresa </option>    
                             </select>                  
                         </div> 
                     </form>
@@ -61,6 +63,9 @@ function SeleccionBalance() {
                         :
                         tipoBalance === 2 ?
                         <IngresoMes/>
+                        :
+                        tipoBalance === 3 ?
+                        <IngresoFacturaMes/>
                         :
                         null
                     }
