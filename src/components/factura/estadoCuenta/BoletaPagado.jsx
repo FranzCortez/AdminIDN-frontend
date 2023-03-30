@@ -163,7 +163,7 @@ function BoletaPagado({ pagado }) {
                                 
                                 {
                                     pagado.map( boleta => (
-                                        <tr className='table__tr boleta__td'>
+                                        <tr className='table__tr boleta__td' key={boleta?.factura}>
                                             <td>{boleta?.factura}</td>
                                             <td>{boleta?.fechapago}</td>
                                             <td>{boleta?.cliente}</td>            

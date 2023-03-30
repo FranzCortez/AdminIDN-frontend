@@ -20,6 +20,9 @@ function FormNuevoIngreso() {
     const yyyy = today.getFullYear();
     const fechaActual = `${yyyy}-${mm}-${dd}`
     
+    // usar context
+    const [auth, guardarAuth] = useContext(CRMContext);
+    
     const [ preInforme, guardarPreInforme ] = useState({
         falla: '',
         tecnico: 'Alberto García'
@@ -35,12 +38,11 @@ function FormNuevoIngreso() {
         numeroSerie: '',
         clienteContactoId: '',
         tipoHerramientaId: '',
-        otin: ''
+        otin: '',
+        usuario: auth.nombre
     });
     const [ fecha, guardarFecha ] = useState(fechaActual);
     let entre = 0;
-    // usar context
-    const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
     
