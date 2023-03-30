@@ -132,6 +132,7 @@ function FacturacionMes() {
 
     return (
         <Fragment>
+            <h2 className='card-body-subtitle'>Factura por Mes</h2>
 
             <form onSubmit={e => e.preventDefault()}>
                 <div className='campo'>
