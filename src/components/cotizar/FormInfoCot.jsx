@@ -85,14 +85,12 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
 
     const guardarDatosTercero = (datos) => {
         
-        const conclusion = datos.conclusion.split("\n");
-        const falla = datos.descripcion.split("\n");
-        const recomendacion = datos.recomendacion.split("\n");
+        const conclusion = datos?.conclusion?.split("\n");
+        const falla = datos?.descripcion?.split("\n");
+        const recomendacion = datos?.recomendacion?.split("\n");
 
-        if( datos.foto ) {
-            guardarFotoGaleria(!fotoGaleria);
-        }
-
+        guardarFotoGaleria(datos.foto);
+        
         document.querySelector("#info").classList.add("dn");
         document.querySelector("#info").classList.remove("db");
         document.querySelector("#usuarioEmpresa").style.display = "block";
