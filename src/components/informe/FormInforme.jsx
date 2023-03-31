@@ -80,9 +80,9 @@ function FormInforme() {
 
     const guardarDatosTercero = (datos) => {
 
-        const conclusion = datos.conclusion.split("\n");
-        const falla = datos.descripcion.split("\n");
-        const recomendacion = datos.recomendacion.split("\n");
+        const conclusion = datos?.conclusion?.split("\n");
+        const falla = datos?.descripcion?.split("\n");
+        const recomendacion = datos?.recomendacion?.split("\n");
 
         if( datos.foto ) {
             guardarFotoGaleria(!fotoGaleria);

@@ -47,7 +47,6 @@ function InformeFotoGaleria({ id, fotosSeleccion, otin, fotoGaleria }) {
     }
     
     useEffect(() => {
-
         consultarAPI();
     },[fotoGaleria])
     
