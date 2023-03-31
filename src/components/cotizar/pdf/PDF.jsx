@@ -11,6 +11,7 @@ import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
 import InformeFotoGaleria from '../../informe/informeFotoGaleria/InformeFotoGaleria';
+import { useEffect } from 'react';
 
 function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
     primero,
@@ -26,7 +27,6 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
     contenidoBack,
     fotoA,
     fotoB}) {
-
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -239,6 +239,10 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
         document.querySelector("#usuarioEmpresa").style.display = "none";
     }
 
+    useEffect(() => {
+
+    },[fotoGaleria, tercero, primero, segundoFotoA, segundoFotoB, segundoTextoA, segundoTextoB])
+
     return (
         <div id="usuarioEmpresa">
 
@@ -364,7 +368,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                             <tbody>
                                 {
                                     contenido.map( (data, index) => (
-                                        <tr className='table__tr' key={index+1 * 3}>
+                                        <tr className='table__tr' key={index}>
                                             <td className='fontbold' >{data.nombre ? index+1 : ''}</td>
                                             <td>{data.nombre ? data.nombre : ''}</td>
                                             <td>{data.nombre ? data.descripcion : ''}</td>
@@ -572,8 +576,8 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                         <div className='info__falla min-h-28'>
                             <h4>Equipo presenta las siguientes fallas:</h4>
                             {
-                                    tercero?.falla ? 
-                                    tercero?.falla.map( (text, index) => (
+                                    tercero?.falla && tercero?.falla[0] !== '' ? 
+                                    tercero?.falla?.map( (text, index) => (
                                         <p key={index}>{text}</p>
                                     ))
                                 : 
@@ -581,7 +585,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                             }
                             
                             {
-                                tercero?.conclusion[0] !== '' ? 
+                                tercero?.conclusion ? 
                                     tercero?.conclusion[0] !== '' ?
                                         <Fragment>
                                             <h4>CONCLUSIONES GENERALES:</h4>
