@@ -1161,7 +1161,7 @@ form .opciones {
 }
 .info__img {
     margin-right: 1rem;
-    max-height: 20rem;
+    max-height: 15rem;
 }
 .info__img:last-child {
     margin-right: 0;
