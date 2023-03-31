@@ -152,9 +152,11 @@ function FormGenerarCot() {
 
         if(contenido.length < 10) {
             let guardar = [...contenido];
-            guardar = await relleno(guardar)
+            guardar = await relleno(guardar);
             guardarContenidoPdf(guardar);
-        } 
+        } else {
+            guardarContenidoPdf(contenido);
+        }
 
         document.querySelector("#cot").classList.add("dn");
         document.querySelector("#cot").classList.remove("db");
