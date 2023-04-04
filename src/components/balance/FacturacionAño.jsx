@@ -180,7 +180,7 @@ function FacturacionAño() {
 
     return (
         <Fragment>
-            <h2 className='card-body-subtitle'>Factura por Mes</h2>
+            <h2 className='card-body-subtitle'>Factura por Año</h2>
 
             <form onSubmit={e => e.preventDefault()}>
                 <div className='campo'>
@@ -203,7 +203,7 @@ function FacturacionAño() {
                 facturaPrimero.length > 0 ?
                     <Fragment>
 
-                        <TablaResumen meses={meses} data={totalMes} año={fechaPrimero.año} total={totalPrimero} />
+                        <TablaResumen meses={meses} data={totalMes} año={fechaPrimero.año} total={totalPrimero} tipo={'Facturación'} />
 
                         <GraficoTorta
                             data={infoGrafico}
@@ -303,20 +303,6 @@ function FacturacionAño() {
                 :
                     null
             }
-            
-            {
-                // totalPrimero !== 0 && totalSegundo !== 0 ? 
-                //     <GraficoBarra 
-                //         totalPrimero={totalPrimero[index]}
-                //         totalSegundo={totalSegundo}
-                //         texto={`Comparación Facturación ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                //         pv={`Facturación ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
-                //         uv={`Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                //     />
-                //     :
-                //     null
-            }
-
         </Fragment>
     )
 }
