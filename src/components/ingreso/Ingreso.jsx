@@ -44,13 +44,19 @@ function Ingreso({datos}) {
             text: "¡El QR se mantendrá pero se cambiará la fecha!",
             type: 'warning',
             showCancelButton : true,
+            showDenyButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: "#d33",
             confirmButtonText : 'Sí, ¡Modificar!',
+            denyButtonText: 'Descagar Qr',
+            denyButtonColor: '#ECA400',
             cancelButtonText: 'Cancelar'
         }).then( (result) => {
-            if (result.value) {
+            
+            if (result.isConfirmed) {
                 navigate(`/qr/form/${datos.id}/${2}`, {replace: true});
+            } else if (result.isDenied) {
+                navigate(`/qr/descargar/${datos.id}`, {replace: true});
             }
         });
     }

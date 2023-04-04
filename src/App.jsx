@@ -55,6 +55,7 @@ import SeleccionBalance from "./components/balance/SeleccionBalance";
 import FormQr from "./components/qr/FormQr";
 import Qr from "./components/qr/Qr";
 import Mantencion from "./components/qr/Mantencion";
+import DescargarQr from "./components/qr/DescargarQr";
 // Sin datos
 import FormQrSD from "./components/qrSinDato/FormQrSD";
 import MantencionSD from "./components/qrSinDato/MantecionSD";
@@ -119,6 +120,7 @@ function App() {
 
                         <Route path="/qr/form/:id/:tipo" element={<FormQr/>}/>
                         <Route path="/qr/:token/:id/:otin" element={<Qr/>}/>
+                        <Route path="/qr/descargar/:id" element={<DescargarQr/>}/>
 
                         <Route path="/qr/sd/form" element={<FormQrSD/>}/>
 
