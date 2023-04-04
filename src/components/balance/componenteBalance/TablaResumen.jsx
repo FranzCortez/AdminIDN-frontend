@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-function TablaResumen({ meses, data, año, total }) {
+function TablaResumen({ meses, data, año, total, tipo }) {
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
 
@@ -9,7 +9,7 @@ function TablaResumen({ meses, data, año, total }) {
         <Fragment>
 
             <h2 className='card-body-subtitle'>
-                Facturación año {año} 
+                {tipo} año {año} 
             </h2>
 
             <div className="table-responsive">
@@ -41,7 +41,7 @@ function TablaResumen({ meses, data, año, total }) {
                 </table>
             </div>
             <h3 className='card-body-subtitle'>
-                Facturación total: $ {valorNumero(total)}
+                {tipo} total: $ {valorNumero(total)}
             </h3>
         </Fragment>
     )
