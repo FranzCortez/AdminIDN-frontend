@@ -6,6 +6,8 @@ import FacturacionMes from './FacturacionMes';
 import IngresoMes from './IngresoMes';
 import IngresoFacturaMes from './IngresoFacturaMes';
 
+import FacturacionAño from './FacturacionAño';
+
 import { CRMContext } from '../context/CRMContext';
 
 function SeleccionBalance() {
@@ -66,6 +68,9 @@ function SeleccionBalance() {
                         :
                         tipoBalance === 3 ?
                         <IngresoFacturaMes/>
+                        :
+                        tipoBalance === 4 ?
+                        <FacturacionAño/>
                         :
                         null
                     }
