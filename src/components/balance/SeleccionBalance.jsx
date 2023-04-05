@@ -7,6 +7,7 @@ import IngresoMes from './IngresoMes';
 import IngresoFacturaMes from './IngresoFacturaMes';
 
 import FacturacionAño from './FacturacionAño';
+import IngresoAño from './IngresoAño';
 import IngresoFacturaAño from './IngresoFacturaAño';
 
 import { CRMContext } from '../context/CRMContext';
@@ -54,7 +55,7 @@ function SeleccionBalance() {
                                 <option value={3} > Ingreso Mes VS Factura Mes </option>    
                                 <option value={4} > Facturación por año </option>    
                                 <option value={5} > Ingreso por año </option>    
-                                <option value={6} > Ingreso vs Factura </option>    
+                                <option value={6} > Ingreso año vs Factura año </option>    
                                 <option value={7} > Por empresa </option>    
                             </select>                  
                         </div> 
@@ -74,6 +75,9 @@ function SeleccionBalance() {
                         <FacturacionAño/>
                         :
                         tipoBalance === 5 ?
+                        <IngresoAño/>
+                        :
+                        tipoBalance === 6 ?
                         <IngresoFacturaAño/>
                         :
                         null
