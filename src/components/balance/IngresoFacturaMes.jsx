@@ -62,7 +62,7 @@ function IngresoFacturaMes() {
 
         if ( fechaSegundo.mes === 0 && fechaSegundo.año === 0 ) {
             guardarFechaSegundo({
-                mes: fechaPrimero.mes,
+                mes: fechaPrimero.mes === 11 ? 0 : fechaPrimero.mes +1,
                 año: facturaPrimero.año
             });
         }
