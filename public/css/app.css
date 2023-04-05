@@ -877,7 +877,7 @@ form .opciones {
 .pdf__titulo h1{
     background-color: var(--naranjaClaro);
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 0;
     padding: 0;
 }
@@ -922,7 +922,7 @@ form .opciones {
 }
 .pdf__titulo-campo p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
 }
 .pdf__titulo-campo span {
@@ -1208,7 +1208,7 @@ form .opciones {
     text-align: left;
 }
 .info__falla p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0;
 }
 .info__falla h4{
@@ -1243,7 +1243,7 @@ form .opciones {
     margin-top: 0.5rem;
 }
 .pdf__falla table td{
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
 }
 .informe {

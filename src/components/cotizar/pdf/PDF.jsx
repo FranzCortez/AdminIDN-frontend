@@ -522,7 +522,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                     <div className='info__componente info__cuerpo'>
 
                         <div className='info__table' >
-                            <table className="table table-hover">
+                            <table className="table table-hover mb-0">
                                 <thead>
                                     <tr className='table__tr'>
                                         <td>
@@ -546,7 +546,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                         </div>
                         
                         <div className='info__table' >
-                            <table className="table table-hover">
+                            <table className="table table-hover mb-0">
                                 <thead>
                                     <tr className='table__tr'>
                                         <td>

@@ -58,7 +58,7 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo, segundoFotoA, seg
                 <SeleccionImagen primero={primero} />
 
                 <div className='info__table' >
-                    <table className="table table-hover">
+                    <table className="table table-hover  mb-0">
                         <thead>
                             <tr className='table__tr'>
                                 <td>
@@ -99,7 +99,7 @@ function InformeParteDos({ onButtonClick, guardarDatosSegundo, segundoFotoA, seg
                 <SeleccionImagen primero={segundo} />
 
                 <div className='info__table' >
-                    <table className="table table-hover">
+                    <table className="table table-hover  mb-0">
                         <thead>
                             <tr className='table__tr'>
                                 <td>
