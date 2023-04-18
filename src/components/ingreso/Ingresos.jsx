@@ -153,11 +153,6 @@ function Ingresos() {
                     <Paginacion cantPaginas={cantPaginas} pagActual={pagActual} offset={offset}/>
                 </div>
             </div>
-            {
-                setTimeout(() => {
-                    window.scrollTo({top: 0, left: 0});
-                }, 300)
-            }
         </Fragment>
     )
 }
