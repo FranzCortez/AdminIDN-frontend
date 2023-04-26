@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AiOutlineTool } from "react-icons/ai";
 import { MdAddCircle } from "react-icons/md";
 import { VscTools } from 'react-icons/vsc';
@@ -14,6 +14,8 @@ import Spinner from '../layout/Spinner';
 
 function Ingresos() {
 
+    const location = useLocation();
+
     // state usuarios
     const [ ingresos, guardarIngresos ] = useState([]); 
     const [ cambio, guardarCambio ] = useState(true);
@@ -21,7 +23,18 @@ function Ingresos() {
 
     // filtro
     const [ filtroLocal, guardarFiltroLocal ] = useState(localStorage.getItem('filtroIngreso'));
-    const [ filtros, guardarFiltros ] = useState(
+    const [ filtros, guardarFiltros ] = useState(location.state?.from ? {
+            fecha: '', 
+            otin: location.state.from, 
+            nombre: '',
+            marca: '',
+            modelo: '',
+            numeroInterno: '',
+            numeroSerie: '',
+            empresaId: '',
+            tipoHerramientaId: '',
+            activo: ''
+        } :
         filtroLocal?.split('-')[1] === 'in' ? JSON.parse(filtroLocal.split('-')[0]) : {}
     );
 
