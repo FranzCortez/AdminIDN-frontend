@@ -6,6 +6,7 @@ import { GiCancel } from "react-icons/gi";
 import moment from "moment";
 
 import FacturaInformacion from './FacturaInformacion';
+import InfoOtines from './InformacionOtines';
 
 function Factura({ datos, boleta, boletaPago }) {
 
@@ -77,7 +78,7 @@ function Factura({ datos, boleta, boletaPago }) {
             </td>
             <td>{datos.numeroFactura}</td>
             <td>{datos?.herramientas?.length > 0 ? moment(datos.fechaFactura).format('DD-MM-YYYY') : '-'}</td>
-            <td>{datos?.herramientas?.length > 0 ? datos.otines : '-'}</td>
+            <td>{datos?.herramientas?.length > 0 ? <InfoOtines infoOtines={datos.infoOtines} otines={datos.otines} /> : '-'}</td>
             <td>{datos?.herramientas?.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}</td>
             <td>{datos?.herramientas?.length > 0 ? datos.guiaDespacho : '- '} / {datos?.herramientas?.length > 0 && datos.fechaGuiaDespacho !== '0000-00-00' ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : '-'}</td>
             <td>${datos?.herramientas?.length > 0 ? valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) ) : '-'}</td>
