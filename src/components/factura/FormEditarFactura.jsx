@@ -217,7 +217,7 @@ function FormEditarFactura() {
                 } else {
                     guiaDespacho = element.data + ',' + guiaDespacho;
                 }
-                observaciones = element.label + ':\n   -Guía Despacho:' + moment(element.fechaData).format('DD/MM/YYYY') + "\n   -Fecha Guía Despacho: " + element.data + "\n" + observaciones;
+                observaciones = element.label + ':\n   -Guía Despacho:' + element.data + "\n   -Fecha Guía Despacho: " + moment(element.fechaData).format('DD/MM/YYYY') + "\n" + observaciones;
             }
             guardarOtines.push({id: element.value});
         });
