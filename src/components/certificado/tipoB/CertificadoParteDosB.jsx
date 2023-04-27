@@ -94,7 +94,9 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
 
             const actualizar = tabla.comparcion;
 
-            actualizar[existe.name].numero = parseFloat(e.target.value);
+            const numero = e.target.value.split(",").join(".");
+
+            actualizar[existe.name].numero = parseFloat(numero);
 
             if ( !actualizar[existe.name].numero ) {
                 actualizar[existe.name].usado = false;
