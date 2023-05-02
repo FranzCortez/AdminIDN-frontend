@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useContext } from "react";
+import { AiOutlineDownload } from "react-icons/ai";
 
 import TablaResumen from "./componenteBalance/TablaResumen";
 import TablaBalance from "./componenteBalance/TablaBalance";
@@ -8,7 +9,7 @@ import clienteAxios from "../../config/axios";
 import { CRMContext } from "../context/CRMContext";
 
 
-function IngresoAño() {
+function IngresoAño({ pdfcrear,cambioActivo }) {
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
     const [ años, guardarAños ] = useState([]);
@@ -170,6 +171,11 @@ function IngresoAño() {
 
     }
 
+    const descargar = () => {
+        cambioActivo();
+        pdfcrear(`Balance Ingreso ${fechaPrimero.año}`, "#ingresoAño", "a2", "portrait");
+    }
+
     useEffect(() => {
         obtenerAños();
 
@@ -180,6 +186,16 @@ function IngresoAño() {
     },[fechaPrimero]);
     return (
         <Fragment>
+
+            <div 
+                id="btnCrearPdf" 
+                className='btn-new btn-login' 
+                onClick={descargar}
+            >
+                Descargar Balance Ingreso Año
+                <AiOutlineDownload size={25} />
+            </div>
+
             <h2 className='card-body-subtitle'>Ingreso por Año</h2>
 
             <form onSubmit={e => e.preventDefault()}>
@@ -199,110 +215,113 @@ function IngresoAño() {
                 </div>
             </form>
 
-            {
-                facturaPrimero.length > 0 ?
-                    <Fragment>
+            <div id="ingresoAño" >
+                {
+                    facturaPrimero.length > 0 ?
+                        <Fragment>
 
-                        <TablaResumen meses={meses} data={totalMes} año={fechaPrimero.año} total={totalPrimero} tipo={'Ingreso'} />
+                            <TablaResumen meses={meses} data={totalMes} año={fechaPrimero.año} total={totalPrimero} tipo={'Ingreso'} />
 
-                        <GraficoTorta
-                            data={infoGrafico}
-                        />
+                            <GraficoTorta
+                                data={infoGrafico}
+                            />
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[0]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[0]} total={totalMes[0]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[0]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[0]} total={totalMes[0]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[1]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[1]} total={totalMes[1]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[1]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[1]} total={totalMes[1]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[2]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[2]} total={totalMes[2]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[2]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[2]} total={totalMes[2]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[3]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[3]} total={totalMes[3]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[3]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[3]} total={totalMes[3]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[4]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[4]} total={totalMes[4]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[4]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[4]} total={totalMes[4]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[5]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[5]} total={totalMes[5]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[5]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[5]} total={totalMes[5]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[6]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[6]} total={totalMes[6]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[6]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[6]} total={totalMes[6]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[7]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[7]} total={totalMes[7]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[7]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[7]} total={totalMes[7]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[8]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[8]} total={totalMes[8]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[8]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[8]} total={totalMes[8]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[9]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[9]} total={totalMes[9]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[9]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[9]} total={totalMes[9]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[10]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[10]} total={totalMes[10]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[10]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[10]} total={totalMes[10]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[11]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[11]} total={totalMes[11]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[11]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[11]} total={totalMes[11]} />
-                            </div>
-                        </div>
 
-                    </Fragment>
-                :
-                    null
-            }
+                        </Fragment>
+                    :
+                        null
+                }
+            </div>
+
         </Fragment>
     )
 }

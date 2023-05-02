@@ -1,11 +1,13 @@
 import { Fragment, useState, useEffect, useContext } from "react";
+import { AiOutlineDownload } from "react-icons/ai";
 
 import TablaBalance from "./componenteBalance/TablaBalance";
 import GraficoBarra from "./componenteBalance/GraficoBarra";
 
 import clienteAxios from "../../config/axios";
 import { CRMContext } from "../context/CRMContext";
-function IngresoFacturaMes() {
+
+function IngresoFacturaMes({ pdfcrear, cambioActivo }) {
 
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
@@ -59,13 +61,6 @@ function IngresoFacturaMes() {
 
     //  Obtiene info de la primera fecha
     const consultarPrimero = async () => {
-
-        if ( fechaSegundo.mes === 0 && fechaSegundo.año === 0 ) {
-            guardarFechaSegundo({
-                mes: fechaPrimero.mes === 11 ? 0 : fechaPrimero.mes +1,
-                año: facturaPrimero.año
-            });
-        }
         
         const res = await clienteAxios.post('/factura/balance/ingreso/mes', fechaPrimero,{
             headers: {
@@ -83,6 +78,14 @@ function IngresoFacturaMes() {
 
         guardarTotalPrimero(resultado);
 
+        if ( fechaSegundo.mes === 0 && fechaSegundo.año === 0 ) {
+            guardarFechaSegundo({
+                mes: fechaPrimero.mes === 0 ? 11 : fechaPrimero.mes - 1,
+                año: facturaPrimero.año
+            });
+            console.log(facturaPrimero.año)
+            console.log(facturaPrimero.mes)
+        }
     } 
 
     // Obtiene info de la segunda fecha
@@ -125,6 +128,11 @@ function IngresoFacturaMes() {
         guardarAños(guardado)
     }
 
+    const descargar = () => {
+        cambioActivo();
+        pdfcrear(`Balance Ingreso ${meses[fechaPrimero.mes-1]} ${fechaPrimero.año} VS Factura ${meses[fechaSegundo.mes-1]} ${fechaSegundo.año}`, "#ingresoFacturaMes", "a2", "portrait");
+    }
+
     useEffect(() => {
         obtenerAños();
 
@@ -140,6 +148,16 @@ function IngresoFacturaMes() {
 
     return (
         <Fragment>
+
+            <div 
+                id="btnCrearPdf" 
+                className='btn-new btn-login' 
+                onClick={descargar}
+            >
+                Descargar Balance Ingreso Mes VS Factura Mes
+                <AiOutlineDownload size={25} />
+            </div>
+
             <h2 className='card-body-subtitle'>Ingreso Mes VS Factura Mes</h2>
 
             <form onSubmit={e => e.preventDefault()}>
@@ -208,43 +226,46 @@ function IngresoFacturaMes() {
                 </div>
             </form>
 
-            {
-                facturaPrimero.length > 0 && facturaSegundo.length > 0 ?
-                    <Fragment>
-                        
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[fechaPrimero.mes-1]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero} total={totalPrimero} />
-                            </div>
-                            
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[fechaSegundo.mes-1]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo} total={totalSegundo} />
-                            </div>
-                        </div>
+            <div id="ingresoFacturaMes">
 
-                    </Fragment>
-                :
-                    null
-            }
-            
-            {
-                totalPrimero !== 0 && totalSegundo !== 0 ? 
-                    <GraficoBarra 
-                        totalPrimero={totalPrimero}
-                        totalSegundo={totalSegundo}
-                        texto={`Comparación Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                        pv={`Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
-                        uv={`Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                    />
+                {
+                    facturaPrimero.length > 0 && facturaSegundo.length > 0 ?
+                        <Fragment>
+                            
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[fechaPrimero.mes-1]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero} total={totalPrimero} />
+                                </div>
+                                
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[fechaSegundo.mes-1]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo} total={totalSegundo} />
+                                </div>
+                            </div>
+
+                        </Fragment>
                     :
-                    null
-            }
+                        null
+                }
+                
+                {
+                    totalPrimero !== 0 && totalSegundo !== 0 ? 
+                        <GraficoBarra 
+                            totalPrimero={totalPrimero}
+                            totalSegundo={totalSegundo}
+                            texto={`Comparación Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                            pv={`Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
+                            uv={`Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                        />
+                        :
+                        null
+                }
+            </div>
 
         </Fragment>
     )

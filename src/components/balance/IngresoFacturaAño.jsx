@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useContext } from "react";
+import { AiOutlineDownload } from "react-icons/ai";
 
 import TablaResumen from "./componenteBalance/TablaResumen";
 import TablaBalance from "./componenteBalance/TablaBalance";
@@ -7,7 +8,7 @@ import GraficoTortaComparacion from "./componenteBalance/GraficoTortaComparacion
 import clienteAxios from "../../config/axios";
 import { CRMContext } from "../context/CRMContext";
 
-function IngresoFacturaAño() {
+function IngresoFacturaAño({ pdfcrear, cambioActivo }) {
 
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
@@ -291,6 +292,11 @@ function IngresoFacturaAño() {
 
     }
 
+    const descargar = () => {
+        cambioActivo();
+        pdfcrear(`Balance Anual Ingreso ${fechaPrimero.año} VS Factura ${fechaSegundo.año}`, "#ingresoFacturaAño", "a2", "portrait");
+    }
+
     useEffect(() => {
         obtenerAños();
 
@@ -306,6 +312,14 @@ function IngresoFacturaAño() {
 
     return (
         <Fragment>
+            <div 
+                id="btnCrearPdf" 
+                className='btn-new btn-login' 
+                onClick={descargar}
+            >
+                Descargar Balance Ingreso Año VS Factura Año
+                <AiOutlineDownload size={25} />
+            </div>
             <h2 className='card-body-subtitle'>Ingreso Año VS Facturación Año</h2>
 
             <form onSubmit={e => e.preventDefault()}>
@@ -340,202 +354,205 @@ function IngresoFacturaAño() {
                 </div>
             </form>
 
-            {
-                facturaPrimero.length > 0 && facturaSegundo.length > 0 ?
-                    <Fragment>
+            <div id="ingresoFacturaAño">
+                {
+                    facturaPrimero.length > 0 && facturaSegundo.length > 0 ?
+                        <Fragment>
 
-                        <TablaResumen meses={meses} data={totalMes} año={fechaPrimero.año} total={totalPrimero} tipo={'Ingreso'} />
-                        <TablaResumen meses={meses} data={totalMesSegundo} año={fechaSegundo.año} total={totalSegundo} tipo={'Facturación'} />
+                            <TablaResumen meses={meses} data={totalMes} año={fechaPrimero.año} total={totalPrimero} tipo={'Ingreso'} />
+                            <TablaResumen meses={meses} data={totalMesSegundo} año={fechaSegundo.año} total={totalSegundo} tipo={'Facturación'} />
 
-                        <GraficoTortaComparacion
-                            data01={infoGrafico}
-                            data02={infoGraficoSegundo}
-                        />
+                            <GraficoTortaComparacion
+                                data01={infoGrafico}
+                                data02={infoGraficoSegundo}
+                            />
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[0]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[0]} total={totalMes[0]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[0]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[0]} total={totalMes[0]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[0]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[0]} total={totalMesSegundo[0]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[0]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[0]} total={totalMesSegundo[0]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[1]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[1]} total={totalMes[1]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[1]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[1]} total={totalMes[1]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[1]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[1]} total={totalMesSegundo[1]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[1]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[1]} total={totalMesSegundo[1]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[2]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[2]} total={totalMes[2]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[2]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[2]} total={totalMes[2]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[2]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[2]} total={totalMesSegundo[2]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[2]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[2]} total={totalMesSegundo[2]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[3]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[3]} total={totalMes[3]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[3]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[3]} total={totalMes[3]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[3]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[3]} total={totalMesSegundo[3]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[3]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[3]} total={totalMesSegundo[3]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[4]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[4]} total={totalMes[4]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[4]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[4]} total={totalMes[4]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[4]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[4]} total={totalMesSegundo[4]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[4]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[4]} total={totalMesSegundo[4]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[5]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[5]} total={totalMes[5]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[5]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[5]} total={totalMes[5]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[5]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[5]} total={totalMesSegundo[5]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[5]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[5]} total={totalMesSegundo[5]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[6]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[6]} total={totalMes[6]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[6]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[6]} total={totalMes[6]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[6]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[6]} total={totalMesSegundo[6]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[6]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[6]} total={totalMesSegundo[6]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[7]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[7]} total={totalMes[7]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[7]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[7]} total={totalMes[7]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[7]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[7]} total={totalMesSegundo[7]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[7]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[7]} total={totalMesSegundo[7]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[8]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[8]} total={totalMes[8]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[8]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[8]} total={totalMes[8]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[8]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[8]} total={totalMesSegundo[8]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[8]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[8]} total={totalMesSegundo[8]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[9]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[9]} total={totalMes[9]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[9]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[9]} total={totalMes[9]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[9]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[9]} total={totalMesSegundo[9]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[9]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[9]} total={totalMesSegundo[9]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[10]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[10]} total={totalMes[10]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[10]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[10]} total={totalMes[10]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[10]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[10]} total={totalMesSegundo[10]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[10]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[10]} total={totalMesSegundo[10]} />
-                            </div>
-                        </div>
 
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[11]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero[11]} total={totalMes[11]} />
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[11]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero[11]} total={totalMes[11]} />
+                                </div>
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[11]} de {fechaSegundo.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaSegundo[11]} total={totalMesSegundo[11]} />
+                                </div>
                             </div>
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[11]} de {fechaSegundo.año} 
-                                </h2>
-                                <TablaBalance data={facturaSegundo[11]} total={totalMesSegundo[11]} />
-                            </div>
-                        </div>
 
-                    </Fragment>
-                :
-                    null
-            }
+                        </Fragment>
+                    :
+                        null
+                }
+            </div>
+
         </Fragment>
     )
 }

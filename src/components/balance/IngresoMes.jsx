@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useContext } from "react";
+import { AiOutlineDownload } from "react-icons/ai";
 
 import TablaBalance from "./componenteBalance/TablaBalance";
 import GraficoBarra from "./componenteBalance/GraficoBarra";
@@ -6,7 +7,7 @@ import GraficoBarra from "./componenteBalance/GraficoBarra";
 import clienteAxios from "../../config/axios";
 import { CRMContext } from "../context/CRMContext";
 
-function IngresoMes() {
+function IngresoMes({ pdfcrear, cambioActivo }) {
 
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
@@ -118,6 +119,11 @@ function IngresoMes() {
         guardarAños(guardado)
     }
 
+    const descargar = () => {
+        cambioActivo();
+        pdfcrear(`Balance Ingreso ${meses[fechaPrimero.mes-1]} ${fechaPrimero.año} VS ${meses[fechaSegundo.mes-1]} ${fechaSegundo.año}`, "#ingresoMes", "a2", "portrait");
+    }
+
     useEffect(() => {
         obtenerAños();
 
@@ -133,6 +139,16 @@ function IngresoMes() {
 
     return (
         <Fragment>
+
+            <div 
+                id="btnCrearPdf" 
+                className='btn-new btn-login' 
+                onClick={descargar}
+            >
+                Descargar Balance Ingreso por Mes
+                <AiOutlineDownload size={25} />
+            </div>
+
             <h2 className='card-body-subtitle'>Ingreso por Mes</h2>
 
             <form onSubmit={e => e.preventDefault()}>
@@ -201,47 +217,49 @@ function IngresoMes() {
                 </div>
             </form>
 
-            {
-                facturaPrimero.length > 0 ?
-                    <Fragment>
-                        
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Ingreso {meses[fechaPrimero.mes-1]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero} total={totalPrimero} />
+            <div id="ingresoMes" >
+                {
+                    facturaPrimero.length > 0 ?
+                        <Fragment>
+                            
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Ingreso {meses[fechaPrimero.mes-1]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero} total={totalPrimero} />
+                                </div>
+                                {
+                                    facturaSegundo.length > 0 ?
+                                        <div>
+                                            <h2 className='card-body-subtitle'>
+                                                Ingreso {meses[fechaSegundo.mes-1]} de {fechaSegundo.año} 
+                                            </h2>
+                                            <TablaBalance data={facturaSegundo} total={totalSegundo} />
+                                        </div>
+                                    :
+                                        null
+                                }
                             </div>
-                            {
-                                facturaSegundo.length > 0 ?
-                                    <div>
-                                        <h2 className='card-body-subtitle'>
-                                            Ingreso {meses[fechaSegundo.mes-1]} de {fechaSegundo.año} 
-                                        </h2>
-                                        <TablaBalance data={facturaSegundo} total={totalSegundo} />
-                                    </div>
-                                :
-                                    null
-                            }
-                        </div>
 
-                    </Fragment>
-                :
-                    null
-            }
-            
-            {
-                totalPrimero !== 0 && totalSegundo !== 0 ? 
-                    <GraficoBarra 
-                        totalPrimero={totalPrimero}
-                        totalSegundo={totalSegundo}
-                        texto={`Comparación Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Ingreso ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                        pv={`Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
-                        uv={`Ingreso ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                    />
+                        </Fragment>
                     :
-                    null
-            }
+                        null
+                }
+                
+                {
+                    totalPrimero !== 0 && totalSegundo !== 0 ? 
+                        <GraficoBarra 
+                            totalPrimero={totalPrimero}
+                            totalSegundo={totalSegundo}
+                            texto={`Comparación Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Ingreso ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                            pv={`Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
+                            uv={`Ingreso ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                        />
+                        :
+                        null
+                }
+            </div>
 
         </Fragment>
     )

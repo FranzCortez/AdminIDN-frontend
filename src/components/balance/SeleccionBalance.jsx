@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoGraph } from 'react-icons/go';
+import html2pdf from 'html2pdf.js';
 
 import FacturacionMes from './FacturacionMes';
 import IngresoMes from './IngresoMes';
@@ -17,11 +18,48 @@ function SeleccionBalance() {
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
     const [ tipoBalance, guardarTipoBalance ] = useState(0);
+    const [ activo, guardarActivo ] = useState(true);
 
     let navigate = useNavigate();
 
     const seleccionTipo = ( e ) => {
         guardarTipoBalance(parseInt(e.target.value));
+    }
+
+    const cambioActivo = () => {
+        guardarActivo(!activo);
+    }
+
+    const pdfcrear = async ( nombre, archivo, tamaño, horientacion ) => {
+
+        if (!activo) {
+            return;
+        }
+
+        await html2pdf()
+        .set({
+            margin: 0,
+            filename: `${nombre}.pdf`,
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas: {
+                scale: 3, // A mayor escala, mejores gráficos
+                letterRendering: true,
+            },
+            jsPDF: {
+                unit: "in",
+                format: tamaño,
+                orientation: horientacion // landscape o portrait
+            }
+        })
+        .from(document.querySelector(archivo))
+        .save()
+        .toPdf()
+        .output('blob');
+
+        cambioActivo();
     }
 
     useEffect(() => {
@@ -63,22 +101,22 @@ function SeleccionBalance() {
 
                     {
                         tipoBalance === 1 ?
-                        <FacturacionMes/>
+                        <FacturacionMes pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         tipoBalance === 2 ?
-                        <IngresoMes/>
+                        <IngresoMes pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         tipoBalance === 3 ?
-                        <IngresoFacturaMes/>
+                        <IngresoFacturaMes pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         tipoBalance === 4 ?
-                        <FacturacionAño/>
+                        <FacturacionAño pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         tipoBalance === 5 ?
-                        <IngresoAño/>
+                        <IngresoAño pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         tipoBalance === 6 ?
-                        <IngresoFacturaAño/>
+                        <IngresoFacturaAño pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         null
                     }

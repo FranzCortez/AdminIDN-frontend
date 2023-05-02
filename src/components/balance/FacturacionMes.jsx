@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useContext } from "react";
+import { AiOutlineDownload } from "react-icons/ai";
 
 import TablaBalance from "./componenteBalance/TablaBalance";
 import GraficoBarra from "./componenteBalance/GraficoBarra";
@@ -6,7 +7,7 @@ import GraficoBarra from "./componenteBalance/GraficoBarra";
 import clienteAxios from "../../config/axios";
 import { CRMContext } from "../context/CRMContext";
 
-function FacturacionMes() {
+function FacturacionMes({ pdfcrear, cambioActivo }) {
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
     const [ años, guardarAños ] = useState([]);
@@ -117,6 +118,11 @@ function FacturacionMes() {
         guardarAños(guardado)
     }
 
+    const descargar = () => {
+        cambioActivo();
+        pdfcrear(`Balance Facturación ${meses[fechaPrimero.mes-1]} ${fechaPrimero.año} VS ${meses[fechaSegundo.mes-1]} ${fechaSegundo.año}`, "#facturacionMes", "a2", "portrait");
+    }
+
     useEffect(() => {
         obtenerAños();
 
@@ -132,6 +138,15 @@ function FacturacionMes() {
 
     return (
         <Fragment>
+            <div 
+                id="btnCrearPdf" 
+                className={`btn-new btn-login`}
+                onClick={descargar}
+            >
+                Descargar Balance Facturación por Mes
+                <AiOutlineDownload size={25} />
+            </div>
+            
             <h2 className='card-body-subtitle'>Factura por Mes</h2>
 
             <form onSubmit={e => e.preventDefault()}>
@@ -199,49 +214,50 @@ function FacturacionMes() {
                     </select>       
                 </div>
             </form>
-
-            {
-                facturaPrimero.length > 0 ?
-                    <Fragment>
-                        
-                        <div className="balance_tablas">
-                            <div>
-                                <h2 className='card-body-subtitle'>
-                                    Facturación {meses[fechaPrimero.mes-1]} de {fechaPrimero.año} 
-                                </h2>
-                                <TablaBalance data={facturaPrimero} total={totalPrimero} />
-                            </div>
-                            {
-                                facturaSegundo.length > 0 ?
-                                    <div>
-                                        <h2 className='card-body-subtitle'>
-                                            Facturación {meses[fechaSegundo.mes-1]} de {fechaSegundo.año} 
-                                        </h2>
-                                        <TablaBalance data={facturaSegundo} total={totalSegundo} />
-                                    </div>
-                                :
-                                    null
-                            }
-                        </div>
-
-                    </Fragment>
-                :
-                    null
-            }
             
-            {
-                totalPrimero !== 0 && totalSegundo !== 0 ? 
-                    <GraficoBarra 
-                        totalPrimero={totalPrimero}
-                        totalSegundo={totalSegundo}
-                        texto={`Comparación Facturación ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                        pv={`Facturación ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
-                        uv={`Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                    />
-                    :
-                    null
-            }
+            <div id="facturacionMes">
+                {
+                    facturaPrimero.length > 0 ?
+                        <Fragment>
+                            
+                            <div className="balance_tablas">
+                                <div>
+                                    <h2 className='card-body-subtitle'>
+                                        Facturación {meses[fechaPrimero.mes-1]} de {fechaPrimero.año} 
+                                    </h2>
+                                    <TablaBalance data={facturaPrimero} total={totalPrimero} />
+                                </div>
+                                {
+                                    facturaSegundo.length > 0 ?
+                                        <div>
+                                            <h2 className='card-body-subtitle'>
+                                                Facturación {meses[fechaSegundo.mes-1]} de {fechaSegundo.año} 
+                                            </h2>
+                                            <TablaBalance data={facturaSegundo} total={totalSegundo} />
+                                        </div>
+                                    :
+                                        null
+                                }
+                            </div>
 
+                        </Fragment>
+                    :
+                        null
+                }
+                
+                {
+                    totalPrimero !== 0 && totalSegundo !== 0 ? 
+                        <GraficoBarra 
+                            totalPrimero={totalPrimero}
+                            totalSegundo={totalSegundo}
+                            texto={`Comparación Facturación ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                            pv={`Facturación ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
+                            uv={`Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                        />
+                        :
+                        null
+                }
+            </div>
         </Fragment>
     )
 }
