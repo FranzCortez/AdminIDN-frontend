@@ -4,6 +4,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { VscTools } from 'react-icons/vsc';
 import { BsPencilSquare } from "react-icons/bs";
 import Swal from 'sweetalert2';
+import { parseVulgars } from 'vulgar-fractions';
 
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../../config/axios';
@@ -29,7 +30,7 @@ function FromEditarTipoHerramienta() {
         
         guardarHerramienta({
             ...herramienta,
-            [e.target.name] : e.target.value
+            [e.target.name] : parseVulgars(e.target.value)
         });
     }
 
