@@ -104,6 +104,7 @@ function FormNuevoTipoHerramienta() {
                     </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
+                    <h2 className='card-body-subtitle'> Al escribir (ejemplo) 1/2" ponga un espacio despues del denominador 1/2 "</h2>
 
                     <form onSubmit={agregarTipoHerramienta}>
                         
