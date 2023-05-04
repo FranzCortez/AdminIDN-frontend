@@ -1,11 +1,12 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-function GraficoBarra({ totalPrimero, totalSegundo, texto, uv, pv }) {
+function GraficoBarra({ totalPrimero, totalSegundo, totalReal, texto, uv, pv, av }) {
     const data = [
         {
           name: texto,
           [uv] : totalSegundo,
           [pv] : totalPrimero,
+          [av] : totalReal,
           amt: totalSegundo
         },
     ];
@@ -23,12 +24,18 @@ function GraficoBarra({ totalPrimero, totalSegundo, texto, uv, pv }) {
                     barCategoryGap={'5%'}
                     margin={{top: 20, right: 20, bottom: 20, left: 50}}
                 >
-                    <CartesianGrid strokeDasharray="1 1" />
+                    <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip/>
                     <Legend verticalAlign="top" align="center" />
-                    <Bar dataKey={`${pv}`} fill="#8884d8" />
+                    {
+                        av ?
+                        <Bar dataKey={`${av}`} stackId="a" fill="#ff8533" />
+                        :
+                        null
+                    }
+                    <Bar dataKey={`${pv}`} stackId="a" fill="#8884d8" />
                     <Bar dataKey={`${uv}`} fill="#82ca9d" />
                 </BarChart>
             </ResponsiveContainer>

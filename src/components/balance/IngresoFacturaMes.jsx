@@ -43,6 +43,8 @@ function IngresoFacturaMes({ pdfcrear, cambioActivo }) {
     const [ facturaSegundo, guardarFacturaSegundo ] = useState([]);
     const [ totalSegundo, guardarTotalSegundo ] = useState(0);
 
+    const [ totalReal, guardarTotalReal ] = useState([]);
+
     // guarda año y mes de la segunda
     const guardarPrimero = (e) => {
         guardarFechaPrimero({
@@ -70,23 +72,32 @@ function IngresoFacturaMes({ pdfcrear, cambioActivo }) {
         
         guardarFacturaPrimero(res.data);
 
+        if ( fechaSegundo.mes === 0 && fechaSegundo.año === 0 ) {
+            guardarFechaSegundo({
+                mes: fechaPrimero.mes === 0 ? 11 : fechaPrimero.mes - 1,
+                año: facturaPrimero.año
+            });
+        }
+        
         let resultado = 0;
 
         res.data.forEach(data => {
             resultado += data?.monto;
         });
 
-        guardarTotalPrimero(resultado);
+        let noMes = 0;
 
-        if ( fechaSegundo.mes === 0 && fechaSegundo.año === 0 ) {
-            guardarFechaSegundo({
-                mes: fechaPrimero.mes === 0 ? 11 : fechaPrimero.mes - 1,
-                año: facturaPrimero.año
-            });
-            console.log(facturaPrimero.año)
-            console.log(facturaPrimero.mes)
-        }
-    } 
+        res.data.forEach( ingreso => {
+            if( parseInt(ingreso.fechaFactura.split("-")[1]) !== fechaPrimero.mes ){
+                noMes += ingreso.monto;
+            }
+        });
+
+        resultado-= noMes;
+        
+        guardarTotalReal(noMes);
+        guardarTotalPrimero(resultado);
+    }
 
     // Obtiene info de la segunda fecha
     const consultarSegundo = async () => {
@@ -258,9 +269,11 @@ function IngresoFacturaMes({ pdfcrear, cambioActivo }) {
                         <GraficoBarra 
                             totalPrimero={totalPrimero}
                             totalSegundo={totalSegundo}
+                            totalReal={totalReal}
                             texto={`Comparación Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} VS Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
-                            pv={`Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`} 
+                            pv={`Ingreso ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año} Total`} 
                             uv={`Facturación ${meses[fechaSegundo.mes-1]} de ${fechaSegundo.año}`}
+                            av={`Ingreso Real ${meses[fechaPrimero.mes-1]} de ${fechaPrimero.año}`}
                         />
                         :
                         null
