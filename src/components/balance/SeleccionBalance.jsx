@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { GoGraph } from 'react-icons/go';
 import html2pdf from 'html2pdf.js';
 
+import IngresoOtinMes from './IngresoOtinMes';
+import IngresoOtinAño from './IngresoOtinAño';
+
 import FacturacionMes from './FacturacionMes';
 import IngresoMes from './IngresoMes';
 import IngresoFacturaMes from './IngresoFacturaMes';
@@ -88,6 +91,8 @@ function SeleccionBalance() {
                             <label htmlFor="tipo">Seleccione Tipo de Balance:</label>
                             <select name="tipo" id="tipo" defaultValue={tipoBalance} onChange={seleccionTipo} >
                                 <option value={0} disabled> -- Seleccione -- </option>    
+                                <option value={8} > Ingreso OTIN por mes </option>    
+                                <option value={9} > Ingreso OTIN por año </option>    
                                 <option value={1} > Facturación por mes </option>    
                                 <option value={2} > Ingreso por mes </option>    
                                 <option value={3} > Ingreso Mes VS Factura Mes </option>    
@@ -117,6 +122,15 @@ function SeleccionBalance() {
                         :
                         tipoBalance === 6 ?
                         <IngresoFacturaAño pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
+                        :
+                        tipoBalance === 7 ?
+                        null
+                        :
+                        tipoBalance === 8 ?
+                        <IngresoOtinMes pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
+                        :
+                        tipoBalance === 9 ?
+                        <IngresoOtinAño pdfcrear={pdfcrear} cambioActivo={cambioActivo} />
                         :
                         null
                     }
