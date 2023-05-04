@@ -104,7 +104,6 @@ function FormNuevoTipoHerramienta() {
                     </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
-                    <h2 className='card-body-subtitle'> Al escribir (ejemplo) 1/2" ponga un espacio despues del denominador 1/2 "</h2>
 
                     <form onSubmit={agregarTipoHerramienta}>
                         
@@ -116,25 +115,26 @@ function FormNuevoTipoHerramienta() {
                                 name='nombre'
                                 placeholder='Nombre Genérico para el Tipo de Herramienta'
                                 onChange={actualizarState}
+                                value={herramienta.nombre}
                             />
                         </div>
                         
                         <div className='campo'>
                             <label htmlFor="descripcion">Descripción (opcional):</label>
 
-                            <textarea name="descripcion" id="descripcion" cols="50" rows="10" onChange={actualizarState} ></textarea>
+                            <textarea name="descripcion" id="descripcion" cols="50" rows="10" onChange={actualizarState} value={herramienta.descripcion} ></textarea>
                         </div>
                         
                         <div className='campo'>
                             <label htmlFor="recomendacion">Recomendación (opcional):</label>
 
-                            <textarea name="recomendacion" id="recomendacion" cols="50" rows="10" onChange={actualizarState} ></textarea>
+                            <textarea name="recomendacion" id="recomendacion" cols="50" rows="10" onChange={actualizarState} value={herramienta.recomendacion} ></textarea>
                         </div>
                         
                         <div className='campo'>
                             <label htmlFor="conclusion">Conclusión (opcional):</label>
 
-                            <textarea name="conclusion" id="conclusion" cols="50" rows="10" onChange={actualizarState} ></textarea>
+                            <textarea name="conclusion" id="conclusion" cols="50" rows="10" onChange={actualizarState} value={herramienta.conclusion} ></textarea>
                         </div>
 
                         <div className="enviar">
