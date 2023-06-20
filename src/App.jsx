@@ -68,6 +68,7 @@ import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
 /** LOGIN */
 import Login from "./components/login/Login";
 import Inicio from "./components/main/Inicio";
+import InicioPrueba from "./components/main/InicioPrueba";
 import Error404 from "./components/layout/Error404";
 
 /** PRESENTACION */
@@ -143,6 +144,7 @@ function App() {
                         
                         <Route path="/login" element={<Login/>} />
                         <Route path="/" element={<Inicio/>} />
+                        <Route path="/prueba" element={<InicioPrueba/>} />
                         <Route path="/not_found" element={<Error404/>} />
                         <Route path="*" element={<Navigate to='/not_found'/>} />
                     </Routes>

@@ -1938,3 +1938,265 @@ table .boleta__total th {
     grid-template-columns: repeat(2,1fr);
     gap: 1.5rem;
 }
+
+/** INICIO UPDATE */
+.back__main {
+    background-color: #262626;
+    color: #c0c0c0;
+}
+.hero__main {
+    background: linear-gradient(to bottom, rgba(37,37,37,1) 0%, transparent 15%, transparent 80%, rgba(37,37,37,1) 100%), url(/img/Inicio/cortando.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    filter: blur(2.5px);
+    -webkit-filter: blur(2.5px);
+    height: 41rem;
+}
+.hero__espacio {
+    height: 20rem;
+}
+
+@media (min-width: 768px) {
+    
+    .hero__main {
+        background: linear-gradient(to bottom, transparent 0%, rgba(37,37,37,1) 80%), url(/img/Inicio/cortando.jpg);
+        background-size: cover;
+        height: 100rem;
+    }
+    .hero__espacio {
+        height: 0;
+    }
+}
+.hero__logo {
+	-webkit-animation: hero__logo 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: hero__logo 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    position: absolute;
+    width: 45rem;
+    height: 20rem;
+    top: 40%;
+    left: 35%;
+    background: rgba(38, 38, 38,.6);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+@-webkit-keyframes hero__logo {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+@keyframes hero__logo {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+
+/* .lista__opciones {
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .5rem;
+}
+.lista__opcion {
+    list-style: none;
+}
+.lista__link {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    margin: .5rem 0;
+    padding: 0rem .3rem;
+    text-decoration: none;
+    color: #c0c0c0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: .5s;
+    z-index: 1;
+}
+.lista__link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid #262626;
+    border-bottom: 2px solid #262626;
+    transform: scaleY(2);
+    opacity: 0;
+    transition: .3s;
+}
+.lista__link::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    transform: scale(0);
+    opacity: 0;
+    transform: .3s;
+    z-index: -1;
+}
+.lista__link:hover {
+    color: #fff;
+}
+.lista__link:hover::before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+.lista__link:hover::after {
+    transform: scaleY(1);
+    opacity: 1;
+} */
+.lista__opciones {
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    display: flex;
+}
+.lista__opcion {
+    list-style: none;
+}
+.lista__link {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #c0c0c0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    transition: .5s;
+    z-index: 1;
+}
+.lista__link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid #262626;
+    border-bottom: 2px solid #262626;
+    transform: scaleY(2);
+    opacity: 0;
+    transition: .3s;
+}
+.lista__link::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    transform: scale(0);
+    opacity: 0;
+    transform: .3s;
+    z-index: -1;
+}
+.lista__link:hover {
+    color: #fff;
+}
+.lista__link:hover::before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+.lista__link:hover::after {
+    transform: scaleY(1);
+    opacity: 1;
+}
+.nuestros__servicios {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.nuestros__servicios-A {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.nuestros__servicios-AT {
+    font-size: 5rem;
+}
+.nuestros__servicios-B {
+	-webkit-animation: nuestros__servicios-B 2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: nuestros__servicios-B 2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    display: flex;
+    justify-content: center;
+}
+.nuestros__servicios-B div {
+    width: 62rem;
+    background-image: url(/img/Inicio/broca.jpg);
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: cover;
+    /* height: 30rem; */
+    margin-top: 10rem;
+    opacity: .5;
+    box-shadow: 0 0 8px 8px #262626 inset;
+    z-index: 2;
+}
+@-webkit-keyframes nuestros__servicios-B {
+    0% {
+      -webkit-transform: scale(2);
+              transform: scale(2);
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+      -webkit-filter: blur(4px);
+              filter: blur(4px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+@keyframes nuestros__servicios-B {
+    0% {
+      -webkit-transform: scale(2);
+              transform: scale(2);
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+      -webkit-filter: blur(4px);
+              filter: blur(4px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+      -webkit-filter: blur(0px);
+              filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  
