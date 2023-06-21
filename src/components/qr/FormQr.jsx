@@ -43,16 +43,16 @@ function FormQr() {
         if ( mantencionFecha.mantencion !== '' ) {
 
             let prox = mantencionFecha.mantencion.split('-');
-            
+            console.log(prox)
             prox[1] = (parseInt(prox[1]) + parseInt(e.target.id));
-
+            console.log(prox)
             if ( prox[1] > 12 ) {
-                prox[1] = prox[1] - 12;
+                prox[1] = (prox[1] - 12) < 10 ? '0' + (prox[1] - 12) : (prox[1] - 12);
                 prox[0] = parseInt(prox[0]) + 1;
             } else if( prox[1] < 10 ) {
                 prox[1] = '0' + prox[1];
             }
-            
+            console.log(prox)
             guardarMantencionFecha({
                 ...mantencionFecha,
                 proxima : prox.join('-')
@@ -223,6 +223,7 @@ function FormQr() {
                                 <div className='fecha__btn' onClick={fechaAutomatica} id='3' >3 Meses</div>
                                 <div className='fecha__btn' onClick={fechaAutomatica} id='4' >4 Meses</div>
                                 <div className='fecha__btn' onClick={fechaAutomatica} id='6' >6 Meses</div>
+                                <div className='fecha__btn' onClick={fechaAutomatica} id='12' >12 Meses</div>
                             </div>
                         </div>
                         
