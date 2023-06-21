@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { parseVulgars } from 'vulgar-fractions';
 
 import clienteAxios from '../../config/axios';
 import { CRMContext } from '../context/CRMContext';
@@ -55,7 +56,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
         default:
                 guardarDescripcion({
                     ...descripcion,
-                    [e.target.name] : e.target.value
+                    [e.target.name] : parseVulgars(e.target.value)
                 });
                 break;
         }
@@ -206,7 +207,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
                         id="preinfo" 
                         cols="10" 
                         rows="5"
-                        defaultValue={preinfo}
+                        value={preinfo}
                         disabled={true}
                         />                 
                 </div>
@@ -218,7 +219,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
                         id="descripcion" 
                         cols="30" 
                         rows="5"
-                        defaultValue={descripcion.descripcion}
+                        value={descripcion.descripcion}
                         onChange={actualizarState}
                         />                 
                 </div>
@@ -230,7 +231,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
                         id="conclusion" 
                         cols="30" 
                         rows="5"
-                        defaultValue={descripcion.conclusion}
+                        value={descripcion.conclusion}
                         onChange={actualizarState}
                     />                 
                 </div>
@@ -242,7 +243,7 @@ function InformeParteTres({ onButtonClick, guardarDatosTercero, tercero, datosIn
                         id="recomendacion" 
                         cols="30" 
                         rows="5"
-                        defaultValue={descripcion.recomendacion}
+                        value={descripcion.recomendacion}
                         onChange={actualizarState}
                     />                 
                 </div>
