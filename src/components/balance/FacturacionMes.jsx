@@ -72,7 +72,7 @@ function FacturacionMes({ pdfcrear, cambioActivo }) {
         let resultado = 0;
 
         res.data.forEach(data => {
-            resultado += data?.monto;
+            resultado += ( data?.monto + (data?.monto * .19) );
         });
 
         guardarTotalPrimero(resultado);
@@ -92,7 +92,7 @@ function FacturacionMes({ pdfcrear, cambioActivo }) {
         let resultado = 0;
 
         res.data.forEach(data => {
-            resultado += data?.monto;
+            resultado += ( data?.monto + (data?.monto * .19) );
         });
 
         guardarTotalSegundo(resultado);

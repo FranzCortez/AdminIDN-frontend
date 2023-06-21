@@ -82,7 +82,7 @@ function IngresoFacturaMes({ pdfcrear, cambioActivo }) {
         let resultado = 0;
 
         res.data.forEach(data => {
-            resultado += data?.monto;
+            resultado += ( data?.monto + (data?.monto * .19) );
         });
 
         let noMes = 0;
@@ -113,7 +113,7 @@ function IngresoFacturaMes({ pdfcrear, cambioActivo }) {
         let resultado = 0;
 
         res.data.forEach(data => {
-            resultado += data?.monto;
+            resultado += ( data?.monto + (data?.monto * .19) );
         });
 
         guardarTotalSegundo(resultado);

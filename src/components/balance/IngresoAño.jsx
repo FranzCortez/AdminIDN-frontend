@@ -58,7 +58,7 @@ function IngresoAño({ pdfcrear,cambioActivo }) {
         let resultado = 0;
 
         res.data.forEach(data => {
-            resultado += data?.monto;
+            resultado += ( data?.monto + (data?.monto * .19) );
         });
 
         return { data: res.data, resultado };
