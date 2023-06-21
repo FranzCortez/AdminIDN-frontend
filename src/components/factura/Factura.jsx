@@ -7,6 +7,7 @@ import moment from "moment";
 
 import FacturaInformacion from './FacturaInformacion';
 import InfoOtines from './InformacionOtines';
+import { Fragment } from 'react';
 
 function Factura({ datos, boleta, boletaPago }) {
 
@@ -42,7 +43,20 @@ function Factura({ datos, boleta, boletaPago }) {
                 {
                     datos?.estado === 'Pagado' ?
                         datos?.boletaPagado === true ?
-                            <BsFileEarmarkCheckFill size={20} color={"rgb(0 168 0 / 68%)"} />
+                            <Fragment>
+                                <BsFileEarmarkCheckFill size={20} color={"rgb(0 168 0 / 68%)"} />
+                                <input 
+                                    type="checkbox" 
+                                    name="facturaPago"
+                                    className='factura__check-boletaPagado' 
+                                    id={datos?.id}
+                                    data-factura={datos?.numeroFactura}
+                                    data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                                    data-valor={( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
+                                    data-fechapago={moment(datos?.fechaPago).format('DD-MM-YYYY')}
+                                    onChange={boletaPago}
+                                />
+                            </Fragment>
                             :
                             <input 
                                 type="checkbox" 
