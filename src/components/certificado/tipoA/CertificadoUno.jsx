@@ -315,7 +315,6 @@ function CertificadoUno({ primero, segundo, tercero, herramienta }) {
 
                     <div className='certificado__certificacion'>
 
-                        <img src="img/Certificado/Iso.jpg" alt="" />
                         <img src="img/Certificado/CE.jpg" alt="" />
                         <img src="img/Certificado/UKAS.jpg" alt="" />
 
