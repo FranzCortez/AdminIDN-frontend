@@ -147,7 +147,7 @@ function Inicio() {
                     <h1 className='nosotros__titulo' >Quienes Somos</h1>
 
                     <div className='nosotros__flex'>
-                        <img className='nosotros__img' src="/img/Inicio/grupo1.jpg" alt="Quienes Somos" />
+                        <img className='nosotros__img' src="/img/Inicio/soldador.jpg" alt="Quienes Somos" />
                     
                         <div className='nosotros__flex-text'>
                             <p className='nosotros__text' >Nuestra empresa surge en noviembre de 2015 como Impacto del Norte LTDA, como la consolidación del interés y compromiso de su dueño y fundador, Alberto García López, quien proyectó un espacio en el que los clientes pudieran ser óptimamente atendidos en sus requerimientos de eficiencia, rapidez y calidad en la reparación y mantención de equipos electrohidráulicos, neumáticos y de torque; así como en sus necesidades de arriendo y compra de insumos. Es así como da el primer paso en la instalación de un modesto taller, porque desde sus inicios, ha tenido como desafío crecer y afianzarse como un referente en la ciudad y la región.</p>
