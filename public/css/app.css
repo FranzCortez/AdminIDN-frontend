@@ -2198,5 +2198,20 @@ table .boleta__total th {
               filter: blur(0px);
       opacity: 1;
     }
-  }
-  
+}
+
+.solicitud__estado-revison {
+    background: #664DE5 !important;
+}
+.solicitud__estado-cancelado {
+    background: #A01C48 !important;
+}
+.solicitud__estado-aprobado {
+    background: #06837F !important;
+}
+.solicitud__estado-proceso {
+    background: #ECA400 !important;
+}
+.solicitud__estado-entregado {
+    background: green !important;
+}

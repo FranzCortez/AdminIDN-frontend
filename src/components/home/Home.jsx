@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 
+import packageJson from '../../../package.json';
 import { CRMContext } from '../context/CRMContext';
 
 function Home() {
@@ -20,6 +21,7 @@ function Home() {
         localStorage.removeItem('filtroIngreso');
         localStorage.removeItem('filtroFactura');
         localStorage.removeItem('pagina');
+        
     }, []);   
 
     localStorage.setItem('ultima', `/home`);
@@ -33,7 +35,7 @@ function Home() {
                             <AiFillHome size={50} color={"#333333"}/>
                             <h1>Hola! {auth.nombre}</h1>
                         </div>
-                        <h2 className='version'>V5.5.0</h2>
+                        <h2 className='version'>V{packageJson.version}</h2>
                     </div>
                 </div>
                 <div className="card-body">

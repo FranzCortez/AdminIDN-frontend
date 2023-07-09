@@ -76,6 +76,11 @@ import PresentacionGerente from "./components/presentacion/PresentacionGerente";
 import PresentacionAdm from "./components/presentacion/PresentacionAdm";
 import PresentacionVenta from "./components/presentacion/PresentacionVenta";
 
+/** CheckList */
+import Solicitudes from "./components/checklist/Solicitudes";
+import FormNuevoSolicitud from "./components/checklist/FormNuevoSolicitud";
+import FormEditarSolicitud from "./components/checklist/FormEditarSolicitud";
+
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
 
 function App() {
@@ -140,6 +145,10 @@ function App() {
                         <Route path="/administracion" element={<PresentacionAdm/>} />
                         <Route path="/ventas" element={<PresentacionVenta/>} />
                 
+                        <Route path="/checklist" element={<Solicitudes/>} />
+                        <Route path="/checklist/nuevo" element={<FormNuevoSolicitud/>} />
+                        <Route path="/checklist/editar/:id" element={<FormEditarSolicitud/>} />
+                        
                         <Route path="/home" element={<Home/>} />
                         
                         <Route path="/login" element={<Login/>} />

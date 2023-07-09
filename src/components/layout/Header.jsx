@@ -7,6 +7,7 @@ import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool, AiFillHome } f
 import { ImQrcode } from "react-icons/im";
 import { FiUsers } from "react-icons/fi";
 import { GoGraph } from "react-icons/go";
+import { BsCalendarCheck } from "react-icons/bs";
 
 import Sidebar from "./Sidebar";
 
@@ -80,6 +81,11 @@ function Header() {
                 ruta: '/usuarios',
                 texto: 'Usuarios',
                 icono: <FiUsers size={50} color={"#333333"}/>
+            },
+            {
+                ruta: '/checklist',
+                texto: 'Solicitudes',
+                icono: < BsCalendarCheck size={50} color={"#333333"} />
             }
         )
     }
