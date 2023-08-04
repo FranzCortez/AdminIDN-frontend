@@ -387,10 +387,14 @@ h2 {
 }
 .sidebar__text{
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 2.8rem;
     color: var(--negroClaro);
     width: 28rem;
     margin-left: 1rem;
+}
+.sidebar__none {
+    background-color: transparent;
+    border: none;
 }
 
 /** card **/
