@@ -11,6 +11,9 @@ import CertificadoParteUnoB from './CertificadoParteUnoB';
 import CertificadoParteDosB from './CertificadoParteDosB';
 import CertificadoParteTresB from './CertificadoParteTresB';
 
+import Prueba from './Prueba';
+import { PDFViewer } from '@react-pdf/renderer';
+
 import CertificadoDos from './CertificadoDos';
 
 function FormCertificadoB() {
@@ -133,6 +136,15 @@ function FormCertificadoB() {
                 tercero={tercero}
                 herramienta={herramienta}
             />
+
+            {/* <PDFViewer>
+                <Prueba
+                    primero={primero}
+                    segundo={segundo}
+                    tercero={tercero}
+                    herramienta={herramienta}
+                />
+            </PDFViewer> */}
         
         </Fragment>
     )

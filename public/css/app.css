@@ -1957,7 +1957,17 @@ table .boleta__total th {
 .hero__espacio {
     height: 20rem;
 }
-
+.hero__logo {
+	-webkit-animation: hero__logo 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: hero__logo 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    position: absolute;
+    width: 28rem;
+    top: 50%;
+    left: 20%;
+    background: rgb(105 105 105 / 58%);
+    padding: 1rem;
+    border-radius: 1rem;
+}
 @media (min-width: 768px) {
     
     .hero__main {
@@ -1968,18 +1978,12 @@ table .boleta__total th {
     .hero__espacio {
         height: 0;
     }
-}
-.hero__logo {
-	-webkit-animation: hero__logo 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: hero__logo 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    position: absolute;
-    width: 45rem;
-    height: 20rem;
-    top: 40%;
-    left: 35%;
-    background: rgba(38, 38, 38,.6);
-    padding: 1rem;
-    border-radius: 1rem;
+    .hero__logo {
+        width: 45rem;
+        height: 20rem;
+        top: 40%;
+        left: 35%;
+    }
 }
 @-webkit-keyframes hero__logo {
     0% {
@@ -2005,75 +2009,14 @@ table .boleta__total th {
       opacity: 1;
     }
   }
-  
 
-/* .lista__opciones {
-    position: absolute;
-    top: 0%;
-    left: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: .5rem;
-}
-.lista__opcion {
-    list-style: none;
-}
-.lista__link {
-    position: relative;
-    display: block;
-    text-transform: uppercase;
-    margin: .5rem 0;
-    padding: 0rem .3rem;
-    text-decoration: none;
-    color: #c0c0c0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    transition: .5s;
-    z-index: 1;
-}
-.lista__link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-top: 2px solid #262626;
-    border-bottom: 2px solid #262626;
-    transform: scaleY(2);
-    opacity: 0;
-    transition: .3s;
-}
-.lista__link::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #262626;
-    transform: scale(0);
-    opacity: 0;
-    transform: .3s;
-    z-index: -1;
-}
-.lista__link:hover {
-    color: #fff;
-}
-.lista__link:hover::before {
-    transform: scaleY(1);
-    opacity: 1;
-}
-.lista__link:hover::after {
-    transform: scaleY(1);
-    opacity: 1;
-} */
 .lista__opciones {
     position: absolute;
     top: 0%;
     left: 40%;
     display: flex;
+    flex-direction: row;
+    align-items: start;
 }
 .lista__opcion {
     list-style: none;
@@ -2128,9 +2071,44 @@ table .boleta__total th {
     transform: scaleY(1);
     opacity: 1;
 }
+.lista {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+@media (max-width: 768px) {
+    .lista {
+        position: absolute;
+    }
+    .lista__back {
+        background-color: none;
+    }
+    .lista__opciones {
+        flex-direction: column;        
+        align-items: center;
+        left: 25%;
+    }
+    .lista__link {
+        margin: 0;
+        padding: 1rem 0;
+    }
+    .hero__espacio {
+        height: 32rem;
+    }
+}
 .nuestros__servicios {
     display: grid;
     grid-template-columns: repeat(2,1fr);
+}
+.nuestros__servicios:nth-child(3) {
+    grid-column: 1/3;
 }
 .nuestros__servicios-A {
     display: flex;
@@ -2199,6 +2177,58 @@ table .boleta__total th {
       opacity: 1;
     }
 }
+@keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .clientes {
+    overflow: hidden;
+    padding: 60px 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #515151);
+    white-space: nowrap;
+    position: relative;
+    grid-column: 1/3;
+    margin-top: 2rem;
+  }
+  
+  .clientes:before,
+  .clientes:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+  }
+  
+  .clientes:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), #515151);
+  }
+  
+  .clientes:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #515151);
+  }
+  
+  .clientes:hover .clientes-slide {
+    animation-play-state: paused;
+  }
+  
+  .clientes-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+  }
+  
+  .clientes-slide img {
+    height: 50px;
+    margin: 0 40px;
+  }
 
 .solicitud__estado-revison {
     background: #664DE5 !important;
