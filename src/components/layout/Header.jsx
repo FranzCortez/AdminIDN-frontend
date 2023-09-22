@@ -25,11 +25,11 @@ function Header() {
     const EIRL = {
         ruta: '/home',
         texto: 'EIRL',
-        icono: <AiOutlineTool size={50} color={"#333333"} />
+        icono: <AiOutlineTool size={50} color={"#ebe1e1"} />
     }
 
     const comercializadora = {
-        ruta: '/comercializadora',
+        ruta: '/homecom',
         texto: 'Comercializadora',
         icono: <BsShopWindow size={50} color={"#333333"} />
     }
@@ -80,30 +80,30 @@ function Header() {
 
     let rutaComercializadora = [
         {
-            ruta: '/home',
+            ruta: '/homecom',
             texto: 'Inicio',
-            icono: <AiFillHome size={50} color={"#333333"}/>
+            icono: <AiFillHome size={50} color={"#ebe1e1"}/>
         },
         {
-            ruta: '/clientes',
+            ruta: '/clientescom',
             texto: 'Clientes',
-            icono: <RiContactsBook2Line size={50} color={"#333333"}/>
+            icono: <RiContactsBook2Line size={50} color={"#ebe1e1"}/>
         },
+        // {
+        //     ruta: '/ingresos',
+        //     texto: 'Ingresos',
+        //     icono: <AiOutlineTool size={50} color={"#ebe1e1"}/>
+        // },
         {
-            ruta: '/ingresos',
-            texto: 'Ingresos',
-            icono: <AiOutlineTool size={50} color={"#333333"}/>
+            ruta: '/equiposcom',
+            texto: 'Equipos',
+            icono: <VscTools size={50} color={"#ebe1e1"}/>
         },
-        {
-            ruta: '/ingresos/tipoherramienta',
-            texto: 'Tipo Herramienta',
-            icono: <VscTools size={50} color={"#333333"}/>
-        },
-        {
-            ruta: '/qr/sd/form',
-            texto: 'QR sin Datos',
-            icono: <ImQrcode size={50} color={"#333333"}/>
-        } 
+        // {
+        //     ruta: '/qr/sd/form',
+        //     texto: 'QR sin Datos',
+        //     icono: <ImQrcode size={50} color={"#ebe1e1"}/>
+        // } 
     ]
     if(auth.tipo === 1) {
         rutas.push(
@@ -130,26 +130,26 @@ function Header() {
         )
 
         rutaComercializadora.push(
-            {
-                ruta: '/facturas',
-                texto: 'Facturas',
-                icono: <AiOutlineDollarCircle size={50} color={"#333333"}/>
-            },  
-            {
-                ruta: '/balance',
-                texto: 'Balance',
-                icono: <GoGraph size={50} color={"#333333"}/>
-            },
-            {
-                ruta: '/usuarios',
-                texto: 'Usuarios',
-                icono: <FiUsers size={50} color={"#333333"}/>
-            },
-            {
-                ruta: '/checklist',
-                texto: 'Solicitudes',
-                icono: < BsCalendarCheck size={50} color={"#333333"} />
-            }
+            // {
+            //     ruta: '/facturas',
+            //     texto: 'Facturas',
+            //     icono: <AiOutlineDollarCircle size={50} color={"#ebe1e1"}/>
+            // },  
+            // {
+            //     ruta: '/balance',
+            //     texto: 'Balance',
+            //     icono: <GoGraph size={50} color={"#ebe1e1"}/>
+            // },
+            // {
+            //     ruta: '/usuarios',
+            //     texto: 'Usuarios',
+            //     icono: <FiUsers size={50} color={"#ebe1e1"}/>
+            // },
+            // {
+            //     ruta: '/checklist',
+            //     texto: 'Solicitudes',
+            //     icono: < BsCalendarCheck size={50} color={"#ebe1e1"} />
+            // }
         )
     }
 
@@ -157,14 +157,19 @@ function Header() {
         
         const sidebar = document.querySelector('.sidebar__color');
         const menu = document.querySelector('.sidebar__header');
+        const text = document.querySelector('.sidebar__text');
         const header = document.querySelector('.header');
         const canvas = document.querySelector('.offcanvas-header');
         if ( lugar ) {
             sidebar.style.backgroundColor = '#2566e8'
             menu.style.backgroundColor = '#2566e8'
+            menu.style.color = '#ebe1e1'
+            text.style.color = '#ebe1e1'
             canvas.style.backgroundColor = '#2566e8'
             header.style.backgroundColor = '#2566e8'
         } else {
+            menu.style.color = '#333333'
+            text.style.color = '#333333'
             sidebar.style.backgroundColor = '#ff8533'
             header.style.backgroundColor = '#ff8533'
             canvas.style.backgroundColor = '#ff8533'
@@ -183,7 +188,7 @@ function Header() {
                 </div>
 
                 <Link to="#">
-                    <img src="/img/LogoIDN.png" alt="Logo Impacto del Norte" className="header__logo" />
+                    <img src="/img/LogoIDN.webp" alt="Logo Impacto del Norte" className="header__logo" />
                 </Link>
             </div>
 
@@ -218,7 +223,7 @@ function Header() {
 
                                     {
                                         rutas.map((ruta, index) => (
-                                            <Sidebar ruta={ruta} key={index} />
+                                            <Sidebar ruta={ruta} key={index} lugar={lugar} />
                                         ))
                                     }
                                 </Fragment>
@@ -240,7 +245,7 @@ function Header() {
 
                                     {
                                         rutaComercializadora.map((ruta, index) => (
-                                            <Sidebar ruta={ruta} key={index} />
+                                            <Sidebar ruta={ruta} key={index} lugar={lugar} />
                                         ))
                                     }
                                 </Fragment>
@@ -248,11 +253,11 @@ function Header() {
                             :
 
                                 rutas.map((ruta, index) => (
-                                    <Sidebar ruta={ruta} key={index} />
+                                    <Sidebar ruta={ruta} key={index} lugar={lugar} />
                                 ))
                        }
                        <div className="sidebar__ruta" data-bs-dismiss="offcanvas" onClick={cerrarSesion}>
-                            <AiOutlinePoweroff size={50} color={"#333333"}/>
+                            <AiOutlinePoweroff size={50} color={"#ebe1e1"}/>
                             <h2 className="sidebar__text">Cerrar Sesión</h2>
                         </div>
                     </div>

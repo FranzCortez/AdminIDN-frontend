@@ -69,6 +69,12 @@ import FormEditarUsuario from "./components/usuarios/FormEditarUsuario";
 import Login from "./components/login/Login";
 import Inicio from "./components/main/Inicio";
 import InicioPrueba from "./components/main/InicioPrueba";
+import Nosotros from "./components/main/Nosotros";
+import Reparacion from "./components/main/servicios/Reparacion";
+import Venta from "./components/main/servicios/Venta";
+import Insumos from "./components/main/servicios/Insumos";
+import Fabricacion from "./components/main/servicios/Fabricacion";
+import Torque from "./components/main/servicios/Torque";
 import Error404 from "./components/layout/Error404";
 
 /** PRESENTACION */
@@ -80,6 +86,20 @@ import PresentacionVenta from "./components/presentacion/PresentacionVenta";
 import Solicitudes from "./components/checklist/Solicitudes";
 import FormNuevoSolicitud from "./components/checklist/FormNuevoSolicitud";
 import FormEditarSolicitud from "./components/checklist/FormEditarSolicitud";
+
+/** COMERCIALIZADORA */
+/** HOME COM */
+import HomeCom from "./components/comercializadora/homeCom/HomeCom";
+/** CLIENTES COM */
+import ClienteEmpresasCom from "./components/comercializadora/clienteEmpresaCom/ClienteEmpresasCom";
+import FormNuevoEmpresaCom from "./components/comercializadora/clienteEmpresaCom/FormNuevoEmpresaCom";
+import FormEditarEmpresaCom from "./components/comercializadora/clienteEmpresaCom/FormEditarEmpresaCom";
+import ClientesContactosCom from "./components/comercializadora/clienteContactoCom/ClientesContactosCom";
+import FormNuevoContactoCom from "./components/comercializadora/clienteContactoCom/FormNuevoContactoCom";
+import FormEditarContactoCom from "./components/comercializadora/clienteContactoCom/FormEditarContactoCom";
+/** EQUIPOS */
+import EquiposCom from "./components/comercializadora/equipoCom/EquiposCom";
+import FormNuevoEquipoCom from "./components/comercializadora/equipoCom/FormNuevoEquipoCom";
 
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
 
@@ -148,12 +168,32 @@ function App() {
                         <Route path="/checklist" element={<Solicitudes/>} />
                         <Route path="/checklist/nuevo" element={<FormNuevoSolicitud/>} />
                         <Route path="/checklist/editar/:id" element={<FormEditarSolicitud/>} />
+
+                        
+                        <Route path='/homecom' element={<HomeCom/>} />
+
+                        <Route path='/clientescom' element={<ClienteEmpresasCom/>} />
+                        <Route path='/clientescom/nuevo' element={<FormNuevoEmpresaCom/>} />
+                        <Route path='/clientescom/editar/:id' element={<FormEditarEmpresaCom/>} />
+                        <Route path='/clientescom/contacto/:id' element={<ClientesContactosCom/>} />
+                        <Route path='/clientescom/contacto/:idEmpresa/nuevo' element={<FormNuevoContactoCom/>} />
+                        <Route path='/clientescom/contacto/:idEmpresa/editar/:id' element={<FormEditarContactoCom/>} />
+
+                        <Route path='/equiposcom' element={<EquiposCom/>} />
+                        <Route path='/equiposcom/nuevo' element={<FormNuevoEquipoCom/>} />
+
                         
                         <Route path="/home" element={<Home/>} />
                         
                         <Route path="/login" element={<Login/>} />
                         <Route path="/" element={<Inicio/>} />
                         <Route path="/prueba" element={<InicioPrueba/>} />
+                        <Route path="/prueba/nosotros" element={<Nosotros/>} />
+                        <Route path="/prueba/servicios/reparacion" element={<Reparacion/>} />
+                        <Route path="/prueba/servicios/venta" element={<Venta/>} />
+                        <Route path="/prueba/servicios/insumos" element={<Insumos/>} />
+                        <Route path="/prueba/servicios/fabricacion" element={<Fabricacion/>} />
+                        <Route path="/prueba/servicios/torque" element={<Torque/>} />
                         <Route path="/not_found" element={<Error404/>} />
                         <Route path="*" element={<Navigate to='/not_found'/>} />
                     </Routes>

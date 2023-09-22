@@ -126,7 +126,7 @@ function FormularioEditarContacto() {
             <div className="card contenedor">
                 <div className="card-header">
                     <FaUserEdit size={50} color={"#333333"}/>
-                    <h1>Editando Usuario</h1>
+                    <h1>Editando Contacot</h1>
                 </div>
                 <div className="card-body">
 

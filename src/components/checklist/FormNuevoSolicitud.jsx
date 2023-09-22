@@ -22,7 +22,7 @@ function FormNuevoSolicitud() {
     
     const [ solicitud, guardarSolicitud ] = useState({
         titulo: '',
-        estado: '',
+        estado: 'En Revisión',
         prioridad: '',
         tipo: '',
         fechaSolicitud: fechaActual,

@@ -70,7 +70,7 @@ function Mantencion() {
         <Fragment>
 
             <div className="header header--left ">
-                <img src="/img/LogoIDN.png" alt="Logo Impacto del Norte" className="header__logo" />
+                <img src="/img/LogoIDN.webp" alt="Logo Impacto del Norte" className="header__logo" />
             </div>
 
             <div className="card contenedor">

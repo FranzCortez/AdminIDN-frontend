@@ -1,0 +1,36 @@
+.card-header-com{
+    background-color: #2566e8;
+    padding: 2rem 1rem;    
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+.card-header-com h1{
+    color: #ebe1e1;
+    margin: 0;
+    text-align: center;
+    font-size: 4rem;  
+}
+.table__head-com{
+    background: #2566e8;
+}
+.table__head-com th{
+    text-align: center;
+    color: #ebe1e1;
+}
+.table__head-com-no th {
+    color: #ebe1e1;
+    padding: 0;
+    font-size: 1.4rem;
+}
+
+.autoCompletar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.autoCompletar span {
+    font-weight: 700;
+}

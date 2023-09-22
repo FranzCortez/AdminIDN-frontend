@@ -44,7 +44,7 @@ function Home() {
                         <h2>BIENVENIDO AL</h2>
                         <h2>SISTEMA DE ADMINISTRACIÓN DE "IMPACTO DEL NORTE"</h2>
                         
-                        <img className='home__logo' src="/img/LogoIDN.png" alt="" />
+                        <img className='home__logo' src="/img/LogoIDN.webp" alt="" />
                         
                         <p>Para iniciar oprima las barras lateral izquierda <FaBars/> y navegue por las secciones</p>
                     </div>

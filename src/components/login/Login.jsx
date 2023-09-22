@@ -90,7 +90,7 @@ function Login() {
             <div className="card contenedor login">
                 <div className='login__img'>
                     <h1>Bienvenido a</h1>
-                    <img className='login__logo' src="/img/LogoIDN.png" alt="Logo Impacto del Norte" />
+                    <img className='login__logo' src="/img/LogoIDN.webp" alt="Logo Impacto del Norte" />
                 </div>
 
                 <div className='login__form'>

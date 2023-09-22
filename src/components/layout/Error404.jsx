@@ -9,7 +9,7 @@ function Error404() {
 
                 <h2>Página no encontrada</h2>
 
-                <img src="/img/LogoIDN.png" alt="" />
+                <img src="/img/LogoIDN.webp" alt="" />
             </div>
         </Fragment>
     )

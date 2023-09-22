@@ -70,7 +70,7 @@ function Inicio() {
             <header className='header-inicio' id='inicio'>
                 <nav className='nav'>
                     <button className='nav__button' onClick={() => hashLinkScroll('inicio')}>
-                        <img className='nav__logo' src="/img/LogoIDN.png" alt="" />
+                        <img className='nav__logo' src="/img/LogoIDN.webp" alt="" />
                     </button>
 
                     <button className='nav__button' onClick={() => hashLinkScroll('servicios')}>
@@ -90,7 +90,7 @@ function Inicio() {
                     </button>
 
                     <button className='nav__button' onClick={() => hashLinkScroll('contacto')} >
-                        <h3 className='nav__btn' >Contactanos</h3>
+                        <h3 className='nav__btn' >Contáctanos</h3>
                     </button>
 
                     <Link to="/login">
@@ -99,7 +99,7 @@ function Inicio() {
                 </nav>
 
                 <div className='header-inicio__hero' >
-                    <img src="/img/LogoIDN.png" className='header-inicio__logo' alt="" />
+                    <img src="/img/LogoIDN.webp" className='header-inicio__logo' alt="" />
                 </div>
             </header>
 
@@ -168,7 +168,7 @@ function Inicio() {
                         <p className='vision__texto'>Seguir siendo un referente de calidad y compromiso en la región de Antofagasta y sus alrededores, atendiendo a cada vez más clientes y faenas de las distintas empresas del rubro. Así como ampliar los servicios que se brindan y la amplitud de nuestro alcance geográfico como empresa</p>
                     </div>
 
-                    <img className='vision__img' src="/img/LogoIDN.png" alt="Vision" />
+                    <img className='vision__img' src="/img/LogoIDN.webp" alt="Vision" />
                 </div>
                 
                 <div className='mision'>
@@ -277,7 +277,7 @@ function Inicio() {
 
                 <section className='contacto' id='contacto'>
 
-                    <h1 className='contacto__titulo'>Contactanos</h1>
+                    <h1 className='contacto__titulo'>Contáctanos</h1>
 
                     <div className='contacto__campo'>
                         <BsFillTelephoneFill className='contacto__icono' onClick={numero}/>
@@ -294,7 +294,7 @@ function Inicio() {
                         <h2 className='contacto__text'>administracion@impactodelnorte.cl</h2>
                     </div>
 
-                    <img onClick={() => hashLinkScroll('inicio')} className='contacto__logo' src="/img/LogoIDN.png" alt="Logo IDN" />
+                    <img onClick={() => hashLinkScroll('inicio')} className='contacto__logo' src="/img/LogoIDN.webp" alt="Logo IDN" />
 
                 </section>
             </section>

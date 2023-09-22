@@ -162,7 +162,7 @@ function FormNuevaFactura() {
     }
 
     const guiasDespachoAutoCompletado = async (e) => {
-
+        console.log(e)
         guardarOtinesSeleccionadas(e)
 
         let guiaDespacho = '';
@@ -248,17 +248,31 @@ function FormNuevaFactura() {
                             // seleccion de otines
                             otines.length !== 0 ? 
 
-                                <div className='campo'>
-                                    <label htmlFor="otines">Seleccione la(s) OTIN(es)<span className='campo__obligatorio'>*</span>:</label>
-                                    <MultiSelect
-                                        id="otines"
-                                        options={otines}
-                                        value={otinesSeleccionadas}
-                                        onChange={guiasDespachoAutoCompletado}
-                                        labelledBy="Seleccione la(s) OTIN(es)"                                        
-                                        className='multipleSelect'
-                                    />             
-                                </div>                                 
+                                <Fragment>
+                                    <div className='campo'>
+                                        <label htmlFor="otines">Seleccione la(s) OTIN(es)<span className='campo__obligatorio'>*</span>:</label>
+                                        <MultiSelect
+                                            id="otines"
+                                            options={otines}
+                                            value={otinesSeleccionadas}
+                                            onChange={guiasDespachoAutoCompletado}
+                                            labelledBy="Seleccione la(s) OTIN(es)"                                        
+                                            className='multipleSelect'
+                                        />             
+                                    </div>    
+                                    
+                                    <div>
+                                        <label htmlFor="otines">Seleccione la OTIN (DOBLE FACTURA)<span className='campo__obligatorio'>*</span>:</label>
+                                        <input 
+                                            type="otines" 
+                                            id='otines'
+                                            name='numeroFactura'
+                                            placeholder='Número Factura'
+                                            onChange={actualizarState}
+                                            defaultValue={factura.numeroFactura}
+                                        />
+                                    </div>
+                                </Fragment>
                             :
                                 null
                         }       

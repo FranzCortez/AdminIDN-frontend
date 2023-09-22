@@ -60,16 +60,16 @@ function ClientesContactos() {
     return (
         <Fragment>
             <div className="card contenedor">
-                <div className="card-header">
-                    <MdContactPhone size={50} color={"#333333"}/>
-                    <h1>Clientes Empresa</h1>
+                <div className="card-header-com">
+                    <MdContactPhone size={50} color={"#ebe1e1"}/>
+                    <h1>Clientes Empresa Comercializadora</h1>
                 </div>
                 <div className="card-body">
 
                     <div className='card-body-options'>
                         
                         <div className='top-left'>
-                            <Link to={`/clientes`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                            <Link to={`/clientescom`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                         </div>
 
                         <Link to={`nuevo`} type="button" className="btn-new btn-success-new">
