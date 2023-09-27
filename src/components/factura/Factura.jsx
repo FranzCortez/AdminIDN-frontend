@@ -51,7 +51,7 @@ function Factura({ datos, boleta, boletaPago }) {
                                     className='factura__check-boletaPagado' 
                                     id={datos?.id}
                                     data-factura={datos?.numeroFactura}
-                                    data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                                    data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa?.nombre : '-'}
                                     data-valor={( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
                                     data-fechapago={moment(datos?.fechaPago).format('DD-MM-YYYY')}
                                     onChange={boletaPago}
@@ -64,7 +64,7 @@ function Factura({ datos, boleta, boletaPago }) {
                                 className='factura__check-boletaPagado' 
                                 id={datos?.id}
                                 data-factura={datos?.numeroFactura}
-                                data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                                data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa?.nombre : '-'}
                                 data-valor={( datos?.monto + parseInt( datos?.monto * 0.19 ) )}
                                 data-fechapago={moment(datos?.fechaPago).format('DD-MM-YYYY')}
                                 onChange={boletaPago}
@@ -80,7 +80,7 @@ function Factura({ datos, boleta, boletaPago }) {
                             data-factura={datos?.numeroFactura}
                             data-orden={datos?.numeroCompra}
                             data-despacho={datos?.guiaDespacho}
-                            data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}
+                            data-cliente={datos?.herramientas?.length > 0 ? datos?.herramientas[0].clienteContacto.clienteEmpresa?.nombre : '-'}
                             data-fechafactura={moment(datos?.fechaFactura).format('DD-MM-YYYY')}
                             data-fechavencimiento={moment(fechaVencimiento).format('DD/MM/YYYY')}
                             data-mora={(datos?.fechaPago === '0000-00-00' || datos?.fechaPago === null) && new Date() >= fechaVencimiento ? ` ${diffInDays(new Date(), fechaVencimiento)+1} Día(s)` : ''}
@@ -93,7 +93,7 @@ function Factura({ datos, boleta, boletaPago }) {
             <td>{datos.numeroFactura}</td>
             <td>{datos?.herramientas?.length > 0 ? moment(datos.fechaFactura).format('DD-MM-YYYY') : '-'}</td>
             <td>{datos?.herramientas?.length > 0 ? <InfoOtines infoOtines={datos.infoOtines} otines={datos.otines} /> : '-'}</td>
-            <td>{datos?.herramientas?.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa.nombre : '-'}</td>
+            <td>{datos?.herramientas?.length > 0 ? datos.herramientas[0].clienteContacto.clienteEmpresa?.nombre : '-'}</td>
             <td>{datos?.herramientas?.length > 0 ? datos.guiaDespacho : '- '} / {datos?.herramientas?.length > 0 && datos.fechaGuiaDespacho !== '0000-00-00' ? moment(datos.fechaGuiaDespacho).format('DD-MM-YYYY') : '-'}</td>
             <td>${datos?.herramientas?.length > 0 ? valorNumero( datos.monto + parseInt( datos.monto * 0.19 ) ) : '-'}</td>
             {/* <td><p className={estadoClase()} >{datos.estado}</p></td> */}
