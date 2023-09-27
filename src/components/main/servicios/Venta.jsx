@@ -16,7 +16,7 @@ function Venta() {
             <header className="servicio__header">
 
                 <div className="servicio__container">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <img className="servicio__logo" src="/img/LogoIDN.webp" alt="Logo IDN" />
                     </Link>
                 </div>
@@ -26,7 +26,7 @@ function Venta() {
                 <RiShoppingBagLine size={80} color={"#e1e1e1"}/>
 
                 <div className="regresar">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <button className="regresar__btn" >Regresar</button>
                     </Link>
                 </div>
@@ -40,6 +40,36 @@ function Venta() {
                 <p>En cuanto a la venta, tenemos distintos convenios estratégicos de marcas reconocidas, lo que nos permite ofrecer precios competitivos.</p>
 
                 <h2>Algunos de nuestros productos:</h2>
+
+                <div className="venta__grid">
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/venta/venta1.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/venta/venta2.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/venta/venta3.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/venta/venta5.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/venta/venta4.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <div>
+                            <h1>Entre Otros...</h1>
+                        </div>
+                    </div>
+
+                </div>
             </main>
 
             <section className="conoce">

@@ -16,17 +16,17 @@ function Reparacion() {
             <header className="servicio__header">
 
                 <div className="servicio__container">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <img className="servicio__logo" src="/img/LogoIDN.webp" alt="Logo IDN" />
                     </Link>
                 </div>
 
-                <h1 className="servicio__titulo">Reparación de herramientas hidráulicas, neumáticas y de torque</h1>
+                <h1 className="servicio__titulo">Reparación y mantención de herramientas hidráulicas, neumáticas y de torque</h1>
 
                 <VscTools size={80} color={"#e1e1e1"}/>
 
                 <div className="regresar">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <button className="regresar__btn" >Regresar</button>
                     </Link>
                 </div>
@@ -35,19 +35,19 @@ function Reparacion() {
 
             <main className="reparacion">
             
-                <p>El servicio técnico de <span>Impacto del Norte</span> se destaca por la <strong>calidad en mantención y reparación</strong>, de una amplia gama de equipos entre los que destacan <strong>hidráulicos, neumáticos y de torque</strong>, en los que somos especialistas, así como generadores, compresores, máquinas de soldar, etc.</p>
+                <p>El servicio técnico de <span>Impacto del Norte</span> se destaca por la <strong>calidad en mantención y reparación,</strong> de una amplia gama de equipos entre los que destacan <strong>hidráulicos, neumáticos y de torque,</strong> en los que somos especialistas, así como generadores, compresores, máquinas de soldar, etc.</p>
 
                 <img className="reparacion__mantenimiento ra" src="/img/Inicio/mantenimiento.webp" alt="Imagen mantenimiento" />
 
-                <p>Uno de los distintivos de nuestra empresa es el <strong>detallado informe técnico</strong> que se realiza, luego del desarme e inspección técnica, así como del <strong>registro fotográfico de inicio a cierre de proceso</strong>, y donde se indican al cliente las principales fallas, y se sugieren las mejoras a realizar en el manejo del equipo para un óptimo desempeño.</p>
+                <p>Uno de los distintivos de nuestra empresa es el <strong>detallado informe técnico</strong> que se realiza, luego del desarme e inspección técnica, así como del <strong>registro fotográfico de inicio a cierre de proceso,</strong> y donde se indican al cliente las principales fallas, y se sugieren las mejoras a realizar en el manejo del equipo para un óptimo desempeño.</p>
 
-                <img className="reparacion__mantenimiento rb" src="/img/Inicio/informe.jpg" alt="Imagen mantenimiento" />
+                <div className="reparacion__mantenimiento rb" />
 
-                <p>Como empresa, <strong>privilegiamos la mantención preventiva antes que correctiva</strong>, por lo que, como pioneros, hemos implementado un <strong>QR de seguimiento que facilita el rápido contacto para fecha de próxima mantención</strong>.</p>
+                <p>Como empresa, <strong>privilegiamos la mantención preventiva antes que correctiva,</strong> por lo que, como pioneros, hemos implementado un <strong>QR de seguimiento que facilita el rápido contacto para fecha de próxima mantención.</strong></p>
 
-                <img className="reparacion__mantenimiento" src="/img/Inicio/qr.jpg" alt="Imagen mantenimiento" />
+                <div className="reparacion__mantenimiento" />
 
-                <p className="rc">Todos nuestros servicios cuentan con <strong>entregas en tiempo estipulado y con precios justos</strong>, lo que, junto con la calidad, responsabilidad, honestidad y cercanía en el trato, lo que se traduce en la preferencia de nuestros clientes.</p>
+                <p className="rc">Todos nuestros servicios cuentan con <strong>entregas en tiempo estipulado y con precios justos,</strong> lo que, junto con la calidad, responsabilidad, honestidad y cercanía en el trato, lo que se traduce en la preferencia de nuestros clientes.</p>
 
             </main>         
 

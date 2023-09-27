@@ -186,14 +186,14 @@ function App() {
                         <Route path="/home" element={<Home/>} />
                         
                         <Route path="/login" element={<Login/>} />
-                        <Route path="/" element={<Inicio/>} />
-                        <Route path="/prueba" element={<InicioPrueba/>} />
-                        <Route path="/prueba/nosotros" element={<Nosotros/>} />
-                        <Route path="/prueba/servicios/reparacion" element={<Reparacion/>} />
-                        <Route path="/prueba/servicios/venta" element={<Venta/>} />
-                        <Route path="/prueba/servicios/insumos" element={<Insumos/>} />
-                        <Route path="/prueba/servicios/fabricacion" element={<Fabricacion/>} />
-                        <Route path="/prueba/servicios/torque" element={<Torque/>} />
+                        {/* <Route path="/" element={<Inicio/>} /> */}
+                        <Route path="/" element={<InicioPrueba/>} />
+                        <Route path="/nosotros" element={<Nosotros/>} />
+                        <Route path="/servicios/reparacion" element={<Reparacion/>} />
+                        <Route path="/servicios/venta" element={<Venta/>} />
+                        <Route path="/servicios/insumos" element={<Insumos/>} />
+                        <Route path="/servicios/fabricacion" element={<Fabricacion/>} />
+                        <Route path="/servicios/torque" element={<Torque/>} />
                         <Route path="/not_found" element={<Error404/>} />
                         <Route path="*" element={<Navigate to='/not_found'/>} />
                     </Routes>

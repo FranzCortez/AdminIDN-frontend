@@ -56,7 +56,7 @@ function Nosotros() {
                     <ul className="lista__opciones">
                         <li className="lista__opcion" >
                             {/* <div onClick={() => hashLinkScroll('hero__nosotros')} className="lista__link" >Inicio</div> */}
-                            <Link to="/prueba">
+                            <Link to="/">
                                 <div className="lista__link" >Inicio</div>
                             </Link>
                         </li>
@@ -66,9 +66,9 @@ function Nosotros() {
                         <li className="lista__opcion" >
                             <div href="" className="lista__link" onClick={() => hashLinkScroll('nosotros')} >Nosotros</div>
                         </li>
-                        <li className="lista__opcion" >
+                        {/* <li className="lista__opcion" >
                             <div href="" className="lista__link" >Galería</div>
-                        </li>
+                        </li> */}
                         <li className="lista__opcion" >
                             <div onClick={() => hashLinkScroll('footer')} className="lista__link" >Contacto</div>
                         </li>
@@ -118,7 +118,11 @@ function Nosotros() {
                     <li>Lealtad</li>
                 </ul>
 
-                <img src="/img/Inicio/ejemplo.png" alt="ejemplo" className="valores__img" />
+                <div className="valores__bloque">
+                    <img src="/img/Inicio/pintando.jpg" alt="ejemplo" className="valores__img" />
+
+                    <img src="/img/Inicio/reparando.jpg" alt="ejemplo" className="valores__img" />
+                </div>
 
             </section>
 

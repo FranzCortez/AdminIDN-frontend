@@ -16,7 +16,7 @@ function Insumos() {
             <header className="servicio__header">
 
                 <div className="servicio__container">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <img className="servicio__logo" src="/img/LogoIDN.webp" alt="Logo IDN" />
                     </Link>
                 </div>
@@ -26,7 +26,7 @@ function Insumos() {
                 <HiOutlineShoppingCart size={80} color={"#e1e1e1"}/>
 
                 <div className="regresar">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <button className="regresar__btn" >Regresar</button>
                     </Link>
                 </div>
@@ -37,6 +37,36 @@ function Insumos() {
                 <p>Como <span className="com">comercializadora</span>, en <span>Impacto del Norte</span> ofrecemos <strong> venta de insumos y consumibles diversos en las áreas de ferretería, soldadura y oficina, entre otras</strong>. Con la disposición de atender los más variados requerimientos de nuestros clientes, podemos entregar 'desde una golilla hasta un generador', priorizando la rápida respuesta ante necesidades imprevistas o con pedidos surtidos periódicamente,  acorde a las programaciones de cada cliente.</p>
 
                 <h2>Algunos de nuestros productos</h2>
+
+                <div className="venta__grid">
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/insumos/insumo1.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/insumos/insumo2.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/insumos/insumo4.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/insumos/insumo3.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/insumos/insumo5.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <div>
+                            <h1>Entre Otros...</h1>
+                        </div>
+                    </div>
+
+                </div>
             </main>
 
             <section className="conoce">

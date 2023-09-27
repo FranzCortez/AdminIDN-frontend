@@ -16,7 +16,7 @@ function Torque() {
             <header className="servicio__header">
 
                 <div className="servicio__container">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <img className="servicio__logo" src="/img/LogoIDN.webp" alt="Logo IDN" />
                     </Link>
                 </div>
@@ -26,7 +26,7 @@ function Torque() {
                 <GiDrill size={80} color={"#e1e1e1"}/>
 
                 <div className="regresar">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <button className="regresar__btn" >Regresar</button>
                     </Link>
                 </div>
@@ -36,6 +36,13 @@ function Torque() {
             <main className="torque">
                 <p>En <span>Impacto del norte</span> hacemos trabajos en terreno con <strong>equipos hidráulicos y neumáticos y de torque controlado</strong>, según su aplicación.</p>
                 <h2>Algunos de nuestros trabajos:</h2>
+                <div className="torque__grid">
+                    <img src="img/Inicio/torque/torque1.jpg" alt="torque1" />
+                    <img src="img/Inicio/torque/torque2.jpg" alt="torque2" />
+                    <img src="img/Inicio/torque/torque3.png" alt="torque3" />
+                    <img src="img/Inicio/torque/torque4.png" alt="torque4" />
+                    <img src="img/Inicio/torque/torque5.jpg" alt="torque5" />
+                </div>
             </main>
 
             <section className="conoce">

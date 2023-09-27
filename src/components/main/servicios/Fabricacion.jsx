@@ -16,7 +16,7 @@ function Fabricacion() {
             <header className="servicio__header">
 
                 <div className="servicio__container">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <img className="servicio__logo" src="/img/LogoIDN.webp" alt="Logo IDN" />
                     </Link>
                 </div>
@@ -26,7 +26,7 @@ function Fabricacion() {
                 <MdOutlinePrecisionManufacturing size={80} color={"#e1e1e1"}/>
 
                 <div className="regresar">
-                    <Link to={'/prueba'}>
+                    <Link to={'/'}>
                         <button className="regresar__btn" >Regresar</button>
                     </Link>
                 </div>
@@ -36,17 +36,47 @@ function Fabricacion() {
             <main className="fabriacion">
                 <p>Las extensiones de impacto se utilizan como un brazo para extender el alcance de una llave de impacto,  y con ella poder retirar tuercas de neumáticos de camiones tipo CAEX, de gran uso en la minería.</p>
 
-                <p>IMAGEN DE EXTENSION</p>
+                {/* <p>IMAGEN DE EXTENSION</p> */}
 
                 <p>En <span>Impacto del Norte Fabricación</span> se crean extensiones de impacto <strong>acorde a las necesidades específicas de nuestros clientes que requieren medidas de difícil acceso o inexistentes en el mercado</strong>. Nuestras fabricaciones <strong>cumplen con los estándares</strong> de dureza y de alto impacto; su  diseño está respaldado con memoria de cálculo.</p>
 
-                <p>IMAGEN DE IMPACTO</p>
+                {/* <p>IMAGEN DE IMPACTO</p> */}
 
                 <p>También fabricamos pernos de anclaje, abrazaderas, flexibles hidráulicos, además de diseño y fabricación de piezas metalmecánicas.</p>
 
-                <p>IMAGEN DE PERNOS</p>
+                {/* <p>IMAGEN DE PERNOS</p> */}
 
                 <h2>Algunos de nuestros trabajos:</h2>
+                
+                <div className="venta__grid">
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/extension/extension1.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/extension/extension2.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/extension/extension3.png" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/extension/extension4.jpg" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <img src="/img/Inicio/extension/extension5.jpg" alt="venta" />
+                    </div>
+
+                    <div className="venta__card">  
+                        <div>
+                            <h1>Entre Otros...</h1>
+                        </div>
+                    </div>
+
+                </div>
             </main>
 
             <section className="conoce">

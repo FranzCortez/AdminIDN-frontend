@@ -8,6 +8,7 @@ import { GiDrill } from "react-icons/gi";
 import { HiMail } from "react-icons/hi";
 import { BsTelephoneInbound, BsWhatsapp } from "react-icons/bs";
 import { SiGooglemaps } from "react-icons/si"
+import Confeti from "../layout/Confeti";
 
 
 function InicioPrueba() {
@@ -110,6 +111,7 @@ function InicioPrueba() {
     return(
         
         <div className="back__main" >
+            <Confeti></Confeti>
             <div className="hero__espacio"></div>
             <div className="hero__main" id="hero__main"></div>
             
@@ -126,13 +128,13 @@ function InicioPrueba() {
                         </li>
                         <li className="lista__opcion" >
                             {/* <div href="" className="lista__link" >Nosotros</div> */}
-                            <Link to="/prueba/nosotros">
+                            <Link to="/nosotros">
                                 <div className="lista__link" >Nosotros</div>
                             </Link>
                         </li>
-                        <li className="lista__opcion" >
+                        {/* <li className="lista__opcion" >
                             <div href="" className="lista__link" >Galería</div>
-                        </li>
+                        </li> */}
                         <li className="lista__opcion" >
                             <div onClick={() => hashLinkScroll('cotizacion')} className="lista__link" >Contacto</div>
                         </li>
@@ -155,8 +157,8 @@ function InicioPrueba() {
                         <div className='servicios__campo' >
                             {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <VscTools size={50} color={"#e1e1e1"}/>
-                            <p className='servicios__texto' >Reparación de herramientas hidráulicas, neumáticas y de torque</p>
-                            <Link to={'/prueba/servicios/reparacion'}>
+                            <p className='servicios__texto' >Reparación y mantención de herramientas hidráulicas, neumáticas y de torque</p>
+                            <Link to={'/servicios/reparacion'}>
                                 <button className="servicios__btn" >Conoce más <MdArrowForwardIos size={20} /></button>
                             </Link>
                         </div>
@@ -165,7 +167,7 @@ function InicioPrueba() {
                             {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <HiOutlineShoppingCart size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Venta de insumos y consumibles diversos (ferretería, soldadura, oficina, etc.)</p>
-                            <Link to={'/prueba/servicios/insumos'}>
+                            <Link to={'/servicios/insumos'}>
                                 <button className="servicios__btn" >Conoce más <MdArrowForwardIos size={20} /></button>
                             </Link>
                         </div>
@@ -175,7 +177,7 @@ function InicioPrueba() {
                             <RiShoppingBagLine size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Venta y arriendo de herramientas diversas</p>
                             
-                            <Link to={'/prueba/servicios/venta'}>
+                            <Link to={'/servicios/venta'}>
                                 <button className="servicios__btn" >Conoce más <MdArrowForwardIos size={20} /></button>
                             </Link>
                         </div>
@@ -184,7 +186,7 @@ function InicioPrueba() {
                             {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <MdOutlinePrecisionManufacturing size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Fabricación de extensiones de impacto, pernos de anclaje, abrazaderas y flexibles hidráulicos</p>
-                            <Link to={'/prueba/servicios/fabricacion'}>
+                            <Link to={'/servicios/fabricacion'}>
                                 <button className="servicios__btn" >Conoce más <MdArrowForwardIos size={20} /></button>
                             </Link>
                         </div>
@@ -193,7 +195,7 @@ function InicioPrueba() {
                             {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <GiDrill size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Servicios de torque en terreno</p>
-                            <Link to={'/prueba/servicios/torque'}>
+                            <Link to={'/servicios/torque'}>
 
                                 <button className="servicios__btn" >Conoce más <MdArrowForwardIos size={20} /></button>
                             </Link>
@@ -206,12 +208,12 @@ function InicioPrueba() {
                     <div></div>
                 </div>
 
-                <div class="clientes">
+                <div className="clientes">
 
             
                     <h1 className="noticias__titulo">Algunos de Nuestros clientes</h1>
 
-                    <div class="clientes-slide">
+                    <div className="clientes-slide">
                         <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/HEMAQ.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
@@ -234,7 +236,7 @@ function InicioPrueba() {
                         <img src="img/Inicio/clientes/sergomet.png" alt="Bailac" />
                     </div>
 
-                    <div class="clientes-slide">
+                    <div className="clientes-slide">
                         <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/HEMAQ.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
@@ -266,12 +268,12 @@ function InicioPrueba() {
                     <div className="sello__grupo">
                         <div className="sello__campo">
                             <img className="sello__img" src="/img/Inicio/Galeria/antes.jpg" alt="antes" />
-                            <div class="typing-container">
-                                <span class="typing-animation">&#10003; Entrega en tiempos establecidos</span>
-                                <span class="typing-animation">&#10003; Precios justos</span>
-                                <span class="typing-animation">&#10003; Calidad en nuestro trabajo</span>
-                                <span class="typing-animation">&#10003; Responsabilidad y Honestidad</span>
-                                <span class="typing-animation">&#10003; Hacemos un seguimiento de los <br />equipos de nuestros clientes donde siempre <br /> buscamos tener una <strong>MANTENCIÓN PREVENTIVA <br />ANTES QUE CORRECTIVA</strong></span>
+                            <div className="typing-container">
+                                <span className="typing-animation">&#10003; Entrega en tiempos establecidos</span>
+                                <span className="typing-animation">&#10003; Precios justos</span>
+                                <span className="typing-animation">&#10003; Calidad en nuestro trabajo</span>
+                                <span className="typing-animation">&#10003; Responsabilidad y Honestidad</span>
+                                <span className="typing-animation">&#10003; Hacemos un seguimiento de los <br />equipos de nuestros clientes donde siempre <br /> buscamos tener una <strong>MANTENCIÓN PREVENTIVA <br />ANTES QUE CORRECTIVA</strong></span>
                             </div>
                             <img className="sello__img" src="/img/Inicio/Galeria/despues.jpg" alt="despues" />
                         </div>
@@ -279,7 +281,7 @@ function InicioPrueba() {
                 </div>
             </section>
 
-            <section className="noticias">
+            {/* <section className="noticias">
 
                 <h1 className="noticias__titulo">Noticias</h1>
 
@@ -326,7 +328,7 @@ function InicioPrueba() {
                     </div>
 
                 </div>
-            </section>
+            </section> */}
 
             <section className="cotizacion" id="cotizar">
                 <div className="cotizacion__card">
