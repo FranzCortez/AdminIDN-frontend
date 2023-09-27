@@ -38,6 +38,9 @@ function FormNuevaFactura() {
     const [ otines, guardarOtines ] = useState([]);
     const [ otinesSeleccionadas, guardarOtinesSeleccionadas ] = useState([]);
     const [ texto, guardarTexto ] = useState(false);
+    const [ segundaFactura, guardarSegundaFactura ] = useState(false);
+    const [ segundaOtin, guardarSegundaOtin ] = useState('');
+    const [ errorSegunda, guardarErrorSegunda ] = useState(false);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -50,6 +53,37 @@ function FormNuevaFactura() {
             ...factura,
             [e.target.name] : e.target.value
         });
+    }
+
+    const actualizarSegundaOtin = e => {
+        guardarSegundaOtin(e.target.value);
+    }
+
+    const obtenerOtinManual = async e => {
+        try {
+            
+            const res = await clienteAxios.post('ih/manual/otin', { otin: segundaOtin }, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            if ( res.data == null ){
+                guardarErrorSegunda(true);
+                return
+            }
+
+            const otin = [];
+
+            otin.push({ label: `OTIN ${res.data.otin}`, value: res.data.id, data: res.data.guiaDespacho, fechaData: res.data.fechaGuiaDespacho });
+
+            guiasDespachoAutoCompletado(otin);
+
+            guardarErrorSegunda(false);
+        } catch (error) {
+            console.log(error);
+            guardarErrorSegunda(true);
+        }
     }
 
     const valorNumero = (numero) => new Intl.NumberFormat().format(numero);
@@ -261,21 +295,35 @@ function FormNuevaFactura() {
                                         />             
                                     </div>    
                                     
-                                    <div>
-                                        <label htmlFor="otines">Seleccione la OTIN (DOBLE FACTURA)<span className='campo__obligatorio'>*</span>:</label>
-                                        <input 
-                                            type="otines" 
-                                            id='otines'
-                                            name='numeroFactura'
-                                            placeholder='Número Factura'
-                                            onChange={actualizarState}
-                                            defaultValue={factura.numeroFactura}
-                                        />
+                                    <div className='segundaFactura' >
+                                        <div className="btn-new btn-return" onClick={() => {guardarSegundaFactura(!segundaFactura)}} >Segunda Factura</div>
                                     </div>
                                 </Fragment>
                             :
                                 null
                         }       
+
+                        {
+                            segundaFactura ?
+                                <Fragment>
+                                    <div className='campo'>
+                                        <label htmlFor="otines">Seleccione la OTIN (DOBLE FACTURA)<span className='campo__obligatorio'>*</span>:</label>
+                                        <input 
+                                            type="otines" 
+                                            id='otines'
+                                            name='otines'
+                                            placeholder='Buscar OTIN EJEM: 1234-2023'
+                                            onChange={actualizarSegundaOtin}
+                                        />
+                                    </div>
+
+                                    <div className='segundaFactura' >
+                                        <div className="btn-new btn-return" onClick={() => {obtenerOtinManual()}} >Buscar OTIN manual</div>
+                                    </div>
+                                </Fragment>
+                            :
+                                null
+                        }
 
                         {
                             otinesSeleccionadas.length === 0 ?
