@@ -88,18 +88,18 @@ function Nosotros() {
             </header>
 
             <section className="visionM">
-                <h2 className="visionM__titulo">Nuestra Visión</h2>
+                <h2 className="visionM__titulo">Nuestra Misión</h2>
 
-                <p className="visionM__texto">Seguir siendo un referente de calidad y compromiso, atendiendo a cada vez más clientes (plantas y faenas), en proyectos de creciente importancia, y ampliando nuestros servicios para satisfacer la demanda de los sectores minero, energético y de transporte.</p>
+                <p className="visionM__texto">Somos una empresa enfocada en responder eficazmente la demanda de servicios (reparación, mantención, fabricación, arriendo y venta de equipo e insumos) para las industrias minera, energética y de transporte. Con el objetivo de satisfacer las necesidades de nuestros clientes con profesionalismo, calidad, cumplimiento de plazos y precios competitivos.</p>
 
                 <img src="/img/Inicio/banderas.jpg" alt="ejemplo" className="misionM__img" />
 
             </section>
 
             <section className="misionM">
-                <h2 className="misionM__titulo">Nuestra Misión</h2>
+                <h2 className="misionM__titulo">Nuestra Visión</h2>
 
-                <p className="misionM__texto">Somos una empresa enfocada en responder eficazmente la demanda de servicios (reparación, mantención, arriendo y fabricación de equipos; así como venta de insumos) para las industrias minera, energética y de transporte. Con el objetivo de satisfacer las necesidades de nuestros clientes con profesionalismo, calidad, cumplimiento de plazos y precios competitivos.</p>
+                <p className="misionM__texto">Seguir siendo un referente de calidad y compromiso, atendiendo a cada vez más clientes (empresas, plantas y faenas), en proyectos de creciente importancia, y ampliando nuestros servicios, acorde a los requerimientos regionales (y a mediano plazo, nacionales e internacionales) de los sectores minero, energético y de transporte.</p>
 
                 <img src="/img/LogoIDN.webp" alt="Logo IDN" className="visionM__img" />
 
@@ -109,7 +109,7 @@ function Nosotros() {
                 <h2 className="valores__titulo">Nuestros Valores</h2>
 
                 <ul className="valores__texto valores__ul">
-                    <li>Resposabilidad</li>
+                    <li>Responsabilidad</li>
                     <li>Honestidad</li>
                     <li>Compromiso</li>
                     <li>Excelencia</li>
@@ -130,144 +130,168 @@ function Nosotros() {
                 
                 <h2 className="nosotros__main" >Nuestro Equipo</h2>
 
-                <div className="equipo__grid">
-                    <div className="equipo__persona">
+                
+                    <div className="equipo__flex">
+                        <div className="equipo__persona">
 
-                        <div className="equipo1__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >22 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Hidráulica Y Neumática</h3>
+                            <div className="equipo1__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >22 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Hidráulica Y Neumática</h3>
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Alberto García López</h2>
+                                <h3 className="equipo__cargo">Fundador y Gerente técnico</h3>
                             </div>
                         </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Alberto García López</h2>
-                            <h3 className="equipo__cargo">Fundador y Gerente técnico</h3>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo2__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >15 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Gestión y Estrategia empresarial</h3>
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Ericka Castellanos Moreno</h2>
+                                <h3 className="equipo__cargo">Socia y Gestión administrativa</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="equipo__grid">
+                        <div className="equipo__persona">
+
+                            <div className="equipo3__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >10 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Metalmecánica (torno) e Hidráulica.</h3>
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Eduardo Beluzarán González</h2>
+                                <h3 className="equipo__cargo">Jefe de taller</h3>
+                            </div>
+                        </div>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo4__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >10 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Neumática y equipos de  torque controlado, alto torque y de impacto</h3>
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">David Nilo Ramirez</h2>
+                                <h3 className="equipo__cargo">Técnico en Hidroneumática</h3>
+                            </div>
+                        </div>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo5__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >2 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Cilindros hidráulicos</h3>
+
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Adalberto Medina Maldonado</h2>
+                                <h3 className="equipo__cargo">Ayudante de taller</h3>
+                            </div>                        
+                        </div>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo9__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >40 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Electrónica</h3>
+
+                                </div>
+                            </div>
+
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Santiago Gamboa López</h2>
+                                <h3 className="equipo__cargo">Técnico Industrial</h3>
+                            </div>
+                        </div>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo10__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >25 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Diplomado en: tributación, planificación tributaria, contabilidad internacional IFRS</h3>
+
+                                </div>
+                            </div>
+
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Pamela Araya Vilca</h2>
+                                <h3 className="equipo__cargo">Contador Auditor</h3>
+                            </div>
+                        </div>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo7__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >3 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Desarrollo Web, Metodología Ágiles y Base de Datos</h3>
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Franz Cortez Olmedo</h2>
+                                <h3 className="equipo__cargo">Desarrollador Full-Stack</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="equipo__flex">
+                        <div className="equipo__persona">
+
+                            <div className="equipo6__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >3 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en RRSS y marketing digital</h3>
+                                </div>
+                            </div>
+
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Joyce García Castellanos</h2>
+                                <h3 className="equipo__cargo">Encargada Redes sociales</h3>
+                            </div>
+                        </div>
+
+                        <div className="equipo__persona">
+
+                            <div className="equipo8__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >2 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Diseño y edición digital</h3>
+                                </div>
+                            </div>
+
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">Iskander García Castellanos</h2>
+                                <h3 className="equipo__cargo">Encargado Redes Sociales</h3>
+                            </div>
                         </div>
                     </div>
 
                     <div className="equipo__persona">
-
-                        <div className="equipo2__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >15 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Gestión y Estrategia empresarial</h3>
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Ericka Castellanos Moreno</h2>
-                            <h3 className="equipo__cargo">Socia y Gestión administrativa</h3>
-                        </div>
                     </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo3__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >10 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Metalmecánica (torno) e Hidráulica.</h3>
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Eduardo Beluzarán González</h2>
-                            <h3 className="equipo__cargo">Jefe de taller</h3>
-                        </div>
-                    </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo4__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >10 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Neumática y equipos de  torque controlado, alto torque y de impacto</h3>
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">David Nilo Ramirez</h2>
-                            <h3 className="equipo__cargo">Técnico mecánico</h3>
-                        </div>
-                    </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo5__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >2 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Cilindros hidráulicos</h3>
-
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Adalberto Medina Maldonado</h2>
-                            <h3 className="equipo__cargo">Ayudante de taller</h3>
-                        </div>                        
-                    </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >25 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Diplomado en: tributación, planificación tributaria, contabilidad internacional IFRS</h3>
-
-                            </div>
-                        </div>
-
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Pamela Araya Vilca</h2>
-                            <h3 className="equipo__cargo">Contador Auditor</h3>
-                        </div>
-                    </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo6__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >3 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en RRSS y marketing digital</h3>
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Joyce García Castellanos</h2>
-                            <h3 className="equipo__cargo">Encargada Redes sociales</h3>
-                        </div>
-                    </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >3 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Desarrollo Web, Metodología Ágiles y Base de Datos</h3>
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Franz Cortez Olmedo</h2>
-                            <h3 className="equipo__cargo">Desarrollador Full-Stack</h3>
-                        </div>
-                    </div>
-
-                    <div className="equipo__persona">
-
-                        <div className="equipo8__img">
-                            <div className="equipo__info" >
-                                <h3 className="equipo__experiencia" >2 Años de Experiencia</h3>
-                                <h3 className="equipo__especializacion">Especialización en Diseño y edición digital</h3>
-                            </div>
-                        </div>
-                    
-                        <div className="equipo__text">
-                            <h2 className="equipo__nombre">Iskander García Castellanos</h2>
-                            <h3 className="equipo__cargo">Encargado Redes Sociales</h3>
-                        </div>
-                    </div>
-                </div>
 
             </section>
             <footer className="footer">
@@ -289,7 +313,7 @@ function Nosotros() {
 
                     <div className="footer__ubicacion">
                         <h3 className="footer__titulo" >Encuéntranos</h3>
-                        <a href="https://goo.gl/maps/1dMV6XkMWQdqCYpAA" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Nicolás Tirado 150, Antofagasta</a>
+                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a>
                         {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1537.2943644117688!2d-70.39523170701854!3d-23.592753740747565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ae2b2f8e4f1c6d%3A0xf8368dc7b3de01e2!2sImpacto%20del%20norte!5e0!3m2!1ses!2scl!4v1692575903581!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"/> */}
                     </div>
                 </div>

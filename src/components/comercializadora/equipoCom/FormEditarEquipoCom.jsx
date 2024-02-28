@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { VscTools } from 'react-icons/vsc';
-import { MdAddCircle } from "react-icons/md";
+import { BsPencilSquare } from "react-icons/bs";
 import Swal from 'sweetalert2';
 
 import { parseVulgars } from 'vulgar-fractions';
@@ -10,8 +10,10 @@ import { parseVulgars } from 'vulgar-fractions';
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../../config/axios';
 
-function FormNuevoEquipoCom() {
+function FormEditarEquipoCom() {
 
+    const { id } = useParams();
+    
     const [ equipo, guardarEquipo ] = useState({
         nombre: '',
         descripcion: ''
@@ -43,7 +45,7 @@ function FormNuevoEquipoCom() {
         return true;
     }
 
-    const agregarEquipoPadre = async (e) => {
+    const editarEquipoPadre = async (e) => {
         e.preventDefault();
 
         if( entre > 0) {
@@ -53,14 +55,14 @@ function FormNuevoEquipoCom() {
         entre = 1;
         
         try {            
-            const res = await clienteAxios.post('/equipo/padre', equipo,{
+            const res = await clienteAxios.put('/equipo/padre/' + id, equipo,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
 
             Swal.fire({
-                title: 'Se agrego correctamente el insumo/equipo',
+                title: 'Se agrego actualizo el insumo/equipo',
                 text: res.data.msg,
                 type: 'success',
                 timer: 3500
@@ -80,21 +82,48 @@ function FormNuevoEquipoCom() {
         
     }
 
+    const consultarAPI = async () => {
+
+        try {
+            const res = await clienteAxios.get(`equipo/padre/obtener/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            guardarEquipo(res.data);
+        } catch (error) {
+            if(error.request.status === 404 ) {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Hubo un error',
+                    text: error.response.data.msg,
+                    timer: 1500
+                })
+            }
+            // redireccionar
+            navigate('/equiposcom', {replace: true});
+        }
+
+    }
+
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
         } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
             navigate('/login', {replace: true});
         }
+
+        consultarAPI();
     },[]);
 
     return (
         <Fragment>
             <div className="card contenedor">
                 <div className="card-header-com">
-                    <MdAddCircle size={50} color={"#ebe1e1"}/>
+                    <BsPencilSquare size={50} color={"#ebe1e1"}/>
                     <VscTools size={50} color={"#ebe1e1"}/>
-                    <h1>Crear Nuevo Insumo/Equipo</h1>
+                    <h1>Editar Insumo/Equipo</h1>
                 </div>
                 <div className="card-body">
 
@@ -104,7 +133,7 @@ function FormNuevoEquipoCom() {
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 
-                    <form onSubmit={agregarEquipoPadre}>
+                    <form onSubmit={editarEquipoPadre}>
                         
                         <div className='campo'>
                             <label htmlFor="nombre">Nombre Insumo/Equipo<span className='campo__obligatorio'>*</span>:</label>
@@ -128,7 +157,7 @@ function FormNuevoEquipoCom() {
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Crear Nuevo Insumo/Equipo"
+                                value="Actualizar Insumo/Equipo"
                                 disabled={validarForm()}
                             />
                         </div>
@@ -139,4 +168,4 @@ function FormNuevoEquipoCom() {
     )
 }
 
-export default FormNuevoEquipoCom
+export default FormEditarEquipoCom

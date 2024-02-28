@@ -128,9 +128,9 @@ function FormNuevaFactura() {
 
     const validarForm = () => {
 
-        const { fechaFactura } = factura;
+        const { fechaFactura, guardarOtines, monto } = factura;
         
-        if( !(!fechaFactura.length) ){
+        if( (!!fechaFactura.length && (guardarOtines.length) && monto.length ) ){
             return false;
         }
 

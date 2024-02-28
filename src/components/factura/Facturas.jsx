@@ -176,7 +176,7 @@ function Facturas() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
+            console.log(res.data)
             guardarFacturas(res.data);
             
         } catch (error) {

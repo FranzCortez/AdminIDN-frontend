@@ -1,18 +1,22 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { VscTools } from 'react-icons/vsc';
 import { MdAddCircle } from 'react-icons/md';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import Swal from 'sweetalert2';
 
-import { CRMContext } from '../../context/CRMContext';
-import clienteAxios from '../../../config/axios';
-import EquipoCom from './EquipoCom';
+import { CRMContext } from '../../../context/CRMContext';
+import clienteAxios from '../../../../config/axios';
 
-import Paginacion from '../../layout/Paginacion';
+import EquipoHijoCom from './EquipoHijoCom';
 
-import Spinner from '../../layout/Spinner';
+import Paginacion from '../../../layout/Paginacion';
 
-function EquiposCom() {
+import Spinner from '../../../layout/Spinner';
+
+function EquiposHijosCom() {
+
+    const { id } = useParams();
   
     // state usuarios
     const [ equipo, guardarEquipo ] = useState([]); 
@@ -77,12 +81,12 @@ function EquiposCom() {
         try {
             // localStorage.setItem('ultima', `/ingresos/tipoherramienta`);
             
-            const res = await clienteAxios.get(`/equipo/padre/${offset}`,{
+            const res = await clienteAxios.get(`/equipo/categoria/${id}/${offset}`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
+            console.log(res.data)
             guardarEquipo(res.data.equipo);
             guardarCantPaginas(res.data.cantPag);
             
@@ -110,7 +114,7 @@ function EquiposCom() {
         } else {
             navigate('/login', {replace: true});
         }      
-    }, [cambio,offset]);
+    }, [cambio]);
 
     setTimeout(() => {
         guardarSpin(false);
@@ -121,13 +125,15 @@ function EquiposCom() {
             <div className="card contenedor">
                 <div className="card-header-com">
                     <VscTools size={50} color={"#ebe1e1"}/>
-                    <h1>Insumos/Equipos</h1>
+                    <h1>{equipo.length > 0 ? equipo[0].equipoPadreCom.nombre : ''} Insumos/Equipos</h1>
                 </div>
                 <div className="card-body">
 
                     <div className='card-body-options'>
 
                         {/* <FormBuscarTipoHerramienta leerBusqueda={leerBusqueda} buscarHerramienta={buscarHerramienta} escucharCambio={escucharCambio}/> */}
+
+                        <Link to={'/equiposcom'} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar a todos los I/E</Link>
 
                         <Link to={"nuevo"} type="button" className="btn-new btn-success-new">
                             <MdAddCircle size={25}/>
@@ -141,9 +147,16 @@ function EquiposCom() {
                         <table className="table table-hover">
                             <thead>
                                 <tr className='table__head-com'>
+                                    <th scope="col">Código</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Descripción</th>
-                                    <th scope="col">Insumo / Equipo</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">N. Serie</th>
+                                    <th scope="col">Proveedor</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Valor</th>
                                     <th scope="col">Editar</th>
                                 </tr>
                             </thead>
@@ -151,7 +164,7 @@ function EquiposCom() {
                                 {
                                     equipo.length > 0 ? (
                                         equipo.map((datos) => (
-                                            <EquipoCom datos={datos} key={datos.id}/>
+                                            <EquipoHijoCom datos={datos} key={datos.id}/>
                                         ))
                                     ) : spin ?
                                     <Spinner/>
@@ -168,4 +181,4 @@ function EquiposCom() {
     )
 }
 
-export default EquiposCom
+export default EquiposHijosCom

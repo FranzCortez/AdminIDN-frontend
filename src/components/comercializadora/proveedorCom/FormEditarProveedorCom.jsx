@@ -1,18 +1,18 @@
 import React, { useState, useEffect, Fragment, useContext } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
-import { RiContactsBook2Line } from "react-icons/ri";
+import { FaTruckMoving } from "react-icons/fa";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function FormEditarEmpresaCom() {
+function FormEditarProveedorCom() {
 
     const { id } = useParams();
 
-    const [ empresa, guardarEmpresa ] = useState({
+    const [ proveedor, guardarProveedor ] = useState({
         nombre: '',
         rut: '',
         razonSocial: '',
@@ -26,15 +26,15 @@ function FormEditarEmpresaCom() {
 
     const actualizarState = e => {
         
-        guardarEmpresa({
-            ...empresa,
+        guardarProveedor({
+            ...proveedor,
             [e.target.name] : e.target.value
         });
     }
 
     const validarForm = () => {
         
-        const { nombre, rut, razonSocial, direccion } = empresa;
+        const { nombre, rut, razonSocial, direccion } = proveedor;
         
         if( (nombre.length > 0 && rut.length > 0 && razonSocial.length > 0 && direccion.length > 0) ){
             return false;
@@ -43,25 +43,25 @@ function FormEditarEmpresaCom() {
         return true;
     }
 
-    const actualizarEmpresa = async (e) => {
+    const actualizarProveedor = async (e) => {
         e.preventDefault();
         
         try {            
-            const res = await clienteAxios.put(`/clientescom/empresacom/${id}`, empresa,{
+            const res = await clienteAxios.put(`/proveedor`, proveedor,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
 
             Swal.fire({
-                title: 'Se actualizó correctamente la empresa',
+                title: 'Se actualizó correctamente el proveedor',
                 text: res.data.msg,
                 type: 'success',
                 timer: 2500
             });
                 
             // redireccionar
-            navigate(`/clientescom`, {replace: true});
+            navigate(`/proveedorescom`, {replace: true});
         } catch (error) {
             
             if(error.request.status === 501 ) {
@@ -85,13 +85,13 @@ function FormEditarEmpresaCom() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`clientescom/empresacom/editar/${id}`,{
+            const res = await clienteAxios.get(`/proveedor/obtener/${id}`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            
-            guardarEmpresa(res.data);
+            console.log(res.data)
+            guardarProveedor(res.data);
         } catch (error) {
             if(error.request.status === 404 ) {
                 Swal.fire({
@@ -121,40 +121,40 @@ function FormEditarEmpresaCom() {
             <div className="card contenedor">
                 <div className="card-header-com">
                     <BsPencilSquare size={25} color={"#ebe1e1"}/>
-                    <RiContactsBook2Line size={50} color={"#ebe1e1"}/>
-                    <h1>Editar Contacto</h1>
+                    <FaTruckMoving size={50} color={"#ebe1e1"}/>
+                    <h1>Editar Proveedor</h1>
                 </div>
                 <div className="card-body">
 
                     <div className='top-left'>
-                        <Link to={`/clientescom`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                        <Link to={`/proveedorescom`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                     </div>
 
                     <h2 className='card-body-subtitle'> Cambie los campos según corresponda: </h2>
 
-                    <form onSubmit={actualizarEmpresa}>
+                    <form onSubmit={actualizarProveedor}>
 
                         <div className='campo'>
-                            <label htmlFor="nombre">Nombre Empresa<span className='campo__obligatorio'>*</span>:</label>
+                            <label htmlFor="nombre">Nombre Proveedor<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='nombre'
                                 name='nombre'
-                                placeholder='Nombre del cliente empresa'
+                                placeholder='Nombre del Proveedor'
                                 onChange={actualizarState}
-                                value={empresa?.nombre}
+                                value={proveedor?.nombre}
                             />
                         </div>
                         
                         <div className='campo'>
-                            <label htmlFor="rut">Rut Empresa<span className='campo__obligatorio'>*</span>:</label>
+                            <label htmlFor="rut">Rut proveedor<span className='campo__obligatorio'>*</span>:</label>
                             <input 
                                 type="text" 
                                 id='rut'
                                 name='rut'
-                                placeholder='Rut del cliente empresa'
+                                placeholder='Rut del Proveedor'
                                 onChange={actualizarState}
-                                value={empresa?.rut}
+                                value={proveedor?.rut}
                             />
                         </div>
 
@@ -164,9 +164,9 @@ function FormEditarEmpresaCom() {
                                 type="text" 
                                 id='razonSocial'
                                 name='razonSocial'
-                                placeholder='Razón Social del cliente empresa'
+                                placeholder='Razón Social del Proveedor'
                                 onChange={actualizarState}
-                                value={empresa?.razonSocial}
+                                value={proveedor?.razonSocial}
                             />
                         </div>
 
@@ -176,9 +176,9 @@ function FormEditarEmpresaCom() {
                                 type="text" 
                                 id='direccion'
                                 name='direccion'
-                                placeholder='Dirección del cliente empresa'
+                                placeholder='Dirección del Proveedor'
                                 onChange={actualizarState}
-                                value={empresa?.direccion}
+                                value={proveedor?.direccion}
                             />
                         </div>
 
@@ -186,7 +186,7 @@ function FormEditarEmpresaCom() {
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Actualizar Cliente Empresa"
+                                value="Actualizar Proveedor"
                                 disabled={validarForm()}
                             />
                         </div>
@@ -198,4 +198,4 @@ function FormEditarEmpresaCom() {
     )
 }
 
-export default FormEditarEmpresaCom;
+export default FormEditarProveedorCom

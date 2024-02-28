@@ -3,10 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
 import { AiOutlineMore } from "react-icons/ai";
 
-import { CRMContext } from '../../context/CRMContext';
+import { CRMContext } from '../../../context/CRMContext';
 
-function EquipoCom({ datos }) {
-    console.log(datos)
+function EquipoHijoCom({ datos }) {
     const [auth, guardarAuth] = useContext(CRMContext);
 
     let navigate = useNavigate();
@@ -21,7 +20,13 @@ function EquipoCom({ datos }) {
 
     return (
         <tr className='table__tr'>
+            <td>{datos.numeroSerie}</td>
             <td>{datos.nombre}</td>
+            <td>{datos.tipo}</td>
+            <td>{datos.marca}</td>
+            <td>{datos.modelo}</td>
+            <td>{datos.codigo}</td>
+            <td>{datos.proveedorCom.nombre}</td>
             <td>
                 {
                     datos.descripcion ? 
@@ -30,22 +35,18 @@ function EquipoCom({ datos }) {
                     '-'
                 }
             </td>
+            <td>{datos.stock}</td>
+            <td>{datos.valor}</td>
             <td>
                 <div className='table__opciones'>
-                    <Link to={`${datos.id}`}>
-                        <button type='button' className="btn-new btn-success-new"><AiOutlineMore size={23} color="#ffff"/></button>
-                    </Link>
-                </div>
-            </td>
-            <td>
-                <div className='table__opciones'>
-                    <Link to={`editar/${datos.id}`}>
-                        <button type='button' className="btn btn-warning"><BsPencilSquare size={23} color="#ffff"/></button>
-                    </Link>
+                    {/* <Link to={`editar/${datos.id}`}> */}
+                        <button type='button' className=" btn-warning"><BsPencilSquare size={23} color="#ffff" disabled/></button>
+                        {/* <button type='button' className="btn btn-warning"><BsPencilSquare size={23} color="#ffff" disabled/></button> */}
+                    {/* </Link> */}
                 </div>
             </td>
         </tr>
     )
 }
 
-export default EquipoCom;
+export default EquipoHijoCom

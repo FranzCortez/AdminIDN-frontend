@@ -349,6 +349,7 @@ function FormNuevoIngreso() {
                                 <option value={'Alberto García'} > Alberto García </option>    
                                 <option value={'David Nilo'} > David Nilo </option>    
                                 <option value={'Eduardo Beluzarán'} > Eduardo Beluzarán </option>    
+                                <option value={'Adalberto Medina'} > Adalberto Medina </option>    
                                 
                             </select>
                         </div>

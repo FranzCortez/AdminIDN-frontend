@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlinePrecisionManufacturing, MdOutlineVerified, MdArrowForwardIos } from "react-icons/md";
 import { HiOutlineShoppingCart } from 'react-icons/hi';
@@ -9,9 +9,18 @@ import { HiMail } from "react-icons/hi";
 import { BsTelephoneInbound, BsWhatsapp } from "react-icons/bs";
 import { SiGooglemaps } from "react-icons/si"
 import Confeti from "../layout/Confeti";
+import Modal from "./Modal";
 
+import clienteAxios from "../../config/axios";
+import { CRMContext } from '../context/CRMContext';
 
 function InicioPrueba() {
+
+    const [auth, guardarAuth] = useContext(CRMContext);
+
+    const [ confeti, guardarConfeti ] = useState(false);
+    
+    const [isModalOpen, setModalOpen] = useState(0);
 
     const [offset, setOffset] = useState(0);
     const [windowSize, setWindowSize] = useState({
@@ -39,6 +48,10 @@ function InicioPrueba() {
             });
         }, 1500);
     }
+
+      const closeModal = () => {
+        setModalOpen(1);
+      };
 
     const thirdEffect = () => {
 
@@ -88,9 +101,25 @@ function InicioPrueba() {
         }
     }
   
+    const consultarAPI = async () => {
+        
+        try {
+            const res = await clienteAxios.get(`efecto`,{
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+            
+            guardarConfeti(res.data.find(efecto=> efecto.nombre === 'Confeti' && efecto.activo === true))
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
     
     const onScroll = () => setOffset(window.pageYOffset);
     useEffect(() => {
+        consultarAPI();
         function handleResize() {
             setWindowSize({
               width: window.innerWidth,
@@ -111,7 +140,24 @@ function InicioPrueba() {
     return(
         
         <div className="back__main" >
-            <Confeti></Confeti>
+            
+            {
+                confeti ? 
+                <Confeti></Confeti>
+                :
+                null
+            }
+
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <h2>¡ Nueva ubicación de Impacto del Norte !</h2>
+                <h1>Encuéntranos en:</h1>
+                <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="modal-link" rel="noreferrer"><SiGooglemaps size={30} />&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a> 
+                <iframe title="impacto del norte mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.9901016713147!2d-70.38697995074226!3d-23.604687935778667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ae2b2f8e4f1c6d%3A0xf8368dc7b3de01e2!2sImpacto%20del%20norte!5e0!3m2!1ses!2scl!4v1702584586260!5m2!1ses!2scl" style={{border: "0", display: 'block', margin: '0 auto'}} width="400" height="250" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p className="modal-p">Haz clic en la ubicación para ir al mapa</p>
+
+                {/* <img src="/img/Inicio/rifa.jpg" alt="imagen rifa"  width="400" height="350" /> */}
+            </Modal>
+
             <div className="hero__espacio"></div>
             <div className="hero__main" id="hero__main"></div>
             
@@ -371,8 +417,7 @@ function InicioPrueba() {
 
                     <div className="footer__ubicacion">
                         <h3 className="footer__titulo" >Encuéntranos</h3>
-                        <a href="https://goo.gl/maps/1dMV6XkMWQdqCYpAA" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Nicolás Tirado 150, Antofagasta</a>
-                        {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1537.2943644117688!2d-70.39523170701854!3d-23.592753740747565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ae2b2f8e4f1c6d%3A0xf8368dc7b3de01e2!2sImpacto%20del%20norte!5e0!3m2!1ses!2scl!4v1692575903581!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"/> */}
+                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a>
                     </div>
                 </div>
 

@@ -23,7 +23,7 @@ function TablaBalance({ data, total }) {
                             data.map((info, index) => (
                                 <tr key={index}>
                                     <td>{info?.otines}</td>
-                                    <td>{info?.herramientas[0].clienteContacto.clienteEmpresa.nombre}</td>
+                                    <td>{info?.herramientas[0]?.clienteContacto?.clienteEmpresa?.nombre}</td>
                                     <td>{info?.numeroFactura}</td>
                                     <td>{moment(info?.fechaFactura).format('DD-MM-YYYY')}</td>
                                     <td>$ {valorNumero(info?.monto)}</td>

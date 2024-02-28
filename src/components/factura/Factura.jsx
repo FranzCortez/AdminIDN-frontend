@@ -123,7 +123,7 @@ function Factura({ datos, boleta, boletaPago }) {
                     }
                     
                     {
-                        (datos.fechaPago === null || datos.fechaPago === '0000-00-00') && datos?.herramientas?.length > 0 ?
+                        datos?.herramientas?.length > 0 ?
 
                             <Link to={`pagar/${datos.id}`}>
                                 <button type='button' className={'btn-new btn-success-new'} >

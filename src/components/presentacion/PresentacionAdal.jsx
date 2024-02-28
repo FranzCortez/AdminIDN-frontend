@@ -5,17 +5,17 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 import './presentacion.css'
 
-function PresentacionAdm() {
+function PresentacionAdal() {
     
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
-
+    
     return (
         <div>
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js">
-                <Viewer fileUrl={'presentacion/Ericka IdN.pdf'} plugins={[]} ></Viewer>
+                <Viewer fileUrl={'presentacion/Adalberto IdN.pdf'} plugins={[]} ></Viewer>
             </Worker>
         </div>
     )
 }
 
-export default PresentacionAdm
+export default PresentacionAdal

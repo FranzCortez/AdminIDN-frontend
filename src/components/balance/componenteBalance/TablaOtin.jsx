@@ -23,7 +23,7 @@ function TablaOtin({ data, total }) {
                                     <td>{index + 1}</td>
                                     <td>{info?.otin}</td>
                                     <td>{info?.nombre}</td>
-                                    <td>{info?.clienteContacto.clienteEmpresa.nombre}</td>
+                                    <td>{info?.clienteContacto?.clienteEmpresa?.nombre}</td>
                                     <td>{moment(info?.fecha).format('DD-MM-YYYY')}</td>
                                 </tr>
                             ))

@@ -511,6 +511,9 @@ h2 {
 .table__tr-informe {
     background-color: #c6dfe7 !important;
 }
+.table__tr-preinforme {
+    background-color: #f0eaa0 !important;
+}
 .table__estado-vencido {
     margin-bottom: 0;
     background-color: red;
@@ -2783,6 +2786,12 @@ table .boleta__total th {
 .equipo__grid {
 
 }
+.equipo__flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20rem;
+}
 .equipo__persona{
     margin-bottom: 2rem;
 }
@@ -2893,7 +2902,18 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo7__img {
-    background-image: url(/img/Inicio/Equipo/a1.jpg);
+    background-image: url(/img/Inicio/Equipo/f1.jpg);
+    height:30rem;
+    width:30rem;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50% 30%;
+    border-radius: 50%;
+    background-size: 120%;
+    margin: 0 auto;
+}
+.equipo8__img {
+    background-image: url(/img/Inicio/Equipo/i1.jpg);
     height:30rem;
     width:30rem;
     position: relative;
@@ -2903,8 +2923,19 @@ table .boleta__total th {
     background-size: 150%;
     margin: 0 auto;
 }
-.equipo8__img {
-    background-image: url(/img/Inicio/Equipo/i1.jpg);
+.equipo9__img {
+    background-image: url(/img/Inicio/Equipo/s1.jpg);
+    height:30rem;
+    width:30rem;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    border-radius: 50%;
+    background-size: 100%;
+    margin: 0 auto;
+}
+.equipo10__img {
+    background-image: url(/img/Inicio/Equipo/p1.jpg);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3332,3 +3363,48 @@ table .boleta__total th {
         width: 40rem;
     }
 }
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .modal-home {
+      background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    max-height: 800px;
+    overflow: scroll;
+  }
+  @media (max-width: 768px) {
+   .modal-home {
+    max-height: 750px;
+   } 
+  }
+  
+  .close-button {
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .modal-link {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  .modal-p {
+    color: black;
+    font-size: 2rem;
+  }

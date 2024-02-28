@@ -153,6 +153,7 @@ function FacturacionAño({ pdfcrear, cambioActivo }) {
             info.push({ name:'Diciembre', value: diciembre.resultado });
             
             guardarTotalMes(totalMes);
+            console.log(facturaAño)
             guardarFacturaPrimero(facturaAño);
             guardarInfoGrafico(info);
 

@@ -1,6 +1,6 @@
 import React, { useContext, Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTruckMoving } from "react-icons/fa";
 import { VscTools } from 'react-icons/vsc';
 import { RiContactsBook2Line } from "react-icons/ri";
 import { AiOutlineDollarCircle, AiOutlinePoweroff, AiOutlineTool, AiFillHome } from "react-icons/ai";
@@ -89,6 +89,11 @@ function Header() {
             texto: 'Clientes',
             icono: <RiContactsBook2Line size={50} color={"#ebe1e1"}/>
         },
+        {
+            ruta: '/proveedorescom',
+            texto: 'Proveedores',
+            icono: <FaTruckMoving size={50} color={"#ebe1e1"}/>
+        },
         // {
         //     ruta: '/ingresos',
         //     texto: 'Ingresos',
@@ -96,7 +101,7 @@ function Header() {
         // },
         {
             ruta: '/equiposcom',
-            texto: 'Equipos',
+            texto: 'Insumos/Equipos',
             icono: <VscTools size={50} color={"#ebe1e1"}/>
         },
         // {

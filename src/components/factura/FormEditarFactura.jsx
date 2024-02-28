@@ -150,7 +150,7 @@ function FormEditarFactura() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-
+            
             guardarEmpresa(fact.data.empresaId);
             guardarFacturaEditar(fact.data);
 
@@ -165,20 +165,20 @@ function FormEditarFactura() {
             const otinSeleccion = [];
             
             otines.data.forEach(data => {
-                if ( data.facturaId === null ) {
-                    otin.push({ label: `OTIN ${data.otin}`, value: data.id, data: data.guiaDespacho, fechaData: data.fechaGuiaDespacho });
-                } else if ( data.facturaId === fact.data.id ) {
+                if ( fact.data.guardarOtines.ids.includes(data.id) ) {
                     otin.push({ label: `OTIN ${data.otin}`, value: data.id, data: data.guiaDespacho, fechaData: data.fechaGuiaDespacho });
                     otinEditar.push({ label: `OTIN ${data.otin}`, value: data.id, data: data.guiaDespacho, fechaData: data.fechaGuiaDespacho });
                     otinSeleccion.push({ id: data.id });
+                } else {
+                    otin.push({ label: `OTIN ${data.otin}`, value: data.id, data: data.guiaDespacho, fechaData: data.fechaGuiaDespacho });
                 }
             });
 
             await guiasDespachoAutoCompletado(otinEditar);
 
-            await guardarOtines(otin);
+            guardarOtines(otin);
             
-            await guardarFactura({
+            guardarFactura({
                 ...factura,
                 numeroFactura: fact.data.numeroFactura,
                 fechaFactura: fact.data.fechaFactura,
