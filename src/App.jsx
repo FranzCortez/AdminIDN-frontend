@@ -84,6 +84,7 @@ import PresentacionVenta from "./components/presentacion/PresentacionVenta";
 import PresentacionAdal from "./components/presentacion/PresentacionAdal";
 import PresentacionEdu from "./components/presentacion/PresentacionEdu";
 import PresentacionSant from "./components/presentacion/PresentacionSant";
+import PresentacionJoam from "./components/presentacion/PresentacionJoam";
 import PresentacionDavid from "./components/presentacion/PresentacionDavid";
 
 /** CheckList */
@@ -109,11 +110,15 @@ import FormEditarEquipoCom from "./components/comercializadora/equipoCom/FormEdi
 import EquiposHijosCom from "./components/comercializadora/equipoCom/equiposHijoCom/EquiposHijosCom";
 
 import FormNuevoEquiposHijosCom from "./components/comercializadora/equipoCom/equiposHijoCom/FormNuevoEquiposHijosCom";
+import FormEditarEquiposHijosCom from "./components/comercializadora/equipoCom/equiposHijoCom/FormEditarEquiposHijosCom";
 
 /** PROVEEDOR */
 import ProveedoresCom from "./components/comercializadora/proveedorCom/ProveedoresCom";
 import FormNuevoProveedorCom from "./components/comercializadora/proveedorCom/FormNuevoProveedorCom";
 import FormEditarProveedorCom from "./components/comercializadora/proveedorCom/FormEditarProveedorCom";
+import ProveedorContactosCom from "./components/comercializadora/proveedorContactoCom/ProveedorContactosCom";
+import FormEditarProveedorContactoCom from "./components/comercializadora/proveedorContactoCom/FormEditarProveedorContactoCom";
+import FormNuevoProveedorContactoCom from "./components/comercializadora/proveedorContactoCom/FormNuevoProveedorContactoCom";
 
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
 
@@ -182,6 +187,7 @@ function App() {
                         <Route path="/davnil" element={<PresentacionDavid/>} />
                         <Route path="/adamed" element={<PresentacionAdal/>} />
                         <Route path="/sangam" element={<PresentacionSant/>} />
+                        <Route path="/joamp" element={<PresentacionJoam/>} />
                 
                         <Route path="/checklist" element={<Solicitudes/>} />
                         <Route path="/checklist/nuevo" element={<FormNuevoSolicitud/>} />
@@ -203,10 +209,14 @@ function App() {
                         
                         <Route path='/equiposcom/:id' element={<EquiposHijosCom/>} />
                         <Route path='/equiposcom/:id/nuevo' element={<FormNuevoEquiposHijosCom/>} />
+                        <Route path='/equiposcom/:idEmpresa/editar/:id' element={<FormEditarEquiposHijosCom/>} />
 
                         <Route path='/proveedorescom' element={<ProveedoresCom/>} />
                         <Route path='/proveedorescom/nuevo' element={<FormNuevoProveedorCom/>} />
                         <Route path='/proveedorescom/editar/:id' element={<FormEditarProveedorCom/>} />
+                        <Route path='/proveedorescom/contacto/:id' element={<ProveedorContactosCom/>} />
+                        <Route path='/proveedorescom/contacto/:idEmpresa/nuevo' element={<FormNuevoProveedorContactoCom/>} />
+                        <Route path='/proveedorescom/contacto/:idEmpresa/editar/:id' element={<FormEditarProveedorContactoCom/>} />
                         
                         <Route path="/home" element={<Home/>} />
                         

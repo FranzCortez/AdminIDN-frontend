@@ -44,16 +44,16 @@ function ProveedorCom({datos, escucharCambio}) {
             <td>{rut}</td>
             <td>{datos.razonSocial}</td>
             <td>{datos.direccion}</td>
-            {/* <td>
+            <td>
                 <div className='table__opciones'>
 
-                    <Link to={`editar/${datos.id}`}>
+                    <Link to={`contacto/${datos.id}`}>
                         <button type='button' className="btn btn-primary" >
                             <MdContactPhone size={23} color="#ffff"/>
                         </button>
                     </Link> 
                 </div>
-            </td> */}
+            </td>
             <td>
                 <div className='table__opciones'>
                     <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><FaUserEdit size={23} color="#ffff"/></button></Link>

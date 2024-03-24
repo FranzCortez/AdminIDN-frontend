@@ -1,15 +1,17 @@
-import React, { useState, useEffect, Fragment, useContext } from 'react';
+import React, { useState, Fragment, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { FaUserEdit } from "react-icons/fa";
+import { MdContactPhone } from "react-icons/md";
+import { FiPlusCircle } from "react-icons/fi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function FormEditarContactoCom() {
-
-    const { id, idEmpresa } = useParams();
+function FormNuevoProveedorContactoCom() {
+    
+    const { idEmpresa } = useParams();
+    let entre = 0;
 
     const [ contacto, guardarContacto ] = useState({
         nombre: '',
@@ -18,7 +20,14 @@ function FormEditarContactoCom() {
         telefono: ''
     });
 
-    let entre = 0;
+    const [ autoCompletarInfo, guardarAutoCompletarInfo ] = useState({
+        nombre: '',
+        cargo: '',
+        correo: '',
+        telefono: ''
+    });
+
+    const [ otro, guardarOtro ] = useState(false);
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -36,7 +45,7 @@ function FormEditarContactoCom() {
     const validarForm = () => {
         
         const { nombre, cargo, correo } = contacto;
-        
+        // autoCompletar(nombre, cargo, correo);
         if( (nombre.length > 0 && cargo.length > 0 && correo.length > 0 ) ){
             return false;
         }
@@ -44,7 +53,7 @@ function FormEditarContactoCom() {
         return true;
     }
 
-    const actualizarContacto = async (e) => {
+    const nuevoContacto = async (e) => {
         e.preventDefault();
         if( entre > 0) {
             return;
@@ -52,23 +61,25 @@ function FormEditarContactoCom() {
         
         entre = 1;
         try {            
-            const res = await clienteAxios.put(`/clientescom/contactocom/${idEmpresa}`, contacto,{
+            const res = await clienteAxios.post(`/proveedor/contactocom/${idEmpresa}`, contacto,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
 
             Swal.fire({
-                title: 'Se actualizó correctamente el contacto',
+                title: 'Se agrego correctamente el contacto',
                 text: res.data.msg,
                 type: 'success',
                 timer: 2500
             });
                 
             // redireccionar
-            navigate(`/clientescom/contacto/${idEmpresa}`, {replace: true});
+            navigate(`/proveedorescom/contacto/${idEmpresa}`, {replace: true});
         } catch (error) {
             
+            console.log(error)
+
             if(error.request.status === 501 ) {
                 Swal.fire({
                     type: 'error',
@@ -87,46 +98,21 @@ function FormEditarContactoCom() {
         }
     }
 
-    const consultarAPI = async () => {
-
-        try {
-            const res = await clienteAxios.get(`/clientescom/contactocom/editar/${idEmpresa}/${id}`,{
-                headers: {
-                    Authorization: `Bearer ${auth.token}`
-                }
-            });
-
-            guardarContacto(res.data);
-        } catch (error) {
-            if(error.request.status === 404 ) {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Hubo un error',
-                    text: error.response.data.msg,
-                    timer: 1500
-                })
-            }
-            // redireccionar
-            navigate('/clientescom', {replace: true});
-        }
-
-    }
-
-    useEffect(() => {
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
-            consultarAPI();
-        } else {
+    useEffect(()=> {
+        if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
+            navigate('/login', {replace: true});
+        } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
             navigate('/login', {replace: true});
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    }, []);
 
     return (
         <Fragment>
             <div className="card contenedor">
                 <div className="card-header-com">
-                    <FaUserEdit size={50} color={"#ebe1e1"}/>
-                    <h1>Editando Contacto</h1>
+                    <FiPlusCircle size={25} color={"#ebe1e1"}/>
+                    <MdContactPhone size={50} color={"#ebe1e1"}/>
+                    <h1>Crear Nuevo Contacto</h1>
                 </div>
                 <div className="card-body">
 
@@ -134,9 +120,30 @@ function FormEditarContactoCom() {
                         <Link to={`/clientescom/contacto/${idEmpresa}`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                     </div>
 
-                    <h2 className='card-body-subtitle'> Cambie los campos que correspondan:  </h2>
+                    <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
 
-                    <form onSubmit={actualizarContacto}>
+                    {
+                        autoCompletarInfo.nombre !== '' ?
+
+                        <Fragment>
+
+                            {/* <div className='autoCompletar'>
+                                <p><span>Nombre:</span> {autoCompletarInfo.nombre}</p>
+                                <p><span>Correo:</span> {autoCompletarInfo.correo}</p>
+                                <p><span>Cargo:</span> {autoCompletarInfo.cargo}</p>
+                                <p><span>Teléfono:</span> {autoCompletarInfo.telefono}</p>                                    
+                            </div>
+                            <div className='opciones'>
+                                <div className='btn-new btn-return' onClick={() => guardarOtro(!otro) }>Buscar otro cliente</div>
+                                <div className='btn-new btn-success-new' onClick={autoCompletarTodo}>Autocompletar datos</div>
+                            </div> */}
+                        </Fragment>
+
+                        :
+                        null
+                    }
+
+                    <form onSubmit={nuevoContacto}>
 
                         <div className='campo'>
                             <label htmlFor="nombre">Nombre del Contacto<span className='campo__obligatorio'>*</span>:</label>
@@ -144,9 +151,8 @@ function FormEditarContactoCom() {
                                 type="text" 
                                 id='nombre'
                                 name='nombre'
-                                placeholder='Nombre del contacto'
+                                placeholder='Nombre del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.nombre}
                             />
                         </div>
                         
@@ -156,9 +162,8 @@ function FormEditarContactoCom() {
                                 type="text" 
                                 id='cargo'
                                 name='cargo'
-                                placeholder='Cargo del contacto'
+                                placeholder='Cargo del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.cargo}
                             />
                         </div>
 
@@ -168,9 +173,8 @@ function FormEditarContactoCom() {
                                 type="email" 
                                 id='correo'
                                 name='correo'
-                                placeholder='Correo del contacto'
+                                placeholder='Correo del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.correo}
                             />
                         </div>
 
@@ -180,9 +184,8 @@ function FormEditarContactoCom() {
                                 type="tel" 
                                 id='telefono'
                                 name='telefono'
-                                placeholder='Teléfono del contacto'
+                                placeholder='Teléfono del nuevo contacto'
                                 onChange={actualizarState}
-                                value={contacto.telefono || ''}
                             />
                         </div>
 
@@ -190,7 +193,7 @@ function FormEditarContactoCom() {
                             <input 
                                 type="submit" 
                                 className={ validarForm() ? "btn-new"  : 'btn-new btn-success-new'}
-                                value="Actualizar Contacto"
+                                value="Crear Nuevo Contacto"
                                 disabled={validarForm()}
                             />
                         </div>
@@ -202,4 +205,4 @@ function FormEditarContactoCom() {
     )
 }
 
-export default FormEditarContactoCom
+export default FormNuevoProveedorContactoCom

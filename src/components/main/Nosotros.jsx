@@ -196,7 +196,7 @@ function Nosotros() {
 
                         <div className="equipo__persona">
 
-                            <div className="equipo5__img">
+                            {/* <div className="equipo5__img">
                                 <div className="equipo__info" >
                                     <h3 className="equipo__experiencia" >2 Años de Experiencia</h3>
                                     <h3 className="equipo__especializacion">Especialización en Cilindros hidráulicos</h3>
@@ -207,7 +207,7 @@ function Nosotros() {
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">Adalberto Medina Maldonado</h2>
                                 <h3 className="equipo__cargo">Ayudante de taller</h3>
-                            </div>                        
+                            </div>                         */}
                         </div>
 
                         <div className="equipo__persona">

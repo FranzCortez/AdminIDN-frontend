@@ -39,10 +39,10 @@ function EquipoHijoCom({ datos }) {
             <td>{datos.valor}</td>
             <td>
                 <div className='table__opciones'>
-                    {/* <Link to={`editar/${datos.id}`}> */}
-                        <button type='button' className=" btn-warning"><BsPencilSquare size={23} color="#ffff" disabled/></button>
-                        {/* <button type='button' className="btn btn-warning"><BsPencilSquare size={23} color="#ffff" disabled/></button> */}
-                    {/* </Link> */}
+                    <Link to={`editar/${datos.id}`}>
+                        {/* <button type='button' className=" btn-warning"><BsPencilSquare size={23} color="#ffff" disabled/></button> */}
+                        <button type='button' className="btn btn-warning"><BsPencilSquare size={23} color="#ffff" disabled/></button>
+                    </Link>
                 </div>
             </td>
         </tr>

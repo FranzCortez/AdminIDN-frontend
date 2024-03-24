@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function FormEditarContactoCom() {
+function FormEditarProveedorContactoCom() {
 
     const { id, idEmpresa } = useParams();
 
@@ -52,7 +52,7 @@ function FormEditarContactoCom() {
         
         entre = 1;
         try {            
-            const res = await clienteAxios.put(`/clientescom/contactocom/${idEmpresa}`, contacto,{
+            const res = await clienteAxios.put(`/proveedor/contactocom/${idEmpresa}`, contacto,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -66,7 +66,7 @@ function FormEditarContactoCom() {
             });
                 
             // redireccionar
-            navigate(`/clientescom/contacto/${idEmpresa}`, {replace: true});
+            navigate(`/proveedorescom/contacto/${idEmpresa}`, {replace: true});
         } catch (error) {
             
             if(error.request.status === 501 ) {
@@ -90,7 +90,7 @@ function FormEditarContactoCom() {
     const consultarAPI = async () => {
 
         try {
-            const res = await clienteAxios.get(`/clientescom/contactocom/editar/${idEmpresa}/${id}`,{
+            const res = await clienteAxios.get(`/proveedor/contactocome/editar/${id}`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -107,7 +107,7 @@ function FormEditarContactoCom() {
                 })
             }
             // redireccionar
-            navigate('/clientescom', {replace: true});
+            navigate('/proveedorescom', {replace: true});
         }
 
     }
@@ -202,4 +202,4 @@ function FormEditarContactoCom() {
     )
 }
 
-export default FormEditarContactoCom
+export default FormEditarProveedorContactoCom

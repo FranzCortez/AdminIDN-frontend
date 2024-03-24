@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom";
 import { MdContactPhone } from "react-icons/md";
 import { IoPersonAddSharp, IoArrowBackCircleOutline } from "react-icons/io5";
 
-import clienteAxios from '../../../config/axios';
-import ClienteContactoCom from './ClienteContactoCom';
+import clienteAxios from '../../../config/axios.js';
+import ProveedorContactoCom from './ProveedorContactoCom.jsx';
 import { CRMContext } from '../../context/CRMContext.jsx';
 
-import Spinner from '../../layout/Spinner';
+import Spinner from '../../layout/Spinner.jsx';
 
-function ClientesContactosCom() {
+function ProveedorContactosCom() {
 
     const { id: idEmpresa } = useParams();
 
@@ -31,15 +31,14 @@ function ClientesContactosCom() {
 
         try {
             
-            // localStorage.setItem('ultima', `/clientes/contactocom/${idEmpresa}`);
-            
-            const res = await clienteAxios.get(`/clientescom/contactocom/${idEmpresa}`,{
+            const res = await clienteAxios.get(`/proveedor/contactocom/${idEmpresa}/0`,{
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
             
-            guardarContactos(res?.data);
+            console.log(res)
+            guardarContactos(res?.data.contactos);
         } catch (error) {
             console.log(error);
         }
@@ -63,14 +62,14 @@ function ClientesContactosCom() {
             <div className="card contenedor">
                 <div className="card-header-com">
                     <MdContactPhone size={50} color={"#ebe1e1"}/>
-                    <h1>Clientes Contacto Empresa Comercializadora</h1>
+                    <h1>Proveedor Contacto Comercializadora</h1>
                 </div>
                 <div className="card-body">
 
                     <div className='card-body-options'>
                         
                         <div className='top-left'>
-                            <Link to={`/clientescom`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
+                            <Link to={`/proveedorescom`} className="btn-new btn-return"><IoArrowBackCircleOutline size={25}/> Regresar</Link>
                         </div>
 
                         <Link to={`nuevo`} type="button" className="btn-new btn-success-new">
@@ -95,7 +94,7 @@ function ClientesContactosCom() {
                                 {
                                     contactos.length > 0 ? (
                                         contactos.map((datos) => (
-                                            <ClienteContactoCom datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
+                                            <ProveedorContactoCom datos={datos} key={datos.id} escucharCambio={escucharCambio}/>
                                         ))
                                     ) 
                                     :
@@ -107,7 +106,7 @@ function ClientesContactosCom() {
 
                                             <tr>                                  
                                                 <td>
-                                                    <p className='mensaje-vacio'>Aun no hay clientes registrados o nadie coincide con la búsqueda </p>
+                                                    <p className='mensaje-vacio'>Aun no hay contacto registrados o nadie coincide con la búsqueda </p>
                                                 </td>
                                             </tr>
                                 }
@@ -120,4 +119,4 @@ function ClientesContactosCom() {
     )
 }
 
-export default ClientesContactosCom
+export default ProveedorContactosCom
