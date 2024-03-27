@@ -196,22 +196,6 @@ function Nosotros() {
 
                         <div className="equipo__persona">
 
-                            {/* <div className="equipo5__img">
-                                <div className="equipo__info" >
-                                    <h3 className="equipo__experiencia" >2 Años de Experiencia</h3>
-                                    <h3 className="equipo__especializacion">Especialización en Cilindros hidráulicos</h3>
-
-                                </div>
-                            </div>
-                        
-                            <div className="equipo__text">
-                                <h2 className="equipo__nombre">Adalberto Medina Maldonado</h2>
-                                <h3 className="equipo__cargo">Ayudante de taller</h3>
-                            </div>                         */}
-                        </div>
-
-                        <div className="equipo__persona">
-
                             <div className="equipo9__img">
                                 <div className="equipo__info" >
                                     <h3 className="equipo__experiencia" >40 Años de Experiencia</h3>
@@ -224,6 +208,22 @@ function Nosotros() {
                                 <h2 className="equipo__nombre">Santiago Gamboa López</h2>
                                 <h3 className="equipo__cargo">Técnico Industrial</h3>
                             </div>
+                        </div>
+
+                        <div className="equipo__persona">
+
+                             <div className="equipo5__img">
+                                <div className="equipo__info" >
+                                    <h3 className="equipo__experiencia" >4 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Administración Bilingüe. Especialización en Ventas en Terreno</h3>
+
+                                </div>
+                            </div>
+                        
+                            <div className="equipo__text">
+                                <h2 className="equipo__nombre">José Ampuero Osorio</h2>
+                                <h3 className="equipo__cargo">Vendedor Técnico</h3>
+                            </div>                         
                         </div>
 
                         <div className="equipo__persona">
