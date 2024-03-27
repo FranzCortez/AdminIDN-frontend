@@ -188,7 +188,7 @@ function BoletaEstadoCuenta({ seleccion }) {
                                             ))
                                         }                               
                                         <tr className='table__tr boleta__total'>
-                                            <td colSpan={6} ><span className='boleta__valor-total' >TOTAL:</span></td>
+                                            <td colSpan={5} ><span className='boleta__valor-total' >TOTAL:</span></td>
                                             <td><span className='boleta__valor-total'>${valorNumero(vencidoTotal)}</span></td>
                                         </tr>
                                     </tbody>
