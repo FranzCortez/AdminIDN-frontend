@@ -67,7 +67,7 @@ function Ingresos() {
 
             localStorage.setItem('pagina', `${offset}-in`);
 
-            const res = await clienteAxios.post(`ih/ingreso/obtener/${offset}`, filtros, {
+            const res = await clienteAxios.post(`ih/ingreso/obtener/${offset}/0`, filtros, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
                 }
@@ -152,7 +152,7 @@ function Ingresos() {
                                 {
                                     ingresos.length > 0 ? (
                                         ingresos.map((datos) => (
-                                            <Ingreso datos={datos} key={datos.id}/>
+                                            <Ingreso spa={false} datos={datos} key={datos.id}/>
                                         ))
                                     ) : 
                                     spin ? 

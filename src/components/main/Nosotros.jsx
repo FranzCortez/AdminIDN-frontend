@@ -175,7 +175,7 @@ function Nosotros() {
                         
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">Eduardo Beluzarán González</h2>
-                                <h3 className="equipo__cargo">Jefe de taller</h3>
+                                <h3 className="equipo__cargo">Técnico Neumohidráulico</h3>
                             </div>
                         </div>
 
@@ -190,7 +190,7 @@ function Nosotros() {
                         
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">David Nilo Ramirez</h2>
-                                <h3 className="equipo__cargo">Técnico en Hidroneumática</h3>
+                                <h3 className="equipo__cargo">Jefe de Taller</h3>
                             </div>
                         </div>
 
@@ -212,7 +212,7 @@ function Nosotros() {
 
                         <div className="equipo__persona">
 
-                             <div className="equipo5__img">
+                             {/* <div className="equipo5__img">
                                 <div className="equipo__info" >
                                     <h3 className="equipo__experiencia" >4 Años de Experiencia</h3>
                                     <h3 className="equipo__especializacion">Administración Bilingüe. Especialización en Ventas en Terreno</h3>
@@ -223,7 +223,7 @@ function Nosotros() {
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">José Ampuero Osorio</h2>
                                 <h3 className="equipo__cargo">Vendedor Técnico</h3>
-                            </div>                         
+                            </div>                          */}
                         </div>
 
                         <div className="equipo__persona">

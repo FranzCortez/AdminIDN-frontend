@@ -134,6 +134,7 @@ function Usuarios() {
                                     <th scope="col">Correo</th>
                                     <th scope="col">Teléfono</th>
                                     <th scope="col">Tipo</th>
+                                    <th scope="col">Color</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>

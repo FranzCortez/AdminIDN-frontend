@@ -39,7 +39,8 @@ function FormNuevoIngreso() {
         clienteContactoId: '',
         tipoHerramientaId: '',
         otin: '',
-        usuario: auth.nombre
+        usuario: auth.nombre,
+        usuarioId: auth.id
     });
     const [ fecha, guardarFecha ] = useState(fechaActual);
     let entre = 0;

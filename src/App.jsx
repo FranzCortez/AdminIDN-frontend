@@ -120,6 +120,11 @@ import ProveedorContactosCom from "./components/comercializadora/proveedorContac
 import FormEditarProveedorContactoCom from "./components/comercializadora/proveedorContactoCom/FormEditarProveedorContactoCom";
 import FormNuevoProveedorContactoCom from "./components/comercializadora/proveedorContactoCom/FormNuevoProveedorContactoCom";
 
+/** INGRESO COM */
+import IngresosCom from "./components/comercializadora/ingreso/IngresosCom";
+import FormNuevoIngresoCom from "./components/comercializadora/ingreso/FormNuevoIngresoCom";
+import FormEditarIngresoCom from "./components/comercializadora/ingreso/FormEditarIngresoCom";
+
 import { CRMContext, CRMPovider } from "./components/context/CRMContext";
 
 function App() {
@@ -217,6 +222,10 @@ function App() {
                         <Route path='/proveedorescom/contacto/:id' element={<ProveedorContactosCom/>} />
                         <Route path='/proveedorescom/contacto/:idEmpresa/nuevo' element={<FormNuevoProveedorContactoCom/>} />
                         <Route path='/proveedorescom/contacto/:idEmpresa/editar/:id' element={<FormEditarProveedorContactoCom/>} />
+                        
+                        <Route path="/ingresoscom" element={<IngresosCom/>} />
+                        <Route path="/ingresoscom/nuevo" element={<FormNuevoIngresoCom/>} />
+                        <Route path="/ingresoscom/editar/:id/:tipo" element={<FormEditarIngresoCom/>} />
                         
                         <Route path="/home" element={<Home/>} />
                         

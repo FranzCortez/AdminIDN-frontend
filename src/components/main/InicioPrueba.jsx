@@ -259,11 +259,9 @@ function InicioPrueba() {
 
                     <div className="clientes-slide">
                         <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/HEMAQ.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Sermaind.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/PowerTrain.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/ingSPA.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/CPK.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Mecamin.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Comercial-San-Ignacio.png" alt="Bailac" />
@@ -271,22 +269,24 @@ function InicioPrueba() {
                         <img src="img/Inicio/clientes/ND_logo.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/MD-logo.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/tech.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/franca.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/gl.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/logo1024.webp" alt="Bailac" />
-                        <img src="img/Inicio/clientes/ges.jpg" alt="Bailac" />
                         <img src="img/Inicio/clientes/qs.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/tc.jpeg" alt="Bailac" />
                         <img src="img/Inicio/clientes/sergomet.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tormetal.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/rocktrain.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/feram.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/flanders.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/kaufmann.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/cobra.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/konecranes.png" alt="Bailac" />
                     </div>
 
                     <div className="clientes-slide">
-                        <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/HEMAQ.png" alt="Bailac" />
+                    <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
+                    <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Sermaind.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/PowerTrain.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/ingSPA.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/CPK.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Mecamin.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Comercial-San-Ignacio.png" alt="Bailac" />
@@ -294,13 +294,16 @@ function InicioPrueba() {
                         <img src="img/Inicio/clientes/ND_logo.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/MD-logo.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/tech.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/franca.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/gl.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/logo1024.webp" alt="Bailac" />
-                        <img src="img/Inicio/clientes/ges.jpg" alt="Bailac" />
                         <img src="img/Inicio/clientes/qs.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/tc.jpeg" alt="Bailac" />
                         <img src="img/Inicio/clientes/sergomet.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tormetal.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/rocktrain.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/feram.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/flanders.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/kaufmann.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/cobra.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/konecranes.png" alt="Bailac" />
                     </div>
                 </div>
             </main>

@@ -15,7 +15,8 @@ function FormNuevoUsuario() {
         email: '',
         telefono: '',
         tipo: '',
-        clienteEmpresaId: null
+        clienteEmpresaId: null,
+        color: ''
     });
     const [ empresas, guardarEmpresas ] = useState([]);
 
@@ -32,47 +33,11 @@ function FormNuevoUsuario() {
             [e.target.name] : e.target.value
         });
 
-        if( e.target.name == "tipo" && e.target.value == 3) {
-            consultarAPI();
-            document.querySelector("#usuarioEmpresa").style.display = "flex"
-        } else if ( e.target.name == "tipo" && e.target.value !== 3 ) {
-            document.querySelector("#usuarioEmpresa").style.display = "none"
-            
-        }
-    }
-
-    const consultarAPI = async () => {
-
-        try {
-            const res = await clienteAxios.get(`empresas/empresaNombre`,{
-                headers: {
-                    Authorization: `Bearer ${auth.token}`
-                }
-            });
-
-            guardarEmpresas(res.data);
-        } catch (error) {
-            if(error.request.status === 404 ) {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Hubo un error',
-                    text: error.response.data.msg,
-                    timer: 1500
-                })
-            }
-            // redireccionar
-            navigate('/usuarios', {replace: true});
-        }
-
     }
 
     const validarForm = () => {
 
         const { nombre, rut, email, tipo } = usuario;
-        
-        if( tipo == 3 && usuario.clienteEmpresaId == null ){
-            return true;
-        }
 
         if( !(!nombre.length || !rut.length || !email.length || !tipo.length) ){
             return false;
@@ -191,24 +156,16 @@ function FormNuevoUsuario() {
                         </div>
 
                         <div className='campo'>
+                            <label htmlFor="color">Color<span className='campo__obligatorio'>*</span>:</label>
+                            <input type="color" name="color" id="color" onChange={actualizarState} />
+                        </div>
+                        <div className='campo'>
                             <label htmlFor="tipo">Tipo<span className='campo__obligatorio'>*</span>:</label>
                             <select name="tipo" id='tipo' defaultValue={'DEFAULT'} onChange={actualizarState}>
                                 <option value='DEFAULT' disabled>-- Seleccione un rol --</option>
                                 <option value="1">Administrador</option>
-                                <option value="2">Trabajador</option>
-                                <option value="3">Cliente Empresa</option>
-                            </select>
-                        </div>
-
-                        <div className='campo' id='usuarioEmpresa'>
-                            <label htmlFor="clienteEmpresaId">Empresa<span className='campo__obligatorio'>*</span>:</label>
-                            <select name="clienteEmpresaId" id='clienteEmpresaId' defaultValue={'DEFAULT'} onChange={actualizarState}>
-                                <option value='DEFAULT' disabled>-- Seleccione una empresa --</option>
-                                {
-                                    empresas.map((empresa, index)  => (
-                                        <option value={empresa.id} key={index}>{empresa.nombre}</option>
-                                    ))
-                                }
+                                <option value="2">Trabajador EIRL</option>
+                                <option value="3">Trabajador SPA</option>
                             </select>
                         </div>
 

@@ -13,7 +13,7 @@ import IngresoInformacion from './IngresoInformacion';
 import IngresoOpciones from './IngresoOpciones';
 import InformacionFactura from './InformacionFactura';
 
-function Ingreso({datos}) {
+function Ingreso({datos, spa}) {
 
     const [ ingreso, guardarIngreso ] = useState({});
 
@@ -116,35 +116,45 @@ function Ingreso({datos}) {
             <td className={informe(datos)} >{datos.numeroInterno}</td>
             <td className={informe(datos)} >
                 <div className='table__opciones' onClick={consultarAPI}>
-                    <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}/>
+                    <IngresoInformacion nombre={datos.nombre} ingreso={ingreso}  spa={spa}/>
                 </div>                
             </td>
             
-            <td className={informe(datos)} >
-                <div className='table__opciones' onClick={consultarAPI}>
-                    <IngresoOpciones ingreso={datos}/>
-                </div>                
-            </td>
+            {
+                spa ?
+                null
+                :
+                <td className={informe(datos)} >
+                    <div className='table__opciones' onClick={consultarAPI}>
+                        <IngresoOpciones ingreso={datos}/>
+                    </div>                
+                </td>
+            }
 
-            <td className={informe(datos)} >
-                <div className='table__opciones'>
-                    {
-                        datos.activo ? 
+            {
+                spa ?
+                null
+                :
+                <td className={informe(datos)} >
+                    <div className='table__opciones'>
+                        {
+                            datos.activo ? 
 
-                        <button type='button' className={"btn-new btn-success-new"} onClick={generarQR}>
-                            <BsBoxArrowInRight size={20}/>
-                            <IoQrCodeOutline size={20}/>
-                        </button>
+                            <button type='button' className={"btn-new btn-success-new"} onClick={generarQR}>
+                                <BsBoxArrowInRight size={20}/>
+                                <IoQrCodeOutline size={20}/>
+                            </button>
 
-                        :
-                        
-                        <button type='button' className={"btn-new btn-return"} onClick={editarQR}>
-                            <FiEdit size={20}/>
-                            <IoQrCodeOutline size={20}/>
-                        </button>
-                    }
-                </div>                
-            </td>
+                            :
+                            
+                            <button type='button' className={"btn-new btn-return"} onClick={editarQR}>
+                                <FiEdit size={20}/>
+                                <IoQrCodeOutline size={20}/>
+                            </button>
+                        }
+                    </div>                
+                </td>
+            }
             {
                 datos.guiaDespacho === '-' || datos.guiaDespacho === null ? 
                     <td className={informe(datos)} >-</td>

@@ -72,10 +72,16 @@ function IngresoInformacion(props) {
                         </div>
                     </div>
                 </div>
-
-                <Link to={`editar/${ingreso.id}`} className="btn-new btn-return">
-                    <FiEdit size={25}/> Editar Ingreso
-                </Link>
+                {
+                    props.spa ? 
+                    <Link to={`editar/${ingreso.id}/2`} className="btn-new btn-return">
+                        <FiEdit size={25}/> Editar Ingreso
+                    </Link>
+                    :
+                    <Link to={`editar/${ingreso.id}`} className="btn-new btn-return">
+                        <FiEdit size={25}/> Editar Ingreso
+                    </Link>
+                }
             </Modal>
         </div>
     );

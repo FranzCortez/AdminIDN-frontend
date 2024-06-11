@@ -23,16 +23,16 @@ function Login() {
         try {
             
             const res = await clienteAxios.post('/login', datos);
-            
-            const { token, tipo, nombre } = res.data;
-            
+            const { token, tipo, nombre, id } = res.data;
+            console.log(res.data)
             localStorage.setItem('token', token);
 
             guardarAuth({
                 token,
                 auth: true,
                 tipo,
-                nombre
+                nombre,
+                id
             });
 
             navigate('/home', {replace: true});
@@ -60,7 +60,8 @@ function Login() {
                 token,
                 nombre: res.data.revisarToken.usuario,
                 tipo: res.data.revisarToken.tipo,
-                auth: true
+                auth: true,
+                id: res.data.revisarToken.id
             });
         }
 

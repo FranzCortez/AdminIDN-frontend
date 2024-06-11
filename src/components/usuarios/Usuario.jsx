@@ -53,6 +53,7 @@ function Usuario({datos, escucharCambio}) {
             <td>{datos.email}</td>
             <td>{datos.telefono}</td>
             <td>{tipo}</td>
+            <td style={{background:datos.color}} >{datos.color}</td>
             <td>
                 <div className='table__opciones'>
                     <Link to={`editar/${datos.id}`}><button type='button' className="btn btn-warning" ><FaUserEdit size={23} color="#ffff"/></button></Link>
