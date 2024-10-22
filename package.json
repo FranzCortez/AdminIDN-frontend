@@ -1,6 +1,6 @@
 {
   "name": "frontend-idn",
-  "version": "6.7.0",
+  "version": "6.8.4",
   "private": true,
   "dependencies": {
     "@react-pdf-viewer/core": "^3.9.0",
@@ -13,7 +13,9 @@
     "@uidotdev/usehooks": "^2.3.1",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
+    "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
     "moment": "^2.29.4",
     "pdf-merger-js": "^4.2.0",
     "pdfjs-dist": "^3.1.81",

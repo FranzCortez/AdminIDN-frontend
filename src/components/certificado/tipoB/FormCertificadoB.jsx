@@ -26,6 +26,8 @@ function FormCertificadoB() {
     const [ segundo, guardarSegundo ] = useState({});
     const [ tercero, guardarTercero ] = useState({});
 
+    const [ certificados, guardarCertificados ] = useState(true);
+
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -63,6 +65,10 @@ function FormCertificadoB() {
 
     const guardarDatosSegundo = (datos) => {
         guardarSegundo(datos);
+    }
+
+    const guardarCheckCertificado = (check) => {
+        guardarCertificados(check);
     }
 
     const guardarDatosTercero = (datos) => {
@@ -124,7 +130,7 @@ function FormCertificadoB() {
                         {
                             pageone: <CertificadoParteUnoB onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} id={id} primero={primero} />,
                             pagetwo: <CertificadoParteDosB onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} rango={primero.rango} unidad={primero.unidad} segundo={segundo} />,
-                            pagethree: <CertificadoParteTresB onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} />
+                            pagethree: <CertificadoParteTresB onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} checkCertificados={certificados} guardarCheckCertificado={guardarCheckCertificado} />
                         }[page]
                     }
                 </div>
@@ -135,6 +141,7 @@ function FormCertificadoB() {
                 segundo={segundo}
                 tercero={tercero}
                 herramienta={herramienta}
+                certificados={certificados}
             />
 
             {/* <PDFViewer>

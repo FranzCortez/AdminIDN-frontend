@@ -1489,6 +1489,7 @@ form .opciones {
 .certificado__certificacion {
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: space-around;
     margin-top: 1rem;
 }
@@ -2991,7 +2992,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo5__img {
-    background-image: url(/img/Inicio/Equipo/jo.jpg);
+    background-image: url(/img/Inicio/Equipo/dm.jpg);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3518,4 +3519,74 @@ table .boleta__total th {
   .modal-p {
     color: black;
     font-size: 2rem;
+  }
+
+  .card-body-tarjeta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tarjeta {
+    max-width: 1062px;
+    max-height: 1950px;
+  }
+  .tarjeta__background{
+
+      width: 9cm;
+      padding: 20px;
+      height: 12cm;
+      font-family: 'Arial, sans-serif';
+      background-color: #ffcc00;
+      position: relative;
+      border-radius: .5rem;
+  }
+  .tarjeta__contenedor {
+    background-image: url('/img/LogoIDN.webp');
+    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
+    opacity: 1;
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 2px;
+    right: 15px;
+  }
+  .tarjeta__contenedor2 {
+    background-image: url('/img/LogoIDN.webp');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
+  .tarjeta__campo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .tarjeta__input {
+    width: 150px;
+    padding: 0;
+    position: relative;
+    z-index: 10;
+    flex: 1;
+  }
+  .tarjeta__campo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tarjeta__campo span {
+    width: 95px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .tarjeta__titulo h1 {
+    margin: 0;
+    text-align: center;
   }

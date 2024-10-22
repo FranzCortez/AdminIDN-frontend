@@ -4,17 +4,23 @@ import { useParams } from 'react-router-dom';
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
+function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo, checkCertificados, guardarCheckCertificado }) {
 
     const {id} = useParams();
 
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
+    const [ check, guardarCheck ] = useState(checkCertificados);
+
     const [ descripcion, guardarDescripcion ] = useState({
         conclusion: segundo?.conclusion ? segundo?.conclusion?.join('\n') : '',
         mantencion: segundo?.mantencion ? segundo?.mantencion?.join('\n') : '',
     });    
+    
+    const actualizarCheck = (e) => {
+        guardarCheck(!check);
+    }
 
     const actualizarState = (e) => {    
         guardarDescripcion({
@@ -35,6 +41,7 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
 
     const enviar = () => {
         guardarDatosSegundo(descripcion);
+        guardarCheckCertificado(check);
     }
 
     const regresar = () => {
@@ -109,6 +116,11 @@ function CertificadoParteDosA({ onButtonClick, guardarDatosSegundo, segundo }) {
                         defaultValue={descripcion.conclusion}
                         onChange={actualizarState}
                     />                 
+                </div>
+
+                <div className='campo_check'>
+                    <input type="checkbox" name="guardarFalla" id="guardarFalla" onChange={actualizarCheck} checked={check} />
+                    <label htmlFor="guardarFalla">Agregar certificados.</label>
                 </div>
 
                 <div className='opciones' >

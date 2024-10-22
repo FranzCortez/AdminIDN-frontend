@@ -2,7 +2,8 @@ import React, { useState, useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineDownload, AiFillPicture } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
-import { RiDeleteBin2Line, RiFileList2Line } from "react-icons/ri";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { FaIdCardAlt } from "react-icons/fa";
 import { TbFileCertificate } from 'react-icons/tb';
 import { MdOutlineRequestQuote, MdPhotoCamera } from "react-icons/md";
 import Modal from 'react-modal';
@@ -131,6 +132,20 @@ function IngresoOpciones({ ingreso }) {
 
                             <div onClick={() => download(rutaCotizacion)} className={ rutaCotizacion ? "btn-new btn-login" : "btn-new"}>
                                 <AiOutlineDownload size={25}/> Descargar Cotización e Informe
+                            </div>
+
+                        </div>
+
+                        <div className='modal__herramienta modal__opciones'>
+
+                            <h2 className='modal__titulo'>Tarjetas</h2>
+
+                            <Link to={`/tarjeta/${ingreso.otin}`} className="btn-new btn-success-new">
+                                <FaIdCardAlt  size={25}/> Tarjeta de Ingreso
+                            </Link>
+
+                            <div onClick={() => download(rutaCotizacion)} className={ "btn-new"}>
+                                <FaIdCardAlt  size={25}/> Tarjeta de Egreso
                             </div>
 
                         </div>

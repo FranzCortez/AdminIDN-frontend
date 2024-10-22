@@ -88,77 +88,86 @@ function CertificadoParteDosB({ onButtonClick, guardarDatosSegundo, rango, unida
 
     const actualizarComparacion = (e) => {
 
-        const existe = tabla.comparcion.find(dato => dato.name === e.target.name);
+        try {
+            const existe = tabla.comparcion.find(dato => dato.name === e.target.name);
 
-        if ( existe ) {
+            if ( existe ) {
 
-            const actualizar = tabla.comparcion;
+                const actualizar = tabla.comparcion;
 
-            const numero = e.target.value.split(",").join(".");
+                const numero = e.target.value.split(",").join(".");
 
-            actualizar[existe.name].numero = parseFloat(numero);
+                actualizar[existe.name].numero = parseFloat(numero);
 
-            if ( !actualizar[existe.name].numero ) {
-                actualizar[existe.name].usado = false;
-            } else {                
-                actualizar[existe.name].usado = true;
-            }
+                if ( !actualizar[existe.name].numero ) {
+                    actualizar[existe.name].usado = false;
+                } else {                
+                    actualizar[existe.name].usado = true;
+                }
 
-            const nuevo = actualizar.find( data => data.name == (parseInt(e.target.name) + 1));
-        
-            if ( !nuevo && actualizar.length < 7 ) {
+                const nuevo = actualizar.find( data => data.name == (parseInt(e.target.name) + 1));
+            
+                if ( !nuevo && actualizar.length < 7 ) {
 
-                actualizar.push({
-                    name: `${parseInt(e.target.name) + 1}`,
-                    numero: 0,
-                    usado: false
+                    actualizar.push({
+                        name: `${parseInt(e.target.name) + 1}`,
+                        numero: 0,
+                        usado: false
+                    });
+
+                }
+
+                guardarTabla({
+                    ...tabla,
+                    comparcion: actualizar
                 });
 
             }
-
-            guardarTabla({
-                ...tabla,
-                comparcion: actualizar
-            });
-
+        } catch (error) {
+            console.error(error);
         }
+        
     }
 
     const actualizarEntrega = (e) => {
         
-        const existe = tabla.entrega.find(dato => dato.name === e.target.name);
+        try {
+            const existe = tabla.entrega.find(dato => dato.name === e.target.name);
 
-        if ( existe ) {
+            if ( existe ) {
 
-            const actualizar = tabla.entrega;
+                const actualizar = tabla.entrega;
 
-            const numero = e.target.value.split(",").join(".");
+                const numero = e.target.value.split(",").join(".");
 
-            actualizar[existe.name].numero = parseFloat(numero);
+                actualizar[existe.name].numero = parseFloat(numero);
 
-            if ( !actualizar[existe.name].numero ) {
-                actualizar[existe.name].usado = false;
-            } else {                
-                actualizar[existe.name].usado = true;
-            }
+                if ( !actualizar[existe.name].numero ) {
+                    actualizar[existe.name].usado = false;
+                } else {                
+                    actualizar[existe.name].usado = true;
+                }
 
-            const nuevo = actualizar.find( data => data.name == (parseInt(e.target.name) + 1));
-        
-            if ( !nuevo && actualizar.length < 7 ) {
+                const nuevo = actualizar.find( data => data.name == (parseInt(e.target.name) + 1));
+            
+                if ( !nuevo && actualizar.length < 7 ) {
 
-                actualizar.push({
-                    name: `${parseInt(e.target.name) + 1}`,
-                    numero: 0,
-                    usado: false
+                    actualizar.push({
+                        name: `${parseInt(e.target.name) + 1}`,
+                        numero: 0,
+                        usado: false
+                    });
+
+                }
+
+                guardarTabla({
+                    ...tabla,
+                    entrega: actualizar
                 });
 
             }
-
-            guardarTabla({
-                ...tabla,
-                entrega: actualizar
-            });
-
+        } catch (error) {
+            console.error(error);
         }
     }
 

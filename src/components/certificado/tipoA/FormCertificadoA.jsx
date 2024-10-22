@@ -23,6 +23,8 @@ function FormCertificadoA() {
     const [ segundo, guardarSegundo ] = useState({});
     const [ tercero, guardarTercero ] = useState({});
 
+    const [ certificados, guardarCertificados ] = useState(true);
+
     // usar context
     const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -75,6 +77,10 @@ function FormCertificadoA() {
         guardarTercero(datos);    
     }
 
+    const guardarCheckCertificado = (check) => {
+        guardarCertificados(check);
+    }
+
     const consultarAPI = async () => {
         try {
             const res = await clienteAxios.get(`ih/ingreso/${id}`,{
@@ -118,7 +124,7 @@ function FormCertificadoA() {
                         {
                             pageone: <CertificadoParteUnoA onButtonClick={nextPage} guardarDatosPrimero={guardarDatosPrimero} primero={primero} />,
                             pagetwo: <CertificadoParteTresA onButtonClick={nextPage} guardarDatosTercero={guardarDatosTercero} tercero={tercero} />,
-                            pagethree: <CertificadoParteDosA onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundo={segundo} />
+                            pagethree: <CertificadoParteDosA onButtonClick={nextPage} guardarDatosSegundo={guardarDatosSegundo} segundo={segundo} checkCertificados={certificados} guardarCheckCertificado={guardarCheckCertificado} />
                         }[page]
                     }
                 </div>
@@ -129,6 +135,7 @@ function FormCertificadoA() {
                 segundo={segundo}
                 tercero={tercero}
                 herramienta={herramienta}
+                certificados={certificados}
             />
         
         </Fragment>

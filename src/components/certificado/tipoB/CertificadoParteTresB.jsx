@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-function CertificadoParteTresB({ onButtonClick, guardarDatosTercero, tercero }) {
+function CertificadoParteTresB({ onButtonClick, guardarDatosTercero, tercero, checkCertificados, guardarCheckCertificado }) {
 
     const [ descripcion, guardarDescripcion ] = useState({
         observaciones: tercero.observaciones ? tercero.observaciones.join('\n') : 'Llave de torque presentaba sus medidas fuera de los rangos de tolerancia aplicados.\nPor lo que se ajustaron sus medidas y la posición del cero.\nLlave de torque una vez calibrada, comparada, y con mantensión se determina:',
@@ -9,11 +9,17 @@ function CertificadoParteTresB({ onButtonClick, guardarDatosTercero, tercero }) 
         operativo: tercero.operativo ? tercero.operativo : 0
     });    
 
+    const [ check, guardarCheck ] = useState(checkCertificados);
+
     const actualizarState = (e) => {    
         guardarDescripcion({
             ...descripcion,
             [e.target.name] : e.target.value
         });
+    }
+
+    const actualizarCheck = (e) => {
+        guardarCheck(!check);
     }
 
     const validarForm = () => {
@@ -29,6 +35,7 @@ function CertificadoParteTresB({ onButtonClick, guardarDatosTercero, tercero }) 
     const enviar = (e) => {
         e.preventDefault();
         guardarDatosTercero(descripcion);
+        guardarCheckCertificado(check);
     }
 
     const regresar = () => {
@@ -91,6 +98,11 @@ function CertificadoParteTresB({ onButtonClick, guardarDatosTercero, tercero }) 
                         <option value={true}>Operativo</option>
                         <option value={false}>Dar de Baja</option>
                     </select>
+                </div>
+
+                <div className='campo_check'>
+                    <input type="checkbox" name="guardarFalla" id="guardarFalla" onChange={actualizarCheck} checked={check} />
+                    <label htmlFor="guardarFalla">Agregar certificados.</label>
                 </div>
 
                 <div className='opciones' >

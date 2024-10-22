@@ -47,6 +47,7 @@ function CertificadoParteTresA({ onButtonClick, guardarDatosTercero, tercero }) 
             guardar.proximaMantencion = guardar.proximaMantencion === '' || guardar.proximaMantencion === 0 ? tercero.proximaMantencion : guardar.proximaMantencion;
             guardarDatosTercero(guardar);
         }
+
     }
 
     const consultarAPI = async () => {
@@ -115,7 +116,7 @@ function CertificadoParteTresA({ onButtonClick, guardarDatosTercero, tercero }) 
                         defaultValue={data.proximaMantencion}
                         onChange={actualizarState}
                     />
-                </div>                
+                </div>
 
                 <div className='opciones' >
                     <div className='enviar' >

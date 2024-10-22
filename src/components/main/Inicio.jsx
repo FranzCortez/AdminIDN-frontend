@@ -286,7 +286,7 @@ function Inicio() {
 
                     <div className='contacto__campo'>
                         <FaMapMarkedAlt className='contacto__icono' onClick={mapa}/>
-                        <h2 className='contacto__text'>AV. RADOMIRO TOMIC 7176, Antofagasta, Chile</h2>
+                        <h2 className='contacto__text'>Colombia # 650, Antofagasta, Chile</h2>
                     </div>
 
                     <div className='contacto__campo'onClick={mail}>

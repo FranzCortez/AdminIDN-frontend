@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineDownload } from 'react-icons/ai';
 import html2pdf from 'html2pdf.js';
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
 
-function CertificadoDos({ primero, segundo, tercero, herramienta }) {
+function CertificadoDos({ primero, segundo, tercero, herramienta, certificados }) {
 
     const { id } = useParams();
 
@@ -434,8 +434,14 @@ function CertificadoDos({ primero, segundo, tercero, herramienta }) {
 
                     <div className='certificado__certificacion certificado__certificacion__tipob'>
 
-                        <img src="img/Certificado/CE.jpg" alt="" />
-                        <img src="img/Certificado/UKAS.jpg" alt="" />
+                        {certificados ? (
+                                
+                            <Fragment>
+                                <img src="img/Certificado/Iso.png" alt="" />
+                                <img src="img/Certificado/CE.png" alt="" />
+                                <img src="img/Certificado/UKAS.png" alt="" />
+                            </Fragment>
+                        ) : null}
 
                     </div>
 

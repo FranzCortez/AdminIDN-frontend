@@ -434,7 +434,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                                     <p><span>RAZÓN SOCIAL: </span>ALBERTO GARCÍA LÓPEZ, REPARACIONES Y MANTENCIÓN E.I.R.L.</p>
                                 </div>
                                 <div className='pdf__pie-compra-campos'>
-                                    <p><span>DIRECCIÓN: </span>AV. RADOMIRO TOMIC 7176, ANTOFAGASTA</p>
+                                    <p><span>DIRECCIÓN: </span>Colombia # 650, ANTOFAGASTA</p>
                                     <p><span>TELÉFONO: </span>+56 978 950 016</p>
                                     <p><span>CORREO: </span>gerencia@impactodelnorte.cl</p>
                                 </div>

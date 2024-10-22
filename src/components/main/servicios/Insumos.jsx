@@ -111,7 +111,7 @@ function Insumos() {
 
                     <div className="footer__ubicacion">
                         <h3 className="footer__titulo" >Encuéntranos</h3>
-                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a>
+                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Colombia # 650, Antofagasta</a>
                         {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1537.2943644117688!2d-70.39523170701854!3d-23.592753740747565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ae2b2f8e4f1c6d%3A0xf8368dc7b3de01e2!2sImpacto%20del%20norte!5e0!3m2!1ses!2scl!4v1692575903581!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"/> */}
                     </div>
                 </div>

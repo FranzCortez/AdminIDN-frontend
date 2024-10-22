@@ -148,13 +148,17 @@ function InicioPrueba() {
                 null
             }
 
-            {/* <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <h2>¡ Nueva ubicación de Impacto del Norte !</h2>
-                <h1>Encuéntranos en:</h1>
-                <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="modal-link" rel="noreferrer"><SiGooglemaps size={30} />&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a> 
-                <iframe title="impacto del norte mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.9901016713147!2d-70.38697995074226!3d-23.604687935778667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ae2b2f8e4f1c6d%3A0xf8368dc7b3de01e2!2sImpacto%20del%20norte!5e0!3m2!1ses!2scl!4v1702584586260!5m2!1ses!2scl" style={{border: "0", display: 'block', margin: '0 auto'}} width="400" height="250" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <br />
+                <br />
+                {/* <h2>¡ Nueva ubicación de Impacto del Norte !</h2>
+                <h1>Encuéntranos en:</h1> */}
+                <img src="/img/Inicio/nuevo_colombia.jpg" alt="nuevo" />
+                <br />
+                <a href="https://maps.app.goo.gl/7f3ju2AiEkdFVL2v5" target="_blank" className="modal-link" rel="noreferrer"><SiGooglemaps size={30} />&nbsp; Colombia # 650, Antofagasta</a> 
+                <iframe  title="impacto del norte mapa"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.3063227253406!2d-70.39147982310321!3d-23.629198460952207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96afd529376314eb%3A0x187091499750cd73!2sColombia%20650%2C%201242152%20Antofagasta!5e0!3m2!1ses!2scl!4v1727924003332!5m2!1ses!2scl" width="400" height="250" style={{border: "0", display: 'block', margin: '0 auto'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <p className="modal-p">Haz clic en la ubicación para ir al mapa</p>
-            </Modal> */}
+            </Modal>
 
             <div className="hero__espacio"></div>
             <div className="hero__main" id="hero__main"></div>
@@ -282,8 +286,7 @@ function InicioPrueba() {
                     </div>
 
                     <div className="clientes-slide">
-                    <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
-                    <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/Sermaind.png" alt="Bailac" />
                         <img src="img/Inicio/clientes/PowerTrain.png" alt="Bailac" />
@@ -418,7 +421,7 @@ function InicioPrueba() {
 
                     <div className="footer__ubicacion">
                         <h3 className="footer__titulo" >Encuéntranos</h3>
-                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a>
+                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Colombia # 650, Antofagasta</a>
                     </div>
                 </div>
 

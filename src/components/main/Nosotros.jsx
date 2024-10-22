@@ -175,7 +175,7 @@ function Nosotros() {
                         
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">Eduardo Beluzarán González</h2>
-                                <h3 className="equipo__cargo">Técnico Neumohidráulico</h3>
+                                <h3 className="equipo__cargo">Técnico Hidroneumático</h3>
                             </div>
                         </div>
 
@@ -196,7 +196,7 @@ function Nosotros() {
 
                         <div className="equipo__persona">
 
-                            <div className="equipo9__img">
+                            {/* <div className="equipo9__img">
                                 <div className="equipo__info" >
                                     <h3 className="equipo__experiencia" >40 Años de Experiencia</h3>
                                     <h3 className="equipo__especializacion">Especialización en Electrónica</h3>
@@ -207,23 +207,23 @@ function Nosotros() {
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">Santiago Gamboa López</h2>
                                 <h3 className="equipo__cargo">Técnico Industrial</h3>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="equipo__persona">
 
-                             {/* <div className="equipo5__img">
+                             <div className="equipo5__img">
                                 <div className="equipo__info" >
-                                    <h3 className="equipo__experiencia" >4 Años de Experiencia</h3>
-                                    <h3 className="equipo__especializacion">Administración Bilingüe. Especialización en Ventas en Terreno</h3>
+                                    <h3 className="equipo__experiencia" >12 Años de Experiencia</h3>
+                                    <h3 className="equipo__especializacion">Especialización en Hidroneumática y Soldadura calificada</h3>
 
                                 </div>
                             </div>
                         
                             <div className="equipo__text">
-                                <h2 className="equipo__nombre">José Ampuero Osorio</h2>
-                                <h3 className="equipo__cargo">Vendedor Técnico</h3>
-                            </div>                          */}
+                                <h2 className="equipo__nombre">Daniel Molina Caicedo</h2>
+                                <h3 className="equipo__cargo">Técnico Hidroneumático y Soldador Calificado</h3>
+                            </div>                         
                         </div>
 
                         <div className="equipo__persona">
@@ -313,7 +313,7 @@ function Nosotros() {
 
                     <div className="footer__ubicacion">
                         <h3 className="footer__titulo" >Encuéntranos</h3>
-                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Gran Avenida Radomiro Tomic 7176, Antofagasta</a>
+                        <a href="https://maps.app.goo.gl/R1RngNobXN4ow4P8A" target="_blank" className="footer__a" rel="noreferrer"><SiGooglemaps size={15} color={"#e1e1e1"}/>&nbsp; Colombia # 650, Antofagasta</a>
                         {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1537.2943644117688!2d-70.39523170701854!3d-23.592753740747565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ae2b2f8e4f1c6d%3A0xf8368dc7b3de01e2!2sImpacto%20del%20norte!5e0!3m2!1ses!2scl!4v1692575903581!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"/> */}
                     </div>
                 </div>

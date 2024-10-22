@@ -34,6 +34,7 @@ import FormInforme from "./components/informe/FormInforme";
 /** CERTIFICADO */
 import FormCertificadoA from "./components/certificado/tipoA/FormCertificadoA";
 import FormCertificadoB from "./components/certificado/tipoB/FormCertificadoB";
+import FormTarjeta from "./components/certificado/tarjeta/FormTarjeta";
 
 /** FOTO GALERIA */
 import FotoGaleria from "./components/fotogaleria/FotoGaleria";
@@ -86,6 +87,7 @@ import PresentacionEdu from "./components/presentacion/PresentacionEdu";
 import PresentacionSant from "./components/presentacion/PresentacionSant";
 import PresentacionJoam from "./components/presentacion/PresentacionJoam";
 import PresentacionDavid from "./components/presentacion/PresentacionDavid";
+import PresentacionDm from "./components/presentacion/PresentacionDm";
 
 /** CheckList */
 import Solicitudes from "./components/checklist/Solicitudes";
@@ -158,6 +160,7 @@ function App() {
 
                         <Route path="/certificado/tipoa/nuevo/:id" element={<FormCertificadoA/>}/>
                         <Route path="/certificado/tipob/nuevo/:id" element={<FormCertificadoB/>}/>
+                        <Route path="/tarjeta/:otin" element={<FormTarjeta/>}/>
 
                         <Route path="/facturas" element={<Facturas/>}/>
                         <Route path="/facturas/nuevo" element={<FormNuevaFactura/>}/>
@@ -190,6 +193,7 @@ function App() {
                         <Route path="/ventas" element={<PresentacionVenta/>} />
                         <Route path="/edubel" element={<PresentacionEdu/>} />
                         <Route path="/davnil" element={<PresentacionDavid/>} />
+                        <Route path="/dm" element={<PresentacionDm/>} />
                         <Route path="/adamed" element={<PresentacionAdal/>} />
                         <Route path="/sangam" element={<PresentacionSant/>} />
                         <Route path="/joamp" element={<PresentacionJoam/>} />
