@@ -13,6 +13,7 @@ import Modal from "./Modal";
 
 import clienteAxios from "../../config/axios";
 import { CRMContext } from '../context/CRMContext';
+import Draggable from "react-draggable";
 
 function InicioPrueba() {
 
@@ -21,6 +22,12 @@ function InicioPrueba() {
     const [ confeti, guardarConfeti ] = useState(false);
     
     const [isModalOpen, setModalOpen] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
+
+    const toggleWindow = () => {
+        setIsVisible(!isVisible);
+    };
+
 
     const [offset, setOffset] = useState(0);
     const [windowSize, setWindowSize] = useState({
@@ -148,17 +155,33 @@ function InicioPrueba() {
                 null
             }
 
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <br />
-                <br />
-                {/* <h2>¡ Nueva ubicación de Impacto del Norte !</h2>
-                <h1>Encuéntranos en:</h1> */}
-                <img src="/img/Inicio/nuevo_colombia.jpg" alt="nuevo" />
-                <br />
-                <a href="https://maps.app.goo.gl/7f3ju2AiEkdFVL2v5" target="_blank" className="modal-link" rel="noreferrer"><SiGooglemaps size={30} />&nbsp; Colombia # 650, Antofagasta</a> 
-                <iframe  title="impacto del norte mapa"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.3063227253406!2d-70.39147982310321!3d-23.629198460952207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96afd529376314eb%3A0x187091499750cd73!2sColombia%20650%2C%201242152%20Antofagasta!5e0!3m2!1ses!2scl!4v1727924003332!5m2!1ses!2scl" width="400" height="250" style={{border: "0", display: 'block', margin: '0 auto'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <p className="modal-p">Haz clic en la ubicación para ir al mapa</p>
-            </Modal>
+            {isVisible && <div style={styles.overlay} className="over" />}
+
+            {
+                isVisible &&
+                (<Draggable>
+                    <div style={styles.window} className="window">
+                        <div style={styles.header}>
+                            INFORMACIÓN IMPORTANTE
+                        <button style={styles.closeButton} onClick={toggleWindow}>
+                            X
+                        </button>
+                        </div>
+                        <div style={styles.content} className="window-content">
+                            <div style={styles.center}>
+                                <img src="/img/Inicio/iso.png" alt="nuevo" style={styles.img} />
+                            </div>
+                            <div style={styles.subcontent}>
+                                <a href="https://maps.app.goo.gl/7f3ju2AiEkdFVL2v5" target="_blank" className="modal-link" rel="noreferrer"><SiGooglemaps size={30} />&nbsp; Colombia # 650, Antofagasta</a> 
+                                <iframe  title="impacto del norte mapa"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.3063227253406!2d-70.39147982310321!3d-23.629198460952207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96afd529376314eb%3A0x187091499750cd73!2sColombia%20650%2C%201242152%20Antofagasta!5e0!3m2!1ses!2scl!4v1727924003332!5m2!1ses!2scl" width="400" height="250" style={{border: "0", display: 'block', margin: '0 auto'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <p className="modal-p">Haz clic en la ubicación para ir al mapa</p>
+                            <button className="btn-new btn-error" onClick={toggleWindow} >OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </Draggable>)
+            }
+
 
             <div className="hero__espacio"></div>
             <div className="hero__main" id="hero__main"></div>
@@ -434,5 +457,70 @@ function InicioPrueba() {
 
     )
 }
+
+const styles = {
+    overlay: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo oscuro semitransparente
+    },
+    window: {
+        width: "90%",
+        backgroundColor: "#f0f0f0",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+        position: "fixed",
+        top: "20%",
+        left: "5%",
+      },
+      header: {
+        backgroundColor: "#F58549",
+        color: "white",
+        padding: "10px",
+        textAlign: "center",
+        cursor: "move",
+        borderTopLeftRadius: "8px",
+        borderTopRightRadius: "8px",
+        fontsize: "20px",
+        fontWeight: "bold",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+      closeButton: {
+        backgroundColor: "transparent",
+        border: "none",
+        color: "white",
+        fontSize: "16px",
+        cursor: "pointer",
+      },
+      content: {
+        padding: "15px",
+        overflowY: "auto", // Habilitar scroll vertical si el contenido excede la altura
+        maxHeight: "600px", // Altura máxima del contenido para que se habilite el scroll
+        display: "flex",
+        height: "100%",
+        flexDirection: "column",
+        gap: "10px",
+      },
+      subcontent: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      img: {
+        margin: "0 auto",
+        height: "100%",
+        width: "80%"
+      },
+      center: {
+        display: "flex",
+        justifyContent: "center",
+      }
+  };
 
 export default InicioPrueba;

@@ -38,12 +38,12 @@ function QrSD({ mantencion }) {
             bgColor="white"
             fgColor="black"
             level='H'
-            imageSettings= {{
-                src: '/img/LogoIDN.png',
-                excavate: true,
-                width: 3500 * 0.1,
-                height: 1500 * 0.1
-            }}
+            // imageSettings= {{
+            //     src: '/img/LogoIDN.png',
+            //     excavate: true,
+            //     width: 3500 * 0.1,
+            //     height: 1500 * 0.1
+            // }}
         />
     );
     

@@ -140,7 +140,7 @@ function FormQr() {
                     mantencion: fechaActual,
                     proxima: '',
                     guiaDespacho: ih.data.guiaDespacho,
-                    fechaGuiaDespacho: ih.data.fechaGuiaDespacho
+                    fechaGuiaDespacho: ih.data.fechaGuiaDespacho ?? fechaActual
                 });
                 return;
             }  
@@ -156,7 +156,7 @@ function FormQr() {
                     mantencion: res.data.mantencion,
                     proxima: res.data.proxima,
                     guiaDespacho:  ih.data.guiaDespacho,
-                    fechaGuiaDespacho: ih.data.fechaGuiaDespacho
+                    fechaGuiaDespacho: ih.data.fechaGuiaDespacho ?? fechaActual
                 });
             } else {
                 guardarMantencionFecha({

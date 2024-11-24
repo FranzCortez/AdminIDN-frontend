@@ -163,7 +163,8 @@ function Nosotros() {
                         </div>
 
                     </div>
-                    <div className="equipo__grid">
+                    {/* <div className="equipo__grid"> */}
+                    <div className="equipo__flex">
                         <div className="equipo__persona">
 
                             <div className="equipo3__img">
@@ -179,7 +180,7 @@ function Nosotros() {
                             </div>
                         </div>
 
-                        <div className="equipo__persona">
+                        {/*<div className="equipo__persona">
 
                             <div className="equipo4__img">
                                 <div className="equipo__info" >
@@ -196,7 +197,7 @@ function Nosotros() {
 
                         <div className="equipo__persona">
 
-                            {/* <div className="equipo9__img">
+                             <div className="equipo9__img">
                                 <div className="equipo__info" >
                                     <h3 className="equipo__experiencia" >40 Años de Experiencia</h3>
                                     <h3 className="equipo__especializacion">Especialización en Electrónica</h3>
@@ -207,8 +208,8 @@ function Nosotros() {
                             <div className="equipo__text">
                                 <h2 className="equipo__nombre">Santiago Gamboa López</h2>
                                 <h3 className="equipo__cargo">Técnico Industrial</h3>
-                            </div> */}
-                        </div>
+                            </div> 
+                        </div>*/}
 
                         <div className="equipo__persona">
 
@@ -226,6 +227,9 @@ function Nosotros() {
                             </div>                         
                         </div>
 
+                        </div>
+                        
+                    <div className="equipo__flex">
                         <div className="equipo__persona">
 
                             <div className="equipo10__img">

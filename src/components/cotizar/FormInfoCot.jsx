@@ -13,12 +13,14 @@ import InformeParteDos from '../informe/InformeParteDos';
 import InformeParteTres from '../informe/InformeParteTres';
 
 import PDF from './pdf/PDF';
+import PreinformeFlotante from '../flotante/preinforme-flotante';
 
 function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend, contenidoBack, datosInfo }) {
     
     const { id } = useParams();
 
     const [ primero, guardarPrimero ] = useState({});
+    const [ preinforme, guardarPreinforme ] = useState('');
     const [ segundoFotoA, guardarSegundoFotoA ] = useState([]);
     const [ segundoTextoA, guardarSegundoTextoA ] = useState('');
     const [ segundoFotoB, guardarSegundoFotoB ] = useState([]);
@@ -127,6 +129,14 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
         
         try {
 
+            const resPreinfo = await clienteAxios.get(`ih/preinforme/falla/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
+
+            guardarPreinforme(resPreinfo?.data?.falla);
+
             const res = await clienteAxios.get(`ih/ingreso/${id}`, {
                 headers: {
                     Authorization: `Bearer ${auth.token}`
@@ -163,6 +173,14 @@ function FormInfoCot({ contenido, cotizacion, herramientaInfo, cotizacionBackend
                     </div>
 
                     <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
+
+                    
+                    {
+                        preinforme ? 
+                        <PreinformeFlotante contenido={preinforme} />
+                        :
+                        null
+                    }
 
                     <BarraProgreso page={page} onPageNumberClick={nextPageNumber} />
                     {

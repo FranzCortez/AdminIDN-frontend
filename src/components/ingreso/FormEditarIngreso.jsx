@@ -463,7 +463,6 @@ function FormEditarIngreso() {
                                 onChange={actualizarPre} value={preInforme?.tecnico}
                             >
                                 <option value={'Alberto García'} > Alberto García </option>    
-                                <option value={'David Nilo'} > David Nilo </option>    
                                 <option value={'Eduardo Beluzarán'} > Eduardo Beluzarán </option>        
                                 <option value={'Daniel Molina'} > Daniel Molina </option>   
                                 
