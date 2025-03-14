@@ -135,21 +135,31 @@ function IngresoOpciones({ ingreso }) {
                             </div>
 
                         </div>
+                    </Fragment>
+                    
+                :
+                    null
+                }
+           
+                <Fragment>
 
-                        <div className='modal__herramienta modal__opciones'>
+                    <div className='modal__herramienta modal__opciones'>
 
-                            <h2 className='modal__titulo'>Tarjetas</h2>
+                        <h2 className='modal__titulo'>Tarjetas</h2>
 
-                            <Link to={`/tarjeta/${ingreso.otin}`} className="btn-new btn-success-new">
-                                <FaIdCardAlt  size={25}/> Tarjeta de Ingreso
-                            </Link>
+                        <Link to={`/tarjeta/${ingreso.otin}`} className="btn-new btn-success-new">
+                            <FaIdCardAlt  size={25}/> Tarjeta de Ingreso
+                        </Link>
 
-                            <div onClick={() => download(rutaCotizacion)} className={ "btn-new"}>
-                                <FaIdCardAlt  size={25}/> Tarjeta de Egreso
-                            </div>
+                        <Link to={`/tarjeta/egreso/${ingreso.otin}`} className="btn-new btn-success-new">
+                            <FaIdCardAlt  size={25}/> Tarjeta de Egreso
+                        </Link>
 
-                        </div>
-
+                    </div>
+                </Fragment>
+                {
+                    auth.tipo === 1 ?
+                    <Fragment>
                         <div className='modal__herramienta modal__opciones'>
 
                             <h2 className='modal__titulo'>Certificado</h2>
@@ -170,7 +180,7 @@ function IngresoOpciones({ ingreso }) {
 
                         </div>
                     </Fragment>
-                :
+                    :
                     null
                 }
             </div>

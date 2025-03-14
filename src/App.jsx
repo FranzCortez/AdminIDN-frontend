@@ -35,6 +35,7 @@ import FormInforme from "./components/informe/FormInforme";
 import FormCertificadoA from "./components/certificado/tipoA/FormCertificadoA";
 import FormCertificadoB from "./components/certificado/tipoB/FormCertificadoB";
 import FormTarjeta from "./components/certificado/tarjeta/FormTarjeta";
+import FormTarjetaEgreso from "./components/certificado/tarjeta/FormTarjetaEgreso";
 
 /** FOTO GALERIA */
 import FotoGaleria from "./components/fotogaleria/FotoGaleria";
@@ -161,6 +162,7 @@ function App() {
                         <Route path="/certificado/tipoa/nuevo/:id" element={<FormCertificadoA/>}/>
                         <Route path="/certificado/tipob/nuevo/:id" element={<FormCertificadoB/>}/>
                         <Route path="/tarjeta/:otin" element={<FormTarjeta/>}/>
+                        <Route path="/tarjeta/egreso/:otin" element={<FormTarjetaEgreso/>}/>
 
                         <Route path="/facturas" element={<Facturas/>}/>
                         <Route path="/facturas/nuevo" element={<FormNuevaFactura/>}/>

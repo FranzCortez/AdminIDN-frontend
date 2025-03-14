@@ -22,7 +22,7 @@ function InicioPrueba() {
     const [ confeti, guardarConfeti ] = useState(false);
     
     const [isModalOpen, setModalOpen] = useState(0);
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     const toggleWindow = () => {
         setIsVisible(!isVisible);
@@ -226,7 +226,6 @@ function InicioPrueba() {
                     <h1 className="nuestros__servicios-AT" >Nuestros Servicios</h1>
                     <div className='servicios__lista' id="servicios__lista">
                         <div className='servicios__campo' >
-                            {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <VscTools size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Reparación y mantención de herramientas hidráulicas, neumáticas y de torque</p>
                             <Link to={'/servicios/reparacion'}>
@@ -235,7 +234,6 @@ function InicioPrueba() {
                         </div>
 
                         <div className='servicios__campo' >
-                            {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <HiOutlineShoppingCart size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Venta de insumos y consumibles diversos (ferretería, soldadura, oficina, etc.)</p>
                             <Link to={'/servicios/insumos'}>
@@ -244,7 +242,6 @@ function InicioPrueba() {
                         </div>
 
                         <div className='servicios__campo' >
-                            {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <RiShoppingBagLine size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Venta y arriendo de herramientas diversas</p>
                             
@@ -254,7 +251,6 @@ function InicioPrueba() {
                         </div>
 
                         <div className='servicios__campo' >
-                            {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <MdOutlinePrecisionManufacturing size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Fabricación de extensiones de impacto, pernos de anclaje, abrazaderas y flexibles hidráulicos</p>
                             <Link to={'/servicios/fabricacion'}>
@@ -263,7 +259,6 @@ function InicioPrueba() {
                         </div>
 
                         <div className='servicios__campo' >
-                            {/* <img src="/img/Inicio/check.png" alt="check" className="servicios__ticket" /> */}
                             <GiDrill size={50} color={"#e1e1e1"}/>
                             <p className='servicios__texto' >Servicios de torque en terreno</p>
                             <Link to={'/servicios/torque'}>
@@ -275,61 +270,94 @@ function InicioPrueba() {
                 </div>
 
                 <div className="dn" id="imagenServicios" >
-                    {/* <img src="/img/Inicio/broca.jpg" alt="broca" /> */}
                     <div></div>
                 </div>
 
-                <div className="clientes">
+                <div className="nuestros__servicios">
+                    <h1 className="noticias__titulo">Nuestra Política Integrada</h1>
 
+                    <div className="catalogos">
+                        <a href="https://api.impactodelnorte.cl/inicio/IDN-POLITICA-INTEGRADA.pdf" target="_blank">
+                            <div className='btn-new btn-login'>Lea aquí</div>
+                        </a>
+                    </div>
+
+                    <img className="mbt-2" src="img/Inicio/isos.jpg" alt="" />
+                    <p>
+                    En Impacto del Norte EIRL y Comercializadora Impacto del Norte SPA, estamos implementando las Normas ISO 9.001 (Calidad), 14.001 (Medio Ambiente) y 45.001 (Seguridad) como parte del proceso de Certificación.
+                    </p>
+
+                </div>
+
+                <div className="nuestros__servicios">
+                    <h1 className="noticias__titulo">Nuestros Catálogos</h1>
+
+                    <p>Revisa nuestros catálogos sobre nuestros productos en venta y fabricación como nuestros equipos de arriendo, ante cualquier duda o interés no dudes en comunicarte con nosotros</p>
+                    
+                    <div className="catalogos">
+                        <a href="https://api.impactodelnorte.cl/inicio/Catalogo-arriendo-IDN.pdf" target="_blank">
+                        <div><img className="catalogos_img" src="img/Inicio/arriendo.jpg" alt="" /></div>
+                        <div className='btn-new btn-login'>Ver más</div>
+                        </a>
+
+                        <a href="https://api.impactodelnorte.cl/inicio/Catalogo-productos-fabricación-IDN.pdf" target="_blank">
+                        <div><img className="catalogos_img" src="img/Inicio/venta.jpg" alt="" /></div>
+                        <div className='btn-new btn-success-new'>Ver más</div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div className="clientes">
             
                     <h1 className="noticias__titulo">Algunos de Nuestros clientes</h1>
 
                     <div className="clientes-slide">
-                        <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Sermaind.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/PowerTrain.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/CPK.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Mecamin.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Comercial-San-Ignacio.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/FCAB.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/ND_logo.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/MD-logo.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/tech.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/qs.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/tc.jpeg" alt="Bailac" />
-                        <img src="img/Inicio/clientes/sergomet.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/tormetal.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/rocktrain.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/feram.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/flanders.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/kaufmann.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/cobra.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/konecranes.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Bailac.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Fernorte.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Sermaind.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/PowerTrain.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/CPK.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Mecamin.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Comercial-San-Ignacio.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/FCAB.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/ND_logo.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/MD-logo.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tech.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/qs.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tc.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/sergomet.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tormetal.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/rocktrain.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/feram.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/flanders.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/kaufmann.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/cobra.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/konecranes.webp" alt="Bailac" />
                     </div>
 
                     <div className="clientes-slide">
-                        <img src="img/Inicio/clientes/Bailac.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Fernorte.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Sermaind.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/PowerTrain.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/CPK.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Mecamin.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/Comercial-San-Ignacio.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/FCAB.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/ND_logo.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/MD-logo.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/tech.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/qs.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/tc.jpeg" alt="Bailac" />
-                        <img src="img/Inicio/clientes/sergomet.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/tormetal.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/rocktrain.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/feram.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/flanders.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/kaufmann.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/cobra.png" alt="Bailac" />
-                        <img src="img/Inicio/clientes/konecranes.png" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Bailac.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Fernorte.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Sermaind.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/PowerTrain.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/CPK.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Mecamin.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/Comercial-San-Ignacio.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/FCAB.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/ND_logo.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/MD-logo.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tech.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/qs.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tc.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/sergomet.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/tormetal.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/rocktrain.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/feram.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/flanders.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/kaufmann.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/cobra.webp" alt="Bailac" />
+                        <img src="img/Inicio/clientes/konecranes.webp" alt="Bailac" />
                     </div>
                 </div>
             </main>

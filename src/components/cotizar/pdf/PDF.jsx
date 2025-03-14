@@ -443,7 +443,7 @@ function PDF({ contenido, cotizacion, herramientaInfo, cotizacionBackend,
                     </div>
 
                     <div className='pdf__pie-img'>
-                        <img src="/img/Cotizacion/LogoEmpresa.jpeg" alt="" />
+                        <img src="/img/Cotizacion/LogoEmpresa.webp" alt="" />
                     </div>    
 
                 </div>     

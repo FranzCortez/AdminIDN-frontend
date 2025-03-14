@@ -426,9 +426,9 @@ function CertificadoDos({ primero, segundo, tercero, herramienta, certificados }
 
                     <div className='certificado__firma certificado__tipob'>
                         
-                        <img src="img/Firma/Firma_Alberto.png" alt="" />
+                        <img src="img/Firma/Firma_Alberto.webp" alt="" />
 
-                        <img src="img/Firma/Timbre.png" alt="" />
+                        <img src="img/Firma/Timbre.webp" alt="" />
 
                     </div>
 
@@ -437,9 +437,9 @@ function CertificadoDos({ primero, segundo, tercero, herramienta, certificados }
                         {certificados ? (
                                 
                             <Fragment>
-                                <img src="img/Certificado/Iso.png" alt="" />
-                                <img src="img/Certificado/CE.png" alt="" />
-                                <img src="img/Certificado/UKAS.png" alt="" />
+                                <img src="img/Certificado/Iso.webp" alt="" />
+                                <img src="img/Certificado/CE.webp" alt="" />
+                                <img src="img/Certificado/UKAS.webp" alt="" />
                             </Fragment>
                         ) : null}
 

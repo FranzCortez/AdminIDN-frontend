@@ -537,6 +537,7 @@ h2 {
 .card{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     margin-top: 2rem;
+    margin-left: 90px;
 }
 .card-saludo{
     display: flex;
@@ -579,6 +580,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
+    flex-direction: column;
 }
 .card-body-options-left{
     display: flex;
@@ -593,6 +595,13 @@ h2 {
     .card-header{
         justify-content: start;
         padding-left: 4rem;
+    }
+    .card-body-options {
+        flex-direction: row;
+    }
+    .card{
+        margin: 0 auto;
+        margin-top: 2rem;
     }
 }
 .card-grid-img {
@@ -1984,6 +1993,25 @@ table .boleta__total th {
     }
 }
 
+.catalogos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-direction: row;
+}
+.catalogos_img {
+    height: 50rem;
+    width: 40rem;
+    margin: 1rem;
+}
+@media (max-width: 1024px) {
+    .catalogos {
+        flex-direction: column !important;
+    }
+    
+}
+
 .nosotros {
     background-color: var(--naranjaClaro);
     margin-top: 5rem;
@@ -2199,7 +2227,7 @@ table .boleta__total th {
     overflow: hidden;
 }
 .hero__main {
-    background: linear-gradient(to bottom, rgba(37,37,37,1) 0%, transparent 15%, transparent 80%, rgba(37,37,37,1) 100%), url(/img/Inicio/grupo2.jpg);
+    background: linear-gradient(to bottom, rgba(37,37,37,1) 0%, transparent 15%, transparent 95%, rgba(37,37,37,1) 100%), url(/img/Inicio/grupo2.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2225,7 +2253,7 @@ table .boleta__total th {
 @media (min-width: 768px) {
     
     .hero__main {
-        background: linear-gradient(to bottom, transparent 0%, rgba(37,37,37,1) 80%), url(/img/Inicio/grupo2.jpg);
+        background: linear-gradient(to bottom, transparent 0%, rgba(37,37,37,1) 95%), url(/img/Inicio/grupo2.webp);
         background-size: cover;
         height: 100rem;
     }
@@ -2234,7 +2262,7 @@ table .boleta__total th {
     }
     .hero__logo {
         width: 45rem;
-        top: 10%;
+        top: 30%;
         left: 35%;
     }
 }
@@ -2643,7 +2671,7 @@ table .boleta__total th {
 }
 .cotizacion {
     /* margin-top: 5rem; */
-    background-image: url(/img/Inicio/heroportada.jpg);
+    background-image: url(/img/Inicio/heroportada.webp);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2776,8 +2804,8 @@ table .boleta__total th {
 }
 /** NOSOTROS */
 .hero__nosotros {
-    background: linear-gradient(to bottom, rgba(37,37,37,1) 0%, transparent 25%, transparent 70%, rgba(37,37,37,1) 100%), url(/img/Inicio/grupo3.jpg);
-    background-size: cover;
+    background: linear-gradient(to bottom, rgba(37,37,37,1) 0%, transparent 25%, transparent 70%, rgba(37,37,37,1) 100%), url(/img/Inicio/grupo3.webp);
+    /* background-size: cover; */
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -2943,7 +2971,7 @@ table .boleta__total th {
     height: 30rem;
 } */
 .equipo1__img {
-    background-image: url(/img/Inicio/Equipo/a1.jpg);
+    background-image: url(/img/Inicio/Equipo/a1.webp);
     height:30rem;
     width:30rem;
     background-repeat: no-repeat;
@@ -2990,7 +3018,7 @@ table .boleta__total th {
     font-size: 2rem;
 }
 .equipo2__img {
-    background-image: url(/img/Inicio/Equipo/e1.jpg);
+    background-image: url(/img/Inicio/Equipo/e1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3001,7 +3029,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo3__img {
-    background-image: url(/img/Inicio/Equipo/ed1.jpg);
+    background-image: url(/img/Inicio/Equipo/mg1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3012,7 +3040,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo4__img {
-    background-image: url(/img/Inicio/Equipo/d1.jpg);
+    background-image: url(/img/Inicio/Equipo/jp1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3023,7 +3051,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo5__img {
-    background-image: url(/img/Inicio/Equipo/dm.jpg);
+    background-image: url(/img/Inicio/Equipo/dm.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3034,7 +3062,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo6__img {
-    background-image: url(/img/Inicio/Equipo/j.jpg);
+    background-image: url(/img/Inicio/Equipo/j.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3045,7 +3073,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo7__img {
-    background-image: url(/img/Inicio/Equipo/f1.jpg);
+    background-image: url(/img/Inicio/Equipo/f1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3056,7 +3084,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo8__img {
-    background-image: url(/img/Inicio/Equipo/i1.jpg);
+    background-image: url(/img/Inicio/Equipo/i1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3067,7 +3095,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo9__img {
-    background-image: url(/img/Inicio/Equipo/s1.jpg);
+    background-image: url(/img/Inicio/Equipo/s1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3078,7 +3106,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo10__img {
-    background-image: url(/img/Inicio/Equipo/p1.jpg);
+    background-image: url(/img/Inicio/Equipo/p1.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3272,12 +3300,12 @@ table .boleta__total th {
     height: 30rem;
     margin: 0 auto;
     margin: 2rem 0;
-    background-image: url(/img/Inicio/qr.jpg);
+    background-image: url(/img/Inicio/qr.webp);
     background-size: cover;
     background-position: center;
 }
 .rb {
-    background-image: url(/img/Inicio/informe.jpg);
+    background-image: url(/img/Inicio/informe.webp);
 }
 .conoce {
     width: 80%;
@@ -3601,11 +3629,13 @@ table .boleta__total th {
     margin-top: 6px;
   }
   .tarjeta__input {
+    background-color: #fff;
     width: 150px;
     padding: 0;
     position: relative;
     z-index: 10;
     flex: 1;
+    font-size: 13px;
   }
   .tarjeta__campo {
     display: flex;
@@ -3615,9 +3645,36 @@ table .boleta__total th {
   .tarjeta__campo span {
     width: 95px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
   }
   .tarjeta__titulo h1 {
     margin: 0;
+    text-align: center;
+  }
+  .tarjeta__mantencion {
+    border: 2px solid green;
+    display: flex;
+}
+.tarjeta__prox {
+    border: 2px solid red;
+    display: flex;
+  }
+  .tarjeta_campo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tarjeta_input_campo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .tarjeta_input_campo label {
+    width: 100px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .tarjeta_titulo {
     text-align: center;
   }

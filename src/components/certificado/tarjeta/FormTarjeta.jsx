@@ -7,13 +7,15 @@ import clienteAxios from '../../../config/axios';
 import Tarjeta from './Tarjeta';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import moment from 'moment';
+import { parseVulgars } from 'vulgar-fractions';
 
 
 function FormTarjeta() {
   // usar context
   const [auth, guardarAuth] = useContext(CRMContext);
 
-  const [ otinTarjeta, guardarOtinTarjeta ] = useState({});
+  const [otinTarjetaModificada, saveOtinTarjetaModificada] = useState({});
 
   let navigate = useNavigate();
 
@@ -46,11 +48,33 @@ function FormTarjeta() {
       
     console.log(res.data);
 
-    guardarOtinTarjeta(res.data);
+
+    saveOtinTarjetaModificada({
+      fecha: moment(res?.data?.fecha).format('DD-MM-YYYY'),
+      fechaprox: moment(res?.data?.fechaprox).format('DD-MM-YYYY'),
+      empresaNombre: res?.data?.clienteContacto?.clienteEmpresa?.nombre,
+      otin: res?.data?.otin,
+      equipoNombre: res?.data?.tipoHerramientum?.nombre,
+      modelo: res?.data?.modelo,
+      marca: res?.data?.marca,
+      numeroSerie: res?.data?.numeroSerie,
+      numeroInterno: res?.data?.numeroInterno,
+      rango: res?.data?.rango,
+      tonelaje: res?.data?.tonelaje,
+      tecnico: res?.data?.tecnico
+    });
 
   } catch (error) {
       console.log(error)
   }
+  }
+
+  const actualizarState = e => {
+
+    saveOtinTarjetaModificada({
+        ...otinTarjetaModificada,
+        [e.target.name] : parseVulgars(e.target.value)
+    });
   }
 
   useEffect(() => {
@@ -75,9 +99,73 @@ function FormTarjeta() {
           <h2 className='card-body-subtitle'> Llene todos los campos según corresponda: </h2>
           <h3 className='card-body-subtitle'> Todos los campos son editables, las areas de texto son modificables, mientras no se salga del cuadro amarillo: </h3>
 
+          <div className='tarjeta_campo'>
+            <h3 className='tarjeta_titulo'>Campos:</h3>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Mantención realizada:</label>
+              <textarea rows={1} name="fecha" id="mantrealizada" defaultValue={otinTarjetaModificada?.fecha} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Prox. mantención:</label>
+              <textarea rows={1} name="fechaprox" id="mantrealizada" defaultValue={otinTarjetaModificada?.fechaprox} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Empresa/sucursal:</label>
+              <textarea rows={1} name="empresaNombre" id="mantrealizada" defaultValue={otinTarjetaModificada?.empresaNombre} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">OTIN:</label>
+              <textarea rows={1} name="otin" id="mantrealizada" defaultValue={otinTarjetaModificada?.otin} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Tipo equipo:</label>
+              <textarea rows={1} name="equipoNombre" id="mantrealizada" defaultValue={otinTarjetaModificada?.equipoNombre} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Modelo:</label>
+              <textarea rows={1} name="modelo" id="mantrealizada" defaultValue={otinTarjetaModificada?.modelo} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Marca:</label>
+              <textarea rows={1} name="marca" id="mantrealizada" defaultValue={otinTarjetaModificada?.marca} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">N°Serie:</label>
+              <textarea rows={1} name="numeroSerie" id="mantrealizada" defaultValue={otinTarjetaModificada?.numeroSerie} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">N°Interno:</label>
+              <textarea rows={1} name="numeroInterno" id="mantrealizada" defaultValue={otinTarjetaModificada?.numeroInterno} onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Rango de trabajo:</label>
+              <textarea rows={1} name="rango" id="mantrealizada" onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Tonelaje:</label>
+              <textarea rows={1} name="tonelaje" id="mantrealizada" onChange={actualizarState}></textarea>
+            </div>
+
+            <div className="tarjeta_input_campo">
+              <label htmlFor="mantrealizada">Técnico:</label>
+              <textarea rows={1} name="tecnico" id="mantrealizada" defaultValue={otinTarjetaModificada?.tecnico} onChange={actualizarState}></textarea>
+            </div>
+          </div>
+
             <button onClick={handleDownload} style={styles.boton}>Descargar como PDF</button>
           <div className="card-body-tarjeta">
-            <Tarjeta otinTarjeta={otinTarjeta}></Tarjeta>
+            <Tarjeta otinTarjeta={otinTarjetaModificada}></Tarjeta>
           </div>
         </div>
       </div>        

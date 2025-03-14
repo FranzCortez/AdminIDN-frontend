@@ -13,40 +13,73 @@ function Tarjeta({
                 <h1 >Ingreso</h1>
             </div>
             <div className='tarjeta__campo'>
-                <span>Fecha:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={moment(otinTarjeta?.fecha).format('DD-MM-YYYY')} />
+                <span>Fecha:</span>
+                <div className='tarjeta__mantencion tarjeta__input'>
+                    {otinTarjeta?.fecha}
+                </div>
             </div>
 
             <div className='tarjeta__campo'>
-                <span>Empresa/ sucursal:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta?.clienteContacto?.clienteEmpresa?.nombre} />
+                <span>Empresa/ sucursal:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.empresaNombre}
+                </div>
             </div>
 
             <div className='tarjeta__campo'>
-                <span>OTIN:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta?.otin} />
+                <span>OTIN:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.otin}
+                </div>
             </div>
 
             <div className='tarjeta__campo'>
-                <span>Tipo de equipo:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta?.tipoHerramientum?.nombre} />
+                <span>Tipo equipo:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.equipoNombre}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>Modelo:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta.modelo} />
+                <span>Modelo:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.modelo}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>Marca:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta.marca}/>
+                <span>Marca:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.marca}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>N°Serie:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta.numeroSerie}/>
+                <span>N°Serie:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.numeroSerie}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>N°Interno:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta.modelo}/>
+                <span>N°Interno:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.numeroInterno}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>Rango de trabajo:</span> <textarea rows={1} className='tarjeta__input' type="text" />
+                <span>Rango de trabajo:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.rango}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>Tonelaje:</span> <textarea rows={1} className='tarjeta__input' type="text" />
+                <span>Tonelaje:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.tonelaje}
+                </div>
             </div>
             <div className='tarjeta__campo'>
-                <span>Técnico:</span> <textarea rows={1} className='tarjeta__input' type="text" defaultValue={otinTarjeta.tecnico} />
+                <span>Técnico:</span>
+                <div className='tarjeta__input'>
+                    {otinTarjeta?.tecnico}
+                </div>
             </div>
             
             <div className='tarjeta__contenedor'>

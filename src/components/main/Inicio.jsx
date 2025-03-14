@@ -173,7 +173,7 @@ function Inicio() {
                 
                 <div className='mision'>
 
-                    <img className='mision__img' src="/img/Inicio/quienes.jpg" alt="Vision" />
+                    <img className='mision__img' src="/img/Inicio/quienes.webp" alt="Vision" />
     
                     <div className='mision__campo'>
                         <h1 className='mision__titulo'>Misión</h1>
