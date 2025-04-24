@@ -199,36 +199,36 @@ function Nosotros() {
         <div className="equipo__flex">
 
           <div className="equipo__persona">
-            {/* <div className="equipo3__img"> */}
-            <div className="equipo__img">
+            <div className="equipo3__img">
+            {/* <div className="equipo__img"> */}
               <div className="equipo__info">
-                {/* <h3 className="equipo__experiencia">14 Años de Experiencia</h3>
+                <h3 className="equipo__experiencia">Egresado</h3>
                 <h3 className="equipo__especializacion">
-                Técnico Industrial.
-                </h3> */}
+                Ingeniería Mecánica en Mantenimiento Industrial.
+                </h3>
               </div>
             </div>
 
             <div className="equipo__text">
-              {/* <h2 className="equipo__nombre">Marco García Balcázar</h2>
-              <h3 className="equipo__cargo">Jefe de Taller</h3> */}
+              <h2 className="equipo__nombre">Jeremy Carrasco Galleguillos</h2>
+              <h3 className="equipo__cargo">Ayudante de Taller (Practicante)</h3>
             </div>
           </div>
 
           <div className="equipo__persona">
-            {/* <div className="equipo4__img"> */}
-            <div className="equipo__img">
+            <div className="equipo4__img">
+            {/* <div className="equipo__img"> */}
               <div className="equipo__info">
-                {/* <h3 className="equipo__experiencia">2 Años de Experiencia</h3>
+                <h3 className="equipo__experiencia">Egresado</h3>
                 <h3 className="equipo__especializacion">
-                Técnico Mecánico en formación.
-                </h3> */}
+                Ingeniería Mecánica en Mantenimiento Industrial.
+                </h3>
               </div>
             </div>
 
             <div className="equipo__text">
-              {/* <h2 className="equipo__nombre">Juan Marca Bozo</h2>
-              <h3 className="equipo__cargo">Ayudante de Taller</h3> */}
+              <h2 className="equipo__nombre">Paul Campusano Ocaranza</h2>
+              <h3 className="equipo__cargo">Ayudante de Taller (Practicante)</h3>
             </div>
           </div>
         </div>

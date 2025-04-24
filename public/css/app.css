@@ -2965,6 +2965,7 @@ table .boleta__total th {
 }
 .equipo__persona{
     margin-bottom: 2rem;
+    width: 38rem;
 }
 /* .equipo__contenedor {
     width: 30rem;
@@ -3029,7 +3030,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo3__img {
-    background-image: url(/img/Inicio/Equipo/mg1.webp);
+    background-image: url(/img/Inicio/Equipo/je.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3040,7 +3041,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo4__img {
-    background-image: url(/img/Inicio/Equipo/jp1.webp);
+    background-image: url(/img/Inicio/Equipo/p.webp);
     height:30rem;
     width:30rem;
     position: relative;
