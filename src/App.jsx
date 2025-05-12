@@ -95,6 +95,9 @@ import Solicitudes from "./components/checklist/Solicitudes";
 import FormNuevoSolicitud from "./components/checklist/FormNuevoSolicitud";
 import FormEditarSolicitud from "./components/checklist/FormEditarSolicitud";
 
+/** CheckList Document */
+import FormCheckListDocument from "./components/check-list/form-check-list-document";
+
 /** COMERCIALIZADORA */
 /** HOME COM */
 import HomeCom from "./components/comercializadora/homeCom/HomeCom";
@@ -232,6 +235,8 @@ function App() {
                         <Route path="/ingresoscom" element={<IngresosCom/>} />
                         <Route path="/ingresoscom/nuevo" element={<FormNuevoIngresoCom/>} />
                         <Route path="/ingresoscom/editar/:id/:tipo" element={<FormEditarIngresoCom/>} />
+
+                        <Route path="/doc/checklist/form/:id" element={<FormCheckListDocument/>}/>
                         
                         <Route path="/home" element={<Home/>} />
                         

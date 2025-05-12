@@ -118,6 +118,22 @@ function IngresoOpciones({ ingreso }) {
 
                 </div>
 
+                <Fragment>
+                    <div className='modal__herramienta modal__opciones'>
+
+                        <h2 className='modal__titulo'>Salida de Herramienta</h2>
+
+                        <Link to={`/doc/checklist/form/${ingreso.id}`} className={ ingreso.archivoSalida ? "btn-new btn-success-new" : "btn-new btn-success-new"}>
+                            <MdOutlineRequestQuote size={25}/> Generar Checklist de Salida
+                        </Link>
+
+                        <div onClick={() => download(ingreso.archivoSalida)} className={ ingreso.archivoSalida ? "btn-new btn-login" : "btn-new"}>
+                            <AiOutlineDownload size={25}/> Descargar Checklist de Salida
+                        </div>
+
+                    </div>
+                </Fragment>
+
                 {
                     auth.tipo === 1 ?
 

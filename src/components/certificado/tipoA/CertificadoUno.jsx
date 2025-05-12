@@ -318,9 +318,9 @@ function CertificadoUno({ primero, segundo, tercero, herramienta, certificados }
                         {certificados ? (
                                 
                             <Fragment>
-                                <img src="img/Certificado/Iso.webp" alt="" />
+                                {/* <img src="img/Certificado/Iso.webp" alt="" />
                                 <img src="img/Certificado/CE.webp" alt="" />
-                                <img src="img/Certificado/UKAS.webp" alt="" />
+                                <img src="img/Certificado/UKAS.webp" alt="" /> */}
                             </Fragment>
                         ) : null}
 
