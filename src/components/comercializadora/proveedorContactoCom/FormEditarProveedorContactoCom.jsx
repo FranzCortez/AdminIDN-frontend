@@ -113,7 +113,7 @@ function FormEditarProveedorContactoCom() {
     }
 
     useEffect(() => {
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 3) ) {
             consultarAPI();
         } else {
             navigate('/login', {replace: true});

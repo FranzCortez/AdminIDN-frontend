@@ -137,7 +137,7 @@ function FormEditarEquiposHijosCom() {
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
-        } else if (auth.tipo !== 1 && auth.tipo !== 2){ 
+        } else if (auth.tipo !== 1 && auth.tipo !== 3){ 
             navigate('/login', {replace: true});
         }
 

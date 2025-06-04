@@ -18,9 +18,14 @@ function Header() {
 
     const [ empresa, guardarEmpresa ] = useState(auth.tipo === 3 ? false : true); // true = eirl || false = spa
 
+    React.useEffect(() => {
+        guardarEmpresa(auth.tipo === 3 ? false : true);
+    }, [auth.tipo]);
+
     const [expanded, setExpanded] = useState(false);
 
     let navigate = useNavigate();
+    let revision = true;
     
     if(!auth.auth) return null;
 
@@ -119,6 +124,7 @@ function Header() {
             icono: <MdOutlinePlaylistAdd size={30} color={"#f5f5f5"}/>
         },
     ]
+
     if(auth.tipo === 1) {
         rutaEirlGenerico.push(
             {

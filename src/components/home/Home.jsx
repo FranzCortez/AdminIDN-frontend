@@ -39,7 +39,6 @@ function Home() {
                     Authorization: `Bearer ${auth.token}`
                 }
             });
-            console.log(res.data)
             guardarEfectos(res.data);
             
         } catch (error) {
