@@ -83,7 +83,7 @@ function Solicitudes() {
 
     useEffect(() => {        
         
-        if(auth.token !== '' && (auth.tipo === 1 ) ) {
+        if(auth.token !== '' && (auth.tipo === 1  || auth.tipo === 4) ) {
             localStorage.setItem('ultima', `/checklist`);
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroFactura');

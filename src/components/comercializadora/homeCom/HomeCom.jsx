@@ -15,7 +15,7 @@ function HomeCom() {
    let navigate = useNavigate();
 
    useEffect(() => {        
-       if(auth.token === '' && (auth.tipo !== 1 || auth.tipo !== 3 ) ) {
+       if(auth.token === '' && (auth.tipo !== 1 || auth.tipo !== 3  || auth.tipo !== 4) ) {
            navigate('/login', {replace: true});
        }  
        localStorage.removeItem('filtroEmpresa');

@@ -14,7 +14,7 @@ function EquipoCom({ datos }) {
     useEffect(() => {
         if(!(auth.auth && (localStorage.getItem('token') === auth.token))){  
             navigate('/login', {replace: true});
-        } else if (auth.tipo !== 1 && auth.tipo !== 3){ 
+        } else if (auth.tipo !== 1 && auth.tipo !== 3 && auth.tipo !== 4) { 
             navigate('/login', {replace: true});
         }
     },[]);

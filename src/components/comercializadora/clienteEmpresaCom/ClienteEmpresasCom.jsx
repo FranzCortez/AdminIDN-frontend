@@ -98,7 +98,7 @@ function ClienteEmpresasCom() {
     }
     
     useEffect(() => {
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 3) ) {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 3 || auth.tipo === 4) ) {
             if ( busqueda === '' ) {
                 consultarAPI();
             } else {

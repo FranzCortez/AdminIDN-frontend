@@ -150,6 +150,21 @@ function Header() {
         )
     }
 
+    if(auth.tipo === 4) {
+        rutaEirlGenerico.push(
+            {
+                ruta: '/facturas',
+                texto: 'Facturas',
+                icono: <AiOutlineDollarCircle size={30} color={"#f5f5f5"}/>
+            },  
+            {
+                ruta: '/checklist',
+                texto: 'Solicitudes',
+                icono: < BsCalendarCheck size={30} color={"#f5f5f5"} />
+            }
+        )
+    }
+
     return (
         <Fragment>
             <div className={`header ${empresa ? 'eirl' : 'com'}`}>
@@ -192,7 +207,7 @@ function Header() {
 
                 <div className="slider__body">
                     {
-                        auth.tipo === 1 ? 
+                        auth.tipo === 1 || auth.tipo === 4 ? 
                             <button className="slider__body-button">
 
                                 {

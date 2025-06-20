@@ -183,9 +183,9 @@ function Facturas() {
             console.log(error)
         }
     }
-    
-    useEffect(() => {        
-        if(auth.token !== '' && auth.tipo === 1 ) {
+
+    useEffect(() => {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 4) ) {
             localStorage.setItem('ultima', `/facturas`);
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroIngreso');

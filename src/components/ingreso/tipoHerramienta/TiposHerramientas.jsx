@@ -89,7 +89,7 @@ function TiposHerramientas() {
 
     useEffect(() => {        
         
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2 || auth.tipo === 4) ) {
             consultarAPI();
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroIngreso');

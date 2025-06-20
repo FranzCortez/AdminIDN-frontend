@@ -83,7 +83,7 @@ function Ingresos() {
 
     useEffect(() => {        
         
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2) ) {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 2 || auth.tipo === 4) ) {
             localStorage.setItem('ultima', `/ingresos`);
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroFactura');

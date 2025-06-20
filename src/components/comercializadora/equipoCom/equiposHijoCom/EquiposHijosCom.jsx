@@ -105,7 +105,7 @@ function EquiposHijosCom() {
 
     useEffect(() => {        
         
-        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 3) ) {
+        if(auth.token !== '' && (auth.tipo === 1 || auth.tipo === 3 || auth.tipo === 4) ) {
             consultarAPI();
             localStorage.removeItem('filtroEmpresa');
             localStorage.removeItem('filtroIngreso');

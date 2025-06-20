@@ -70,7 +70,7 @@ function DescargarQr() {
     }
 
     useEffect(() => {
-        if(auth.token === '' && (auth.tipo !== 1 || auth.tipo !== 2 || auth.tipo !== 3 ) ) {
+        if(auth.token === '' && (auth.tipo !== 1 || auth.tipo !== 2 || auth.tipo !== 3 || auth.tipo !== 4 ) ) {
             navigate('/login', {replace: true});
         }
         consultarAPI();

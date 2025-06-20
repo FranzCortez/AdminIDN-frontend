@@ -66,7 +66,7 @@ function SeleccionBalance() {
     }
 
     useEffect(() => {
-        if(auth.token !== '' && auth.tipo === 1 ) {
+        if(auth.token !== '' && (auth.tipo === 1  || auth.tipo === 4)) {
             localStorage.setItem('ultima', `/balance`);
         } else {
             navigate('/login', {replace: true});

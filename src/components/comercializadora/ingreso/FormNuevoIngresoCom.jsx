@@ -501,7 +501,7 @@ function FormNuevoIngresoCom() {
     }
 
     useEffect(() => {
-        const tipos = [1,3]
+        const tipos = [1,3,4]
         
         if(auth.token === '' || !tipos.includes(auth.tipo) ) navigate('/login', {replace: true}); 
     }, []);

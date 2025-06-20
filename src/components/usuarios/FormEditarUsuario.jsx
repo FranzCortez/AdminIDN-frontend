@@ -192,6 +192,7 @@ function FormEditarUsuario() {
                                 <option value="1">Administrador</option>
                                 <option value="2">Trabajador EIRL</option>
                                 <option value="3">Trabajador SPA</option>
+                                <option value="4">Administrador SPA Y EIRL</option>
                             </select>
                         </div>
 
