@@ -199,6 +199,42 @@ function Nosotros() {
         <div className="equipo__flex">
 
           <div className="equipo__persona">
+            <div className="equipo5__img">
+            {/* <div className="equipo__img"> */}
+              <div className="equipo__info">
+                <h3 className="equipo__experiencia">8 Años de experiencia</h3>
+                <h3 className="equipo__especializacion">
+                Especialista en Hidráulica y Neumática.
+                </h3>
+              </div>
+            </div>
+
+            <div className="equipo__text">
+              <h2 className="equipo__nombre">Mateo Molina Caicedo</h2>
+              <h3 className="equipo__cargo">Jefe de Taller</h3>
+            </div>
+          </div>
+
+          <div className="equipo__persona">
+            <div className="equipo11__img">
+            {/* <div className="equipo__img"> */}
+              <div className="equipo__info">
+                <h3 className="equipo__experiencia">7 años de experiencia</h3>
+                <h3 className="equipo__especializacion">
+                Gestión administrativa. (Ing. Comercial)
+                </h3>
+              </div>
+            </div>
+
+            <div className="equipo__text">
+              <h2 className="equipo__nombre">Karen Pérez Pizarro</h2>
+              <h3 className="equipo__cargo">Asistente Administrativa</h3>
+            </div>
+          </div>
+        </div>
+        <div className="equipo__flex">
+
+          <div className="equipo__persona">
             <div className="equipo3__img">
             {/* <div className="equipo__img"> */}
               <div className="equipo__info">

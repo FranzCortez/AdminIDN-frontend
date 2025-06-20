@@ -3019,7 +3019,7 @@ table .boleta__total th {
     font-size: 2rem;
 }
 .equipo2__img {
-    background-image: url(/img/Inicio/Equipo/e1.webp);
+    background-image: url(/img/Inicio/Equipo/e3.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3052,7 +3052,7 @@ table .boleta__total th {
     margin: 0 auto;
 }
 .equipo5__img {
-    background-image: url(/img/Inicio/Equipo/dm.webp);
+    background-image: url(/img/Inicio/Equipo/mm.webp);
     height:30rem;
     width:30rem;
     position: relative;
@@ -3108,6 +3108,17 @@ table .boleta__total th {
 }
 .equipo10__img {
     background-image: url(/img/Inicio/Equipo/p1.webp);
+    height:30rem;
+    width:30rem;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50% 80%;
+    border-radius: 50%;
+    background-size: 150%;
+    margin: 0 auto;
+}
+.equipo11__img {
+    background-image: url(/img/Inicio/Equipo/kpp.webp);
     height:30rem;
     width:30rem;
     position: relative;
