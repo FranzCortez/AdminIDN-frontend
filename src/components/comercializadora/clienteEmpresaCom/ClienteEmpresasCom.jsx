@@ -145,6 +145,7 @@ function ClienteEmpresasCom() {
                                     <th scope="col">Rut</th>
                                     <th scope="col">Razón Social</th>
                                     <th scope="col">Dirección</th>
+                                    <th scope="col">Última Solicitud</th>
                                     <th scope="col">Contactos</th>
                                     <th scope="col">Opciones</th>
                                 </tr>

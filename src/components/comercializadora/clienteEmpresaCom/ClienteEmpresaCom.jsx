@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../context/CRMContext';
+import moment from 'moment';
 
 function ClienteEmpresaCom({datos, escucharCambio}) {
     const [auth, guardarAuth] = useContext(CRMContext);
@@ -44,6 +45,7 @@ function ClienteEmpresaCom({datos, escucharCambio}) {
             <td>{rut}</td>
             <td>{datos.razonSocial}</td>
             <td>{datos.direccion}</td>
+            <td>{datos.clienteContactoComs.length ? datos.clienteContactoComs[0].ingresoComs.length ? moment(datos.clienteContactoComs[0].ingresoComs[0].fecha).format('DD/MM/YYYY') : '-' : '-'}</td>
             <td>
                 <div className='table__opciones'>
 

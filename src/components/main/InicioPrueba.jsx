@@ -282,7 +282,7 @@ function InicioPrueba() {
                         </a>
                     </div>
 
-                    <img className="mbt-2" src="img/Inicio/isos.jpg" alt="" />
+                    <img className="mbt-2" src="img/Inicio/isos.png" alt="" />
                     <p>
                     En Impacto del Norte EIRL y Comercializadora Impacto del Norte SPA, estamos implementando las Normas ISO 9.001 (Calidad), 14.001 (Medio Ambiente) y 45.001 (Seguridad) como parte del proceso de Certificación.
                     </p>
